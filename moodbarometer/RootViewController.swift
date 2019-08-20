@@ -11,8 +11,7 @@ import UIKit
 class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
 	var pageViewController: UIPageViewController?
-
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -25,6 +24,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 		self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: {done in })
 
 		self.pageViewController!.dataSource = self.modelController
+		startingViewController.modelController = self.modelController
 
 		self.addChild(self.pageViewController!)
 		self.view.addSubview(self.pageViewController!.view)
