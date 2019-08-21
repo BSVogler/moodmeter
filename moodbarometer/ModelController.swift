@@ -24,6 +24,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	private var mood = 0
 	private var moodToText: [String] = [":-(", ":-/", ":-|", ":-)", ":-D"]
 	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
+	private let httpClient = JsonHttpClient("https://benediktsvogler.com/moodmeter/")
 
 	func getSmiley() -> String {
 		return moodToText[mood]
@@ -43,6 +44,11 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 		if mood > 0 {
 			mood -= 1
 		}
+		httpClient.post(
+			to: "mood",
+			with: mood,
+			whichHasType: Int.self,
+			expecting: Int.self){_ in }
 	}
 
 	override init() {

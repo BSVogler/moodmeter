@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */; };
+		A6D237EE230CC5FC004DEBAE /* ApyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApyType.swift */; };
+		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
 		A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */; };
 		A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFED230CA5150004AF6D /* RootViewController.swift */; };
 		A6EFAFF0230CA5150004AF6D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEF230CA5150004AF6D /* DataViewController.swift */; };
@@ -14,9 +17,14 @@
 		A6EFAFF5230CA5150004AF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF3230CA5150004AF6D /* Main.storyboard */; };
 		A6EFAFF7230CA5170004AF6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF6230CA5170004AF6D /* Assets.xcassets */; };
 		A6EFAFFA230CA5170004AF6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */; };
+		A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodbarometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
+		A6D237ED230CC5FC004DEBAE /* ApyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApyType.swift; sourceTree = "<group>"; };
+		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		A6EFAFE8230CA5150004AF6D /* moodbarometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodbarometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6EFAFED230CA5150004AF6D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +34,8 @@
 		A6EFAFF6230CA5170004AF6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6EFAFF9230CA5170004AF6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6EFAFFB230CA5170004AF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpClient.swift; sourceTree = "<group>"; };
+		CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.debug.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03ED5BE10CA47873FF5699CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */,
+				22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9EA8F0D12C9737AE34B7F8B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A6EFAFDF230CA5150004AF6D = {
 			isa = PBXGroup;
 			children = (
 				A6EFAFEA230CA5150004AF6D /* moodbarometer */,
 				A6EFAFE9230CA5150004AF6D /* Products */,
+				03ED5BE10CA47873FF5699CE /* Pods */,
+				9EA8F0D12C9737AE34B7F8B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,10 +92,13 @@
 				A6EFAFED230CA5150004AF6D /* RootViewController.swift */,
 				A6EFAFEF230CA5150004AF6D /* DataViewController.swift */,
 				A6EFAFF1230CA5150004AF6D /* ModelController.swift */,
+				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
 				A6EFAFF3230CA5150004AF6D /* Main.storyboard */,
 				A6EFAFF6230CA5170004AF6D /* Assets.xcassets */,
 				A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */,
 				A6EFAFFB230CA5170004AF6D /* Info.plist */,
+				A6D237ED230CC5FC004DEBAE /* ApyType.swift */,
+				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
 			);
 			path = moodbarometer;
 			sourceTree = "<group>";
@@ -77,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodbarometer" */;
 			buildPhases = (
+				F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */,
 				A6EFAFE4230CA5150004AF6D /* Sources */,
 				A6EFAFE5230CA5150004AF6D /* Frameworks */,
 				A6EFAFE6230CA5150004AF6D /* Resources */,
+				88333901129AC5BF84F19CA4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,14 +171,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		88333901129AC5BF84F19CA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-moodbarometer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A6EFAFE4230CA5150004AF6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */,
 				A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */,
 				A6EFAFF2230CA5150004AF6D /* ModelController.swift in Sources */,
+				A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */,
 				A6EFAFF0230CA5150004AF6D /* DataViewController.swift in Sources */,
+				A6D237EE230CC5FC004DEBAE /* ApyType.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +368,7 @@
 		};
 		A6EFAFFF230CA5170004AF6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +387,7 @@
 		};
 		A6EFB000230CA5170004AF6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
