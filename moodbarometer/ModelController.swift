@@ -23,7 +23,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	private var mood: Mood = 0
 	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
 	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
-	private var httpClient: JsonHttpClient?
+	private var httpClient: MoodAPIjsonHttpClient?
 	public private(set) var deviceHash: String?
 
 	func getSmiley() -> String {
@@ -37,20 +37,17 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	func increaseMood(){
 		if mood < moodToText.count-1 {
 			mood += 1
+			dataset[Date()] = mood
+			httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
-		dataset[Date()] = mood
 	}
 	
 	func decreaseMood(){
-		if mood > 0 {
+		if mood > 1 {
 			mood -= 1
+			dataset[Date()] = mood
+			httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
-		dataset[Date()] = mood
-		httpClient?.post(
-			to: "mood",
-			with: mood,
-			whichHasType: Int.self,
-			expecting: Int.self){_ in }
 	}
 
 	override init() {

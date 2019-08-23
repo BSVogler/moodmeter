@@ -73,6 +73,7 @@ class JsonHttpClient {
         done: @escaping (Result<TResponse>) -> Void
         ) {
         guard let url = URL(string: baseUrl + endpoint) else {
+			logger.error("Url invalid.")
             done(.failure(ApiError.fetchError))
             return
         }
@@ -158,7 +159,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	init(model: ModelController) {
 		self.model = model
-		super.init("https://benediktsvogler.com/moodmeter/")
+		super.init("http://192.168.2.3:5000/")
 	}
 	func post<TData: Encodable, TResponse: Decodable>(
 		with data: TData,
@@ -177,10 +178,10 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		if let deviceHash = model.deviceHash {
 			var password = "todo"
 			let mrequest = MeasurementRequest(password: password, measurements: measurements)
-			super.post(to: deviceHash,
+			post(to: deviceHash,
 					   with: mrequest,
 					   whichHasType: MeasurementRequest.self,
-					   expecting: MeasurementRequest.self) {_ in
+					   expecting: MeasurementRequest.self) {res in
 			}
 		} else {
 			logger.error("no device Hash")
