@@ -14,7 +14,7 @@ def measurements_json_to_csv(fp, measurements, limit=None):
             fp.write(e["day"]+";"+str(e["mood"])+";\n")
         else:
             date = datetime.strptime(e["day"], "%Y-%m-%dT")
-            if date > limit:
+            if date >= limit:
                 fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
             else:
                 print("Invalid date")
