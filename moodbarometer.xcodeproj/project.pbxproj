@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */; };
-		A6D237EE230CC5FC004DEBAE /* ApyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApyType.swift */; };
+		A6D237EE230CC5FC004DEBAE /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiType.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
 		A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */; };
 		A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFED230CA5150004AF6D /* RootViewController.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodbarometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
-		A6D237ED230CC5FC004DEBAE /* ApyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApyType.swift; sourceTree = "<group>"; };
+		A6D237ED230CC5FC004DEBAE /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		A6EFAFE8230CA5150004AF6D /* moodbarometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodbarometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				A6EFAFF6230CA5170004AF6D /* Assets.xcassets */,
 				A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */,
 				A6EFAFFB230CA5170004AF6D /* Info.plist */,
-				A6D237ED230CC5FC004DEBAE /* ApyType.swift */,
+				A6D237ED230CC5FC004DEBAE /* ApiType.swift */,
 				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
 			);
 			path = moodbarometer;
@@ -223,7 +223,7 @@
 				A6EFAFF2230CA5150004AF6D /* ModelController.swift in Sources */,
 				A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */,
 				A6EFAFF0230CA5150004AF6D /* DataViewController.swift in Sources */,
-				A6D237EE230CC5FC004DEBAE /* ApyType.swift in Sources */,
+				A6D237EE230CC5FC004DEBAE /* ApiType.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

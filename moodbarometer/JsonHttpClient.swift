@@ -66,7 +66,7 @@ class JsonHttpClient {
     }
 
     // MARK: Private Instance Methods
-    private func request<TData: Encodable, TResponse: Decodable>(
+    fileprivate func request<TData: Encodable, TResponse: Decodable>(
         using method: HTTPMethod,
         to endpoint: String,
         with body: TData?,
@@ -151,4 +151,40 @@ class JsonHttpClient {
         }
         logger.verbose(responsePrefix)
     }
+}
+
+class MoodAPIjsonHttpClient: JsonHttpClient {
+	let model: ModelController
+	
+	init(model: ModelController) {
+		self.model = model
+		super.init("https://benediktsvogler.com/moodmeter/")
+	}
+	func post<TData: Encodable, TResponse: Decodable>(
+		with data: TData,
+		whichHasType dataType: TData.Type,
+		expecting responseType: TResponse.Type,
+		done: @escaping (Result<TResponse>) -> Void
+		) {
+		if let deviceHash = model.deviceHash {
+			super.request(using: .post, to: deviceHash, with: data, done: done)
+		} else {
+			logger.error("no device Hash")
+		}
+	}
+	
+	public func postMeasurement(measurements: [Measurement]){
+		if let deviceHash = model.deviceHash {
+			var password = "todo"
+			let mrequest = MeasurementRequest(password: password, measurements: measurements)
+			super.post(to: deviceHash,
+					   with: mrequest,
+					   whichHasType: MeasurementRequest.self,
+					   expecting: MeasurementRequest.self) {_ in
+			}
+		} else {
+			logger.error("no device Hash")
+		}
+		
+	}
 }

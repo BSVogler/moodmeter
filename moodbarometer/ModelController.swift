@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -17,14 +16,15 @@ import UIKit
  There is no need to actually create view controllers for each page in advance -- indeed doing so incurs unnecessary overhead. Given the data model, these methods create, configure, and return a new view controller on demand.
  */
 
-
 class ModelController: NSObject, UIPageViewControllerDataSource {
 
-	var pageData: [String] = []
-	private var mood = 0
-	private var moodToText: [String] = [":-(", ":-/", ":-|", ":-)", ":-D"]
-	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
-	private let httpClient = JsonHttpClient("https://benediktsvogler.com/moodmeter/")
+	var pageTitle: [String] = []
+	var dataset = [Date: Mood]()
+	private var mood: Mood = 0
+	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
+	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
+	private var httpClient: JsonHttpClient?
+	public private(set) var deviceHash: String?
 
 	func getSmiley() -> String {
 		return moodToText[mood]
@@ -38,13 +38,15 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 		if mood < moodToText.count-1 {
 			mood += 1
 		}
+		dataset[Date()] = mood
 	}
 	
 	func decreaseMood(){
 		if mood > 0 {
 			mood -= 1
 		}
-		httpClient.post(
+		dataset[Date()] = mood
+		httpClient?.post(
 			to: "mood",
 			with: mood,
 			whichHasType: Int.self,
@@ -52,28 +54,42 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	}
 
 	override init() {
-	    super.init()
 		// Create the data model.
+		// todo load dataset from json save file
 		let dateFormatter = DateFormatter()
-		pageData = dateFormatter.monthSymbols
+		pageTitle = [dateFormatter.string(from: Date())] //start with a single day
+		super.init()
+		
+		generateSharingURL()
+		httpClient = MoodAPIjsonHttpClient(model: self)
+	}
+	
+	final func generateSharingURL(){
+		//the hash does not have to be secure, just the seed, so use secure seed directly
+		var bytes = [UInt8](repeating: 0, count: 10)
+		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
+		
+		if status == errSecSuccess { // Always test the status.
+			deviceHash = String(bytes: bytes, encoding: .ascii) ?? "failed"
+		}
 	}
 
 	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> DataViewController? {
 		// Return the data view controller for the given index.
-		if (self.pageData.count == 0) || (index >= self.pageData.count) {
+		if (self.pageTitle.count == 0) || (index >= self.pageTitle.count) {
 		    return nil
 		}
 
 		// Create a new view controller and pass suitable data.
 		let dataViewController = storyboard.instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
-		dataViewController.topLabel = self.pageData[index]
+		dataViewController.topLabel = self.pageTitle[index]
 		return dataViewController
 	}
 
 	func indexOfViewController(_ viewController: DataViewController) -> Int {
 		// Return the index of the given data view controller.
 		// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-		return pageData.firstIndex(of: viewController.topLabel) ?? NSNotFound
+		return pageTitle.firstIndex(of: viewController.topLabel) ?? NSNotFound
 	}
 
 	// MARK: - Page View Controller Data Source
@@ -95,7 +111,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	    }
 	    
 	    index += 1
-	    if index == self.pageData.count {
+	    if index == self.pageTitle.count {
 	        return nil
 	    }
 	    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)

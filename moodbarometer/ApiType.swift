@@ -21,3 +21,15 @@ struct ApiRequest<T: Encodable>: Encodable {
 	// MARK: Stored Instance Properties
 	let data: T
 }
+
+typealias Mood = Int
+
+struct MeasurementRequest: Codable {
+	let password: String
+	let measurements: [Measurement]
+}
+
+struct Measurement: Codable {
+	let day: String
+	let mood: Mood
+}
