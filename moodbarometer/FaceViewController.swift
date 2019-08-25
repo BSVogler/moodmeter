@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataViewController: UIViewController {
+class FaceViewController: UIViewController {
 
 	@IBOutlet weak var dataLabel: UILabel!
 	@IBOutlet weak var innerView: UIView!
@@ -41,6 +41,7 @@ class DataViewController: UIViewController {
 		super.viewWillAppear(animated)
 		self.dataLabel!.text = topLabel
 	}
+
 }
 
 @IBDesignable

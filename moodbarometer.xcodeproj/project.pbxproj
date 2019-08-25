@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */; };
+		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiType.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
 		A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */; };
 		A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFED230CA5150004AF6D /* RootViewController.swift */; };
-		A6EFAFF0230CA5150004AF6D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEF230CA5150004AF6D /* DataViewController.swift */; };
+		A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */; };
 		A6EFAFF2230CA5150004AF6D /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFF1230CA5150004AF6D /* ModelController.swift */; };
 		A6EFAFF5230CA5150004AF6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF3230CA5150004AF6D /* Main.storyboard */; };
 		A6EFAFF7230CA5170004AF6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF6230CA5170004AF6D /* Assets.xcassets */; };
@@ -23,12 +24,13 @@
 /* Begin PBXFileReference section */
 		228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodbarometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
+		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		A6EFAFE8230CA5150004AF6D /* moodbarometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodbarometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6EFAFED230CA5150004AF6D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		A6EFAFEF230CA5150004AF6D /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		A6EFAFF1230CA5150004AF6D /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		A6EFAFF4230CA5150004AF6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6EFAFF6230CA5170004AF6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 			children = (
 				A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */,
 				A6EFAFED230CA5150004AF6D /* RootViewController.swift */,
-				A6EFAFEF230CA5150004AF6D /* DataViewController.swift */,
+				A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */,
 				A6EFAFF1230CA5150004AF6D /* ModelController.swift */,
 				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
 				A6EFAFF3230CA5150004AF6D /* Main.storyboard */,
@@ -99,6 +101,7 @@
 				A6EFAFFB230CA5170004AF6D /* Info.plist */,
 				A6D237ED230CC5FC004DEBAE /* ApiType.swift */,
 				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
+				A61306DF23117E7E0010FF82 /* HistoryViewController.swift */,
 			);
 			path = moodbarometer;
 			sourceTree = "<group>";
@@ -222,9 +225,10 @@
 				A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */,
 				A6EFAFF2230CA5150004AF6D /* ModelController.swift in Sources */,
 				A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */,
-				A6EFAFF0230CA5150004AF6D /* DataViewController.swift in Sources */,
+				A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */,
 				A6D237EE230CC5FC004DEBAE /* ApiType.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
+				A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

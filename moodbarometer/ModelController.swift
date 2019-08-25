@@ -18,7 +18,7 @@ import UIKit
 
 class ModelController: NSObject, UIPageViewControllerDataSource {
 
-	var pageTitle: [String] = []
+	var pageTitles: [String] = []
 	var dataset = [Date: Mood]()
 	private var mood: Mood = 3
 	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
@@ -26,6 +26,20 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	private var httpClient: MoodAPIjsonHttpClient?
 	public private(set) var deviceHash: String?
 
+	override init() {
+		// Create the data model.
+		// todo load dataset from json save file
+		let calendar = Calendar.current
+		let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
+		pageTitles = ["Yesterday",
+					 "Today", //start with a single day
+					 "Stats"]
+		super.init()
+		
+		generateSharingURL()
+		httpClient = MoodAPIjsonHttpClient(model: self)
+	}
+	
 	func getSmiley() -> String {
 		return moodToText[mood]
 	}
@@ -49,17 +63,6 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 			httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
 	}
-
-	override init() {
-		// Create the data model.
-		// todo load dataset from json save file
-		let dateFormatter = DateFormatter()
-		pageTitle = [dateFormatter.string(from: Date())] //start with a single day
-		super.init()
-		
-		generateSharingURL()
-		httpClient = MoodAPIjsonHttpClient(model: self)
-	}
 	
 	final func generateSharingURL(){
 		//the hash does not have to be secure, just the seed, so use secure seed directly
@@ -73,28 +76,37 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 		}
 	}
 
-	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> DataViewController? {
+	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> UIViewController? {
 		// Return the data view controller for the given index.
-		if (self.pageTitle.count == 0) || (index >= self.pageTitle.count) {
+		if index >= pageTitles.count {
 		    return nil
 		}
 
 		// Create a new view controller and pass suitable data.
-		let dataViewController = storyboard.instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
-		dataViewController.topLabel = self.pageTitle[index]
+		let dataViewController: UIViewController = index==2 ?
+			storyboard.instantiateViewController(withIdentifier: "sbHistory")
+			: storyboard.instantiateViewController(withIdentifier: "sbFace")
+		
+		if let dataViewController = dataViewController as? FaceViewController {
+			dataViewController.topLabel = self.pageTitles[index]
+		}
 		return dataViewController
 	}
 
-	func indexOfViewController(_ viewController: DataViewController) -> Int {
+	func indexOfViewController(_ viewController: UIViewController) -> Int {
 		// Return the index of the given data view controller.
-		// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-		return pageTitle.firstIndex(of: viewController.topLabel) ?? NSNotFound
+		if let viewController = viewController as? FaceViewController {
+			// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
+			return pageTitles.firstIndex(of: viewController.topLabel) ?? NSNotFound
+		} else {
+			return 2
+		}
 	}
 
 	// MARK: - Page View Controller Data Source
 
 	func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-	    var index = self.indexOfViewController(viewController as! DataViewController)
+	    var index = self.indexOfViewController(viewController as! FaceViewController)
 	    if (index == 0) || (index == NSNotFound) {
 	        return nil
 	    }
@@ -104,13 +116,13 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 	}
 
 	func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-	    var index = self.indexOfViewController(viewController as! DataViewController)
+	    var index = self.indexOfViewController(viewController)
 	    if index == NSNotFound {
 	        return nil
 	    }
 	    
 	    index += 1
-	    if index == self.pageTitle.count {
+	    if index == self.pageTitles.count {
 	        return nil
 	    }
 	    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
