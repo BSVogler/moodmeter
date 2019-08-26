@@ -1,5 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import binascii
 from datetime import datetime, timedelta
 from flask import Flask, request, abort, make_response, Response
 import os
@@ -10,6 +11,10 @@ app = Flask(__name__)
 password_folder = "passwords/"
 userdata_folder = "userdata/"
 
+if not os.path.isdir(password_folder):
+    os.makedirs(password_folder)
+if not os.path.isdir(userdata_folder):
+    os.makedirs(userdata_folder)
 
 def measurements_json_to_csv(fp, measurements, limit=None):
     """
@@ -46,9 +51,10 @@ def add_data(repohash):
             # check password
             if os.access(password_folder + repohash, os.R_OK):
                 with open(password_folder + repohash, "r") as pfp:
-                    stored_hash = pfp.readline()
-                transmitted_hash = hashlib.sha224(data["password"].encode('utf-8')).hexdigest()
-                if stored_hash != transmitted_hash:
+                    stored_hash = pfp.readline()[:-1]  # ignore line break
+                    stored_salt = pfp.readline()
+                transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), binascii.unhexlify(stored_salt), 10000)
+                if binascii.unhexlify(stored_hash) != transmitted_hash:
                     return abort(Response("Invalid passwort"))
             else:
                 return abort(Response("Password not found."))
@@ -65,9 +71,12 @@ def add_data(repohash):
                 measurements_json_to_csv(fp, data["measurements"], last_entry)
         else:
             #create new entries
-            transmitted_hash = hashlib.sha224(data["password"].encode('utf-8')).hexdigest()
+            salt = os.urandom(16)
+            transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), salt, 10000)
+            # storing in a text file doubles the file size but this way we can easily use the line break to separate hash and salt when reading
             with open(password_folder + repohash, "w") as fp:
-                fp.write(transmitted_hash)
+                fp.write(bytes.hex(transmitted_hash)+"\n")
+                fp.write(bytes.hex(salt))
 
             with open(userdata_folder + repohash, "w") as fp:
                 measurements_json_to_csv(fp, data["measurements"])
@@ -88,8 +97,4 @@ def add_data(repohash):
 
 
 if __name__ == '__main__':
-    if not os.path.isdir(password_folder):
-        os.makedirs(password_folder)
-    if not os.path.isdir(userdata_folder):
-            os.makedirs(userdata_folder)
     app.run()
