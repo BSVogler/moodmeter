@@ -1,12 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 import binascii
-from datetime import datetime, timedelta
+from datetime import datetime
 from flask import Flask, request, abort, make_response, Response
 import os
 import hashlib
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 password_folder = "passwords/"
 userdata_folder = "userdata/"
@@ -35,7 +35,12 @@ def measurements_json_to_csv(fp, measurements, limit=None):
                 print("Invalid date")
 
 
-@app.route('/<string:repohash>', methods=['POST', 'GET'])
+@application.route("/")
+def root():
+    return "moodserver runs"
+
+
+@application.route('/<string:repohash>', methods=['POST', 'GET'])
 def add_data(repohash):
     """
 
@@ -72,11 +77,11 @@ def add_data(repohash):
         else:
             #create new entries
             salt = os.urandom(16)
-            transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), salt, 10000)
+            hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), salt, 10000)
             # storing in a text file doubles the file size but this way we can easily use the line break to separate hash and salt when reading
             with open(password_folder + repohash, "w") as fp:
-                fp.write(bytes.hex(transmitted_hash)+"\n")
-                fp.write(bytes.hex(salt))
+                fp.write(binascii.hexlify(hash)+"\n")
+                fp.write(binascii.hexlify(salt))
 
             with open(userdata_folder + repohash, "w") as fp:
                 measurements_json_to_csv(fp, data["measurements"])
@@ -97,4 +102,4 @@ def add_data(repohash):
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
