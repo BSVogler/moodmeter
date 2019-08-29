@@ -14,7 +14,7 @@ class FaceViewController: UIViewController {
 	@IBOutlet weak var innerView: UIView!
 	
 	var topLabel: String = ""
-	var modelController: ModelController?
+	var modelController: PageViewController?
 
 	@IBOutlet weak var moodLabel: UILabel!
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
