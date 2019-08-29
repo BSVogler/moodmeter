@@ -159,7 +159,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	init(model: ModelController) {
 		self.model = model
-		super.init("http://192.168.2.3:5000/")
+		super.init("https://mood.benediktsvogler.com/")
 	}
 	func post<TData: Encodable, TResponse: Decodable>(
 		with data: TData,
