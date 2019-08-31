@@ -5,6 +5,7 @@ from datetime import datetime
 from flask import Flask, request, abort, make_response, Response
 import os
 import hashlib
+import shutil
 
 application = Flask(__name__)
 
@@ -16,23 +17,41 @@ if not os.path.isdir(password_folder):
 if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
-def measurements_json_to_csv(fp, measurements, limit=None):
+
+def write_measurements_to_csv(repohash, measurements, limit=None):
     """
     Transform python/json to csv
     :param fp: filepointer
-    :param measurements: data
-    :param limit: filter dates
+    :param measurements: data with fields "day" and "mood"
+    :param limit: filter dates before that date
     :return:
     """
+    shutil.move(userdata_folder + repohash, userdata_folder + repohash + "~")
+
+    destination = open(userdata_folder + repohash, "w")
+    source = open(userdata_folder + repohash + "~", "r")
+    for line in source:
+        update = False
+        date_in_line = datetime.strptime(line[:line.find(";")], "%Y-%m-%dT")
+        for index, e in enumerate(measurements):
+            # update
+            date_to_write = datetime.strptime(e["day"], "%Y-%m-%dT")  # string to date
+            if date_to_write == date_in_line:
+                destination.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+                update = True
+                measurements.pop(index)
+                break
+        if not update:
+            destination.write(line)
+
+    # append the rest
     for e in measurements:
-        if limit is None:
-            fp.write(e["day"]+";"+str(e["mood"])+";\n")
-        else:
-            date = datetime.strptime(e["day"], "%Y-%m-%dT")
-            if date >= limit:
-                fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
-            else:
-                print("Invalid date")
+        destination.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+
+    source.close()
+    destination.close()
+    os.remove(userdata_folder + repohash + "~")
+
 
 
 @application.route("/")
@@ -51,53 +70,48 @@ def add_data(repohash):
         if not request.json:
             return abort(400)
         data = request.json["data"]
-        # check if exists, then add
+        # check if file exists, then add
         if os.access(userdata_folder + repohash, os.R_OK):
             # check password
             if os.access(password_folder + repohash, os.R_OK):
                 with open(password_folder + repohash, "r") as pfp:
                     stored_hash = pfp.readline()[:-1]  # ignore line break
                     stored_salt = pfp.readline()
-                transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), binascii.unhexlify(stored_salt), 10000)
+                transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')),
+                                                       binascii.unhexlify(stored_salt), 10000)
                 if binascii.unhexlify(stored_hash) != transmitted_hash:
                     return abort(Response("Invalid passwort"))
             else:
                 return abort(Response("Password not found."))
 
-            with open(userdata_folder + repohash, "a") as fp:
-                # check if date is allowed.
-                last_entry = None
-                with open(userdata_folder + repohash, 'r') as f:
-                    lines = f.read().splitlines()
-                    last_line = lines[-1]
-                datestring = last_line[:last_line.find(';')]
-                last_entry = datetime.strptime(datestring, "%Y-%m-%dT")
-
-                measurements_json_to_csv(fp, data["measurements"], last_entry)
+            write_measurements_to_csv(repohash, data["measurements"])
         else:
-            #create new entries
+            # create new entries
             salt = os.urandom(16)
             hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), salt, 10000)
-            # storing in a text file doubles the file size but this way we can easily use the line break to separate hash and salt when reading
+            # storing in a text file doubles the file size but this way we can easily use the line break to separate
+            # hash and salt when reading
             with open(password_folder + repohash, "w") as fp:
-                fp.write(binascii.hexlify(hash)+"\n")
+                fp.write(binascii.hexlify(hash) + "\n")
                 fp.write(binascii.hexlify(salt))
 
+            # initial write
             with open(userdata_folder + repohash, "w") as fp:
-                measurements_json_to_csv(fp, data["measurements"])
+                for e in data["measurements"]:
+                    fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
 
         return "ok"
     else:
         if os.access(userdata_folder + repohash, os.R_OK):
             with open(userdata_folder + repohash, "r") as fp:
                 # todo check password properly
-                #if data["password"] != "empty":
-                    csvdata = fp.read()
-                    resp = make_response(csvdata, 200)
-                    resp.headers["Content-Type"] = "text/csv"
-                    return resp
-                #else:
-                #    return "wrong password"
+                # if data["password"] != "empty":
+                csvdata = fp.read()
+                resp = make_response(csvdata, 200)
+                resp.headers["Content-Type"] = "text/csv"
+                return resp
+            # else:
+            #    return "wrong password"
         return abort(404)
 
 
