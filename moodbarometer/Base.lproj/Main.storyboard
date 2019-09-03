@@ -190,14 +190,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Share a copy of the data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-Y7-Aeu">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share a copy of the data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-Y7-Aeu">
                                             <rect key="frame" x="110" y="175" width="194" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="l5r-Nw-ZJb"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-fI-56n">
-                                            <rect key="frame" x="157" y="204" width="101" height="31"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzr-fI-56n">
+                                            <rect key="frame" x="157" y="204" width="100" height="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Export file" backgroundImage="borderbutton"/>
                                             <connections>
@@ -205,30 +208,30 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-yA-fSu">
-                                            <rect key="frame" x="144" y="509" width="127" height="30"/>
+                                            <rect key="frame" x="150" y="500" width="115" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="R8u-D2-svY"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Share live Data" backgroundImage="borderbutton"/>
                                             <connections>
                                                 <action selector="shareLifeButton:" destination="Cqk-DX-VSo" eventType="touchUpInside" id="wgg-eN-5a5"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1j-gb-1n2">
-                                            <rect key="frame" x="20" y="391" width="374" height="94"/>
-                                            <string key="text">Maintain an updated copy to make the data available on other devices
-By using the share feature you agree to the</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fru-vp-x72">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fru-vp-x72">
                                             <rect key="frame" x="20" y="375" width="374" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="374" id="qoB-Yr-okE"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvn-tm-18K">
-                                            <rect key="frame" x="20" y="471" width="374" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvn-tm-18K">
+                                            <rect key="frame" x="20" y="472" width="374" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="WYH-2X-Fvu"/>
+                                            </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="terms and conditions">
                                                     <attributes>
@@ -247,32 +250,36 @@ By using the share feature you agree to the</string>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RZd-5g-rjK">
-                                            <rect key="frame" x="313" y="8" width="414" height="808"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="tDY-SQ-M8A">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1j-gb-1n2">
+                                            <rect key="frame" x="20" y="403" width="374" height="73"/>
+                                            <string key="text">Maintain an updated copy to make the data available on other devices
+By using the share feature you agree to the</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="S1j-gb-1n2" firstAttribute="leading" secondItem="IuP-Ik-5zY" secondAttribute="leading" constant="20" id="7Zq-zM-McK"/>
+                                        <constraint firstItem="Zzr-fI-56n" firstAttribute="leading" secondItem="IuP-Ik-5zY" secondAttribute="leading" constant="157" id="CAS-d5-2CA"/>
+                                        <constraint firstItem="xvn-tm-18K" firstAttribute="leading" secondItem="S1j-gb-1n2" secondAttribute="leading" id="Cqt-bu-EsT"/>
+                                        <constraint firstItem="Zzr-fI-56n" firstAttribute="centerX" secondItem="g9g-Y7-Aeu" secondAttribute="centerX" id="G3V-Uj-6cR"/>
+                                        <constraint firstAttribute="bottom" secondItem="xvn-tm-18K" secondAttribute="bottom" constant="315" id="HBO-er-dz7"/>
+                                        <constraint firstItem="Mo3-yA-fSu" firstAttribute="top" secondItem="xvn-tm-18K" secondAttribute="bottom" constant="7" id="J1n-3n-sIY"/>
                                         <constraint firstItem="Mo3-yA-fSu" firstAttribute="centerX" secondItem="IuP-Ik-5zY" secondAttribute="centerX" id="JYg-ON-iEL"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S1j-gb-1n2" secondAttribute="trailing" constant="20" symbolic="YES" id="TYl-eo-kbK"/>
-                                        <constraint firstItem="fru-vp-x72" firstAttribute="top" secondItem="Zzr-fI-56n" secondAttribute="bottom" constant="141" id="USZ-7n-MFz"/>
+                                        <constraint firstItem="g9g-Y7-Aeu" firstAttribute="top" secondItem="IuP-Ik-5zY" secondAttribute="top" constant="175" id="YIw-vc-lrL"/>
                                         <constraint firstAttribute="trailing" secondItem="fru-vp-x72" secondAttribute="trailing" constant="20" id="Zow-da-1Gr"/>
-                                        <constraint firstItem="S1j-gb-1n2" firstAttribute="top" secondItem="Zzr-fI-56n" secondAttribute="bottom" constant="157" id="ZsG-Iv-tJa"/>
-                                        <constraint firstItem="Zzr-fI-56n" firstAttribute="top" secondItem="g9g-Y7-Aeu" secondAttribute="bottom" constant="8" symbolic="YES" id="ayg-Q7-Qcs"/>
                                         <constraint firstItem="fru-vp-x72" firstAttribute="leading" secondItem="IuP-Ik-5zY" secondAttribute="leading" constant="20" id="c63-gd-HeZ"/>
-                                        <constraint firstItem="g9g-Y7-Aeu" firstAttribute="centerX" secondItem="Zzr-fI-56n" secondAttribute="centerX" id="gO7-s8-tXJ"/>
-                                        <constraint firstItem="g9g-Y7-Aeu" firstAttribute="top" secondItem="IuP-Ik-5zY" secondAttribute="top" constant="175" id="oJg-uD-KQN"/>
+                                        <constraint firstItem="g9g-Y7-Aeu" firstAttribute="centerX" secondItem="fru-vp-x72" secondAttribute="centerX" id="f2v-g2-Nzd"/>
+                                        <constraint firstItem="xvn-tm-18K" firstAttribute="trailing" secondItem="fru-vp-x72" secondAttribute="trailing" id="h3V-e9-38q"/>
+                                        <constraint firstItem="xvn-tm-18K" firstAttribute="top" secondItem="fru-vp-x72" secondAttribute="bottom" constant="76" id="jLf-pq-fDX"/>
+                                        <constraint firstItem="Zzr-fI-56n" firstAttribute="top" secondItem="g9g-Y7-Aeu" secondAttribute="bottom" constant="8" symbolic="YES" id="mOl-Sy-q0X"/>
+                                        <constraint firstItem="xvn-tm-18K" firstAttribute="trailing" secondItem="S1j-gb-1n2" secondAttribute="trailing" id="nep-Bw-ymb"/>
+                                        <constraint firstItem="S1j-gb-1n2" firstAttribute="top" secondItem="Zzr-fI-56n" secondAttribute="bottom" constant="156" id="zUg-KF-53w"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="prominent"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
