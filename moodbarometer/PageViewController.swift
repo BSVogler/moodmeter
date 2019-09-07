@@ -19,16 +19,12 @@ import UIKit
 class PageViewController: NSObject, UIPageViewControllerDataSource {
 	
 	var pageTitles: [String] = []
-	private var mood: Mood = 3
-	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
-	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
-	private var httpClient: MoodAPIjsonHttpClient?
 
+	public var httpClient: MoodAPIjsonHttpClient?
+	
 	override init() {
 		// Create the data model.
 		// todo load dataset from json save file
-		let calendar = Calendar.current
-		let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
 		pageTitles = ["Yesterday",
 					 "Today", //start with a single day
 					 "Stats"]
@@ -37,36 +33,12 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 		httpClient = MoodAPIjsonHttpClient(model: Model.shared)
 	}
 	
-	func getSmiley() -> String {
-		return moodToText[mood]
-	}
-	
-	func getColor() -> UIColor {
-		return moodToColor[mood]
-	}
-	
-	func increaseMood(){
-		if mood < moodToText.count-1 {
-			mood += 1
-			Model.shared.dataset[Date()] = mood
-			httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
-		}
-	}
-	
-	func decreaseMood(){
-		if mood > 1 {
-			mood -= 1
-			Model.shared.dataset[Date()] = mood
-			httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
-		}
-	}
-
 	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> UIViewController? {
 		// Return the data view controller for the given index.
 		if index >= pageTitles.count {
 		    return nil
 		}
-
+		
 		// Create a new view controller and pass suitable data.
 		let dataViewController: UIViewController = index==2 ?
 			storyboard.instantiateViewController(withIdentifier: "sbHistory")
@@ -75,6 +47,12 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 		if let dataViewController = dataViewController as? FaceViewController {
 			dataViewController.topLabel = self.pageTitles[index]
 		}
+		
+		if index == 0,
+		   let dataViewController = dataViewController as? FaceViewController {
+			dataViewController.setToYesterday()
+		}
+
 		return dataViewController
 	}
 
