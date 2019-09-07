@@ -25,7 +25,7 @@ class FaceViewController: UIViewController {
 	private var date: Date {
 		set {
 			let calendar = Calendar.current
-			dateWithoutHours = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: date)!
+			dateWithoutHours = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: newValue)!
 		}
 		get {return dateWithoutHours}
 	}
@@ -33,8 +33,7 @@ class FaceViewController: UIViewController {
 	private var mood: Mood = 3
 	var yesterday: Date? {
 		let calendar = Calendar.current
-		let yesterday = calendar.date(byAdding: .day, value: -1, to: date)
-		return yesterday
+		return calendar.date(byAdding: .day, value: -1, to: date)
 	}
 
 	@IBOutlet weak var moodLabel: UILabel!
@@ -97,7 +96,7 @@ class FaceViewController: UIViewController {
 	}
 	
 	func setToYesterday(){
-		date = self.yesterday ?? date
+		date = yesterday ?? date
 	}
 
 	func refreshDisplay(){
