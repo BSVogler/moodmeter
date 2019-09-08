@@ -32,7 +32,7 @@
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
-		A6EFAFE8230CA5150004AF6D /* moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6EFAFE8230CA5150004AF6D /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6EFAFED230CA5150004AF6D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		A6EFAFE9230CA5150004AF6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6EFAFE8230CA5150004AF6D /* moodmeter.app */,
+				A6EFAFE8230CA5150004AF6D /* Moodmeter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,9 +130,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A6EFAFE7230CA5150004AF6D /* moodmeter */ = {
+		A6EFAFE7230CA5150004AF6D /* Moodmeter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodmeter" */;
+			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "Moodmeter" */;
 			buildPhases = (
 				F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */,
 				A6EFAFE4230CA5150004AF6D /* Sources */,
@@ -144,9 +144,9 @@
 			);
 			dependencies = (
 			);
-			name = moodmeter;
+			name = Moodmeter;
 			productName = moodbarometer;
-			productReference = A6EFAFE8230CA5150004AF6D /* moodmeter.app */;
+			productReference = A6EFAFE8230CA5150004AF6D /* Moodmeter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -177,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6EFAFE7230CA5150004AF6D /* moodmeter */,
+				A6EFAFE7230CA5150004AF6D /* Moodmeter */,
 			);
 		};
 /* End PBXProject section */
@@ -446,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodmeter" */ = {
+		A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "Moodmeter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6EFAFFF230CA5170004AF6D /* Debug */,

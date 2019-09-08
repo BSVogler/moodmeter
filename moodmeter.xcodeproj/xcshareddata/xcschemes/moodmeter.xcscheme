@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A6EFAFE7230CA5150004AF6D"
-               BuildableName = "moodmeter.app"
-               BlueprintName = "moodmeter"
+               BuildableName = "Moodmeter.app"
+               BlueprintName = "Moodmeter"
                ReferencedContainer = "container:moodmeter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6EFAFE7230CA5150004AF6D"
-            BuildableName = "moodmeter.app"
-            BlueprintName = "moodmeter"
+            BuildableName = "Moodmeter.app"
+            BlueprintName = "Moodmeter"
             ReferencedContainer = "container:moodmeter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6EFAFE7230CA5150004AF6D"
-            BuildableName = "moodmeter.app"
-            BlueprintName = "moodmeter"
+            BuildableName = "Moodmeter.app"
+            BlueprintName = "Moodmeter"
             ReferencedContainer = "container:moodmeter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A6EFAFE7230CA5150004AF6D"
-            BuildableName = "moodmeter.app"
-            BlueprintName = "moodmeter"
+            BuildableName = "Moodmeter.app"
+            BlueprintName = "Moodmeter"
             ReferencedContainer = "container:moodmeter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
