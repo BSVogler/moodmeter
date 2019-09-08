@@ -83,7 +83,9 @@ class FaceViewController: UIViewController {
 		if mood < moodToText.count-1 {
 			mood += 1
 			Model.shared.dataset[date] = mood
-			Model.shared.saveToJSON()
+			if !Model.shared.saveToJSON() {
+				alert(title: "Error", message: "Could not save data")
+			}
 			modelController?.httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
 		refreshDisplay()
@@ -93,7 +95,9 @@ class FaceViewController: UIViewController {
 		if mood > 1 {
 			mood -= 1
 			Model.shared.dataset[date] = mood
-			Model.shared.saveToJSON()
+			if !Model.shared.saveToJSON() {
+				alert(title: "Error", message: "Could not save data")
+			}
 			modelController?.httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
 		refreshDisplay()
@@ -114,7 +118,14 @@ class FaceViewController: UIViewController {
 		moodLabel.text = getSmiley()
 		self.view.backgroundColor = getColor()
 		innerView.backgroundColor = self.view.backgroundColor
+	}
 	
+	public func alert(title: String, message: String) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 }
 

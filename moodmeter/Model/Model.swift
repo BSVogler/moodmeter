@@ -54,25 +54,29 @@ class Model {
 	}
 	
 	// MARK: Type Methods
-	func loadFromJSON() {
+	func loadFromJSON() -> Bool {
 		do {
 			let jsonData = try Data(contentsOf: Constants.localStorageURL)
 			dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
 			
 			print("Decoded \(dataset.count) entries.")
+			return true
 		} catch _ {
 			print("Could not load data")
+			return false
 		}
 	}
 	
-	func saveToJSON() {
+	func saveToJSON() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(dataset)
 			let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
 			try jsonFileWrapper.write(to: Constants.localStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
 			print("Saved account.")
+			return true
 		} catch _ {
 			print("Could not save Account")
+			return false
 		}
 	}
 	
