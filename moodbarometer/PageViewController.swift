@@ -22,9 +22,8 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 
 	public var httpClient: MoodAPIjsonHttpClient?
 	
+	/// Create the data model.
 	override init() {
-		// Create the data model.
-		// todo load dataset from json save file
 		pageTitles = ["Yesterday",
 					 "Today", //start with a single day
 					 "Stats"]
@@ -33,8 +32,10 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 		httpClient = MoodAPIjsonHttpClient(model: Model.shared)
 	}
 	
+	/// Return the data view controller for the given index.
+	/// - Parameter index: <#index description#>
+	/// - Parameter storyboard: <#storyboard description#>
 	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> UIViewController? {
-		// Return the data view controller for the given index.
 		if index >= pageTitles.count {
 		    return nil
 		}
