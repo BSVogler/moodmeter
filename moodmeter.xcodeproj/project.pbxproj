@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */; };
+		941AF088DA583114231EA490 /* Pods_moodmeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */; };
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
@@ -25,14 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodbarometer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
+		2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.debug.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.debug.xcconfig"; sourceTree = "<group>"; };
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A632BBA32322EAA7003FA040 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
-		A6EFAFE8230CA5150004AF6D /* moodbarometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodbarometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6EFAFE8230CA5150004AF6D /* moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6EFAFED230CA5150004AF6D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpClient.swift; sourceTree = "<group>"; };
 		A6F2A4542318835300EFF474 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.debug.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.debug.xcconfig"; sourceTree = "<group>"; };
+		D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.release.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.release.xcconfig"; sourceTree = "<group>"; };
+		D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodmeter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A6811DCCD7AF75A224C7D2D /* Pods_moodbarometer.framework in Frameworks */,
+				941AF088DA583114231EA490 /* Pods_moodmeter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +65,8 @@
 			children = (
 				CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */,
 				22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */,
+				2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */,
+				D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -70,7 +74,7 @@
 		9EA8F0D12C9737AE34B7F8B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				228C9A360D1DABCE9D414CA3 /* Pods_moodbarometer.framework */,
+				D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,7 +93,7 @@
 		A6EFAFDF230CA5150004AF6D = {
 			isa = PBXGroup;
 			children = (
-				A6EFAFEA230CA5150004AF6D /* moodbarometer */,
+				A6EFAFEA230CA5150004AF6D /* moodmeter */,
 				A6EFAFE9230CA5150004AF6D /* Products */,
 				03ED5BE10CA47873FF5699CE /* Pods */,
 				9EA8F0D12C9737AE34B7F8B1 /* Frameworks */,
@@ -99,12 +103,12 @@
 		A6EFAFE9230CA5150004AF6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6EFAFE8230CA5150004AF6D /* moodbarometer.app */,
+				A6EFAFE8230CA5150004AF6D /* moodmeter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A6EFAFEA230CA5150004AF6D /* moodbarometer */ = {
+		A6EFAFEA230CA5150004AF6D /* moodmeter */ = {
 			isa = PBXGroup;
 			children = (
 				A632BBA22322EA95003FA040 /* Model */,
@@ -120,15 +124,15 @@
 				A61306DF23117E7E0010FF82 /* HistoryViewController.swift */,
 				A6C4DB612318274A00016297 /* ShareViewController.swift */,
 			);
-			path = moodbarometer;
+			path = moodmeter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A6EFAFE7230CA5150004AF6D /* moodbarometer */ = {
+		A6EFAFE7230CA5150004AF6D /* moodmeter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodbarometer" */;
+			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodmeter" */;
 			buildPhases = (
 				F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */,
 				A6EFAFE4230CA5150004AF6D /* Sources */,
@@ -140,9 +144,9 @@
 			);
 			dependencies = (
 			);
-			name = moodbarometer;
+			name = moodmeter;
 			productName = moodbarometer;
-			productReference = A6EFAFE8230CA5150004AF6D /* moodbarometer.app */;
+			productReference = A6EFAFE8230CA5150004AF6D /* moodmeter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A6EFAFE3230CA5150004AF6D /* Build configuration list for PBXProject "moodbarometer" */;
+			buildConfigurationList = A6EFAFE3230CA5150004AF6D /* Build configuration list for PBXProject "moodmeter" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -173,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6EFAFE7230CA5150004AF6D /* moodbarometer */,
+				A6EFAFE7230CA5150004AF6D /* moodmeter */,
 			);
 		};
 /* End PBXProject section */
@@ -198,15 +202,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moodbarometer/Pods-moodbarometer-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */ = {
@@ -224,7 +228,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-moodbarometer-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-moodmeter-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -392,17 +396,18 @@
 		};
 		A6EFAFFF230CA5170004AF6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */;
+			baseConfigurationReference = 2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
-				INFOPLIST_FILE = moodbarometer/Info.plist;
+				INFOPLIST_FILE = moodmeter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodbarometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,17 +416,18 @@
 		};
 		A6EFB000230CA5170004AF6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */;
+			baseConfigurationReference = D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
-				INFOPLIST_FILE = moodbarometer/Info.plist;
+				INFOPLIST_FILE = moodmeter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodbarometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -431,7 +437,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A6EFAFE3230CA5150004AF6D /* Build configuration list for PBXProject "moodbarometer" */ = {
+		A6EFAFE3230CA5150004AF6D /* Build configuration list for PBXProject "moodmeter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6EFAFFC230CA5170004AF6D /* Debug */,
@@ -440,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodbarometer" */ = {
+		A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "moodmeter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A6EFAFFF230CA5170004AF6D /* Debug */,
