@@ -10,6 +10,7 @@
 		941AF088DA583114231EA490 /* Pods_moodmeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */; };
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
+		A695314623254A4100CA08CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695314523254A4100CA08CA /* SettingViewController.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* Api.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
@@ -29,6 +30,7 @@
 		2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.debug.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.debug.xcconfig"; sourceTree = "<group>"; };
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A632BBA32322EAA7003FA040 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
+		A695314523254A4100CA08CA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -90,6 +92,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A695314723254A5100CA08CA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6EFAFED230CA5150004AF6D /* RootViewController.swift */,
+				A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */,
+				A6EFAFF1230CA5150004AF6D /* PageViewController.swift */,
+				A61306DF23117E7E0010FF82 /* HistoryViewController.swift */,
+				A6C4DB612318274A00016297 /* ShareViewController.swift */,
+				A695314523254A4100CA08CA /* SettingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		A6EFAFDF230CA5150004AF6D = {
 			isa = PBXGroup;
 			children = (
@@ -113,16 +128,12 @@
 			children = (
 				A632BBA22322EA95003FA040 /* Model */,
 				A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */,
-				A6EFAFED230CA5150004AF6D /* RootViewController.swift */,
-				A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */,
-				A6EFAFF1230CA5150004AF6D /* PageViewController.swift */,
+				A695314723254A5100CA08CA /* ViewController */,
 				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
 				A6EFAFF3230CA5150004AF6D /* Main.storyboard */,
 				A6EFAFF6230CA5170004AF6D /* Assets.xcassets */,
 				A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */,
 				A6EFAFFB230CA5170004AF6D /* Info.plist */,
-				A61306DF23117E7E0010FF82 /* HistoryViewController.swift */,
-				A6C4DB612318274A00016297 /* ShareViewController.swift */,
 			);
 			path = moodmeter;
 			sourceTree = "<group>";
@@ -253,6 +264,7 @@
 				A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
 				A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */,
+				A695314623254A4100CA08CA /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

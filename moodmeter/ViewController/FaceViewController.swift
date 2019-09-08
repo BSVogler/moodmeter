@@ -10,8 +10,7 @@ import UIKit
 
 class FaceViewController: UIViewController {
 
-	@IBOutlet weak var dataLabel: UILabel!
-	@IBOutlet weak var innerView: UIView!
+
 	
 	var topLabel: String = ""
 	var modelController: PageViewController?
@@ -37,6 +36,9 @@ class FaceViewController: UIViewController {
 		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 
+	// MARK: - Outlets
+	@IBOutlet weak var dataLabel: UILabel!
+	@IBOutlet weak var innerView: UIView!
 	@IBOutlet weak var moodLabel: UILabel!
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
 		increaseMood()
@@ -46,6 +48,7 @@ class FaceViewController: UIViewController {
 		decreaseMood()
 	}
 	
+	// MARK: - Initializers
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 		date = Date()
@@ -56,7 +59,7 @@ class FaceViewController: UIViewController {
 		date = Date()
 	}
 	
-	
+	// MARK: - Overrides
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
