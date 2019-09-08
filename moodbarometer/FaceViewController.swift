@@ -18,6 +18,7 @@ class FaceViewController: UIViewController {
 	
 	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
 	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.6324028457, green: 0.5172401532, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.5333333333, green: 1, blue: 0.2784313725, alpha: 1), #colorLiteral(red: 1, green: 0.8941176471, blue: 0.1490196078, alpha: 1)]
+	private var isYesterday: Bool = false
 	
 	//do not like this construct, but computed properties are only working this way
 	private var dateWithoutHours: Date = Date()
@@ -33,7 +34,7 @@ class FaceViewController: UIViewController {
 	private var mood: Mood = 3
 	var yesterday: Date? {
 		let calendar = Calendar.current
-		return calendar.date(byAdding: .day, value: -1, to: date)
+		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 
 	@IBOutlet weak var moodLabel: UILabel!
@@ -96,10 +97,16 @@ class FaceViewController: UIViewController {
 	}
 	
 	func setToYesterday(){
+		isYesterday = true
 		date = yesterday ?? date
 	}
 
 	func refreshDisplay(){
+		if isYesterday {
+			date = yesterday ?? date
+		} else {
+			date = Date()
+		}
 		mood = Model.shared.dataset[date] ?? 3
 		moodLabel.text = getSmiley()
 		self.view.backgroundColor = getColor()
