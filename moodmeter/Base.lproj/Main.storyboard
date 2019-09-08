@@ -140,6 +140,9 @@
                                 <state key="normal" title="Erase all data" backgroundImage="borderbutton">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="eraseButton:" destination="Slk-0i-r66" eventType="touchUpInside" id="px0-Gt-KkA"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNJ-OY-k8N">
                                 <rect key="frame" x="20" y="286" width="38" height="21"/>

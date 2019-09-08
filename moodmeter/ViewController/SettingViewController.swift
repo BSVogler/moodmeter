@@ -15,6 +15,10 @@ class SettingViewController: UIViewController {
 	@IBOutlet weak var notification: UISwitch!
 	@IBOutlet weak var timeLabel: UILabel!
 	
+	@IBAction func eraseButton(_ sender: Any) {
+		Model.shared.eraseData()
+	}
+	
 	@IBAction func pushSwitch(_ sender: Any) {
 		if notification.isOn {
 			registerForPushNotifications()

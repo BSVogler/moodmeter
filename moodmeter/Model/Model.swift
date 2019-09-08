@@ -75,5 +75,16 @@ class Model {
 			print("Could not save Account")
 		}
 	}
+	
+	func eraseData() -> Bool {
+		do {
+			try FileManager().removeItem(at: Constants.localStorageURL)
+		} catch _ {
+			print("Could not delete data.")
+			return false
+		}
+		return true
+	}
+	
 }
 
