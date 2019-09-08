@@ -19,6 +19,8 @@ class SettingViewController: UIViewController {
 		if notification.isOn {
 			registerForPushNotifications()
 		}
+		reminderTimePicker.isHidden = !notification.isOn
+		timeLabel.isHidden = !notification.isOn
 	}
 	
 	// Mark: - Initializer
