@@ -30,7 +30,7 @@ class FaceViewController: UIViewController {
 		get {return dateWithoutHours}
 	}
 	
-	private var mood: Mood = 3
+	private var mood: Mood = 0
 	var yesterday: Date? {
 		let calendar = Calendar.current
 		return calendar.date(byAdding: .day, value: -1, to: Date())
