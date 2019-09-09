@@ -1,6 +1,5 @@
 Pods
 Podfile.lock
-moodbarometer.xcworkspace/xcuserdata/
-moodbarometer.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
 *.pyc
-*/xcuserdata/xcdebugger/*
