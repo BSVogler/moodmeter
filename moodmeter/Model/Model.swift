@@ -66,10 +66,11 @@ class Model {
 		do {
 			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
 			dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
-			
-			let jsonDataHash = try Data(contentsOf: Constants.localHashStorageURL)
-			deviceHash = try JSONDecoder().decode(String.self, from: jsonDataHash)
 			print("Decoded \(dataset.count) entries.")
+			
+			if FileManager().fileExists(atPath: Constants.localHashStorageURL.absoluteString){
+				deviceHash = try String(contentsOf: Constants.localHashStorageURL, encoding: .utf8)
+			}
 			return true
 		} catch _ {
 			print("Could not load all data")
@@ -84,10 +85,10 @@ class Model {
 			try jsonFileWrapper.write(to: Constants.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
 			print("Saved database.")
 			
-			let dataHash = try JSONEncoder().encode(deviceHash)
-			let jsonFileWrapperHash = FileWrapper(regularFileWithContents: dataHash)
-			try jsonFileWrapperHash.write(to: Constants.localHashStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
-			print("Saved hash")
+			if let deviceHash = deviceHash {
+				try deviceHash.write(to: Constants.localHashStorageURL, atomically: true, encoding: .utf8)
+				print("Saved hash")
+			}
 			return true
 		} catch _ {
 			print("Could not save all data.")
@@ -97,8 +98,11 @@ class Model {
 	
 	func eraseData() -> Bool {
 		do {
-			try FileManager().removeItem(at: Constants.localDBStorageURL)
-			try FileManager().removeItem(at: Constants.localHashStorageURL)
+			let fm = FileManager()
+			try fm.removeItem(at: Constants.localDBStorageURL)
+			if fm.fileExists(atPath: Constants.localHashStorageURL.absoluteString){
+				try fm.removeItem(at: Constants.localHashStorageURL)
+			}
 		} catch _ {
 			print("Could not delete all data.")
 			return false
