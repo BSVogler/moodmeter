@@ -3,3 +3,4 @@ Podfile.lock
 moodbarometer.xcworkspace/xcuserdata/
 moodbarometer.xcodeproj/xcuserdata/
 *.pyc
+*/xcuserdata/xcdebugger/*
