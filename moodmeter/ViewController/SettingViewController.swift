@@ -19,9 +19,44 @@ class SettingViewController: UIViewController {
 		Model.shared.eraseData()
 	}
 	
+	@IBAction func timeChanced(_ sender: Any) {
+		let content = UNMutableNotificationContent()
+		content.title = "Mood Time"
+		content.body = "It is time to give me your mood."
+		
+		// Configure the recurring date.
+		var dateComponents = DateComponents()
+		dateComponents.calendar = Calendar.current
+
+		let hourOfTheDay = dateComponents.calendar?.component(Calendar.Component.hour, from: reminderTimePicker.date)
+		dateComponents.hour = hourOfTheDay
+		
+		let minuteOfTheDay = dateComponents.calendar?.component(Calendar.Component.minute, from: reminderTimePicker.date)
+		dateComponents.minute = minuteOfTheDay
+		
+		// Create the trigger as a repeating event.
+		let trigger = UNCalendarNotificationTrigger(
+			dateMatching: dateComponents, repeats: true)
+		
+		// Create the request
+		let uuidString = UUID().uuidString
+		let request = UNNotificationRequest(identifier: uuidString,
+					content: content, trigger: trigger)
+
+		// Schedule the request with the system.
+		let notificationCenter = UNUserNotificationCenter.current()
+		notificationCenter.removeAllPendingNotificationRequests()
+		notificationCenter.add(request) { (error) in
+		   if error != nil {
+			print(error ?? "could not register notification")
+		   }
+		}
+	}
+	
 	@IBAction func pushSwitch(_ sender: Any) {
 		if notification.isOn {
 			registerForPushNotifications()
+			timeChanced(sender)
 		}
 		reminderTimePicker.isHidden = !notification.isOn
 		timeLabel.isHidden = !notification.isOn
@@ -45,5 +80,4 @@ class SettingViewController: UIViewController {
 	  }
 	}
 	
-
 }

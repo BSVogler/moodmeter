@@ -134,6 +134,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="yUR-Ys-zUc"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="timeChanced:" destination="Slk-0i-r66" eventType="valueChanged" id="IPZ-pk-7n7"/>
+                                </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0W4-Yu-5H1">
                                 <rect key="frame" x="157" y="795" width="101" height="31"/>
