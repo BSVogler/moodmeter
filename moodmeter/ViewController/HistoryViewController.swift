@@ -24,10 +24,7 @@ class HistoryViewController: UIViewController {
 		historyLabel.text = lines.joined(separator: "\n")
 	}
 	
-	override func viewDidLoad() {
+	override func viewWillAppear(_ animated: Bool) {
 		refreshRendering()
-	}
-	override func viewDidAppear(_ animated: Bool) {
-		refreshRendering()//sometimes triggered to late
 	}
 }
