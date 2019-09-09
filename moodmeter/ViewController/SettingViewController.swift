@@ -16,7 +16,11 @@ class SettingViewController: UIViewController {
 	@IBOutlet weak var timeLabel: UILabel!
 	
 	@IBAction func eraseButton(_ sender: Any) {
-		Model.shared.eraseData()
+		if Model.shared.eraseData() {
+			alert(title:"Deleting", message: "Deleted all data")
+		} else {
+			alert(title:"Deleting", message: "Deleting of all data not possible")
+		}
 	}
 	
 	@IBAction func timeChanced(_ sender: Any) {

@@ -97,6 +97,16 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 		//self.pageControl.currentPage = modelController.indexOfViewController(self) ?? 0
 	}
+}
 
+// MARK: - Extensions
+extension UIViewController {
+	public func alert(title: String, message: String) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
 }
 

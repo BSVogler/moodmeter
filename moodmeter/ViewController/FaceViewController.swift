@@ -119,14 +119,6 @@ class FaceViewController: UIViewController {
 		self.view.backgroundColor = FaceViewController.getColor(mood: mood)
 		innerView.backgroundColor = self.view.backgroundColor
 	}
-	
-	public func alert(title: String, message: String) {
-		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-			alert.dismiss(animated: true, completion: nil)
-		}))
-		self.present(alert, animated: true, completion: nil)
-	}
 }
 
 @IBDesignable
@@ -143,5 +135,6 @@ extension UIView {
 			self.transform = CGAffineTransform(rotationAngle: radians)
 		}
 	}
+	
 }
 
