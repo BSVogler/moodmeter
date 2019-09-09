@@ -11,16 +11,25 @@ import Foundation
 class Model {
 	// MARK: Constants
 	private enum Constants {
-		static let fileName = "mooddb.json"
-		static var localStorageURL: URL {
+		static let fileNameDB = "mooddb.json"
+		static let fileNameHash = "hash.json"
+		static var localDBStorageURL: URL {
 			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
 				fatalError("Can't access the document directory in the user's home directory.")
 			}
-			return documentsDirectory.appendingPathComponent(Constants.fileName)
+			return documentsDirectory.appendingPathComponent(Constants.fileNameDB)
+		}
+		static var localHashStorageURL: URL {
+			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
+				fatalError("Can't access the document directory in the user's home directory.")
+			}
+			return documentsDirectory.appendingPathComponent(Constants.fileNameHash)
 		}
 	}
 	
 	public static let shared = Model()
+	
+	// MARK: stored properties
 	public private(set) var deviceHash: String?
 	var dataset = [Date: Mood]()
 
@@ -37,8 +46,7 @@ class Model {
 	}
 	
 	init() {
-		//load from file
-		loadFromJSON()
+		_ = loadFromJSON()
 	}
 	
 	final func generateSharingURL(){
@@ -56,13 +64,15 @@ class Model {
 	// MARK: Type Methods
 	func loadFromJSON() -> Bool {
 		do {
-			let jsonData = try Data(contentsOf: Constants.localStorageURL)
+			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
 			dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
 			
+			let jsonDataHash = try Data(contentsOf: Constants.localHashStorageURL)
+			deviceHash = try JSONDecoder().decode(String.self, from: jsonDataHash)
 			print("Decoded \(dataset.count) entries.")
 			return true
 		} catch _ {
-			print("Could not load data")
+			print("Could not load all data")
 			return false
 		}
 	}
@@ -71,20 +81,26 @@ class Model {
 		do {
 			let data = try JSONEncoder().encode(dataset)
 			let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
-			try jsonFileWrapper.write(to: Constants.localStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
-			print("Saved account.")
+			try jsonFileWrapper.write(to: Constants.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
+			print("Saved database.")
+			
+			let dataHash = try JSONEncoder().encode(deviceHash)
+			let jsonFileWrapperHash = FileWrapper(regularFileWithContents: dataHash)
+			try jsonFileWrapperHash.write(to: Constants.localHashStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
+			print("Saved hash")
 			return true
 		} catch _ {
-			print("Could not save Account")
+			print("Could not save all data.")
 			return false
 		}
 	}
 	
 	func eraseData() -> Bool {
 		do {
-			try FileManager().removeItem(at: Constants.localStorageURL)
+			try FileManager().removeItem(at: Constants.localDBStorageURL)
+			try FileManager().removeItem(at: Constants.localHashStorageURL)
 		} catch _ {
-			print("Could not delete data.")
+			print("Could not delete all data.")
 			return false
 		}
 		return true
