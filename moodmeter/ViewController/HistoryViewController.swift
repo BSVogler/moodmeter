@@ -10,4 +10,24 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+	@IBOutlet weak var historyLabel: UILabel!
+	
+	func refreshRendering(){
+		let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		formatter.timeStyle = .none
+		
+		let lines = sortedDates.map {
+			return formatter.string(from:$0)+" "+String(FaceViewController.getSmiley(mood: Model.shared.dataset[$0]!))
+		}
+		historyLabel.text = lines.joined(separator: "\n")
+	}
+	
+	override func viewDidLoad() {
+		refreshRendering()
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		refreshRendering()//sometimes triggered to late
+	}
 }
