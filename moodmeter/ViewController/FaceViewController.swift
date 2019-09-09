@@ -10,18 +10,26 @@ import UIKit
 
 class FaceViewController: UIViewController {
 
-
+	// MARK: Class
+	static func getSmiley(mood: Mood) -> String {
+		return moodToText[mood]
+	}
 	
+	static func getColor(mood: Mood) -> UIColor {
+		return moodToColor[mood]
+	}
+	
+	static var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
+	static var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.6324028457, green: 0.5172401532, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.5333333333, green: 1, blue: 0.2784313725, alpha: 1), #colorLiteral(red: 1, green: 0.8941176471, blue: 0.1490196078, alpha: 1)]
+	
+	// MARK: - Stored properties
 	var topLabel: String = ""
 	var modelController: PageViewController?
-	
-	private var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
-	private var moodToColor: [UIColor] = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.6324028457, green: 0.5172401532, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.5333333333, green: 1, blue: 0.2784313725, alpha: 1), #colorLiteral(red: 1, green: 0.8941176471, blue: 0.1490196078, alpha: 1)]
 	private var isYesterday: Bool = false
 	
-	//do not like this construct, but computed properties are only working this way
 	private var dateWithoutHours: Date = Date()
 	
+	// MARK: - Computed properties
 	private var date: Date {
 		set {
 			let calendar = Calendar.current
@@ -71,16 +79,8 @@ class FaceViewController: UIViewController {
 		self.dataLabel!.text = topLabel
 	}
 	
-	func getSmiley() -> String {
-		return moodToText[mood]
-	}
-	
-	func getColor() -> UIColor {
-		return moodToColor[mood]
-	}
-	
 	func increaseMood(){
-		if mood < moodToText.count-1 {
+		if mood < FaceViewController.moodToText.count-1 {
 			mood += 1
 			Model.shared.dataset[date] = mood
 			if !Model.shared.saveToJSON() {
@@ -114,9 +114,9 @@ class FaceViewController: UIViewController {
 		} else {
 			date = Date()
 		}
-		mood = Model.shared.dataset[date] ?? 3
-		moodLabel.text = getSmiley()
-		self.view.backgroundColor = getColor()
+		mood = Model.shared.dataset[date] ?? 0
+		moodLabel.text = FaceViewController.getSmiley(mood: mood)
+		self.view.backgroundColor = FaceViewController.getColor(mood: mood)
 		innerView.backgroundColor = self.view.backgroundColor
 	}
 	
