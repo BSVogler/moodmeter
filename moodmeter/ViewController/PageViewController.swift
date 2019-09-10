@@ -67,7 +67,7 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 			// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
 			return pageTitles.firstIndex(of: viewController.topLabel) ?? NSNotFound
 		} else {
-			if let viewController = viewController as? ShareViewController {
+			if viewController is ShareViewController {
 				return 3
 			} else {
 				return 2
