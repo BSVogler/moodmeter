@@ -86,7 +86,7 @@ class FaceViewController: UIViewController {
 			if !Model.shared.saveToJSON() {
 				alert(title: "Error", message: "Could not save data")
 			}
-			modelController?.httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
+			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
 		refreshDisplay()
 	}
@@ -98,7 +98,7 @@ class FaceViewController: UIViewController {
 			if !Model.shared.saveToJSON() {
 				alert(title: "Error", message: "Could not save data")
 			}
-			modelController?.httpClient?.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
+			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		}
 		refreshDisplay()
 	}

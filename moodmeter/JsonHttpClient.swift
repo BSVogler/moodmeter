@@ -154,38 +154,3 @@ class JsonHttpClient {
     }
 }
 
-class MoodAPIjsonHttpClient: JsonHttpClient {
-	let model: Model
-	
-	init(model: Model) {
-		self.model = model
-		super.init(model.sharingURL)
-	}
-	func post<TData: Encodable, TResponse: Decodable>(
-		with data: TData,
-		whichHasType dataType: TData.Type,
-		expecting responseType: TResponse.Type,
-		done: @escaping (Result<TResponse>) -> Void
-		) {
-		if let deviceHash = model.deviceHash {
-			super.request(using: .post, to: deviceHash, with: data, done: done)
-		} else {
-			logger.error("no device Hash")
-		}
-	}
-	
-	public func postMeasurement(measurements: [Measurement]){
-		if let deviceHash = model.deviceHash {
-			var password = "todo"
-			let mrequest = MeasurementRequest(password: password, measurements: measurements)
-			post(to: deviceHash,
-					   with: mrequest,
-					   whichHasType: MeasurementRequest.self,
-					   expecting: MeasurementRequest.self) {res in
-			}
-		} else {
-			logger.error("no device Hash")
-		}
-		
-	}
-}

@@ -11,6 +11,7 @@
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A695314623254A4100CA08CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695314523254A4100CA08CA /* SettingViewController.swift */; };
+		A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* Api.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
@@ -31,6 +32,7 @@
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A632BBA32322EAA7003FA040 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		A695314523254A4100CA08CA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */,
 				A695314723254A5100CA08CA /* ViewController */,
 				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
+				A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */,
 				A6EFAFF3230CA5150004AF6D /* Main.storyboard */,
 				A6EFAFF6230CA5170004AF6D /* Assets.xcassets */,
 				A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */,
@@ -257,6 +260,7 @@
 				A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */,
 				A6EFAFF2230CA5150004AF6D /* PageViewController.swift in Sources */,
 				A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */,
+				A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */,
 				A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */,
 				A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */,
 				A6F2A4552318835300EFF474 /* Model.swift in Sources */,

@@ -24,10 +24,20 @@ struct ApiRequest<T: Encodable>: Encodable {
 
 typealias Mood = Int
 
-struct MeasurementRequest: Codable {
+protocol AuthorizedRequest: Codable {
+	var password: String { get }
+}
+
+struct MeasurementRequest: AuthorizedRequest  {
 	let password: String
 	let measurements: [Measurement]
 }
+
+struct DeleteRequest: AuthorizedRequest  {
+	var password: String
+}
+
+
 
 func dateToJSTime(date: Date) -> String {
 	let dateFormatter = DateFormatter()

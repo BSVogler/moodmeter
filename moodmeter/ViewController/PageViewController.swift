@@ -20,16 +20,13 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 	
 	var pageTitles: [String] = []
 
-	public var httpClient: MoodAPIjsonHttpClient?
-	
 	/// Create the data model.
 	override init() {
 		pageTitles = ["Yesterday",
 					 "Today", //start with a single day
-					 "Stats"]
+					 "Stats",
+					 "Share"]
 		super.init()
-		
-		httpClient = MoodAPIjsonHttpClient(model: Model.shared)
 	}
 	
 	/// Return the data view controller for the given index.
