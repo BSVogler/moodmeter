@@ -38,9 +38,16 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 		}
 		
 		// Create a new view controller and pass suitable data.
-		let dataViewController: UIViewController = index==2 ?
-			storyboard.instantiateViewController(withIdentifier: "sbHistory")
-			: storyboard.instantiateViewController(withIdentifier: "sbFace")
+		var identifier = "sbShare"
+		switch index {
+			case 0...1:
+					identifier = "sbFace"
+			case 2:
+					identifier = "sbHistory"
+			default:
+				identifier = "sbShare"
+		}
+		let dataViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: identifier)
 		
 		if let dataViewController = dataViewController as? FaceViewController {
 			dataViewController.topLabel = self.pageTitles[index]
@@ -60,14 +67,18 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 			// For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
 			return pageTitles.firstIndex(of: viewController.topLabel) ?? NSNotFound
 		} else {
-			return 2
+			if let viewController = viewController as? ShareViewController {
+				return 3
+			} else {
+				return 2
+			}
 		}
 	}
 
 	// MARK: - Page View Controller Data Source
 
 	func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-	    var index = self.indexOfViewController(viewController as! FaceViewController)
+	    var index = self.indexOfViewController(viewController)
 	    if (index == 0) || (index == NSNotFound) {
 	        return nil
 	    }

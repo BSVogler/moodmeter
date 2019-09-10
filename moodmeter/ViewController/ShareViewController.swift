@@ -60,7 +60,11 @@ class ShareViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		openModalView()
+		if Model.shared.deviceHash == nil {
+			openModalView()
+		} else {
+			removeBlurredBackgroundView()
+		}
 	}
 	
 	func openModalView() {
