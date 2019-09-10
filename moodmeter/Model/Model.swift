@@ -110,5 +110,9 @@ class Model {
 		return true
 	}
 	
+	func disableSharing(){
+		deviceHash = nil
+	}
+	
 }
 

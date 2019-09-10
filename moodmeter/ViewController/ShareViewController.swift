@@ -35,10 +35,16 @@ class ShareViewController: UIViewController {
 		removeBlurredBackgroundView()
 	}
 	
+	@IBAction func deleteShared(_ sender: Any) {
+		Model.shared.disableSharing()
+		MoodAPIjsonHttpClient.shared.delete()
+		self.navigationController?.popViewController(animated: true)
+	}
+	
 	@IBAction func exportButton(_ sender: UIView) {
 		let textToShare = "Swift is awesome!  Check out this website about it!"
 		
-		if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+		if let myWebsite = URL(string: "http://www.codingexplorer.com/") {
 			let objectsToShare: [Any] = [textToShare, myWebsite]
 			let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 			
