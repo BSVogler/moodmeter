@@ -51,7 +51,7 @@ class Model {
 	
 	final func generateSharingURL(){
 		//the hash does not have to be secure, just the seed, so use secure seed directly
-		var bytes = [UInt8](repeating: 0, count: 40)
+		var bytes = [UInt8](repeating: 0, count: 10)
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
