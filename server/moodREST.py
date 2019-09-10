@@ -58,8 +58,22 @@ def write_measurements_to_csv(repohash, measurements, limit=None):
 def root():
     return "moodserver runs"
 
+def hasAccess(repohash, password):
+    if os.access(password_folder + repohash, os.R_OK):
+        with open(password_folder + repohash, "r") as pfp:
+            stored_hash = pfp.readline()[:-1]  # ignore line break
+            stored_salt = pfp.readline()
+        transmitted_hash = hashlib.pbkdf2_hmac('sha256',
+                                               password,
+                                               binascii.unhexlify(stored_salt),
+                                               10000)
+        if binascii.unhexlify(stored_hash) != transmitted_hash:
+            return abort(Response("Invalid passwort"))
+    else:
+        return abort(Response("Password not found."))
+    return True
 
-@application.route('/<string:repohash>', methods=['POST', 'GET'])
+@application.route('/<string:repohash>', methods=['POST', 'GET', 'DELETE'])
 def add_data(repohash):
     """
 
@@ -69,26 +83,19 @@ def add_data(repohash):
     if request.method == 'POST':
         if not request.json:
             return abort(400)
-        data = request.json["data"]
+        request_data = request.json["data"]
         # check if file exists, then add
         if os.access(userdata_folder + repohash, os.R_OK):
             # check password
-            if os.access(password_folder + repohash, os.R_OK):
-                with open(password_folder + repohash, "r") as pfp:
-                    stored_hash = pfp.readline()[:-1]  # ignore line break
-                    stored_salt = pfp.readline()
-                transmitted_hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')),
-                                                       binascii.unhexlify(stored_salt), 10000)
-                if binascii.unhexlify(stored_hash) != transmitted_hash:
-                    return abort(Response("Invalid passwort"))
+            access = hasAccess(repohash, request_data["password"].encode('utf-8'))
+            if access:
+                write_measurements_to_csv(repohash, request_data["measurements"])
             else:
-                return abort(Response("Password not found."))
-
-            write_measurements_to_csv(repohash, data["measurements"])
+                return access
         else:
             # create new entries
             salt = os.urandom(16)
-            hash = hashlib.pbkdf2_hmac('sha256', (data["password"].encode('utf-8')), salt, 10000)
+            hash = hashlib.pbkdf2_hmac('sha256', (request_data["password"].encode('utf-8')), salt, 10000)
             # storing in a text file doubles the file size but this way we can easily use the line break to separate
             # hash and salt when reading
             with open(password_folder + repohash, "w") as fp:
@@ -97,15 +104,15 @@ def add_data(repohash):
 
             # initial write
             with open(userdata_folder + repohash, "w") as fp:
-                for e in data["measurements"]:
+                for e in request_data["measurements"]:
                     fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
 
         return "ok"
-    else:
+    elif request.method == 'GET':
         if os.access(userdata_folder + repohash, os.R_OK):
             with open(userdata_folder + repohash, "r") as fp:
                 # todo check password properly
-                # if data["password"] != "empty":
+                # if request_data["password"] != "empty":
                 csvdata = fp.read()
                 resp = make_response(csvdata, 200)
                 resp.headers["Content-Type"] = "text/csv"
@@ -113,6 +120,19 @@ def add_data(repohash):
             # else:
             #    return "wrong password"
         return abort(404)
+    elif request.method == 'DELETE':
+        if not request.json:
+            return abort(400)
+        request_data = request.json["data"]
+        access = hasAccess(repohash, request_data["password"].encode('utf-8'))
+        if access:
+            if os.access(userdata_folder + repohash, os.R_OK):
+                os.remove(userdata_folder + repohash)
+            if os.access(password_folder + repohash, os.R_OK):
+                os.remove(password_folder + repohash)
+            return "ok"
+        else:
+            return access
 
 
 if __name__ == '__main__':
