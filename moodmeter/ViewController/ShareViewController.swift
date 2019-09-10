@@ -28,17 +28,19 @@ final class GradientView: UIView {
 
 class ShareViewController: UIViewController {
 	
-	@IBOutlet weak var modalView: UIVisualEffectView!
+	
+	@IBOutlet weak var activateSharing: UIView!
+	@IBOutlet weak var sharedView: UIView!
 	@IBOutlet weak var shareLinkField: UITextField!
 	
-	@IBAction func shareLifeButton(_ sender: Any) {
-		removeBlurredBackgroundView()
+	@IBAction func shareLiveButton(_ sender: Any) {
+		showSharingActivated()
 	}
 	
 	@IBAction func deleteShared(_ sender: Any) {
 		Model.shared.disableSharing()
 		MoodAPIjsonHttpClient.shared.delete()
-		self.navigationController?.popViewController(animated: true)
+		showSharingDeactivated()
 	}
 	
 	@IBAction func exportButton(_ sender: UIView) {
@@ -61,20 +63,20 @@ class ShareViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		if Model.shared.deviceHash == nil {
-			openModalView()
+			showSharingDeactivated()
 		} else {
-			removeBlurredBackgroundView()
+			showSharingActivated()
 		}
 	}
 	
-	func openModalView() {
-		self.definesPresentationContext = true
-		self.providesPresentationContextTransitionStyle = true
-		modalView.isHidden = false
+	func showSharingDeactivated() {
+		sharedView.isHidden = true
+		activateSharing.isHidden = false
 	}
 	
-	func removeBlurredBackgroundView() {
-		modalView.isHidden = true
+	func showSharingActivated() {
+		sharedView.isHidden = false
+		activateSharing.isHidden = true
 		shareLinkField.text = Model.shared.sharingURL
 	}
 }
