@@ -38,9 +38,11 @@ class ShareViewController: UIViewController {
 	}
 	
 	@IBAction func deleteShared(_ sender: Any) {
-		Model.shared.disableSharing()
-		MoodAPIjsonHttpClient.shared.delete()
-		showSharingDeactivated()
+		confirm(title: "Delete?", message: "Delete all remotely saved data?") { action in
+			Model.shared.disableSharing()
+			MoodAPIjsonHttpClient.shared.delete()
+			self.showSharingDeactivated()
+		}
 	}
 	
 	@IBAction func exportButton(_ sender: UIView) {
