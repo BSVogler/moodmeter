@@ -103,9 +103,21 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 extension UIViewController {
 	public func alert(title: String, message: String) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+		alert.addAction(UIAlertAction(title: "Okay", style: .default) { (action) in
 			alert.dismiss(animated: true, completion: nil)
-		}))
+		})
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	public func confirm(title: String, message: String,  deleteaction: @escaping ((UIAlertAction) -> Void) ) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+			alert.dismiss(animated: true, completion: nil)
+			deleteaction(action)
+		})
+		alert.addAction(UIAlertAction(title: "Cancel", style: .default) { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		})
 		self.present(alert, animated: true, completion: nil)
 	}
 }
