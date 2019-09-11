@@ -43,7 +43,7 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 			case 0...1:
 					identifier = "sbFace"
 			case 2:
-					identifier = "sbHistory"
+					identifier = "sbMore"
 			default:
 				identifier = "sbShare"
 		}

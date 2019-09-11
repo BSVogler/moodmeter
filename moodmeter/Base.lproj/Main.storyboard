@@ -235,7 +235,7 @@
                                 <rect key="frame" x="331" y="183" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="Slk-0i-r66" kind="show" id="pc6-gX-kDj"/>
+                                    <segue destination="Slk-0i-r66" kind="show" id="3Db-iG-fj8"/>
                                 </connections>
                             </button>
                         </subviews>
