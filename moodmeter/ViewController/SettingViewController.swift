@@ -29,9 +29,6 @@ class SettingViewController: UIViewController {
 	
 
 	@IBAction func timeChanced(_ sender: Any) {
-		let content = UNMutableNotificationContent()
-		content.title = "Mood Time"
-		content.body = "It is time to give me your mood."
 		
 		// Configure the recurring date.
 		var dateComponents = DateComponents()
@@ -49,34 +46,21 @@ class SettingViewController: UIViewController {
 			Model.shared.reminderMinute = minuteOfTheDay
 		}
 		
-		// Create the trigger as a repeating event.
-		let trigger = UNCalendarNotificationTrigger(
-			dateMatching: dateComponents, repeats: true)
-		
-		// Create the request
-		let uuidString = UUID().uuidString
-		let request = UNNotificationRequest(identifier: uuidString,
-					content: content, trigger: trigger)
-
-		// Schedule the request with the system.
-		let notificationCenter = UNUserNotificationCenter.current()
-		notificationCenter.removeAllPendingNotificationRequests()
-		notificationCenter.add(request) { (error) in
-		   if error != nil {
-			print(error ?? "could not register notification")
-		   }
+		registerNotification(dateComponents: dateComponents)
+		if sender is UIDatePicker {
+			_ = Model.shared.saveToFiles()
 		}
-		Model.shared.saveApplicationData()
 	}
 	
 	@IBAction func pushSwitch(_ sender: Any) {
 		if notificationSwitch.isOn {
-			registerForPushNotifications()
+			registerNotificationRights()
 			timeChanced(sender)
 		}
 		Model.shared.reminderEnabled = notificationSwitch.isOn
 		reminderTimePicker.isHidden = !notificationSwitch.isOn
 		timeLabel.isHidden = !notificationSwitch.isOn
+		_ = Model.shared.saveToFiles()
 	}
 	
 	// MARK: Initializer
@@ -88,6 +72,9 @@ class SettingViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 		notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
+		Model.shared.reminderEnabled = notificationSwitch.isOn
+		reminderTimePicker.isHidden = !notificationSwitch.isOn
+		timeLabel.isHidden = !notificationSwitch.isOn
 		
 		var dateComponents = DateComponents()
 		dateComponents.calendar = Calendar.current
@@ -99,7 +86,30 @@ class SettingViewController: UIViewController {
 		reminderTimePicker.date = date ?? Date()
 	}
 	
-	func registerForPushNotifications() {
+	func registerNotification(dateComponents: DateComponents){
+		let content = UNMutableNotificationContent()
+			content.title = "Mood Time"
+			content.body = "It is time to give me your mood."
+			// Create the trigger as a repeating event.
+			let trigger = UNCalendarNotificationTrigger(
+				dateMatching: dateComponents, repeats: true)
+			
+			// Create the request
+			let uuidString = UUID().uuidString
+			let request = UNNotificationRequest(identifier: uuidString,
+						content: content, trigger: trigger)
+
+			// Schedule the request with the system.
+			let notificationCenter = UNUserNotificationCenter.current()
+			notificationCenter.removeAllPendingNotificationRequests()
+			notificationCenter.add(request) { (error) in
+			   if error != nil {
+				print(error ?? "could not register notification")
+			   }
+			}
+	}
+	
+	func registerNotificationRights() {
 	  UNUserNotificationCenter.current() // 1
 		.requestAuthorization(options: [.alert, .sound, .badge]) { // 2
 		  granted, error in
