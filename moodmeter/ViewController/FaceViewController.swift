@@ -80,26 +80,36 @@ class FaceViewController: UIViewController {
 	}
 	
 	func increaseMood(){
-		if mood < FaceViewController.moodToText.count-1 {
+		//mood 0 is only internal special case
+		if mood == 0 {
+			mood = 4
+		} else if mood < FaceViewController.moodToText.count-1 {
 			mood += 1
-			Model.shared.dataset[date] = mood
-			if !Model.shared.saveToFiles() {
-				alert(title: "Error", message: "Could not save data")
-			}
-			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
+		} else {
+			return
 		}
+		Model.shared.dataset[date] = mood
+		if !Model.shared.saveToFiles() {
+			alert(title: "Error", message: "Could not save data")
+		}
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		refreshDisplay()
 	}
 	
 	func decreaseMood(){
-		if mood > 1 {
+		//mood 0 is only internal special case
+		if mood == 0 {
+			mood = 2
+		} else if mood > 1 {
 			mood -= 1
-			Model.shared.dataset[date] = mood
-			if !Model.shared.saveToFiles() {
-				alert(title: "Error", message: "Could not save data")
-			}
-			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
+		} else {
+			return
 		}
+		Model.shared.dataset[date] = mood
+		if !Model.shared.saveToFiles() {
+			alert(title: "Error", message: "Could not save data")
+		}
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		refreshDisplay()
 	}
 	
