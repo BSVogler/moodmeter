@@ -184,7 +184,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JaE-Mc-9pU"/>
                     <connections>
-                        <outlet property="notification" destination="h0v-ZP-80u" id="cNh-iV-hha"/>
+                        <outlet property="notificationSwitch" destination="h0v-ZP-80u" id="cNh-iV-hha"/>
                         <outlet property="reminderTimePicker" destination="NbP-GZ-uR4" id="xvd-Lb-E0f"/>
                         <outlet property="timeLabel" destination="TNJ-OY-k8N" id="vX1-T7-EuD"/>
                     </connections>
@@ -235,7 +235,7 @@
                                 <rect key="frame" x="331" y="183" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="Slk-0i-r66" kind="show" id="3Db-iG-fj8"/>
+                                    <segue destination="Slk-0i-r66" kind="show" id="AQ8-u4-Q2J"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -334,7 +334,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-0C-9i0">
-                                        <rect key="frame" x="20" y="104" width="354" height="34"/>
+                                        <rect key="frame" x="20" y="104" width="334" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -360,7 +360,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your access link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-2e-pzt">
-                                        <rect key="frame" x="20" y="52" width="354" height="32"/>
+                                        <rect key="frame" x="20" y="52" width="179" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -372,12 +372,13 @@
                                     <constraint firstAttribute="bottom" secondItem="c7H-od-bZJ" secondAttribute="bottom" constant="20" id="AjJ-L9-1kz"/>
                                     <constraint firstItem="c7H-od-bZJ" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="GA1-dd-ahK"/>
                                     <constraint firstItem="sGW-8B-86c" firstAttribute="top" secondItem="OMK-0C-9i0" secondAttribute="bottom" constant="8" id="HzG-1y-CjG"/>
+                                    <constraint firstItem="16K-Sv-Brw" firstAttribute="leading" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="13" id="MSc-FW-M1R"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="QiV-ap-idD"/>
-                                    <constraint firstAttribute="trailing" secondItem="y9c-2e-pzt" secondAttribute="trailing" constant="40" id="TSK-Hs-kV1"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y9c-2e-pzt" secondAttribute="trailing" constant="8" id="TSK-Hs-kV1"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="top" secondItem="y9c-2e-pzt" secondAttribute="bottom" constant="20" id="Yk6-yt-zPH"/>
                                     <constraint firstItem="zEr-BG-FV3" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="aT9-2F-Qgt"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="104" id="dfu-oL-43t"/>
-                                    <constraint firstAttribute="trailing" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="40" id="dyi-Q0-son"/>
+                                    <constraint firstAttribute="trailing" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="60" id="dyi-Q0-son"/>
                                     <constraint firstItem="FdJ-0D-A7Z" firstAttribute="top" secondItem="zEr-BG-FV3" secondAttribute="bottom" constant="8" id="eWm-dV-lOE"/>
                                     <constraint firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="fKX-Xo-R71"/>
                                     <constraint firstItem="y9c-2e-pzt" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="pnC-w9-mzN"/>
