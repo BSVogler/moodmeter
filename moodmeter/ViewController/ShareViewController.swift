@@ -57,6 +57,12 @@ class ShareViewController: UIViewController {
 		}
 	}
 	
+	@IBAction func exportFileButton(_ sender: Any) {
+		let documentController = UIDocumentInteractionController()
+		documentController.url = Model.Constants.localDBStorageURL
+		documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true)
+	}
+	
 	@IBAction func reloadButton(_ sender: Any) {
 		Model.shared.generateSharingURL()
 		shareLinkField.text = Model.shared.sharingURL

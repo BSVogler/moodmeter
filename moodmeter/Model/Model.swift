@@ -10,7 +10,7 @@ import Foundation
 
 class Model: Codable {
 	// MARK: Constants
-	private enum Constants {
+	public enum Constants {
 		static let fileNameDB = "data.json"
 		static var localDBStorageURL: URL {
 			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
