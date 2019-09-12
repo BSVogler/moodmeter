@@ -11,10 +11,12 @@ import UserNotifications
 
 class SettingViewController: UIViewController {
 	
+	// MARK: IBOutlets
 	@IBOutlet weak var reminderTimePicker: UIDatePicker!
-	@IBOutlet weak var notification: UISwitch!
+	@IBOutlet weak var notificationSwitch: UISwitch!
 	@IBOutlet weak var timeLabel: UILabel!
 	
+	// MARK: IBActions
 	@IBAction func eraseButton(_ sender: Any) {
 		confirm(title: "Delete?", message: "Delete all locally saved data?") { action in
 			if Model.shared.eraseData() {
@@ -25,6 +27,7 @@ class SettingViewController: UIViewController {
 		}
 	}
 	
+
 	@IBAction func timeChanced(_ sender: Any) {
 		let content = UNMutableNotificationContent()
 		content.title = "Mood Time"
@@ -36,9 +39,15 @@ class SettingViewController: UIViewController {
 
 		let hourOfTheDay = dateComponents.calendar?.component(Calendar.Component.hour, from: reminderTimePicker.date)
 		dateComponents.hour = hourOfTheDay
+		if let hourOfTheDay = hourOfTheDay {
+			Model.shared.reminderHour = hourOfTheDay
+		}
 		
 		let minuteOfTheDay = dateComponents.calendar?.component(Calendar.Component.minute, from: reminderTimePicker.date)
 		dateComponents.minute = minuteOfTheDay
+		if let minuteOfTheDay = minuteOfTheDay {
+			Model.shared.reminderMinute = minuteOfTheDay
+		}
 		
 		// Create the trigger as a repeating event.
 		let trigger = UNCalendarNotificationTrigger(
@@ -57,18 +66,20 @@ class SettingViewController: UIViewController {
 			print(error ?? "could not register notification")
 		   }
 		}
+		Model.shared.saveApplicationData()
 	}
 	
 	@IBAction func pushSwitch(_ sender: Any) {
-		if notification.isOn {
+		if notificationSwitch.isOn {
 			registerForPushNotifications()
 			timeChanced(sender)
 		}
-		reminderTimePicker.isHidden = !notification.isOn
-		timeLabel.isHidden = !notification.isOn
+		Model.shared.reminderEnabled = notificationSwitch.isOn
+		reminderTimePicker.isHidden = !notificationSwitch.isOn
+		timeLabel.isHidden = !notificationSwitch.isOn
 	}
 	
-	// Mark: - Initializer
+	// MARK: Initializer
 	convenience init() {
 		self.init(nibName:nil, bundle:nil)
 	}
@@ -76,6 +87,16 @@ class SettingViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
+		
+		var dateComponents = DateComponents()
+		dateComponents.calendar = Calendar.current
+		
+		let date = dateComponents.calendar?.date(bySettingHour: Model.shared.reminderHour,
+												 minute: Model.shared.reminderMinute,
+												 second: 0,
+												 of: Date())
+		reminderTimePicker.date = date ?? Date()
 	}
 	
 	func registerForPushNotifications() {
