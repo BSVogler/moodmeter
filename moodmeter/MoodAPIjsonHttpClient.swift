@@ -20,7 +20,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	public func postMeasurement(measurements: [Measurement]){
 		if let deviceHash = model.deviceHash {
-			let mrequest = MeasurementRequest(password: Model.shared.password, measurements: measurements)
+			let mrequest = MeasurementRequest(password: Model.shared.password ?? "",
+											  measurements: measurements)
 			post(to: deviceHash,
 				 with: mrequest,
 				 whichHasType: MeasurementRequest.self,
@@ -33,7 +34,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	public func delete(){
 		if let deviceHash = model.deviceHash {
-			let del_request = DeleteRequest(password: Model.shared.password)
+			let del_request = DeleteRequest(password: Model.shared.password ?? "")
 			post(to: deviceHash,
 				 with: del_request,
 				 whichHasType: DeleteRequest.self,

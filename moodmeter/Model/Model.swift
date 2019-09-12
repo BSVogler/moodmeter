@@ -33,7 +33,7 @@ class Model: Codable {
 	var reminderEnabled: Bool = false
 	var reminderHour = 22
 	var reminderMinute = 00
-	var password = "todo"
+	var password: String? = "todo"
 	
 	var dataset = [Date: Mood]()
 	
