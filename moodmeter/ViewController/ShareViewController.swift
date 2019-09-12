@@ -45,14 +45,14 @@ class ShareViewController: UIViewController {
 		}
 	}
 	
-	@IBAction func exportButton(_ sender: UIView) {
-		let textToShare = "Swift is awesome!  Check out this website about it!"
+	@IBAction func exportLink(_ sender: Any) {
+		let textToShare = "My live mood data"
 		
-		if let myWebsite = URL(string: "http://www.codingexplorer.com/") {
+		if let myWebsite = URL(string: Model.shared.sharingURL) {
 			let objectsToShare: [Any] = [textToShare, myWebsite]
 			let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 			
-			activityVC.popoverPresentationController?.sourceView = sender
+			activityVC.popoverPresentationController?.sourceView = self.view
 			self.present(activityVC, animated: true, completion: nil)
 		}
 	}

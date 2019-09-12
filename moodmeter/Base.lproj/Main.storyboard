@@ -311,7 +311,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="    Export file" backgroundImage="borderbutton"/>
                                 <connections>
-                                    <action selector="exportButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="Wqc-h6-116"/>
+                                    <action selector="exportFileButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="Wqc-h6-116"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-fG-Sd3">
@@ -338,16 +338,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEr-BG-FV3">
-                                        <rect key="frame" x="169.66666666666666" y="280" width="75" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FdJ-0D-A7Z">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqa-QO-POk">
+                                        <rect key="frame" x="173" y="280" width="68" height="30"/>
+                                        <state key="normal" title="Share link"/>
+                                        <connections>
+                                            <action selector="exportLink:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="HTf-IO-Zh4"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FdJ-0D-A7Z">
                                         <rect key="frame" x="192" y="307" width="38" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="Yop-u2-5Kw"/>
+                                            <constraint firstAttribute="height" constant="31" id="wk0-91-ESH"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7H-od-bZJ">
@@ -367,7 +369,8 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zEr-BG-FV3" firstAttribute="top" secondItem="sGW-8B-86c" secondAttribute="bottom" constant="69" id="35g-oT-2aC"/>
+                                    <constraint firstItem="rqa-QO-POk" firstAttribute="top" secondItem="sGW-8B-86c" secondAttribute="bottom" constant="69" id="08d-k8-xcT"/>
+                                    <constraint firstItem="FdJ-0D-A7Z" firstAttribute="top" secondItem="sGW-8B-86c" secondAttribute="bottom" constant="98" id="0g6-im-iF3"/>
                                     <constraint firstItem="sGW-8B-86c" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="9H4-9q-Xu2"/>
                                     <constraint firstAttribute="bottom" secondItem="c7H-od-bZJ" secondAttribute="bottom" constant="20" id="AjJ-L9-1kz"/>
                                     <constraint firstItem="c7H-od-bZJ" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="GA1-dd-ahK"/>
@@ -375,11 +378,10 @@
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="leading" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="13" id="MSc-FW-M1R"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="QiV-ap-idD"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y9c-2e-pzt" secondAttribute="trailing" constant="8" id="TSK-Hs-kV1"/>
+                                    <constraint firstItem="rqa-QO-POk" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="WEj-AA-rJG"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="top" secondItem="y9c-2e-pzt" secondAttribute="bottom" constant="20" id="Yk6-yt-zPH"/>
-                                    <constraint firstItem="zEr-BG-FV3" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="aT9-2F-Qgt"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="104" id="dfu-oL-43t"/>
                                     <constraint firstAttribute="trailing" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="60" id="dyi-Q0-son"/>
-                                    <constraint firstItem="FdJ-0D-A7Z" firstAttribute="top" secondItem="zEr-BG-FV3" secondAttribute="bottom" constant="8" id="eWm-dV-lOE"/>
                                     <constraint firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="fKX-Xo-R71"/>
                                     <constraint firstItem="y9c-2e-pzt" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="pnC-w9-mzN"/>
                                     <constraint firstAttribute="trailing" secondItem="sGW-8B-86c" secondAttribute="trailing" constant="20" id="qZJ-of-cdO"/>
