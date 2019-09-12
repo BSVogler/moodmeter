@@ -83,7 +83,7 @@ class FaceViewController: UIViewController {
 		if mood < FaceViewController.moodToText.count-1 {
 			mood += 1
 			Model.shared.dataset[date] = mood
-			if !Model.shared.saveToJSON() {
+			if !Model.shared.saveToFiles() {
 				alert(title: "Error", message: "Could not save data")
 			}
 			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
@@ -95,7 +95,7 @@ class FaceViewController: UIViewController {
 		if mood > 1 {
 			mood -= 1
 			Model.shared.dataset[date] = mood
-			if !Model.shared.saveToJSON() {
+			if !Model.shared.saveToFiles() {
 				alert(title: "Error", message: "Could not save data")
 			}
 			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])

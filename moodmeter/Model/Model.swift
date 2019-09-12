@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Model {
+class Model: Decodable {
 	// MARK: Constants
 	private enum Constants {
 		static let fileNameDB = "mooddb.json"
@@ -27,16 +27,27 @@ class Model {
 		}
 	}
 	
-	public static let shared = Model()
+	public static let shared : Model = {
+		let model: Model? = loadFromFiles()
+		guard let modelg = model else {
+			return Model()
+		}
+		return modelg
+	}()
 	
 	// MARK: stored properties
 	public private(set) var deviceHash: String?
+	var reminderEnabled: Bool = false
+	var reminderHour = 22
+	var reminderMinute = 00
+	var password = "todo"
+	
 	var dataset = [Date: Mood]()
-
+	
 	// MARK: Computed Properties
 	var sharingURL: String {
 		get{ if self.deviceHash==nil {
-				generateSharingURL()
+			generateSharingURL()
 			}
 			guard let deviceHash = self.deviceHash else {
 				return ""
@@ -45,8 +56,27 @@ class Model {
 		}
 	}
 	
-	init() {
-		_ = loadFromJSON()
+	func saveApplicationData(){
+		let customPlistURL = Constants.localHashStorageURL
+		var dic:[String:Any] = Dictionary()
+		if deviceHash != nil{
+			dic["deviceHash"] = deviceHash
+		}
+		dic["reminderEnabled"] = reminderEnabled
+		dic["reminderHour"] = reminderHour
+		dic["reminderMinute"] = reminderMinute
+		// Swift Dictionary To Data.
+		do  {
+			let data = try PropertyListSerialization.data(fromPropertyList: dic, format: PropertyListSerialization.PropertyListFormat.binary, options: 0)
+			do {
+				try data.write(to: customPlistURL, options: .atomic)
+				print("Successfully write")
+			}catch (let err){
+				print(err.localizedDescription)
+			}
+		}catch (let err){
+			print(err.localizedDescription)
+		}
 	}
 	
 	final func generateSharingURL(){
@@ -62,33 +92,38 @@ class Model {
 	}
 	
 	// MARK: Type Methods
-	func loadFromJSON() -> Bool {
+	static func loadFromFiles() -> Model? {
 		do {
-			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
-			dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
-			print("Decoded \(dataset.count) entries.")
-			
+			var loaded_model: Model? = nil
 			if FileManager().fileExists(atPath: Constants.localHashStorageURL.absoluteString){
-				deviceHash = try String(contentsOf: Constants.localHashStorageURL, encoding: .utf8)
+				let data = try! Data(contentsOf: Constants.localHashStorageURL)
+				let decoder = PropertyListDecoder()
+				loaded_model = try! decoder.decode(Model.self, from: data)
 			}
-			return true
+			
+			if loaded_model == nil {
+				loaded_model = Model()
+			}
+			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
+			let dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
+			print("Decoded \(dataset.count) entries.")
+			loaded_model?.dataset = dataset
+			return loaded_model
 		} catch _ {
 			print("Could not load all data")
-			return false
+			return nil
 		}
 	}
 	
-	func saveToJSON() -> Bool {
+	// MARK: Methods
+	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(dataset)
 			let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
 			try jsonFileWrapper.write(to: Constants.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
 			print("Saved database.")
 			
-			if let deviceHash = deviceHash {
-				try deviceHash.write(to: Constants.localHashStorageURL, atomically: true, encoding: .utf8)
-				print("Saved hash")
-			}
+			saveApplicationData()
 			return true
 		} catch _ {
 			print("Could not save all data.")

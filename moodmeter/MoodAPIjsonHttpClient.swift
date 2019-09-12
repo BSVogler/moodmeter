@@ -20,12 +20,11 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	public func postMeasurement(measurements: [Measurement]){
 		if let deviceHash = model.deviceHash {
-			var password = "todo"
-			let mrequest = MeasurementRequest(password: password, measurements: measurements)
+			let mrequest = MeasurementRequest(password: Model.shared.password, measurements: measurements)
 			post(to: deviceHash,
-				   with: mrequest,
-				   whichHasType: MeasurementRequest.self,
-				   expecting: MeasurementRequest.self) {res in
+				 with: mrequest,
+				 whichHasType: MeasurementRequest.self,
+				 expecting: MeasurementRequest.self) {res in
 			}
 		} else {
 			logger.error("no device Hash")
@@ -34,12 +33,11 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	public func delete(){
 		if let deviceHash = model.deviceHash {
-			var password = "todo"
-			let del_request = DeleteRequest(password: password)
+			let del_request = DeleteRequest(password: Model.shared.password)
 			post(to: deviceHash,
-				   with: del_request,
-				   whichHasType: DeleteRequest.self,
-				   expecting: DeleteRequest.self) {res in
+				 with: del_request,
+				 whichHasType: DeleteRequest.self,
+				 expecting: DeleteRequest.self) {res in
 			}
 		} else {
 			logger.error("no device Hash")
