@@ -12,18 +12,18 @@ class Model: Decodable {
 	// MARK: Constants
 	private enum Constants {
 		static let fileNameDB = "mooddb.json"
-		static let fileNameHash = "hash.json"
+		static let fileNameApplicationData = "applicationdata.plist"
 		static var localDBStorageURL: URL {
 			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
 				fatalError("Can't access the document directory in the user's home directory.")
 			}
 			return documentsDirectory.appendingPathComponent(Constants.fileNameDB)
 		}
-		static var localHashStorageURL: URL {
+		static var localApplicationDataURL: URL {
 			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
 				fatalError("Can't access the document directory in the user's home directory.")
 			}
-			return documentsDirectory.appendingPathComponent(Constants.fileNameHash)
+			return documentsDirectory.appendingPathComponent(Constants.fileNameApplicationData)
 		}
 	}
 	
@@ -56,8 +56,35 @@ class Model: Decodable {
 		}
 	}
 	
+	// MARK: Type Methods
+	static func loadFromFiles() -> Model? {
+		do {
+			var loaded_model: Model? = nil
+			if FileManager().fileExists(atPath: Constants.localApplicationDataURL.relativePath){
+				let data = try! Data(contentsOf: Constants.localApplicationDataURL)
+				let decoder = PropertyListDecoder()
+				loaded_model = try! decoder.decode(Model.self, from: data)
+				print("Loaded application data from \(Constants.localApplicationDataURL.relativePath)")
+			} else {
+				print("No file at \(Constants.localApplicationDataURL.relativePath)")
+			}
+			
+			if loaded_model == nil {
+				loaded_model = Model()
+			}
+			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
+			let dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
+			print("Decoded \(dataset.count) entries.")
+			loaded_model?.dataset = dataset
+			return loaded_model
+		} catch _ {
+			print("Could not load all data")
+			return nil
+		}
+	}
+	
+	// MARK: Methods
 	func saveApplicationData(){
-		let customPlistURL = Constants.localHashStorageURL
 		var dic:[String:Any] = Dictionary()
 		if deviceHash != nil{
 			dic["deviceHash"] = deviceHash
@@ -69,8 +96,8 @@ class Model: Decodable {
 		do  {
 			let data = try PropertyListSerialization.data(fromPropertyList: dic, format: PropertyListSerialization.PropertyListFormat.binary, options: 0)
 			do {
-				try data.write(to: customPlistURL, options: .atomic)
-				print("Successfully write")
+				try data.write(to: Constants.localApplicationDataURL, options: .atomic)
+				print("Successfully write to \(Constants.localApplicationDataURL.relativePath)")
 			}catch (let err){
 				print(err.localizedDescription)
 			}
@@ -91,31 +118,6 @@ class Model: Decodable {
 		}
 	}
 	
-	// MARK: Type Methods
-	static func loadFromFiles() -> Model? {
-		do {
-			var loaded_model: Model? = nil
-			if FileManager().fileExists(atPath: Constants.localHashStorageURL.absoluteString){
-				let data = try! Data(contentsOf: Constants.localHashStorageURL)
-				let decoder = PropertyListDecoder()
-				loaded_model = try! decoder.decode(Model.self, from: data)
-			}
-			
-			if loaded_model == nil {
-				loaded_model = Model()
-			}
-			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
-			let dataset = try JSONDecoder().decode([Date: Mood].self, from: jsonData)
-			print("Decoded \(dataset.count) entries.")
-			loaded_model?.dataset = dataset
-			return loaded_model
-		} catch _ {
-			print("Could not load all data")
-			return nil
-		}
-	}
-	
-	// MARK: Methods
 	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(dataset)
@@ -135,8 +137,8 @@ class Model: Decodable {
 		do {
 			let fm = FileManager()
 			try fm.removeItem(at: Constants.localDBStorageURL)
-			if fm.fileExists(atPath: Constants.localHashStorageURL.absoluteString){
-				try fm.removeItem(at: Constants.localHashStorageURL)
+			if fm.fileExists(atPath: Constants.localApplicationDataURL.relativePath){
+				try fm.removeItem(at: Constants.localApplicationDataURL)
 			}
 		} catch _ {
 			print("Could not delete all data.")
