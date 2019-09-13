@@ -78,12 +78,12 @@ class FaceViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		refreshDisplay()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.dataLabel!.text = topLabel
+		refreshDisplay()
 	}
 	
 	func increaseMood(){
