@@ -5,8 +5,8 @@
 /* Class = "UIButton"; normalTitle = "Reload"; ObjectID = "16K-Sv-Brw"; */
 "16K-Sv-Brw.normalTitle" = "Neu";
 
-/* Class = "UILabel"; text = "Maintain an updated copy to make the data available on other devices\nBy using the share feature you agree to the"; ObjectID = "DMu-is-5Is"; */
-"DMu-is-5Is.text" = "Greife von anderen Geräten auf eine aktualiserende Kopie deiner Daten zu.\nMit dem Nutzung der Teilen-Funktion stimmtst du den";
+/* Class = "UILabel"; text = "Maintain an updated copy to make the data available on other devices\nBy using the share feature you agree to the terms and conditions."; ObjectID = "DMu-is-5Is"; */
+"DMu-is-5Is.text" = "Greife von anderen Geräten auf eine aktualisierende Kopie deiner Daten zu.\nMit dem Nutzung der Teilen-Funktion stimmtst du den Datenschutzbestimmungen zu.";
 
 /* Class = "UILabel"; text = "Data"; ObjectID = "I6M-ZS-ZQD"; */
 "I6M-ZS-ZQD.text" = "Daten";

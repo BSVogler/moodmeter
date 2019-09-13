@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import TTTAttributedLabel
 
 @IBDesignable
 final class GradientView: UIView {
@@ -28,11 +29,13 @@ final class GradientView: UIView {
 
 class ShareViewController: UIViewController {
 	
-	
+	// MARK: Outlets
 	@IBOutlet weak var activateSharing: UIView!
 	@IBOutlet weak var sharedView: UIView!
 	@IBOutlet weak var shareLinkField: UITextField!
+	@IBOutlet weak var termsText: TTTAttributedLabel!
 	
+	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
 		showSharingActivated()
 	}
@@ -69,6 +72,7 @@ class ShareViewController: UIViewController {
 		shareLinkField.text = Model.shared.sharingURL
 	}
 	
+	// MARK: Override
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		if Model.shared.deviceHash == nil {
@@ -78,9 +82,19 @@ class ShareViewController: UIViewController {
 		}
 	}
 	
+	// MARK: Functions
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
+		let attributedString = NSMutableAttributedString(string: termsText.text as! String)
+		let foundRange = attributedString.mutableString.range(of: NSLocalizedString("terms and conditions", comment: ""))
+		guard foundRange.location != NSNotFound else {
+			print("String or Localization error")
+			return
+		}
+		let url = NSURL(fileURLWithPath: "https://benediktsvogler.com/terms")
+		attributedString.addAttribute(.link, value: url, range: foundRange)
+		termsText.setText(attributedString)
 	}
 	
 	func showSharingActivated() {

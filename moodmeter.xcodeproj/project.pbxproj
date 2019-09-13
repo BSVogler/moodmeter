@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		941AF088DA583114231EA490 /* Pods_moodmeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */; };
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A63AB970232BA39600303AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A63AB96E232BA39600303AEF /* Localizable.strings */; };
@@ -25,9 +24,11 @@
 		A6EFAFFA230CA5170004AF6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */; };
 		A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */; };
 		A6F2A4552318835300EFF474 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A4542318835300EFF474 /* Model.swift */; };
+		DBA3468082F2CA8FF1EA905E /* Pods_Moodmeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6688395071EEA07364A959 /* Pods_Moodmeter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0A49D8D273967120EB4570 /* Pods-Moodmeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodmeter.release.xcconfig"; path = "Target Support Files/Pods-Moodmeter/Pods-Moodmeter.release.xcconfig"; sourceTree = "<group>"; };
 		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
 		2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.debug.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.debug.xcconfig"; sourceTree = "<group>"; };
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +54,8 @@
 		A6F2A4542318835300EFF474 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CE01BEFF841C30B3FC986F82 /* Pods-moodbarometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.debug.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.debug.xcconfig"; sourceTree = "<group>"; };
 		D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.release.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.release.xcconfig"; sourceTree = "<group>"; };
-		D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodmeter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD9A8A3E978600D492C4548 /* Pods-Moodmeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodmeter.debug.xcconfig"; path = "Target Support Files/Pods-Moodmeter/Pods-Moodmeter.debug.xcconfig"; sourceTree = "<group>"; };
+		DF6688395071EEA07364A959 /* Pods_Moodmeter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodmeter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				941AF088DA583114231EA490 /* Pods_moodmeter.framework in Frameworks */,
+				DBA3468082F2CA8FF1EA905E /* Pods_Moodmeter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +77,8 @@
 				22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */,
 				2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */,
 				D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */,
+				DAD9A8A3E978600D492C4548 /* Pods-Moodmeter.debug.xcconfig */,
+				0E0A49D8D273967120EB4570 /* Pods-Moodmeter.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -82,7 +86,7 @@
 		9EA8F0D12C9737AE34B7F8B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D94ECC5902265B40BAE81185 /* Pods_moodmeter.framework */,
+				DF6688395071EEA07364A959 /* Pods_Moodmeter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,15 +227,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Moodmeter/Pods-Moodmeter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Moodmeter/Pods-Moodmeter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moodmeter/Pods-moodmeter-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Moodmeter/Pods-Moodmeter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */ = {
@@ -249,7 +253,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-moodmeter-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Moodmeter-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,7 +435,7 @@
 		};
 		A6EFAFFF230CA5170004AF6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */;
+			baseConfigurationReference = DAD9A8A3E978600D492C4548 /* Pods-Moodmeter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,7 +455,7 @@
 		};
 		A6EFB000230CA5170004AF6D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D607C3448C3A4D630A48794A /* Pods-moodmeter.release.xcconfig */;
+			baseConfigurationReference = 0E0A49D8D273967120EB4570 /* Pods-Moodmeter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

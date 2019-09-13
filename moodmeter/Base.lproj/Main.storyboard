@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="827"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodmeter" customModuleProvider="target">
-                                        <rect key="frame" x="159.16666666666669" y="373.16666666666669" width="95.666666666666657" height="80.666666666666686"/>
+                                        <rect key="frame" x="166.66666666666666" y="365.66666666666669" width="80.666666666666657" height="95.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -393,7 +393,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="676"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
-                                        <rect key="frame" x="142" y="235.33333333333331" width="130" height="40"/>
+                                        <rect key="frame" x="142" y="256.33333333333331" width="130" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
@@ -404,10 +404,10 @@
                                             <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-is-5Is">
-                                        <rect key="frame" x="20" y="145" width="374" height="61"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-is-5Is" customClass="TTTAttributedLabel">
+                                        <rect key="frame" x="20" y="145" width="374" height="82"/>
                                         <string key="text">Maintain an updated copy to make the data available on other devices
-By using the share feature you agree to the</string>
+By using the share feature you agree to the terms and conditions.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -425,39 +425,17 @@ By using the share feature you agree to the</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFb-gz-Jow">
-                                        <rect key="frame" x="124" y="206" width="166" height="20.666666666666657"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="terms and conditions">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    <integer key="NSUnderline" value="1"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=".">
-                                                <attributes>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="uFb-gz-Jow" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="0Mn-aD-ucQ"/>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
-                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="uFb-gz-Jow" secondAttribute="bottom" constant="8.5" id="6ws-kP-58l"/>
                                     <constraint firstAttribute="trailing" secondItem="DMu-is-5Is" secondAttribute="trailing" constant="20" id="GAD-y6-0Aj"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
                                     <constraint firstItem="DMu-is-5Is" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="QXq-3F-hEr"/>
                                     <constraint firstItem="DMu-is-5Is" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="WNU-Gk-j80"/>
                                     <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
+                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" constant="29.329999999999998" id="lEh-BH-EnT"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
-                                    <constraint firstItem="uFb-gz-Jow" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" id="r9K-hF-ckJ"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
@@ -504,6 +482,7 @@ By using the share feature you agree to the</string>
                         <outlet property="activateSharing" destination="kz9-Ki-GeK" id="DG9-6a-3Q5"/>
                         <outlet property="shareLinkField" destination="OMK-0C-9i0" id="vsV-bJ-OXI"/>
                         <outlet property="sharedView" destination="Bdi-fG-Sd3" id="cuf-Aj-gsD"/>
+                        <outlet property="termsText" destination="DMu-is-5Is" id="k7q-of-UVl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfn-yv-yTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
