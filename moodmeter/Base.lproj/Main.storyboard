@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="827"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodmeter" customModuleProvider="target">
-                                        <rect key="frame" x="166.66666666666666" y="365.66666666666669" width="80.666666666666657" height="95.666666666666686"/>
+                                        <rect key="frame" x="159.16666666666669" y="373.16666666666669" width="95.666666666666657" height="80.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -51,10 +51,14 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="p07-bN-Bxy" firstAttribute="centerX" secondItem="s1b-V9-EN7" secondAttribute="centerX" id="dwt-EX-XTE"/>
                                     <constraint firstItem="p07-bN-Bxy" firstAttribute="centerY" secondItem="s1b-V9-EN7" secondAttribute="centerY" id="szU-cN-ZZu"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VAR-MA-cwl" appends="YES" id="gIt-4n-HQ1"/>
+                                </connections>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Today" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-Le-7mQ">
                                 <rect key="frame" x="20" y="44" width="374" height="17"/>
@@ -97,6 +101,11 @@
                         <action selector="swipeDown:" destination="S4R-Ja-viH" id="WKe-i7-rSi"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="VAR-MA-cwl">
+                    <connections>
+                        <action selector="tapped:" destination="S4R-Ja-viH" id="MT8-4U-77s"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1536" y="-243"/>
         </scene>

@@ -48,6 +48,7 @@ class FaceViewController: UIViewController {
 	@IBOutlet weak var dataLabel: UILabel!
 	@IBOutlet weak var innerView: UIView!
 	@IBOutlet weak var moodLabel: UILabel!
+	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
 		increaseMood()
 	}
@@ -56,6 +57,12 @@ class FaceViewController: UIViewController {
 		decreaseMood()
 	}
 	
+	@IBAction func tapped(_ sender: Any) {
+		if mood == 0 {
+			mood = 3
+			moodChanged()
+		}
+	}
 	// MARK: - Initializers
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -88,12 +95,7 @@ class FaceViewController: UIViewController {
 		} else {
 			return
 		}
-		Model.shared.dataset[date] = mood
-		if !Model.shared.saveToFiles() {
-			alert(title: "Error", message: "Could not save data")
-		}
-		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
-		refreshDisplay()
+		moodChanged()
 	}
 	
 	func decreaseMood(){
@@ -105,9 +107,13 @@ class FaceViewController: UIViewController {
 		} else {
 			return
 		}
+		moodChanged()
+	}
+	
+	func moodChanged(){
 		Model.shared.dataset[date] = mood
 		if !Model.shared.saveToFiles() {
-			alert(title: "Error", message: NSLocalizedString("Could not save data", comment:""))
+			alert(title: "Error", message: "Could not save data")
 		}
 		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		refreshDisplay()
