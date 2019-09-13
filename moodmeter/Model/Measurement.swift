@@ -18,7 +18,7 @@ struct Measurement: Codable {
 	}
 	
 	init(day: Date, mood: Mood){
-		self.day = dateToJSTime(date: day)
+		self.day = day.toJS()
 		self.mood = mood
 	}
 }
