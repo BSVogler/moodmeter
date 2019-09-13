@@ -102,7 +102,7 @@ class Model: Codable {
 	
 	func disableSharing(){
 		deviceHash = nil
+		_ = saveToFiles()
 	}
-	
 }
 
