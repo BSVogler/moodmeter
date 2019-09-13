@@ -101,6 +101,7 @@ class Model: Codable {
 			print("Could not delete all data.")
 			return false
 		}
+		dataset.removeAll()
 		return true
 	}
 	
