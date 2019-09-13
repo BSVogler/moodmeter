@@ -18,11 +18,11 @@ class SettingViewController: UIViewController {
 	
 	// MARK: IBActions
 	@IBAction func eraseButton(_ sender: Any) {
-		confirm(title: "Delete?", message: "Delete all locally saved data?") { action in
+		confirm(title: NSLocalizedString("Delete?",comment: ""), message: NSLocalizedString("Delete all locally saved data?",comment: "")) { action in
 			if Model.shared.eraseData() {
-				self.alert(title:"Deleting", message: "Deleted all data")
+				self.alert(title:NSLocalizedString("Deleting",comment: ""), message: NSLocalizedString("Deleted all data",comment: ""))
 			} else {
-				self.alert(title:"Deleting", message: "Deleting of all data not possible")
+				self.alert(title:NSLocalizedString("Deleting",comment: ""), message: NSLocalizedString("Deleting of all data not possible",comment: ""))
 			}
 		}
 	}
@@ -88,25 +88,25 @@ class SettingViewController: UIViewController {
 	
 	func registerNotification(dateComponents: DateComponents){
 		let content = UNMutableNotificationContent()
-			content.title = "Mood Time"
-			content.body = "It is time to give me your mood."
-			// Create the trigger as a repeating event.
-			let trigger = UNCalendarNotificationTrigger(
-				dateMatching: dateComponents, repeats: true)
-			
-			// Create the request
-			let uuidString = UUID().uuidString
-			let request = UNNotificationRequest(identifier: uuidString,
-						content: content, trigger: trigger)
-
-			// Schedule the request with the system.
-			let notificationCenter = UNUserNotificationCenter.current()
-			notificationCenter.removeAllPendingNotificationRequests()
-			notificationCenter.add(request) { (error) in
-			   if error != nil {
+		content.title = NSLocalizedString("Mood Time", comment: "")
+		content.body = NSLocalizedString("It is time to give me your mood.", comment: "")
+		// Create the trigger as a repeating event.
+		let trigger = UNCalendarNotificationTrigger(
+			dateMatching: dateComponents, repeats: true)
+		
+		// Create the request
+		let uuidString = UUID().uuidString
+		let request = UNNotificationRequest(identifier: uuidString,
+											content: content, trigger: trigger)
+		
+		// Schedule the request with the system.
+		let notificationCenter = UNUserNotificationCenter.current()
+		notificationCenter.removeAllPendingNotificationRequests()
+		notificationCenter.add(request) { (error) in
+			if error != nil {
 				print(error ?? "could not register notification")
-			   }
 			}
+		}
 	}
 	
 	func registerNotificationRights() {

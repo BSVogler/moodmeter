@@ -38,15 +38,16 @@ class ShareViewController: UIViewController {
 	}
 	
 	@IBAction func deleteShared(_ sender: Any) {
-		confirm(title: "Delete?", message: "Delete all remotely saved data?") { action in
-			Model.shared.disableSharing()
-			MoodAPIjsonHttpClient.shared.delete()
-			self.showSharingDeactivated()
+		confirm(title: NSLocalizedString("Disable?", comment: ""),
+				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")) { action in
+					Model.shared.disableSharing()
+					MoodAPIjsonHttpClient.shared.delete()
+					self.showSharingDeactivated()
 		}
 	}
 	
 	@IBAction func exportLink(_ sender: Any) {
-		let textToShare = "My live mood data"
+		let textToShare = NSLocalizedString("My live mood data", comment: "")
 		
 		if let myWebsite = URL(string: Model.shared.sharingURL) {
 			let objectsToShare: [Any] = [textToShare, myWebsite]

@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  moodmeter
+
+  Created by Benedikt Stefan Vogler on 13.09.19.
+  Copyright © 2019 bsvogler. All rights reserved.
+*/
+
+"Delete" = "Löschen";
+"Cancel" = "Abbrechen";
+"Today" = "Heute";
+"Yesterday" = "Gestern";
+"Statistics" = "Statistik";
+"Share" = "Teilen";
+"Disabling the sharing deletes all remotely saved data." = "Deaktivieren der Teilen-Funktion löscht alle entfernt gespeicherten Daten.";
+"Disable?" = "Deaktivieren?";
+"My live mood data" = "Meine aktuelle Stimmungsdaten";
+"It is time to give me your mood." = "Es ist Zeit mir deine Stimmung mitzuteilen.";
+"Mood Time" = "Stimmungszeit";
+"Could not save data" = "Konnte Daten nicht speichern.";
+"Deleting" = "Gelöscht";
+"Delete?" = "Löschen?";
+"Delete all locally saved data?" = "Lösche alle lokalen Daten?";
+"Deleting of all data not possible" = "Löschen aller Daten nicht möglich";
+"Deleted all data" = "Alle Daten erfolgreich gelöscht.";

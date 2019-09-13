@@ -111,11 +111,11 @@ extension UIViewController {
 	
 	public func confirm(title: String, message: String,  deleteaction: @escaping ((UIAlertAction) -> Void) ) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { (action) in
 			alert.dismiss(animated: true, completion: nil)
 			deleteaction(action)
 		})
-		alert.addAction(UIAlertAction(title: "Cancel", style: .default) { (action) in
+		alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
 			alert.dismiss(animated: true, completion: nil)
 		})
 		self.present(alert, animated: true, completion: nil)

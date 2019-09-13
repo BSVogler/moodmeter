@@ -107,7 +107,7 @@ class FaceViewController: UIViewController {
 		}
 		Model.shared.dataset[date] = mood
 		if !Model.shared.saveToFiles() {
-			alert(title: "Error", message: "Could not save data")
+			alert(title: "Error", message: NSLocalizedString("Could not save data", comment:""))
 		}
 		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)])
 		refreshDisplay()

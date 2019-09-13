@@ -22,10 +22,10 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 
 	/// Create the data model.
 	override init() {
-		pageTitles = ["Yesterday",
-					 "Today", //start with a single day
-					 "Stats",
-					 "Share"]
+		pageTitles = [NSLocalizedString("Yesterday", comment: ""),
+					 NSLocalizedString("Today", comment: ""), //start with a single day
+					 NSLocalizedString("Statistics", comment: ""),
+					 NSLocalizedString("Share", comment: "")]
 		super.init()
 	}
 	
