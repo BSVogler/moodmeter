@@ -90,7 +90,7 @@ class Model: Codable {
 	}
 	
 	func exportCSV() -> String {
-		return "Date; Mood;\n"+dataset.map {return "\($0.key.toJS());\($0.value);"}.joined(separator: "\n")
+		return "Date; Mood\n"+dataset.map {return "\($0.key.toJS());\($0.value)"}.joined(separator: "\n")
 	}
 	
 	func eraseData() -> Bool {
