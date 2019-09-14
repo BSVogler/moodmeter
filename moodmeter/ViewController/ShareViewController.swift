@@ -27,7 +27,7 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 	}
 }
 
-class ShareViewController: UIViewController {
+class ShareViewController: UIViewController, UIDocumentInteractionControllerDelegate {
 	
 	// MARK: Outlets
 	@IBOutlet weak var activateSharing: UIView!
@@ -61,10 +61,14 @@ class ShareViewController: UIViewController {
 		}
 	}
 	
+	func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+	
 	@IBAction func exportFileButton(_ sender: Any) {
-		//let tmpDirURL = FileManager.default.temporaryDirectory
+		let tmpDirURL = FileManager.default.temporaryDirectory
 		let filename = Date().toJS()+".csv"
-		let url = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
+		let url = tmpDirURL.appendingPathComponent(filename)
 		URLSession.shared.dataTask(with: url) { data, response, error in
 			do {
 				try Model.shared.exportCSV().write(to: url, atomically: true, encoding: .utf8)
@@ -77,10 +81,11 @@ class ShareViewController: UIViewController {
 			}
 			DispatchQueue.main.async {
 				let documentController = UIDocumentInteractionController(url: url)
+				documentController.delegate = self
 				documentController.uti = "public.comma-separated-values-text"
 				documentController.name = filename
-				//documentController.presentPreview(animated: true)
-				documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true)
+				documentController.presentPreview(animated: true) //this works
+				//documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true) //this does not work
 			}
 		}.resume()
 	}
