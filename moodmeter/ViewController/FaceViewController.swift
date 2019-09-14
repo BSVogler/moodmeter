@@ -81,6 +81,7 @@ class FaceViewController: UIViewController {
 		refreshDisplay()
 	}
 	
+	// MARK: Functions
 	func increaseMood(){
 		//mood 0 is only internal special case
 		if mood == 0 {
@@ -132,6 +133,7 @@ class FaceViewController: UIViewController {
 	}
 }
 
+// MARK: - Extension
 @IBDesignable
 class DesignableLabel: UILabel {
 }
