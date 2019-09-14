@@ -34,6 +34,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBOutlet weak var sharedView: UIView!
 	@IBOutlet weak var shareLinkField: UITextField!
 	@IBOutlet weak var termsText: TTTAttributedLabel!
+	@IBOutlet weak var exportButton: UIButton!
 	
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
@@ -66,6 +67,8 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
     }
 	
 	@IBAction func exportFileButton(_ sender: Any) {
+		let labelBefore = exportButton.titleLabel?.text
+		exportButton.titleLabel?.text = NSLocalizedString("Exporting…", comment: "")//never visible, but this triggers some fade-out animation
 		let tmpDirURL = FileManager.default.temporaryDirectory
 		let filename = Date().toJS()+".csv"
 		let url = tmpDirURL.appendingPathComponent(filename)
@@ -88,6 +91,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 				//documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true) //this does not work
 			}
 		}.resume()
+		exportButton.titleLabel?.text = labelBefore
 	}
 	
 	@IBAction func reloadButton(_ sender: Any) {

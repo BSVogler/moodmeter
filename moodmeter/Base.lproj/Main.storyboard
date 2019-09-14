@@ -489,6 +489,7 @@ By using the share feature you agree to the terms and conditions.</string>
                     <navigationItem key="navigationItem" title="Share" id="bSg-jD-Ibq"/>
                     <connections>
                         <outlet property="activateSharing" destination="kz9-Ki-GeK" id="DG9-6a-3Q5"/>
+                        <outlet property="exportButton" destination="gpo-7r-AMj" id="3Lf-6J-QFu"/>
                         <outlet property="shareLinkField" destination="OMK-0C-9i0" id="vsV-bJ-OXI"/>
                         <outlet property="sharedView" destination="Bdi-fG-Sd3" id="cuf-Aj-gsD"/>
                         <outlet property="termsText" destination="DMu-is-5Is" id="k7q-of-UVl"/>
