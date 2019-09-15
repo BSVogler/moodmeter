@@ -53,10 +53,10 @@ def write_measurements_to_csv(repohash, measurements, limit=None):
     os.remove(userdata_folder + repohash + "~")
 
 
-
 @application.route("/")
 def root():
     return "moodserver runs"
+
 
 def hasAccess(repohash, password):
     if os.access(password_folder + repohash, os.R_OK):
@@ -73,6 +73,7 @@ def hasAccess(repohash, password):
         return abort(Response("Password not found."))
     return True
 
+
 @application.route('/<string:repohash>', methods=['POST', 'GET', 'DELETE'])
 def add_data(repohash):
     """
@@ -84,28 +85,44 @@ def add_data(repohash):
         if not request.json:
             return abort(400)
         request_data = request.json["data"]
-        # check if file exists, then add
+        # check if file exists, then add new measurement
         if os.access(userdata_folder + repohash, os.R_OK):
             # check password
             access = hasAccess(repohash, request_data["password"].encode('utf-8'))
             if access:
                 write_measurements_to_csv(repohash, request_data["measurements"])
-            else:
+            else:  # no access
                 return access
-        else:
-            # create new entries
+        else:  # save new entries
+            # is move request?
+            if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
+                # move old data to new hash
+                access = hasAccess(request_data["old_hash"], request_data["password"].encode('utf-8'))
+                if access:
+                    os.rename(userdata_folder + request_data["old_hash"], userdata_folder + repohash)
+                    # append new data
+                    with open(userdata_folder + repohash, "wa") as fp:
+                        for e in request_data["measurements"]:
+                            fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+                    # success, so remove old password
+                    os.remove(password_folder + request_data["old_hash"])
+                else:
+                    # authentication failed
+                    return abort(403)
+            else:
+                # initial write of data
+                with open(userdata_folder + repohash, "w") as fp:
+                    for e in request_data["measurements"]:
+                        fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+
+            # save password
             salt = os.urandom(16)
-            hash = hashlib.pbkdf2_hmac('sha256', (request_data["password"].encode('utf-8')), salt, 10000)
+            pw_hashed = hashlib.pbkdf2_hmac('sha256', (request_data["password"].encode('utf-8')), salt, 10000)
             # storing in a text file doubles the file size but this way we can easily use the line break to separate
             # hash and salt when reading
             with open(password_folder + repohash, "w") as fp:
-                fp.write(binascii.hexlify(hash) + "\n")
+                fp.write(binascii.hexlify(pw_hashed) + "\n")
                 fp.write(binascii.hexlify(salt))
-
-            # initial write
-            with open(userdata_folder + repohash, "w") as fp:
-                for e in request_data["measurements"]:
-                    fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
 
         return "ok"
     elif request.method == 'GET':
