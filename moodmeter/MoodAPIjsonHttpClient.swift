@@ -15,7 +15,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	init(model: Model) {
 		self.model = model
-		super.init(model.sharingURL)
+		super.init(model.baseURL)
 	}
 	
 	public func postMeasurement(measurements: [Measurement]){

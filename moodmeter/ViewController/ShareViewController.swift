@@ -53,7 +53,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBAction func reloadHash(_ sender: Any) {
 		if let oldHash = Model.shared.deviceHash {
 			MoodAPIjsonHttpClient.shared.moveHash(old: oldHash)
-			shareLinkField.text = Model.shared.sharingURL
+			shareLinkField.text = Model.shared.sharingURL?.absoluteString
 		} else {
 			Model.shared.generateSharingURL()
 		}
@@ -62,8 +62,8 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBAction func exportLink(_ sender: Any) {
 		let textToShare = NSLocalizedString("My live mood data", comment: "")
 		
-		if let myWebsite = URL(string: Model.shared.sharingURL) {
-			let objectsToShare: [Any] = [textToShare, myWebsite]
+		if let link = Model.shared.sharingURL {
+			let objectsToShare: [Any] = [textToShare, link]
 			let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 			
 			activityVC.popoverPresentationController?.sourceView = self.view
@@ -105,7 +105,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	
 	@IBAction func reloadButton(_ sender: Any) {
 		Model.shared.generateSharingURL()
-		shareLinkField.text = Model.shared.sharingURL
+		shareLinkField.text = Model.shared.sharingURL?.absoluteString
 	}
 	
 	// MARK: Override
@@ -136,6 +136,6 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	func showSharingActivated() {
 		sharedView.isHidden = false
 		activateSharing.isHidden = true
-		shareLinkField.text = Model.shared.sharingURL
+		shareLinkField.text = Model.shared.sharingURL?.absoluteString
 	}
 }

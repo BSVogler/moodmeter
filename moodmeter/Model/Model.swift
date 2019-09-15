@@ -37,15 +37,16 @@ class Model: Codable {
 	/// for getting the measurements as a read only array use `measurements`
 	var dataset = [Date: Mood]()
 	
+	let baseURL = URL(string: "https://mood.benediktsvogler.com/")!
 	// MARK: Computed Properties
-	var sharingURL: String {
+	var sharingURL: URL? {
 		get{ if self.deviceHash==nil {
 			generateSharingURL()
 			}
 			guard let deviceHash = self.deviceHash else {
-				return ""
+				return nil
 			}
-			return "https://mood.benediktsvogler.com/" + deviceHash
+			return baseURL.appendingPathComponent(deviceHash)
 		}
 	}
 	

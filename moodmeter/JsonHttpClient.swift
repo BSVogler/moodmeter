@@ -19,11 +19,11 @@ class JsonHttpClient {
     // MARK: Stored Instance Properties
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
-    private let baseUrl: String
+    private let baseUrl: URL
     private let loggerPrefixLength = 150
     
     // MARK: Initializers
-    init(_ baseUrl: String) {
+    init(_ baseUrl: URL) {
         self.baseUrl = baseUrl
     }
 
@@ -72,11 +72,7 @@ class JsonHttpClient {
         with body: TData?,
         done: @escaping (Result<TResponse>) -> Void
         ) {
-        guard let url = URL(string: baseUrl + endpoint) else {
-			logger.error("Url invalid.")
-            done(.failure(ApiError.fetchError))
-            return
-        }
+		let url = baseUrl.appendingPathComponent(endpoint)
 
         var request = URLRequest(url: url)
         request.httpMethod = String(describing: method)
