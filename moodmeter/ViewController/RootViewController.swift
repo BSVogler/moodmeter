@@ -95,7 +95,8 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 	}
 	// MARK: Delegate functions
 	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-		//self.pageControl.currentPage = modelController.indexOfViewController(self) ?? 0
+		// the current page is the number of the highlighted dot
+		self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
 	}
 }
 
