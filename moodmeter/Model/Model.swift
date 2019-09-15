@@ -38,7 +38,7 @@ class Model: Codable {
 	/// for getting the measurements as a read only array use `measurements`
 	var dataset = [Date: Mood]()
 	
-	let baseURL = URL(string: "http://192.168.2.3:5000/")!
+	let baseURL = URL(string: "https://mood.benediktsvogler.com")!
 	// MARK: Computed Properties
 	var sharingURL: URL? {
 		get{
