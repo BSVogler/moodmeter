@@ -45,7 +45,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		}
 	}
 	
-	public func newHash(old: String){
+	public func moveHash(old: String){
 		if let deviceHash = model.deviceHash {
 			let moveRequest = MoveRequest(password: Model.shared.password ?? "", old_hash: old)
 			post(to: deviceHash,
