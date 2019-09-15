@@ -38,13 +38,18 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
+		Model.shared.generateAndRegisterSharingURL(){ res in
+			self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+		}
 		showSharingActivated()
 	}
 	
 	@IBAction func deleteShared(_ sender: Any) {
 		confirm(title: NSLocalizedString("Disable?", comment: ""),
 				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")) { action in
-					MoodAPIjsonHttpClient.shared.delete()
+					MoodAPIjsonHttpClient.shared.delete { res in
+						print (res)
+					}
 					Model.shared.disableSharing()
 					self.showSharingDeactivated()
 		}
@@ -52,10 +57,17 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	
 	@IBAction func reloadHash(_ sender: Any) {
 		if let oldHash = Model.shared.deviceHash {
-			MoodAPIjsonHttpClient.shared.moveHash(old: oldHash)
-			shareLinkField.text = Model.shared.sharingURL?.absoluteString
-		} else {
+			shareLinkField.text = "..."
+			//generate new sharing url
 			Model.shared.generateSharingURL()
+			MoodAPIjsonHttpClient.shared.moveHash(old: oldHash) { res in
+				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+			}
+		} else {
+			//has no hash (only the case if there is a bug somehwere else), so make a new one
+			Model.shared.generateAndRegisterSharingURL(){ res in
+				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+			}
 		}
 	}
 	
@@ -101,11 +113,6 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 			}
 		}.resume()
 		exportButton.titleLabel?.text = labelBefore
-	}
-	
-	@IBAction func reloadButton(_ sender: Any) {
-		Model.shared.generateSharingURL()
-		shareLinkField.text = Model.shared.sharingURL?.absoluteString
 	}
 	
 	// MARK: Override

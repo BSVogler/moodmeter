@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Model: Codable {
 	// MARK: Constants
@@ -37,12 +38,10 @@ class Model: Codable {
 	/// for getting the measurements as a read only array use `measurements`
 	var dataset = [Date: Mood]()
 	
-	let baseURL = URL(string: "https://mood.benediktsvogler.com/")!
+	let baseURL = URL(string: "http://192.168.2.3:5000/")!
 	// MARK: Computed Properties
 	var sharingURL: URL? {
-		get{ if self.deviceHash==nil {
-			generateSharingURL()
-			}
+		get{
 			guard let deviceHash = self.deviceHash else {
 				return nil
 			}
@@ -70,6 +69,11 @@ class Model: Codable {
 	}
 	
 	// MARK: Methods
+	final func generateAndRegisterSharingURL(done: @escaping (Result<MeasurementRequest>) -> Void){
+		generateSharingURL()
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements, done: done)
+	}
+	
 	final func generateSharingURL(){
 		//the hash does not have to be secure, just the seed, so use secure seed directly
 		var bytes = [UInt8](repeating: 0, count: 10)
@@ -80,7 +84,6 @@ class Model: Codable {
 			let toURL: String = String(bytes.map{ byte in letters[Int(byte % UInt8(letters.count))] })
 			Model.shared.deviceHash = toURL
 		}
-		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements)
 	}
 	
 	func saveToFiles() -> Bool {

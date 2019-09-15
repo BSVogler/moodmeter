@@ -339,7 +339,6 @@
                                         <rect key="frame" x="367" y="104" width="47" height="30"/>
                                         <state key="normal" title="Reload"/>
                                         <connections>
-                                            <action selector="reloadButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3xr-GE-rjA"/>
                                             <action selector="reloadHash:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="t0z-Zq-a83"/>
                                         </connections>
                                     </button>

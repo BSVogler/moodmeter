@@ -18,41 +18,38 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		super.init(model.baseURL)
 	}
 	
-	public func postMeasurement(measurements: [Measurement]){
+	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<MeasurementRequest>) -> Void){
 		if let deviceHash = model.deviceHash {
 			let mrequest = MeasurementRequest(password: Model.shared.password ?? "",
 											  measurements: measurements)
 			post(to: deviceHash,
 				 with: mrequest,
 				 whichHasType: MeasurementRequest.self,
-				 expecting: MeasurementRequest.self) {res in
-			}
+				 expecting: MeasurementRequest.self, done: done)
 		} else {
 			logger.error("no device Hash")
 		}
 	}
 	
-	public func delete(){
+	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
 		if let deviceHash = model.deviceHash {
 			let del_request = DeleteRequest(password: Model.shared.password ?? "")
 			post(to: deviceHash,
 				 with: del_request,
 				 whichHasType: DeleteRequest.self,
-				 expecting: DeleteRequest.self) {res in
-			}
+				 expecting: DeleteRequest.self, done: done)
 		} else {
 			logger.error("no device Hash")
 		}
 	}
 	
-	public func moveHash(old: String){
+	public func moveHash(old: String, done: @escaping (Result<MoveRequest>) -> Void){
 		if let deviceHash = model.deviceHash {
 			let moveRequest = MoveRequest(password: Model.shared.password ?? "", old_hash: old)
 			post(to: deviceHash,
 				 with: moveRequest,
 				 whichHasType: MoveRequest.self,
-				 expecting: MoveRequest.self) {res in
-			}
+				 expecting: MoveRequest.self, done: done)
 		} else {
 			logger.error("no device Hash")
 		}
