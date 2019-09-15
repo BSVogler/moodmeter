@@ -82,7 +82,8 @@ class Model: Codable {
 		if status == errSecSuccess { // Always test the status.
 			let letters: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
 			let toURL: String = String(bytes.map{ byte in letters[Int(byte % UInt8(letters.count))] })
-			Model.shared.deviceHash = toURL
+			deviceHash = toURL
+			_ = saveToFiles()
 		}
 	}
 	
@@ -113,6 +114,7 @@ class Model: Codable {
 			return false
 		}
 		dataset.removeAll()
+		_ = saveToFiles()
 		return true
 	}
 	
