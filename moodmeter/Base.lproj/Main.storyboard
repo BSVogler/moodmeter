@@ -434,16 +434,21 @@ By using the share feature you agree to the terms and conditions.</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
+                                        <rect key="frame" x="197" y="266" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
+                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" constant="39" id="F4M-ey-EOX"/>
                                     <constraint firstAttribute="trailing" secondItem="DMu-is-5Is" secondAttribute="trailing" constant="20" id="GAD-y6-0Aj"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
                                     <constraint firstItem="DMu-is-5Is" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="QXq-3F-hEr"/>
                                     <constraint firstItem="DMu-is-5Is" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="WNU-Gk-j80"/>
                                     <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
                                     <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" constant="29.329999999999998" id="lEh-BH-EnT"/>
+                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="pE6-iz-jPe"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
                                 </constraints>
                             </view>
@@ -489,8 +494,10 @@ By using the share feature you agree to the terms and conditions.</string>
                     <navigationItem key="navigationItem" title="Share" id="bSg-jD-Ibq"/>
                     <connections>
                         <outlet property="activateSharing" destination="kz9-Ki-GeK" id="DG9-6a-3Q5"/>
+                        <outlet property="activityIndicator" destination="dgV-E5-zD5" id="kT8-T9-bJo"/>
                         <outlet property="exportButton" destination="gpo-7r-AMj" id="3Lf-6J-QFu"/>
                         <outlet property="shareLinkField" destination="OMK-0C-9i0" id="vsV-bJ-OXI"/>
+                        <outlet property="shareLiveDataButton" destination="OL7-6r-7Co" id="Agn-32-zKJ"/>
                         <outlet property="sharedView" destination="Bdi-fG-Sd3" id="cuf-Aj-gsD"/>
                         <outlet property="termsText" destination="DMu-is-5Is" id="k7q-of-UVl"/>
                     </connections>

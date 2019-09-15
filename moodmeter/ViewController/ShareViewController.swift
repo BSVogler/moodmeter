@@ -35,24 +35,32 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBOutlet weak var shareLinkField: UITextField!
 	@IBOutlet weak var termsText: TTTAttributedLabel!
 	@IBOutlet weak var exportButton: UIButton!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet weak var shareLiveDataButton: UIButton!
 	
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
+		activityIndicator.isHidden = false
+		shareLiveDataButton.isHidden = true
+		activityIndicator.startAnimating()
 		Model.shared.generateAndRegisterSharingURL(){ res in
 			self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+			self.activityIndicator.stopAnimating()
+			self.showSharingActivated()
+			self.shareLiveDataButton.isHidden = false
 		}
-		showSharingActivated()
 	}
 	
 	@IBAction func deleteShared(_ sender: Any) {
 		confirm(title: NSLocalizedString("Disable?", comment: ""),
 				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")
 		) { action in
+			
 			MoodAPIjsonHttpClient.shared.delete { res in
-				print (res)
+				print (res.debugDescription)
+				Model.shared.disableSharing()
+				self.showSharingDeactivated()
 			}
-			Model.shared.disableSharing()
-			self.showSharingDeactivated()
 		}
 	}
 	
@@ -119,6 +127,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	// MARK: Override
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		activityIndicator.isHidden = true
 		if Model.shared.deviceHash == nil {
 			showSharingDeactivated()
 		} else {
