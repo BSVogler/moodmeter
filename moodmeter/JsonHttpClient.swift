@@ -32,7 +32,6 @@ class JsonHttpClient {
     func post<TData: Encodable, TResponse: Decodable>(
         to endpoint: String,
         with data: TData,
-        whichHasType dataType: TData.Type,
         expecting responseType: TResponse.Type,
         done: @escaping (Result<TResponse>) -> Void
     ) {
@@ -42,7 +41,6 @@ class JsonHttpClient {
     func put<TData: Encodable, TResponse: Decodable>(
         to endpoint: String,
         with data: TData,
-        whichHasType dataType: TData.Type,
         expecting responseType: TResponse.Type,
         done: @escaping (Result<TResponse>) -> Void
     ) {
