@@ -100,12 +100,13 @@ def add_data(repohash):
                 access = hasAccess(request_data["old_hash"], request_data["password"].encode('utf-8'))
                 if access:
                     os.rename(userdata_folder + request_data["old_hash"], userdata_folder + repohash)
-                    # append new data
-                    with open(userdata_folder + repohash, "wa") as fp:
-                        for e in request_data["measurements"]:
-                            fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
                     # success, so remove old password
                     os.remove(password_folder + request_data["old_hash"])
+                    # append new data
+                    if "measurements" in request_data:
+                        with open(userdata_folder + repohash, "wa") as fp:
+                            for e in request_data["measurements"]:
+                                fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
                 else:
                     # authentication failed
                     return abort(403)
@@ -113,7 +114,7 @@ def add_data(repohash):
                 # initial write of data
                 with open(userdata_folder + repohash, "w") as fp:
                     for e in request_data["measurements"]:
-                        fp.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+                        fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
 
             # save password
             salt = os.urandom(16)
