@@ -11,6 +11,7 @@
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A63AB970232BA39600303AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A63AB96E232BA39600303AEF /* Localizable.strings */; };
 		A695314623254A4100CA08CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695314523254A4100CA08CA /* SettingViewController.swift */; };
+		A69A0EC8232ED99400E90E4E /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */; };
 		A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* Api.swift */; };
@@ -37,6 +38,7 @@
 		A63AB96F232BA39600303AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63AB971232BA5D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A695314523254A4100CA08CA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				A61306DF23117E7E0010FF82 /* HistoryViewController.swift */,
 				A6C4DB612318274A00016297 /* ShareViewController.swift */,
 				A695314523254A4100CA08CA /* SettingViewController.swift */,
+				A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				A6F2A4552318835300EFF474 /* Model.swift in Sources */,
 				A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */,
 				A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */,
+				A69A0EC8232ED99400E90E4E /* AnalysisViewController.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
 				A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */,
 				A695314623254A4100CA08CA /* SettingViewController.swift in Sources */,

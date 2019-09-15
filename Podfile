@@ -9,4 +9,5 @@ target 'Moodmeter' do
   pod 'Alamofire'
   pod 'SwiftyBeaver', '~> 1.7'
 	pod 'TTTAttributedLabel'
+	pod 'SwiftChartView'
 end
