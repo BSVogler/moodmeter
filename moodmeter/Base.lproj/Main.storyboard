@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="827"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodmeter" customModuleProvider="target">
-                                        <rect key="frame" x="159.16666666666669" y="373.16666666666669" width="95.666666666666657" height="80.666666666666686"/>
+                                        <rect key="frame" x="166.66666666666666" y="365.66666666666669" width="80.666666666666657" height="95.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -340,6 +340,7 @@
                                         <state key="normal" title="Reload"/>
                                         <connections>
                                             <action selector="reloadButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3xr-GE-rjA"/>
+                                            <action selector="reloadHash:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="t0z-Zq-a83"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-0C-9i0">

@@ -37,6 +37,10 @@ struct DeleteRequest: AuthorizedRequest  {
 	var password: String
 }
 
+struct MoveRequest: AuthorizedRequest  {
+	var password: String
+	var old_hash: String
+}
 
 
 extension Date {

@@ -50,6 +50,15 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		}
 	}
 	
+	@IBAction func reloadHash(_ sender: Any) {
+		if let oldHash = Model.shared.deviceHash {
+			MoodAPIjsonHttpClient.shared.newHash(old: oldHash)
+			shareLinkField.text = Model.shared.sharingURL
+		} else {
+			Model.shared.generateSharingURL()
+		}
+	}
+	
 	@IBAction func exportLink(_ sender: Any) {
 		let textToShare = NSLocalizedString("My live mood data", comment: "")
 		

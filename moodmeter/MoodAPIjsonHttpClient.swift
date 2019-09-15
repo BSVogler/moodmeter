@@ -44,4 +44,17 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 			logger.error("no device Hash")
 		}
 	}
+	
+	public func newHash(old: String){
+		if let deviceHash = model.deviceHash {
+			let moveRequest = MoveRequest(password: Model.shared.password ?? "", old_hash: old)
+			post(to: deviceHash,
+				 with: moveRequest,
+				 whichHasType: MoveRequest.self,
+				 expecting: MoveRequest.self) {res in
+			}
+		} else {
+			logger.error("no device Hash")
+		}
+	}
 }
