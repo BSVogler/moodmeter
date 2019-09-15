@@ -34,7 +34,7 @@ class Model: Codable {
 	var reminderHour = 22
 	var reminderMinute = 00
 	var password: String? = "todo"
-	
+	/// for getting the measurements as a read only array use `measurements`
 	var dataset = [Date: Mood]()
 	
 	// MARK: Computed Properties
@@ -46,6 +46,12 @@ class Model: Codable {
 				return ""
 			}
 			return "https://mood.benediktsvogler.com/" + deviceHash
+		}
+	}
+	
+	var measurements: [Measurement] {
+		get {
+			return dataset.map{Measurement(day: $0.key, mood: $0.value)}
 		}
 	}
 	
@@ -73,6 +79,7 @@ class Model: Codable {
 			let toURL: String = String(bytes.map{ byte in letters[Int(byte % UInt8(letters.count))] })
 			Model.shared.deviceHash = toURL
 		}
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements)
 	}
 	
 	func saveToFiles() -> Bool {
