@@ -34,7 +34,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
 		if let deviceHash = model.deviceHash {
 			let del_request = DeleteRequest(password: Model.shared.password ?? "")
-			post(to: deviceHash,
+			delete(to: deviceHash,
 				 with: del_request,
 				 whichHasType: DeleteRequest.self,
 				 expecting: DeleteRequest.self, done: done)

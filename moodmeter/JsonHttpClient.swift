@@ -49,14 +49,15 @@ class JsonHttpClient {
         request(using: .put, to: endpoint, with: data, done: done)
     }
 
-    func delete<TResponse: Decodable>(
+    func delete<TData: Encodable, TResponse: Decodable>(
         to endpoint: String,
+		with data: TData,
         expecting responseType: TResponse.Type,
         done: @escaping (Result<TResponse>) -> Void
     ) {
-        request(using: .delete, to: endpoint, with: nil as String?, done: done)
+        request(using: .delete, to: endpoint, with: data, done: done)
     }
-
+	
     func get<TResponse: Decodable>(
         to endpoint: String,
         expecting responseType: TResponse.Type,
