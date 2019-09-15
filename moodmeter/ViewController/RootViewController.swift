@@ -59,16 +59,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 	
 	// MARK: - UIPageViewController delegate methods
 	
-	func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
-		// In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewController.SpineLocation.mid' in landscape orientation sets the doubleSided property to true, so set it to false here.
-		let currentViewController = self.pageViewController!.viewControllers![0]
-		let viewControllers = [currentViewController]
-		self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: true, completion: {done in })
-		
-		self.pageViewController!.isDoubleSided = false
-		return .min
-	}
-	
 	func configurePageControl() {
 		self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
 		self.pageControl.numberOfPages = modelController.pageTitles.count
