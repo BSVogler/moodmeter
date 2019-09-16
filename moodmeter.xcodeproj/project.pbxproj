@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6049FDD232FFFF8003EF44F /* body.dae in Resources */ = {isa = PBXBuildFile; fileRef = A6049FDC232FFFF8003EF44F /* body.dae */; };
+		A6049FDF2330011B003EF44F /* body.scn in Resources */ = {isa = PBXBuildFile; fileRef = A6049FDE2330011B003EF44F /* body.scn */; };
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
 		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A63AB970232BA39600303AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A63AB96E232BA39600303AEF /* Localizable.strings */; };
+		A65D5F11232FF72B00737099 /* moodmeterwatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A65D5F10232FF72B00737099 /* moodmeterwatch WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A65D5F17232FF72B00737099 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F15232FF72B00737099 /* Interface.storyboard */; };
+		A65D5F19232FF72C00737099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F18232FF72C00737099 /* Assets.xcassets */; };
+		A65D5F20232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A65D5F1F232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A65D5F2B232FF72D00737099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F2A232FF72D00737099 /* Assets.xcassets */; };
+		A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D5F39232FF9D000737099 /* NotificationController.swift */; };
+		A65D5F3D232FF9D100737099 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D5F3A232FF9D000737099 /* InterfaceController.swift */; };
+		A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */; };
 		A695314623254A4100CA08CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695314523254A4100CA08CA /* SettingViewController.swift */; };
 		A69A0EC8232ED99400E90E4E /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */; };
 		A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
@@ -28,15 +38,71 @@
 		DBA3468082F2CA8FF1EA905E /* Pods_Moodmeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6688395071EEA07364A959 /* Pods_Moodmeter.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A65D5F12232FF72B00737099 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6EFAFE0230CA5150004AF6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A65D5F0F232FF72B00737099;
+			remoteInfo = "moodmeterwatch WatchKit App";
+		};
+		A65D5F21232FF72C00737099 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6EFAFE0230CA5150004AF6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A65D5F1E232FF72C00737099;
+			remoteInfo = "moodmeterwatch WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A65D5F31232FF72D00737099 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A65D5F20232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A65D5F35232FF72D00737099 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A65D5F11232FF72B00737099 /* moodmeterwatch WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0E0A49D8D273967120EB4570 /* Pods-Moodmeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodmeter.release.xcconfig"; path = "Target Support Files/Pods-Moodmeter/Pods-Moodmeter.release.xcconfig"; sourceTree = "<group>"; };
 		22F683CD7BC76F2100D09256 /* Pods-moodbarometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodbarometer.release.xcconfig"; path = "Target Support Files/Pods-moodbarometer/Pods-moodbarometer.release.xcconfig"; sourceTree = "<group>"; };
 		2DEA7FAD056C98910476E0C3 /* Pods-moodmeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodmeter.debug.xcconfig"; path = "Target Support Files/Pods-moodmeter/Pods-moodmeter.debug.xcconfig"; sourceTree = "<group>"; };
+		A6049FDC232FFFF8003EF44F /* body.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = body.dae; sourceTree = "<group>"; };
+		A6049FDE2330011B003EF44F /* body.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = body.scn; sourceTree = "<group>"; };
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A632BBA32322EAA7003FA040 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		A63AB968232B97D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A63AB96F232BA39600303AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63AB971232BA5D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A65D5F0D232FF72A00737099 /* moodmeterwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodmeterwatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65D5F10232FF72B00737099 /* moodmeterwatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moodmeterwatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65D5F16232FF72B00737099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A65D5F18232FF72C00737099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A65D5F1A232FF72C00737099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A65D5F1F232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "moodmeterwatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65D5F2A232FF72D00737099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A65D5F2C232FF72D00737099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A65D5F2D232FF72D00737099 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A65D5F39232FF9D000737099 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A65D5F3A232FF9D000737099 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		A695314523254A4100CA08CA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
@@ -61,6 +127,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A65D5F1C232FF72C00737099 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6EFAFE5230CA5150004AF6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,6 +177,31 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A65D5F14232FF72B00737099 /* moodmeterwatch WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				A65D5F15232FF72B00737099 /* Interface.storyboard */,
+				A65D5F18232FF72C00737099 /* Assets.xcassets */,
+				A65D5F1A232FF72C00737099 /* Info.plist */,
+			);
+			path = "moodmeterwatch WatchKit App";
+			sourceTree = "<group>";
+		};
+		A65D5F23232FF72C00737099 /* moodmeterwatch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */,
+				A65D5F3A232FF9D000737099 /* InterfaceController.swift */,
+				A65D5F39232FF9D000737099 /* NotificationController.swift */,
+				A6049FDC232FFFF8003EF44F /* body.dae */,
+				A6049FDE2330011B003EF44F /* body.scn */,
+				A65D5F2A232FF72D00737099 /* Assets.xcassets */,
+				A65D5F2C232FF72D00737099 /* Info.plist */,
+				A65D5F2D232FF72D00737099 /* PushNotificationPayload.apns */,
+			);
+			path = "moodmeterwatch WatchKit Extension";
+			sourceTree = "<group>";
+		};
 		A695314723254A5100CA08CA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				A6EFAFEA230CA5150004AF6D /* moodmeter */,
+				A65D5F14232FF72B00737099 /* moodmeterwatch WatchKit App */,
+				A65D5F23232FF72C00737099 /* moodmeterwatch WatchKit Extension */,
 				A6EFAFE9230CA5150004AF6D /* Products */,
 				03ED5BE10CA47873FF5699CE /* Pods */,
 				9EA8F0D12C9737AE34B7F8B1 /* Frameworks */,
@@ -132,6 +232,9 @@
 			isa = PBXGroup;
 			children = (
 				A6EFAFE8230CA5150004AF6D /* Moodmeter.app */,
+				A65D5F0D232FF72A00737099 /* moodmeterwatch.app */,
+				A65D5F10232FF72B00737099 /* moodmeterwatch WatchKit App.app */,
+				A65D5F1F232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +259,57 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A65D5F0C232FF72A00737099 /* moodmeterwatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65D5F36232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch" */;
+			buildPhases = (
+				A65D5F0B232FF72A00737099 /* Resources */,
+				A65D5F35232FF72D00737099 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A65D5F13232FF72B00737099 /* PBXTargetDependency */,
+			);
+			name = moodmeterwatch;
+			productName = moodmeterwatch;
+			productReference = A65D5F0D232FF72A00737099 /* moodmeterwatch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		A65D5F0F232FF72B00737099 /* moodmeterwatch WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65D5F32232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch WatchKit App" */;
+			buildPhases = (
+				A65D5F0E232FF72B00737099 /* Resources */,
+				A65D5F31232FF72D00737099 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A65D5F22232FF72C00737099 /* PBXTargetDependency */,
+			);
+			name = "moodmeterwatch WatchKit App";
+			productName = "moodmeterwatch WatchKit App";
+			productReference = A65D5F10232FF72B00737099 /* moodmeterwatch WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A65D5F1E232FF72C00737099 /* moodmeterwatch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65D5F2E232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch WatchKit Extension" */;
+			buildPhases = (
+				A65D5F1B232FF72C00737099 /* Sources */,
+				A65D5F1C232FF72C00737099 /* Frameworks */,
+				A65D5F1D232FF72C00737099 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "moodmeterwatch WatchKit Extension";
+			productName = "moodmeterwatch WatchKit Extension";
+			productReference = A65D5F1F232FF72C00737099 /* moodmeterwatch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		A6EFAFE7230CA5150004AF6D /* Moodmeter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6EFAFFE230CA5170004AF6D /* Build configuration list for PBXNativeTarget "Moodmeter" */;
@@ -181,10 +335,19 @@
 		A6EFAFE0230CA5150004AF6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = bsvogler;
 				TargetAttributes = {
+					A65D5F0C232FF72A00737099 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					A65D5F0F232FF72B00737099 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					A65D5F1E232FF72C00737099 = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					A6EFAFE7230CA5150004AF6D = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -205,11 +368,40 @@
 			projectRoot = "";
 			targets = (
 				A6EFAFE7230CA5150004AF6D /* Moodmeter */,
+				A65D5F0C232FF72A00737099 /* moodmeterwatch */,
+				A65D5F0F232FF72B00737099 /* moodmeterwatch WatchKit App */,
+				A65D5F1E232FF72C00737099 /* moodmeterwatch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A65D5F0B232FF72A00737099 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A65D5F0E232FF72B00737099 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65D5F19232FF72C00737099 /* Assets.xcassets in Resources */,
+				A65D5F17232FF72B00737099 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A65D5F1D232FF72C00737099 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6049FDD232FFFF8003EF44F /* body.dae in Resources */,
+				A65D5F2B232FF72D00737099 /* Assets.xcassets in Resources */,
+				A6049FDF2330011B003EF44F /* body.scn in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6EFAFE6230CA5150004AF6D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +458,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A65D5F1B232FF72C00737099 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65D5F3D232FF9D100737099 /* InterfaceController.swift in Sources */,
+				A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */,
+				A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6EFAFE4230CA5150004AF6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +491,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A65D5F13232FF72B00737099 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A65D5F0F232FF72B00737099 /* moodmeterwatch WatchKit App */;
+			targetProxy = A65D5F12232FF72B00737099 /* PBXContainerItemProxy */;
+		};
+		A65D5F22232FF72C00737099 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A65D5F1E232FF72C00737099 /* moodmeterwatch WatchKit Extension */;
+			targetProxy = A65D5F21232FF72C00737099 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A63AB96E232BA39600303AEF /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -297,6 +512,14 @@
 				A63AB971232BA5D700303AEF /* de */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A65D5F15232FF72B00737099 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A65D5F16232FF72B00737099 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 		A6EFAFF3230CA5150004AF6D /* Main.storyboard */ = {
@@ -319,6 +542,114 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A65D5F2F232FF72D00737099 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = "moodmeterwatch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		A65D5F30232FF72D00737099 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = "moodmeterwatch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		A65D5F33232FF72D00737099 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
+				INFOPLIST_FILE = "moodmeterwatch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		A65D5F34232FF72D00737099 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
+				INFOPLIST_FILE = "moodmeterwatch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		A65D5F37232FF72D00737099 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A65D5F38232FF72D00737099 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		A6EFAFFC230CA5170004AF6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -480,6 +811,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A65D5F2E232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65D5F2F232FF72D00737099 /* Debug */,
+				A65D5F30232FF72D00737099 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A65D5F32232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65D5F33232FF72D00737099 /* Debug */,
+				A65D5F34232FF72D00737099 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A65D5F36232FF72D00737099 /* Build configuration list for PBXNativeTarget "moodmeterwatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65D5F37232FF72D00737099 /* Debug */,
+				A65D5F38232FF72D00737099 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A6EFAFE3230CA5150004AF6D /* Build configuration list for PBXProject "moodmeter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
