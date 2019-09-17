@@ -100,18 +100,42 @@
             <objects>
                 <controller id="hk2-7S-aFQ">
                     <items>
-                        <button width="1" alignment="left" title="Live Sharing" id="dL9-Ob-Omb">
-                            <connections>
-                                <segue destination="75c-uB-v4o" kind="push" id="8R1-sK-zgc"/>
-                            </connections>
-                        </button>
-                        <button width="1" alignment="left" title="Export File" id="7yE-uF-y5e"/>
-                        <button width="1" alignment="left" title="Delete data" id="cef-9p-9Ax">
-                            <color key="titleColor" red="1" green="0.41662672966870562" blue="0.33724091297000225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="Qt7-Fj-i4H" kind="push" id="7is-Yt-mj0"/>
-                            </connections>
-                        </button>
+                        <table alignment="left" id="P0H-ex-w0U">
+                            <items>
+                                <tableRow id="qJ3-u7-VIU">
+                                    <group key="rootItem" width="1" alignment="left" id="wMO-Tg-wzx">
+                                        <items>
+                                            <imageView alignment="left" verticalAlignment="center" image="cloud" catalog="system" id="lS3-jo-ZwM"/>
+                                            <label alignment="center" verticalAlignment="center" text="Live Sharing" textAlignment="right" id="bL0-Wk-1d5"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="75c-uB-v4o" kind="push" id="sgC-7E-66U"/>
+                                        </connections>
+                                    </group>
+                                </tableRow>
+                                <tableRow id="82Y-Bn-vM1">
+                                    <group key="rootItem" width="1" alignment="left" id="tYP-7A-ef8">
+                                        <items>
+                                            <imageView alignment="left" verticalAlignment="center" image="square.and.arrow.up" catalog="system" id="jvB-mM-Jcb"/>
+                                            <label alignment="center" verticalAlignment="center" text="Export File" id="Mct-h5-urH"/>
+                                        </items>
+                                    </group>
+                                </tableRow>
+                                <tableRow id="AmP-NR-8Iw">
+                                    <group key="rootItem" width="1" alignment="left" id="YWP-Wp-k8C">
+                                        <items>
+                                            <imageView alignment="left" verticalAlignment="center" image="delete.right" catalog="system" id="5H8-Ej-PSt"/>
+                                            <label alignment="center" verticalAlignment="center" text="Delete data" textAlignment="right" id="dV4-5c-taw">
+                                                <color key="textColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                        </items>
+                                        <connections>
+                                            <segue destination="Qt7-Fj-i4H" kind="push" id="uPh-AK-m1F"/>
+                                        </connections>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                 </controller>
             </objects>
@@ -158,4 +182,9 @@
             <point key="canvasLocation" x="683" y="749"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cloud" catalog="system" width="64" height="44"/>
+        <image name="delete.right" catalog="system" width="64" height="50"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+    </resources>
 </document>
