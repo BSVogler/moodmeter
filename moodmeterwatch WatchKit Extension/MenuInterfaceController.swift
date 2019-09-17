@@ -42,7 +42,12 @@ class MenuInterfaceController: WKInterfaceController {
 	override func table(_ table: WKInterfaceTable,
 						didSelectRowAt rowIndex: Int){
 		switch rowIndex {
-			case 0: pushController(withName: "Share", context: nil)
+			case 0:
+				if Model.shared.deviceHash == nil {
+					pushController(withName: "accept", context: nil)
+				} else {
+					pushController(withName: "Share", context: nil)
+				}
 			case 2: pushController(withName: "Delete", context: nil)
 			default: print("export not supported")
 		}

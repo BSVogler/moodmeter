@@ -11,7 +11,13 @@
             <objects>
                 <controller id="y63-SF-6rW" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
-                        <sceneKitScene alignment="left" id="w8w-4h-Igo"/>
+                        <sceneKitScene alignment="left" id="w8w-4h-Igo">
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer id="nIR-qV-Tbz"/>
+                                <swipeGestureRecognizer id="pcS-XY-mLq"/>
+                                <tapGestureRecognizer id="mJ9-9M-Bex"/>
+                            </gestureRecognizers>
+                        </sceneKitScene>
                     </items>
                     <connections>
                         <outlet property="scenekitscene" destination="w8w-4h-Igo" id="NCd-gk-B06"/>
@@ -142,17 +148,17 @@
             </objects>
             <point key="canvasLocation" x="683" y="360.5"/>
         </scene>
-        <!--Interface Controller-->
+        <!--accept-->
         <scene sceneID="Xc3-rF-SHs">
             <objects>
-                <controller id="dCT-hO-Ey5">
+                <controller identifier="accept" id="dCT-hO-Ey5">
                     <items>
                         <label alignment="left" text="By using the share feature you accept the terms and conditions." numberOfLines="4" id="pBq-J7-CZ2"/>
                         <button width="1" alignment="left" title="Accept" id="gAW-Li-Kec"/>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="849" y="31"/>
+            <point key="canvasLocation" x="888" y="79"/>
         </scene>
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
@@ -166,7 +172,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="1023" y="361"/>
+            <point key="canvasLocation" x="951" y="361"/>
         </scene>
         <!--Delete-->
         <scene sceneID="Q2X-HZ-rsd">
