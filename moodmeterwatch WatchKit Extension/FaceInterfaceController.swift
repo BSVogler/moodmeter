@@ -45,8 +45,9 @@ class FaceInterfaceController: WKInterfaceController {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
 		//connect the watchkit scene with the scene outlet
-		
-		scenekitscene.scene = Face().scene
+		if scenekitscene.scene == nil {
+			scenekitscene.scene = Face().scene
+		}
 	}
 	
 	override func didDeactivate() {

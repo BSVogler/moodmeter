@@ -19,14 +19,14 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="136" y="333"/>
+            <point key="canvasLocation" x="122" y="361"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Reminder! It is time to tell me your mood." numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
@@ -36,29 +36,55 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="-48" y="798"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Exhibit A" id="71U-CQ-QRm"/>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="598" y="800"/>
+            <point key="canvasLocation" x="-82" y="1227"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="How are you feeling?" id="AGy-cV-ovc"/>
+                        <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2"/>
+                        <button width="1" alignment="left" title=":-)" id="YtB-rs-Ei5"/>
+                        <button width="1" alignment="left" title=":-|" id="TOs-Z6-9aD"/>
+                        <button width="1" alignment="left" title=":-/" id="sKa-cM-83b"/>
+                        <button width="1" alignment="left" title=":-(" id="Sva-r4-aKA"/>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="630" y="578"/>
+            <point key="canvasLocation" x="248" y="882"/>
         </scene>
         <!--History Interface Controller-->
         <scene sceneID="lRt-Ob-uup">
             <objects>
                 <controller id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView alignment="left" id="fvI-Ho-qma"/>
-                        <label alignment="left" text="Label" id="asf-Eg-sXi"/>
+                        <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
+                        <label alignment="left" text="Monday" id="asf-Eg-sXi"/>
+                        <label alignment="right" text="--" id="EfS-Ii-yiQ"/>
+                        <label alignment="left" text="Tuesday" id="MeL-42-81e"/>
+                        <label alignment="right" text="--" id="i3g-d3-NFC"/>
+                        <label alignment="left" text="Wednesday" id="KtG-4Y-b2T"/>
+                        <label alignment="right" text="--" id="HLg-Sk-OQ9"/>
+                        <label alignment="left" text="Thursday" id="6M6-bW-d0m"/>
+                        <label alignment="right" text="--" id="Aig-vN-sbl"/>
+                        <label alignment="left" text="Friday" id="lLO-LO-dqb"/>
+                        <label alignment="right" text="--" id="Ofp-rT-Wuu"/>
+                        <label alignment="left" text="Saturday" id="Rc4-gV-vFR"/>
+                        <label alignment="right" text="--" id="7QB-p0-lDb"/>
+                        <label alignment="left" text="Sunday" id="e3z-17-LaG"/>
+                        <label alignment="right" text="--" id="NoC-oJ-lQb"/>
                     </items>
                     <connections>
                         <outlet property="diagram" destination="fvI-Ho-qma" id="0ri-e8-mr9"/>
@@ -67,20 +93,69 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="405" y="333"/>
+            <point key="canvasLocation" x="405" y="361.5"/>
         </scene>
         <!--Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
             <objects>
                 <controller id="hk2-7S-aFQ">
                     <items>
-                        <button width="1" alignment="left" title="Live Sharing" id="dL9-Ob-Omb"/>
+                        <button width="1" alignment="left" title="Live Sharing" id="dL9-Ob-Omb">
+                            <connections>
+                                <segue destination="75c-uB-v4o" kind="push" id="8R1-sK-zgc"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" title="Export File" id="7yE-uF-y5e"/>
-                        <button width="1" alignment="left" title="Delete data" id="cef-9p-9Ax"/>
+                        <button width="1" alignment="left" title="Delete data" id="cef-9p-9Ax">
+                            <color key="titleColor" red="1" green="0.41662672966870562" blue="0.33724091297000225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Qt7-Fj-i4H" kind="push" id="7is-Yt-mj0"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="670" y="318"/>
+            <point key="canvasLocation" x="683" y="361"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="Xc3-rF-SHs">
+            <objects>
+                <controller id="dCT-hO-Ey5">
+                    <items>
+                        <label alignment="left" text="By using the share feature you accept the terms and conditions." numberOfLines="4" id="pBq-J7-CZ2"/>
+                        <button width="1" alignment="left" title="Accept" id="gAW-Li-Kec"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="849" y="31"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="jNd-Lx-l3d">
+            <objects>
+                <controller id="75c-uB-v4o">
+                    <items>
+                        <label alignment="left" text="https://yoursharinglink" id="akC-im-BDa"/>
+                        <button width="1" alignment="left" title="Share" id="IMl-vd-k5g"/>
+                        <button width="1" alignment="left" title="New" id="S6S-tw-TA7"/>
+                        <button width="1" alignment="left" title="Delete and disable" id="JIE-57-wMI"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1023" y="361"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="Q2X-HZ-rsd">
+            <objects>
+                <controller id="Qt7-Fj-i4H">
+                    <items>
+                        <label alignment="left" text="This will permanently delet your local data on your watch and phone." numberOfLines="6" id="nHj-6m-sk8"/>
+                        <button width="1" alignment="left" title="Yes, delete." id="hks-V6-9eS">
+                            <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="683" y="749"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import YOChartImageKit
 
 class HistoryInterfaceController: WKInterfaceController {
 	
@@ -22,7 +23,19 @@ class HistoryInterfaceController: WKInterfaceController {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
 		//connect the watchkit scene with the scene outlet
+		
+		let chart = YOLineChartImage()
+		chart.strokeWidth = 3.0
+		chart.strokeColor = UIColor.red
+		chart.values = (0...10).map { _ in return NSNumber(value: arc4random_uniform(8)) }
+		chart.smooth = false
+		
 		let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+		let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
+		self.diagram.setImage(image)
+	}
+	
+	func getDiagram(frame: CGRect) -> UIImage? {
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, 1);
 		let context = UIGraphicsGetCurrentContext()
 		context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 0, alpha: 1))
@@ -35,13 +48,9 @@ class HistoryInterfaceController: WKInterfaceController {
 		strokeColor.setStroke()
 		//path.stroke()
 
-		var image2 = UIGraphicsGetImageFromCurrentImageContext();
+		let image2 = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
-		
-		self.diagram.setImage(image2)
-		//self.diagram.setHidden(true)
-		//setting this label makes the button dissapear
-		label.setText("lol")
+		return image2
 	}
 	
 	override func didDeactivate() {
