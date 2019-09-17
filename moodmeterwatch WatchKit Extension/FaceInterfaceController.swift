@@ -33,7 +33,10 @@ class FaceScene: WKInterfaceSCNScene {
 
 class FaceInterfaceController: WKInterfaceController {
 	let face = Face()
-	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene!
+	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene?
+	@IBOutlet weak var moodLabel: WKInterfaceLabel!
+	@IBOutlet weak var background: WKInterfaceGroup!
+	
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: Any) {
 		//mood 0 is only internal special case
@@ -78,8 +81,9 @@ class FaceInterfaceController: WKInterfaceController {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
 		//connect the watchkit scene with the scene outlet
-		if scenekitscene.scene == nil {
-			scenekitscene.scene = FaceScene().scene
+		if let interfacescene = scenekitscene,
+			interfacescene.scene == nil {
+			interfacescene.scene = FaceScene().scene
 		}
 	}
 	
@@ -89,6 +93,8 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	func refreshDisplay(){
+		moodLabel.setText(Face.getSmiley(mood: face.mood))
+		background.setBackgroundColor(Face.getColor(mood: face.mood))
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()

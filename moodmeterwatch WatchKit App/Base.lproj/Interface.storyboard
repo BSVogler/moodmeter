@@ -9,9 +9,15 @@
         <!--Face Interface Controller-->
         <scene sceneID="TbZ-OT-ec3">
             <objects>
-                <controller id="y63-SF-6rW" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
-                        <sceneKitScene alignment="left" id="w8w-4h-Igo">
+                        <sceneKitScene width="136" height="192" alignment="left" id="w8w-4h-Igo"/>
+                        <group width="1" height="1" alignment="left" verticalAlignment="center" radius="0.0" id="fQg-vE-5n1">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text=":-|" textAlignment="center" id="YPx-k5-wmb">
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                            </items>
                             <gestureRecognizers>
                                 <swipeGestureRecognizer direction="4" id="nIR-qV-Tbz">
                                     <connections>
@@ -29,9 +35,17 @@
                                     </connections>
                                 </tapGestureRecognizer>
                             </gestureRecognizers>
-                        </sceneKitScene>
+                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </group>
                     </items>
+                    <variation key="default">
+                        <mask key="items">
+                            <exclude reference="w8w-4h-Igo"/>
+                        </mask>
+                    </variation>
                     <connections>
+                        <outlet property="background" destination="fQg-vE-5n1" id="9H1-dK-FNR"/>
+                        <outlet property="moodLabel" destination="YPx-k5-wmb" id="QHn-YY-Pss"/>
                         <outlet property="scenekitscene" destination="w8w-4h-Igo" id="NCd-gk-B06"/>
                         <segue destination="ht7-Kj-mwk" kind="relationship" relationship="nextPage" id="UsM-FL-HKc"/>
                     </connections>
@@ -205,7 +219,7 @@
             <objects>
                 <controller id="6uN-VF-DS7" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
-                        <sceneKitScene alignment="left" id="Q6W-S0-xat">
+                        <sceneKitScene width="136" alignment="left" id="Q6W-S0-xat">
                             <gestureRecognizers>
                                 <swipeGestureRecognizer direction="4" id="vKs-zA-yY9">
                                     <connections>
