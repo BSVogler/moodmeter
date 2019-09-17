@@ -9,7 +9,7 @@
 import WatchKit
 import Foundation
 
-class Face: WKInterfaceSCNScene {
+class FaceScene: WKInterfaceSCNScene {
 	
 	override init() {
 		super.init()
@@ -46,7 +46,7 @@ class FaceInterfaceController: WKInterfaceController {
 		super.willActivate()
 		//connect the watchkit scene with the scene outlet
 		if scenekitscene.scene == nil {
-			scenekitscene.scene = Face().scene
+			scenekitscene.scene = FaceScene().scene
 		}
 	}
 	

@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Alamofire
+
+typealias Mood = Int
 
 class Model: Codable {
 	// MARK: Constants
