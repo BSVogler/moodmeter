@@ -27,7 +27,8 @@ class HistoryInterfaceController: WKInterfaceController {
 		let chart = YOLineChartImage()
 		chart.strokeWidth = 3.0
 		chart.strokeColor = UIColor.red
-		chart.values = (0...10).map { _ in return NSNumber(value: arc4random_uniform(8)) }
+		
+		chart.values = Model.shared.dataset.map {return NSNumber(value: $0.value)}
 		chart.smooth = false
 		
 		let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
