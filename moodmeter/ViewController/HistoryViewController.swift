@@ -19,7 +19,7 @@ class HistoryViewController: UIViewController {
 		formatter.timeStyle = .none
 		
 		let lines = sortedDates.map {
-			return formatter.string(from:$0)+" "+String(FaceViewController.getSmiley(mood: Model.shared.dataset[$0]!))
+			return formatter.string(from:$0)+" "+Face.getSmiley(mood: Model.shared.dataset[$0]!)
 		}
 		historyLabel.text = lines.joined(separator: "\n")
 	}

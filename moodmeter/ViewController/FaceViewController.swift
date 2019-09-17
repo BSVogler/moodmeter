@@ -75,6 +75,10 @@ class FaceViewController: UIViewController {
 		self.view.backgroundColor = Face.getColor(mood: face.mood)
 		innerView.backgroundColor = self.view.backgroundColor
 	}
+	
+	func setToYesterday(){
+		face.setToYesterday()
+	}
 }
 
 // MARK: - Extension
