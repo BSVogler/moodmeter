@@ -31,7 +31,7 @@ class Face: WKInterfaceSCNScene {
 	}
 }
 
-class InterfaceController: WKInterfaceController {
+class FaceInterfaceController: WKInterfaceController {
 	
 	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene!
 	
