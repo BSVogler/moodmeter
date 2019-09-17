@@ -16,6 +16,14 @@
 		A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63FD44B233031E700F9F592 /* HistoryViewController.swift */; };
 		A649C0172330F8130078BDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F2A232FF72D00737099 /* Assets.xcassets */; };
 		A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */; };
+		A649C01C233151A80078BDDB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A4542318835300EFF474 /* Model.swift */; };
+		A649C01D233151AB0078BDDB /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
+		A649C01F233154D50078BDDB /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01E233154D50078BDDB /* Face.swift */; };
+		A649C020233154D50078BDDB /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01E233154D50078BDDB /* Face.swift */; };
+		A649C0212331592D0078BDDB /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
+		A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */; };
+		A649C02423315A3C0078BDDB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
+		A649C02523315A460078BDDB /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */; };
 		A65D5F11232FF72B00737099 /* Moodmeter WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A65D5F17232FF72B00737099 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F15232FF72B00737099 /* Interface.storyboard */; };
 		A65D5F19232FF72C00737099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F18232FF72C00737099 /* Assets.xcassets */; };
@@ -28,7 +36,7 @@
 		A6B1F74323303EA000AF4B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */; };
 		A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
-		A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* Api.swift */; };
+		A6D237EE230CC5FC004DEBAE /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
 		A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */; };
 		A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFED230CA5150004AF6D /* RootViewController.swift */; };
@@ -98,6 +106,7 @@
 		A63AB971232BA5D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63FD44B233031E700F9F592 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
+		A649C01E233154D50078BDDB /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		A65D5F0D232FF72A00737099 /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodmeter WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F16232FF72B00737099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -114,7 +123,7 @@
 		A69A0EC7232ED99400E90E4E /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		A6D237ED230CC5FC004DEBAE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		A6EFAFE8230CA5150004AF6D /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,12 +204,22 @@
 		A632BBA22322EA95003FA040 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
-				A6D237ED230CC5FC004DEBAE /* Api.swift */,
+				A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */,
 				A6F2A4542318835300EFF474 /* Model.swift */,
 				A632BBA32322EAA7003FA040 /* Measurement.swift */,
+				A649C01E233154D50078BDDB /* Face.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A649C02323315A2C0078BDDB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
+				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
+				A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		A65D5F14232FF72B00737099 /* moodmeterwatch WatchKit App */ = {
@@ -270,11 +289,10 @@
 		A6EFAFEA230CA5150004AF6D /* moodmeter */ = {
 			isa = PBXGroup;
 			children = (
+				A649C02323315A2C0078BDDB /* API */,
 				A632BBA22322EA95003FA040 /* Model */,
 				A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */,
 				A695314723254A5100CA08CA /* ViewController */,
-				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
-				A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */,
 				A6EFAFF3230CA5150004AF6D /* Main.storyboard */,
 				A6EFAFF6230CA5170004AF6D /* Assets.xcassets */,
 				A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */,
@@ -533,11 +551,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A649C02423315A3C0078BDDB /* ApiError.swift in Sources */,
 				A65D5F3D232FF9D100737099 /* FaceInterfaceController.swift in Sources */,
 				A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */,
+				A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */,
 				A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */,
+				A649C01C233151A80078BDDB /* Model.swift in Sources */,
+				A649C02523315A460078BDDB /* ApiRequests.swift in Sources */,
+				A649C0212331592D0078BDDB /* MoodAPIjsonHttpClient.swift in Sources */,
+				A649C020233154D50078BDDB /* Face.swift in Sources */,
 				A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */,
 				A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */,
+				A649C01D233151AB0078BDDB /* Measurement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,8 +577,9 @@
 				A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */,
 				A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */,
 				A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */,
+				A649C01F233154D50078BDDB /* Face.swift in Sources */,
 				A6F2A4552318835300EFF474 /* Model.swift in Sources */,
-				A6D237EE230CC5FC004DEBAE /* Api.swift in Sources */,
+				A6D237EE230CC5FC004DEBAE /* ApiRequests.swift in Sources */,
 				A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */,
 				A69A0EC8232ED99400E90E4E /* AnalysisViewController.swift in Sources */,
 				A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */,
