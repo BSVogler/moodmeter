@@ -13,9 +13,21 @@
                     <items>
                         <sceneKitScene alignment="left" id="w8w-4h-Igo">
                             <gestureRecognizers>
-                                <swipeGestureRecognizer id="nIR-qV-Tbz"/>
-                                <swipeGestureRecognizer id="pcS-XY-mLq"/>
-                                <tapGestureRecognizer id="mJ9-9M-Bex"/>
+                                <swipeGestureRecognizer direction="4" id="nIR-qV-Tbz">
+                                    <connections>
+                                        <action selector="swipeUp:" destination="y63-SF-6rW" id="0Ti-jA-66l"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer direction="8" id="pcS-XY-mLq">
+                                    <connections>
+                                        <action selector="swipeDown:" destination="y63-SF-6rW" id="kz6-bM-Owe"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <tapGestureRecognizer id="mJ9-9M-Bex">
+                                    <connections>
+                                        <action selector="tapped:" destination="y63-SF-6rW" id="Dmp-kP-6en"/>
+                                    </connections>
+                                </tapGestureRecognizer>
                             </gestureRecognizers>
                         </sceneKitScene>
                     </items>
@@ -47,7 +59,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target">
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodmeter_WatchKit_App" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="Exhibit A" id="71U-CQ-QRm"/>
                     </items>
@@ -58,7 +70,7 @@
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="moodmeterwatch_WatchKit_App" customModuleProvider="target">
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodmeter_WatchKit_App" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="How are you feeling?" id="AGy-cV-ovc"/>
                         <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2"/>
@@ -158,7 +170,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="888" y="79"/>
+            <point key="canvasLocation" x="811" y="24"/>
         </scene>
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
@@ -187,6 +199,39 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="683" y="749"/>
+        </scene>
+        <!--Face Interface Controller-->
+        <scene sceneID="Z0W-ws-WmF">
+            <objects>
+                <controller id="6uN-VF-DS7" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                    <items>
+                        <sceneKitScene alignment="left" id="Q6W-S0-xat">
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer direction="4" id="vKs-zA-yY9">
+                                    <connections>
+                                        <action selector="swipeUp:" destination="6uN-VF-DS7" id="imY-wZ-RE6"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer direction="8" id="21R-sI-Tg1">
+                                    <connections>
+                                        <action selector="swipeDown:" destination="6uN-VF-DS7" id="Ucx-94-8qi"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <tapGestureRecognizer id="HYG-DA-9kV">
+                                    <connections>
+                                        <action selector="tapped:" destination="6uN-VF-DS7" id="PeF-o8-tun"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </sceneKitScene>
+                    </items>
+                    <connections>
+                        <outlet property="scenekitscene" destination="Q6W-S0-xat" id="qvX-HT-iHf"/>
+                        <segue destination="y63-SF-6rW" kind="relationship" relationship="nextPage" id="rxp-6a-rhJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-315" y="361"/>
         </scene>
     </scenes>
     <resources>

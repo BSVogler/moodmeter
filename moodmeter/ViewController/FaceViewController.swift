@@ -20,13 +20,30 @@ class FaceViewController: UIViewController {
 	@IBOutlet weak var dataLabel: UILabel!
 	@IBOutlet weak var innerView: UIView!
 	@IBOutlet weak var moodLabel: UILabel!
+	
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
-		increaseMood()
+		//mood 0 is only internal special case
+		if face.mood == 0 {
+			face.mood = 4
+		} else if face.mood < Face.moodToText.count-1 {
+			face.mood += 1
+		} else {
+			return
+		}
+		refreshDisplay()
 	}
 	
 	@IBAction func swipeDown(_ sender: Any) {
-		decreaseMood()
+		//mood 0 is only internal special case
+		if face.mood == 0 {
+			face.mood = 2
+		} else if face.mood > 1 {
+			face.mood -= 1
+		} else {
+			return
+		}
+		refreshDisplay()
 	}
 	
 	@IBAction func tapped(_ sender: Any) {
@@ -40,37 +57,12 @@ class FaceViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.dataLabel!.text = topLabel
+		face.mood = Model.shared.dataset[face.date] ?? 0
 		refreshDisplay()
 	}
 	
 	// MARK: Functions
-	func increaseMood(){
-		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 4
-		} else if face.mood < Face.moodToText.count-1 {
-			face.mood += 1
-		} else {
-			return
-		}
-		refreshDisplay()
-	}
-	
-	func decreaseMood(){
-		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 2
-		} else if face.mood > 1 {
-			face.mood -= 1
-		} else {
-			return
-		}
-		refreshDisplay()
-	}
-
-
 	func refreshDisplay(){
-		face.mood = Model.shared.dataset[face.date] ?? 0
 		moodLabel.text = Face.getSmiley(mood: face.mood)
 		self.view.backgroundColor = Face.getColor(mood: face.mood)
 		innerView.backgroundColor = self.view.backgroundColor

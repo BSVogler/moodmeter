@@ -32,9 +32,42 @@ class FaceScene: WKInterfaceSCNScene {
 }
 
 class FaceInterfaceController: WKInterfaceController {
-	
+	let face = Face()
 	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene!
+	// MARK: IBActions
+	@IBAction func swipeUp(_ sender: Any) {
+		//mood 0 is only internal special case
+		if face.mood == 0 {
+			face.mood = 4
+		} else if face.mood < Face.moodToText.count-1 {
+			face.mood += 1
+		} else {
+			return
+		}
+		refreshDisplay()
+	}
 	
+	@IBAction func swipeDown(_ sender: Any) {
+		//mood 0 is only internal special case
+		if face.mood == 0 {
+			face.mood = 2
+		} else if face.mood > 1 {
+			face.mood -= 1
+		} else {
+			return
+		}
+		refreshDisplay()
+	}
+	
+	@IBAction func tapped(_ sender: Any) {
+		if face.mood == 0 {
+			face.mood = 3
+			refreshDisplay()
+		}
+	}
+	
+	
+	// MARK: Overrides
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
 		
@@ -53,6 +86,13 @@ class FaceInterfaceController: WKInterfaceController {
 	override func didDeactivate() {
 		// This method is called when watch view controller is no longer visible
 		super.didDeactivate()
+	}
+	
+	func refreshDisplay(){
+//		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
+//		let material = SCNMaterial.()
+//		material.diffuse.contents = NSColor()
+//		filter?.geometry?.replaceMaterial(at: 0, with: material)
 	}
 	
 }
