@@ -102,7 +102,7 @@
                     <items>
                         <table alignment="left" id="P0H-ex-w0U">
                             <items>
-                                <tableRow id="qJ3-u7-VIU">
+                                <tableRow identifier="livesharing" id="qJ3-u7-VIU">
                                     <group key="rootItem" width="1" alignment="left" id="wMO-Tg-wzx">
                                         <items>
                                             <imageView alignment="left" verticalAlignment="center" image="cloud" catalog="system" id="lS3-jo-ZwM"/>
@@ -113,7 +113,7 @@
                                         </connections>
                                     </group>
                                 </tableRow>
-                                <tableRow id="82Y-Bn-vM1">
+                                <tableRow identifier="exporting" id="82Y-Bn-vM1">
                                     <group key="rootItem" width="1" alignment="left" id="tYP-7A-ef8">
                                         <items>
                                             <imageView alignment="left" verticalAlignment="center" image="square.and.arrow.up" catalog="system" id="jvB-mM-Jcb"/>
@@ -121,7 +121,7 @@
                                         </items>
                                     </group>
                                 </tableRow>
-                                <tableRow id="AmP-NR-8Iw">
+                                <tableRow identifier="deleting" id="AmP-NR-8Iw">
                                     <group key="rootItem" width="1" alignment="left" id="YWP-Wp-k8C">
                                         <items>
                                             <imageView alignment="left" verticalAlignment="center" image="delete.right" catalog="system" id="5H8-Ej-PSt"/>
