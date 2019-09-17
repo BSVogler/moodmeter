@@ -15,6 +15,7 @@
 		A63AB970232BA39600303AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A63AB96E232BA39600303AEF /* Localizable.strings */; };
 		A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63FD44B233031E700F9F592 /* HistoryViewController.swift */; };
 		A649C0172330F8130078BDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F2A232FF72D00737099 /* Assets.xcassets */; };
+		A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */; };
 		A65D5F11232FF72B00737099 /* Moodmeter WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A65D5F17232FF72B00737099 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F15232FF72B00737099 /* Interface.storyboard */; };
 		A65D5F19232FF72C00737099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F18232FF72C00737099 /* Assets.xcassets */; };
@@ -96,6 +97,7 @@
 		A63AB96F232BA39600303AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63AB971232BA5D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63FD44B233031E700F9F592 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
 		A65D5F0D232FF72A00737099 /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodmeter WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F16232FF72B00737099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */,
 				A65D5F3A232FF9D000737099 /* FaceInterfaceController.swift */,
+				A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */,
 				A63FD44B233031E700F9F592 /* HistoryViewController.swift */,
 				A65D5F39232FF9D000737099 /* NotificationController.swift */,
 				A6049FDC232FFFF8003EF44F /* body.dae */,
@@ -532,6 +535,7 @@
 			files = (
 				A65D5F3D232FF9D100737099 /* FaceInterfaceController.swift in Sources */,
 				A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */,
+				A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */,
 				A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */,
 				A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */,
 			);
