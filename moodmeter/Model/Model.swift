@@ -11,6 +11,16 @@ import Alamofire
 
 typealias Mood = Int
 
+extension Mood {
+	func getSmiley() -> String {
+		return Face.moodToText[self]
+	}
+	
+	func getColor() -> UIColor {
+		return Face.moodToColor[self]
+	}
+}
+
 class Model: Codable {
 	// MARK: Constants
 	public enum Constants {

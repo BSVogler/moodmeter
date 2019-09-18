@@ -63,8 +63,8 @@ class FaceViewController: UIViewController {
 	
 	// MARK: Functions
 	func refreshDisplay(){
-		moodLabel.text = Face.getSmiley(mood: face.mood)
-		self.view.backgroundColor = Face.getColor(mood: face.mood)
+		moodLabel.text = face.getSmiley()
+		self.view.backgroundColor = face.getColor()
 		innerView.backgroundColor = self.view.backgroundColor
 	}
 	
