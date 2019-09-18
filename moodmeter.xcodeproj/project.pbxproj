@@ -107,6 +107,9 @@
 		A63FD44B233031E700F9F592 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
 		A649C01E233154D50078BDDB /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		A65256102332930A002F8B25 /* Moodmeter WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		A652561123329334002F8B25 /* Moodmeter WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit App.entitlements"; sourceTree = "<group>"; };
+		A652561223329358002F8B25 /* Moodmeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Moodmeter.entitlements; path = Moodmeter/Moodmeter.entitlements; sourceTree = "<group>"; };
 		A65D5F0D232FF72A00737099 /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodmeter WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F16232FF72B00737099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		A65D5F14232FF72B00737099 /* moodmeterwatch WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				A652561123329334002F8B25 /* Moodmeter WatchKit App.entitlements */,
 				A65D5F15232FF72B00737099 /* Interface.storyboard */,
 				A65D5F18232FF72C00737099 /* Assets.xcassets */,
 				A65D5F1A232FF72C00737099 /* Info.plist */,
@@ -235,6 +239,7 @@
 		A65D5F23232FF72C00737099 /* moodmeterwatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A65256102332930A002F8B25 /* Moodmeter WatchKit Extension.entitlements */,
 				A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */,
 				A65D5F3A232FF9D000737099 /* FaceInterfaceController.swift */,
 				A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */,
@@ -266,6 +271,7 @@
 		A6EFAFDF230CA5150004AF6D = {
 			isa = PBXGroup;
 			children = (
+				A652561223329358002F8B25 /* Moodmeter.entitlements */,
 				A6EFAFEA230CA5150004AF6D /* moodmeter */,
 				A65D5F14232FF72B00737099 /* moodmeterwatch WatchKit App */,
 				A65D5F23232FF72C00737099 /* moodmeterwatch WatchKit Extension */,
@@ -646,6 +652,7 @@
 			baseConfigurationReference = 575CB08317DF2D5F092B219D /* Pods-moodmeterwatch WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "moodmeterwatch WatchKit Extension/Moodmeter WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				INFOPLIST_FILE = "moodmeterwatch WatchKit Extension/Info.plist";
@@ -669,6 +676,7 @@
 			baseConfigurationReference = 3C7A80A7A502C62AC94B2E52 /* Pods-moodmeterwatch WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "moodmeterwatch WatchKit Extension/Moodmeter WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				INFOPLIST_FILE = "moodmeterwatch WatchKit Extension/Info.plist";
@@ -692,6 +700,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "moodmeterwatch WatchKit App/Moodmeter WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
@@ -711,6 +720,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "moodmeterwatch WatchKit App/Moodmeter WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
@@ -874,6 +884,7 @@
 			baseConfigurationReference = DAD9A8A3E978600D492C4548 /* Pods-Moodmeter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moodmeter/Moodmeter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				INFOPLIST_FILE = moodmeter/Info.plist;
@@ -894,6 +905,7 @@
 			baseConfigurationReference = 0E0A49D8D273967120EB4570 /* Pods-Moodmeter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moodmeter/Moodmeter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				INFOPLIST_FILE = moodmeter/Info.plist;
