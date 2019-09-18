@@ -62,6 +62,15 @@ class Model: Codable {
 		}
 	}
 	
+	var sharingURLShort: String? {
+		get{
+			guard let sharingURL = self.sharingURL else {
+				return nil
+			}
+			return (sharingURL.host ?? "")+sharingURL.path
+		}
+	}
+	
 	var measurements: [Measurement] {
 		get {
 			return dataset.map{Measurement(day: $0.key, mood: $0.value)}

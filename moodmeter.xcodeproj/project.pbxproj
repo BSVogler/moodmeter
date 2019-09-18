@@ -24,6 +24,7 @@
 		A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */; };
 		A649C02423315A3C0078BDDB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
 		A649C02523315A460078BDDB /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */; };
+		A65256152332CC3A002F8B25 /* ShareInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65256142332CC3A002F8B25 /* ShareInterfaceController.swift */; };
 		A65D5F11232FF72B00737099 /* Moodmeter WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A65D5F17232FF72B00737099 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F15232FF72B00737099 /* Interface.storyboard */; };
 		A65D5F19232FF72C00737099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F18232FF72C00737099 /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		A65256102332930A002F8B25 /* Moodmeter WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		A652561123329334002F8B25 /* Moodmeter WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit App.entitlements"; sourceTree = "<group>"; };
 		A652561223329358002F8B25 /* Moodmeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Moodmeter.entitlements; path = Moodmeter/Moodmeter.entitlements; sourceTree = "<group>"; };
+		A65256142332CC3A002F8B25 /* ShareInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInterfaceController.swift; sourceTree = "<group>"; };
 		A65D5F0D232FF72A00737099 /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F10232FF72B00737099 /* Moodmeter WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodmeter WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D5F16232FF72B00737099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				A65D5F3A232FF9D000737099 /* FaceInterfaceController.swift */,
 				A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */,
 				A63FD44B233031E700F9F592 /* HistoryViewController.swift */,
+				A65256142332CC3A002F8B25 /* ShareInterfaceController.swift */,
 			);
 			path = InterfaceController;
 			sourceTree = "<group>";
@@ -251,9 +254,7 @@
 			children = (
 				A65256102332930A002F8B25 /* Moodmeter WatchKit Extension.entitlements */,
 				A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */,
-				A65D5F3A232FF9D000737099 /* FaceInterfaceController.swift */,
-				A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */,
-				A63FD44B233031E700F9F592 /* HistoryViewController.swift */,
+				A65256132332CC1B002F8B25 /* InterfaceController */,
 				A65D5F39232FF9D000737099 /* NotificationController.swift */,
 				A6049FDC232FFFF8003EF44F /* body.dae */,
 				A6049FDE2330011B003EF44F /* body.scn */,
@@ -570,6 +571,7 @@
 				A649C02423315A3C0078BDDB /* ApiError.swift in Sources */,
 				A65D5F3D232FF9D100737099 /* FaceInterfaceController.swift in Sources */,
 				A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */,
+				A65256152332CC3A002F8B25 /* ShareInterfaceController.swift in Sources */,
 				A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */,
 				A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */,
 				A649C01C233151A80078BDDB /* Model.swift in Sources */,

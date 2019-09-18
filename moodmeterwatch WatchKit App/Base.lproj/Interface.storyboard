@@ -184,13 +184,18 @@
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
             <objects>
-                <controller identifier="Share" id="75c-uB-v4o">
+                <controller identifier="Share" id="75c-uB-v4o" customClass="ShareInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="https://yoursharinglink" id="akC-im-BDa"/>
-                        <button width="1" alignment="left" title="Share" id="IMl-vd-k5g"/>
+                        <label alignment="center" text="..." textAlignment="center" numberOfLines="3" id="akC-im-BDa"/>
+                        <button width="1" alignment="left" title="Share Link" id="IMl-vd-k5g"/>
                         <button width="1" alignment="left" title="New" id="S6S-tw-TA7"/>
-                        <button width="1" alignment="left" title="Delete and disable" id="JIE-57-wMI"/>
+                        <button width="1" alignment="left" title="Delete and Disable" id="JIE-57-wMI">
+                            <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
                     </items>
+                    <connections>
+                        <outlet property="hashLabel" destination="akC-im-BDa" id="O1p-PM-7lA"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="951" y="361"/>
