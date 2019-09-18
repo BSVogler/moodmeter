@@ -79,4 +79,25 @@ class Face {
 		isYesterday = true
 		date = yesterday ?? date
 	}
+	
+	func getSmiley() -> String {
+		return Face.moodToText[mood]
+	}
+	
+	func getColor() -> UIColor {
+		if isYesterday{
+			var hue: CGFloat = 0.0
+			let hueP = UnsafeMutablePointer<CGFloat>(&hue)
+			var saturation: CGFloat = 0.0
+			let saturationP = UnsafeMutablePointer<CGFloat>(&saturation)
+			var brightness: CGFloat = 0.0
+			let brightnessP = UnsafeMutablePointer<CGFloat>(&brightness)
+			var alpha: CGFloat = 0.0
+			let alphaP = UnsafeMutablePointer<CGFloat>(&alpha)
+			Face.moodToColor[mood].getHue(hueP, saturation: saturationP, brightness: brightnessP, alpha: alphaP)
+			return UIColor(hue: hueP.pointee, saturation: saturationP.pointee, brightness: brightnessP.pointee*0.7, alpha: alphaP.pointee)
+		}
+		return Face.moodToColor[mood]
+	}
+	
 }
