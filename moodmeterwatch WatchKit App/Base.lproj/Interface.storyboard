@@ -156,8 +156,8 @@
                                 <tableRow identifier="exporting" id="82Y-Bn-vM1">
                                     <group key="rootItem" width="1" alignment="left" id="tYP-7A-ef8">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="square.and.arrow.up" catalog="system" id="jvB-mM-Jcb"/>
-                                            <label alignment="center" verticalAlignment="center" text="Export File" id="Mct-h5-urH"/>
+                                            <imageView alignment="left" verticalAlignment="center" image="stopwatch" catalog="system" id="jvB-mM-Jcb"/>
+                                            <label alignment="center" verticalAlignment="center" text="Reminder" id="Mct-h5-urH"/>
                                         </items>
                                     </group>
                                 </tableRow>
@@ -187,8 +187,11 @@
                 <controller identifier="Share" id="75c-uB-v4o" customClass="ShareInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
                         <label alignment="center" text="..." textAlignment="center" numberOfLines="3" id="akC-im-BDa"/>
-                        <button width="1" alignment="left" title="Share Link" id="IMl-vd-k5g"/>
-                        <button width="1" alignment="left" title="New" id="S6S-tw-TA7"/>
+                        <button width="1" alignment="left" title="New Link" id="S6S-tw-TA7">
+                            <connections>
+                                <action selector="generateNewLink" destination="75c-uB-v4o" id="hgH-pR-51x"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" title="Delete and Disable" id="JIE-57-wMI">
                             <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
@@ -198,7 +201,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="951" y="361"/>
+            <point key="canvasLocation" x="948" y="251"/>
         </scene>
         <!--Face Interface Controller-->
         <scene sceneID="Z0W-ws-WmF">
@@ -233,10 +236,17 @@
             </objects>
             <point key="canvasLocation" x="-315" y="361"/>
         </scene>
+        <!--Reminder-->
+        <scene sceneID="IZF-jt-hU2">
+            <objects>
+                <controller identifier="Reminder" id="nHo-9K-4H5"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="508"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cloud" catalog="system" width="64" height="44"/>
         <image name="delete.right" catalog="system" width="64" height="50"/>
-        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+        <image name="stopwatch" catalog="system" width="60" height="64"/>
     </resources>
 </document>

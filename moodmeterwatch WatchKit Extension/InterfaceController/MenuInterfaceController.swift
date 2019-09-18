@@ -23,19 +23,20 @@ class MenuInterfaceController: WKInterfaceController {
 		// Configure interface objects here.
 		table.setNumberOfRows(3, withRowType: "menuItem")
 		
-		let item0 = self.table.rowController(at: 0) as! MyRowController
+		let sharing = self.table.rowController(at: 0) as! MyRowController
+		sharing.itemImage.setImage(UIImage(systemName: "cloud"))
+		sharing.itemLabel.setText("Live sharing")
 		
-		item0.itemImage.setImage(UIImage(systemName: "cloud"))
-		item0.itemLabel.setText("Live sharing")
+		//let export = self.table.rowController(at: 1) as! MyRowController
+		//export.itemImage.setImage(UIImage(systemName: "square.and.arrow.up"))
+		//export.itemLabel.setText("Export File")
 		
-		let item1 = self.table.rowController(at: 1) as! MyRowController
-		
-		item1.itemImage.setImage(UIImage(systemName: "square.and.arrow.up"))
-		item1.itemLabel.setText("Export File")
+		let reminder = self.table.rowController(at: 1) as! MyRowController
+		reminder.itemImage.setImage(UIImage(systemName: "square.and.arrow.up"))
+		reminder.itemLabel.setText("Reminder")
 		
 		let item2 = self.table.rowController(at: 2) as! MyRowController
-		
-		item2.itemImage.setImage(UIImage(systemName: "delete.right"))
+		item2.itemImage.setImage(UIImage(systemName: "stopwatch"))
 		item2.itemLabel.setText("Delete data")
 		item2.itemLabel.setTextColor(#colorLiteral(red: 1, green: 0.4156862745, blue: 0.337254902, alpha: 1))
 	}
@@ -54,6 +55,8 @@ class MenuInterfaceController: WKInterfaceController {
 			} else {
 				pushController(withName: "Share", context: nil)
 			}
+		case 1:
+			self.pushController(withName: "Reminder", context: nil)
 		case 2:
 			let accept = WKAlertAction(title: "Yes, delete", style: .destructive) {
 			}
