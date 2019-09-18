@@ -97,16 +97,33 @@
             </objects>
             <point key="canvasLocation" x="248" y="882"/>
         </scene>
-        <!--History Interface Controller-->
+        <!--History-->
         <scene sceneID="lRt-Ob-uup">
             <objects>
-                <controller id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                <controller identifier="History" id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="center" id="OH9-aY-Jgs">
                             <items>
-                                <button width="40" height="25" alignment="left" verticalAlignment="center" title="W" id="nMt-3O-QA4"/>
-                                <button width="40" height="25" alignment="center" title="M" id="eKH-cD-cn9"/>
-                                <button width="40" height="25" alignment="right" title="Y" id="Vbp-c2-Y0u"/>
+                                <button width="0.33000000000000002" alignment="center" verticalAlignment="center" title="W" id="nMt-3O-QA4">
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                    <connections>
+                                        <action selector="weekButtonTap" destination="ht7-Kj-mwk" id="aiB-KE-7oE"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33300000000000002" alignment="center" title="M" id="eKH-cD-cn9">
+                                    <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                    <connections>
+                                        <action selector="monthButtonTap" destination="ht7-Kj-mwk" id="pQo-tY-RGu"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33000000000000002" alignment="center" title="Y" id="Vbp-c2-Y0u">
+                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                    <connections>
+                                        <action selector="yearButtonTap" destination="ht7-Kj-mwk" id="0pL-9n-vPF"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
@@ -128,11 +145,14 @@
                     <connections>
                         <outlet property="diagram" destination="fvI-Ho-qma" id="0ri-e8-mr9"/>
                         <outlet property="label" destination="asf-Eg-sXi" id="sOu-xY-Hm4"/>
+                        <outlet property="monthButton" destination="eKH-cD-cn9" id="GXy-kh-war"/>
+                        <outlet property="weekButton" destination="nMt-3O-QA4" id="xFh-wo-rpt"/>
+                        <outlet property="yearButton" destination="Vbp-c2-Y0u" id="bbF-aM-6dQ"/>
                         <segue destination="hk2-7S-aFQ" kind="relationship" relationship="nextPage" id="dz3-67-LaW"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="405" y="361.5"/>
+            <point key="canvasLocation" x="404.30434782608694" y="360.87053571428572"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
@@ -228,6 +248,11 @@
                             </gestureRecognizers>
                         </sceneKitScene>
                     </items>
+                    <variation key="default">
+                        <mask key="items">
+                            <exclude reference="Q6W-S0-xat"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outlet property="scenekitscene" destination="Q6W-S0-xat" id="qvX-HT-iHf"/>
                         <segue destination="y63-SF-6rW" kind="relationship" relationship="nextPage" id="rxp-6a-rhJ"/>
@@ -239,7 +264,11 @@
         <!--Reminder-->
         <scene sceneID="IZF-jt-hU2">
             <objects>
-                <controller identifier="Reminder" id="nHo-9K-4H5"/>
+                <controller identifier="Reminder" id="nHo-9K-4H5">
+                    <items>
+                        <picker height="100" alignment="left" id="qHy-2r-1w2"/>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="948" y="508"/>
         </scene>
