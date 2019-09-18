@@ -85,7 +85,7 @@ class Face {
 			var alpha: CGFloat = 0.0
 			let alphaP = UnsafeMutablePointer<CGFloat>(&alpha)
 			Face.moodToColor[mood].getHue(hueP, saturation: saturationP, brightness: brightnessP, alpha: alphaP)
-			return UIColor(hue: hueP.pointee, saturation: saturationP.pointee, brightness: brightnessP.pointee*0.7, alpha: alphaP.pointee)
+			return UIColor(hue: hue, saturation: saturation, brightness: brightness*0.7, alpha: alpha)
 		}
 		return Face.moodToColor[mood]
 	}
