@@ -102,6 +102,13 @@
             <objects>
                 <controller id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
+                        <group width="1" alignment="center" id="OH9-aY-Jgs">
+                            <items>
+                                <button width="40" height="25" alignment="left" verticalAlignment="center" title="W" id="nMt-3O-QA4"/>
+                                <button width="40" height="25" alignment="center" title="M" id="eKH-cD-cn9"/>
+                                <button width="40" height="25" alignment="right" title="Y" id="Vbp-c2-Y0u"/>
+                            </items>
+                        </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
                         <label alignment="left" text="Monday" id="asf-Eg-sXi"/>
                         <label alignment="right" text="--" id="EfS-Ii-yiQ"/>
@@ -174,18 +181,6 @@
             </objects>
             <point key="canvasLocation" x="683" y="360.5"/>
         </scene>
-        <!--accept-->
-        <scene sceneID="Xc3-rF-SHs">
-            <objects>
-                <controller identifier="accept" id="dCT-hO-Ey5">
-                    <items>
-                        <label alignment="left" text="By using the share feature you accept the terms and conditions." numberOfLines="4" id="pBq-J7-CZ2"/>
-                        <button width="1" alignment="left" title="Accept" id="gAW-Li-Kec"/>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="811" y="24"/>
-        </scene>
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
             <objects>
@@ -199,20 +194,6 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="951" y="361"/>
-        </scene>
-        <!--Delete-->
-        <scene sceneID="Q2X-HZ-rsd">
-            <objects>
-                <controller identifier="Delete" id="Qt7-Fj-i4H">
-                    <items>
-                        <label alignment="left" text="This will permanently delet your local data on your watch and phone." numberOfLines="6" id="nHj-6m-sk8"/>
-                        <button width="1" alignment="left" title="Yes, delete." id="hks-V6-9eS">
-                            <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </button>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="683" y="749"/>
         </scene>
         <!--Face Interface Controller-->
         <scene sceneID="Z0W-ws-WmF">

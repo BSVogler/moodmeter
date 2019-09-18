@@ -42,14 +42,24 @@ class MenuInterfaceController: WKInterfaceController {
 	override func table(_ table: WKInterfaceTable,
 						didSelectRowAt rowIndex: Int){
 		switch rowIndex {
-			case 0:
-				if Model.shared.deviceHash == nil {
-					pushController(withName: "accept", context: nil)
-				} else {
-					pushController(withName: "Share", context: nil)
+		case 0:
+			if Model.shared.deviceHash == nil {
+				let read = WKAlertAction(title: "Read", style: .default) {
+					
 				}
-			case 2: pushController(withName: "Delete", context: nil)
-			default: print("export not supported")
+				let accept = WKAlertAction(title: "Accept", style: .default) {
+					self.pushController(withName: "Share", context: nil)
+				}
+				presentAlert(withTitle: "Terms and conditions", message: "By using the share feature you accept the terms and conditions.", preferredStyle: .actionSheet, actions: [read, accept])
+			} else {
+				pushController(withName: "Share", context: nil)
+			}
+		case 2:
+			let accept = WKAlertAction(title: "Yes, delete", style: .destructive) {
+			}
+			presentAlert(withTitle: "Delete data?", message: "This will permanently delete your local data on your watch and phone.", preferredStyle: .actionSheet, actions: [ accept])
+			_ = Model.shared.eraseData()
+		default: print("export not supported")
 		}
 		
 	}
