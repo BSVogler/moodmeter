@@ -661,7 +661,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "Moodmeter WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -685,7 +685,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "Moodmeter WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -705,7 +705,7 @@
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "moodmeterwatch WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter.watchkitapp;
 				PRODUCT_NAME = "Moodmeter WatchKit App";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -725,7 +725,7 @@
 				DEVELOPMENT_TEAM = 8DQDR268Z4;
 				IBSC_MODULE = moodmeterwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "moodmeterwatch WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeterwatch.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodmeter.watchkitapp;
 				PRODUCT_NAME = "Moodmeter WatchKit App";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

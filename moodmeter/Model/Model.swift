@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit.UIColor
 
 typealias Mood = Int
 

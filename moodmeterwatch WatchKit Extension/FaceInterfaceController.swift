@@ -93,8 +93,8 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	func refreshDisplay(){
-		moodLabel.setText(Face.getSmiley(mood: face.mood))
-		background.setBackgroundColor(Face.getColor(mood: face.mood))
+		moodLabel.setText(face.mood.getSmiley())
+		background.setBackgroundColor(face.mood.getColor())
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()
