@@ -205,6 +205,9 @@
                         </button>
                         <button width="1" alignment="left" title="Delete and Disable" id="JIE-57-wMI">
                             <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="delete" destination="75c-uB-v4o" id="zgK-iD-g0V"/>
+                            </connections>
                         </button>
                     </items>
                     <connections>

@@ -28,6 +28,18 @@ class ShareInterfaceController: WKInterfaceController {
 			}
 		}
 	}
+	@IBAction func delete() {
+		let accept = WKAlertAction(title: NSLocalizedString("Yes, delete", comment: ""), style: .destructive) {
+			//wait for confirm from server
+			MoodAPIjsonHttpClient.shared.delete { res in
+				print (res.debugDescription)
+				Model.shared.disableSharing()
+				self.pop()
+			}
+		}
+		presentAlert(withTitle: NSLocalizedString("Disable?", comment: ""), message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: ""), preferredStyle: .actionSheet, actions: [ accept])
+	}
+	
 	override func awake(withContext context: Any?) {
 		if Model.shared.sharingURLShort != nil {
 			hashLabel.setText(Model.shared.sharingURLShort)
