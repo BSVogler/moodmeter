@@ -64,11 +64,11 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
-		if let oldHash = Model.shared.deviceHash {
+		if let oldHash = Model.shared.userHash {
 			shareLinkField.text = "..."
 			//generate new sharing url
-			Model.shared.generateSharingURL()
-			MoodAPIjsonHttpClient.shared.moveHash(old: oldHash) { res in
+			Model.shared.generateHash()
+			Model.shared.move(Model.shared.userHash){ res in
 				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
 			}
 		} else {
@@ -127,7 +127,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		activityIndicator.isHidden = true
-		if Model.shared.deviceHash == nil {
+		if Model.shared.userHash == nil {
 			showSharingDeactivated()
 		} else {
 			showSharingActivated()

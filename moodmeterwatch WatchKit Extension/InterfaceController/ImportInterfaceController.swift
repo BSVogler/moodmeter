@@ -10,10 +10,12 @@ import Foundation
 import WatchKit
 
 class ImportInterfaceController: WKInterfaceController {
+	var enteredHash: String = ""
 	
 	@IBOutlet weak var importButton: WKInterfaceButton!
 	
 	@IBAction func codeChanged(_ value: NSString?) {
+		enteredHash = (value ?? "")  as String 
 		if Model.hashlength==value?.length {
 			importButton.setEnabled(true)
 		} else {
@@ -22,6 +24,13 @@ class ImportInterfaceController: WKInterfaceController {
 		
 	}
 	@IBAction func importButtonPressed() {
+		Model.shared.importHash(enteredHash) {
+			self.pop()
+		}
+	}
+	
+	override func awake(withContext context: Any?) {
+		importButton.setEnabled(false)
 	}
 	
 }
