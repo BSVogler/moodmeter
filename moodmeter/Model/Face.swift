@@ -26,30 +26,23 @@ class Face {
 		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 	
-	var mood: Mood {
-		set {
-			_mood = newValue
+	var mood: Mood = 0 {
+		didSet {
 			moodChanged()
 		}
-		get {return _mood}
 	}
 	
-	var isYesterday: Bool {
-		set {
-			_isYesterday = newValue
-			if newValue {
+	var isYesterday = false {
+		didSet {
+			if isYesterday {
 				date = yesterday ?? date
 			} else {
 				date = Date()
 			}
 		}
-		get {return _isYesterday}
 	}
 	
 	// MARK: Stored properties
-	private var _mood: Mood = 0
-	private var _isYesterday = false
-	
 	private var dateWithoutHours: Date = Date()
 	
 	

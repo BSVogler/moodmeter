@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 
+// MARK: - Scene
 class FaceScene: WKInterfaceSCNScene {
 	
 	override init() {
@@ -31,8 +32,20 @@ class FaceScene: WKInterfaceSCNScene {
 	}
 }
 
+//MARK: - FaceInterfaceController
+@IBDesignable
 class FaceInterfaceController: WKInterfaceController {
 	let face = Face()
+	
+	@IBInspectable public var isYesterday: Bool = false {
+		didSet {
+			self.face.isYesterday = isYesterday
+			refreshDisplay()
+		}
+	}
+	
+	// MARK: Outlets
+	@IBOutlet weak var dateLabel: WKInterfaceLabel!
 	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene?
 	@IBOutlet weak var moodLabel: WKInterfaceLabel!
 	@IBOutlet weak var background: WKInterfaceGroup!
@@ -73,7 +86,6 @@ class FaceInterfaceController: WKInterfaceController {
 	// MARK: Overrides
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
-		
 		// Configure interface objects here.
 	}
 	
@@ -85,6 +97,7 @@ class FaceInterfaceController: WKInterfaceController {
 			interfacescene.scene == nil {
 			interfacescene.scene = FaceScene().scene
 		}
+		refreshDisplay()
 	}
 	
 	override func didDeactivate() {
@@ -94,11 +107,18 @@ class FaceInterfaceController: WKInterfaceController {
 	
 	func refreshDisplay(){
 		moodLabel.setText(face.mood.getSmiley())
-		background.setBackgroundColor(face.mood.getColor())
+		background.setBackgroundColor(face.getColor())
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()
 //		filter?.geometry?.replaceMaterial(at: 0, with: material)
 	}
-	
+}
+
+//workaround for IB not setting values for @IBInspectable
+class Yesterday: FaceInterfaceController {
+	override func willActivate(){
+		super.willActivate()
+		isYesterday = true
+	}
 }

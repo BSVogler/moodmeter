@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y63-SF-6rW">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XEc-Ya-93C">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14643"/>
     </dependencies>
     <scenes>
-        <!--Face Interface Controller-->
+        <!--Yesterday-->
         <scene sceneID="TbZ-OT-ec3">
             <objects>
-                <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="Yesterday" customModule="Moodmeter_WatchKit_Extension">
                     <items>
                         <sceneKitScene width="136" height="192" alignment="left" id="w8w-4h-Igo"/>
-                        <group width="1" height="1" alignment="left" verticalAlignment="center" radius="0.0" id="fQg-vE-5n1">
+                        <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="vertical" radius="0.0" id="fQg-vE-5n1">
                             <items>
+                                <label width="86" height="34" alignment="center" text="Yesterday" textAlignment="center" id="6ab-ak-U6Z">
+                                    <accessibilityTraits key="accessibilityTraits" staticText="YES" notEnabled="YES"/>
+                                </label>
                                 <label alignment="center" verticalAlignment="center" text=":-|" textAlignment="center" id="YPx-k5-wmb">
+                                    <accessibilityTraits key="accessibilityTraits" staticText="YES" notEnabled="YES"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </label>
                             </items>
@@ -35,9 +39,13 @@
                                     </connections>
                                 </tapGestureRecognizer>
                             </gestureRecognizers>
+                            <accessibilityTraits key="accessibilityTraits" button="YES"/>
                             <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </group>
                     </items>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isYesterday" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <variation key="default">
                         <mask key="items">
                             <exclude reference="w8w-4h-Igo"/>
@@ -45,13 +53,14 @@
                     </variation>
                     <connections>
                         <outlet property="background" destination="fQg-vE-5n1" id="9H1-dK-FNR"/>
+                        <outlet property="dateLabel" destination="6ab-ak-U6Z" id="UY9-ko-8wZ"/>
                         <outlet property="moodLabel" destination="YPx-k5-wmb" id="QHn-YY-Pss"/>
                         <outlet property="scenekitscene" destination="w8w-4h-Igo" id="NCd-gk-B06"/>
                         <segue destination="ht7-Kj-mwk" kind="relationship" relationship="nextPage" id="UsM-FL-HKc"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="75" y="361"/>
+            <point key="canvasLocation" x="75" y="360.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -223,44 +232,6 @@
             </objects>
             <point key="canvasLocation" x="948" y="251"/>
         </scene>
-        <!--Face Interface Controller-->
-        <scene sceneID="Z0W-ws-WmF">
-            <objects>
-                <controller id="6uN-VF-DS7" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
-                    <items>
-                        <sceneKitScene width="136" alignment="left" id="Q6W-S0-xat">
-                            <gestureRecognizers>
-                                <swipeGestureRecognizer direction="4" id="vKs-zA-yY9">
-                                    <connections>
-                                        <action selector="swipeUp:" destination="6uN-VF-DS7" id="imY-wZ-RE6"/>
-                                    </connections>
-                                </swipeGestureRecognizer>
-                                <swipeGestureRecognizer direction="8" id="21R-sI-Tg1">
-                                    <connections>
-                                        <action selector="swipeDown:" destination="6uN-VF-DS7" id="Ucx-94-8qi"/>
-                                    </connections>
-                                </swipeGestureRecognizer>
-                                <tapGestureRecognizer id="HYG-DA-9kV">
-                                    <connections>
-                                        <action selector="tapped:" destination="6uN-VF-DS7" id="PeF-o8-tun"/>
-                                    </connections>
-                                </tapGestureRecognizer>
-                            </gestureRecognizers>
-                        </sceneKitScene>
-                    </items>
-                    <variation key="default">
-                        <mask key="items">
-                            <exclude reference="Q6W-S0-xat"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <outlet property="scenekitscene" destination="Q6W-S0-xat" id="qvX-HT-iHf"/>
-                        <segue destination="y63-SF-6rW" kind="relationship" relationship="nextPage" id="rxp-6a-rhJ"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="-315" y="361"/>
-        </scene>
         <!--Reminder-->
         <scene sceneID="IZF-jt-hU2">
             <objects>
@@ -271,6 +242,62 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="948" y="508"/>
+        </scene>
+        <!--Face Interface Controller-->
+        <scene sceneID="EKV-w9-z0k">
+            <objects>
+                <controller fullBounds="YES" fullScreen="YES" id="XEc-Ya-93C" customClass="FaceInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                    <items>
+                        <sceneKitScene width="136" height="192" alignment="left" id="RUW-ZX-zGI"/>
+                        <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="vertical" radius="0.0" id="eqo-ng-dzv">
+                            <items>
+                                <label width="56" height="28" alignment="center" text="Today" textAlignment="center" id="gJR-L5-dXi">
+                                    <accessibilityTraits key="accessibilityTraits" staticText="YES" notEnabled="YES"/>
+                                </label>
+                                <label alignment="center" verticalAlignment="center" text=":-|" textAlignment="center" id="sI4-hA-GhW">
+                                    <accessibilityTraits key="accessibilityTraits" staticText="YES" notEnabled="YES"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                            </items>
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer direction="4" id="ceo-I2-kDK">
+                                    <connections>
+                                        <action selector="swipeUp:" destination="XEc-Ya-93C" id="Fsj-t5-rSn"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer direction="8" id="vEY-4T-9YJ">
+                                    <connections>
+                                        <action selector="swipeDown:" destination="XEc-Ya-93C" id="cjR-Ua-xwq"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <tapGestureRecognizer id="WHy-jo-Qp0">
+                                    <connections>
+                                        <action selector="tapped:" destination="XEc-Ya-93C" id="Lb6-7I-Hpi"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                            <accessibilityTraits key="accessibilityTraits" button="YES"/>
+                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </group>
+                    </items>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isYesterday" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="items">
+                            <exclude reference="RUW-ZX-zGI"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="background" destination="eqo-ng-dzv" id="TJW-b4-GcP"/>
+                        <outlet property="dateLabel" destination="gJR-L5-dXi" id="7TN-7U-8lr"/>
+                        <outlet property="moodLabel" destination="sI4-hA-GhW" id="PlZ-aT-goa"/>
+                        <outlet property="scenekitscene" destination="RUW-ZX-zGI" id="lOd-8Q-kPI"/>
+                        <segue destination="y63-SF-6rW" kind="relationship" relationship="nextPage" id="z4V-wh-T54"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-234" y="360"/>
         </scene>
     </scenes>
     <resources>
