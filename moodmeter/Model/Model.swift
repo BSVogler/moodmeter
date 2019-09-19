@@ -24,14 +24,17 @@ extension Mood {
 
 class Model: Codable {
 	// MARK: Constants
-	public enum Constants {
-		static let fileNameDB = "data.json"
-		static var localDBStorageURL: URL {
-			guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
-				fatalError("Can't access the document directory in the user's home directory.")
-			}
-			return documentsDirectory.appendingPathComponent(Constants.fileNameDB)
+	//https://en.wikipedia.org/wiki/Birthday_attack
+	//with alphabet of 34 there are ~3*10^20 possibilities. Birthday paradoxon colission probability is aprox 10^-8 after 2.4 Mio tries
+	//for 5 107 billion tries are needed
+	static let hashlength = 5;
+	static let alphabet: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
+	static let fileNameDB = "data.json"
+	static var localDBStorageURL: URL {
+		guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
+			fatalError("Can't access the document directory in the user's home directory.")
 		}
+		return documentsDirectory.appendingPathComponent(fileNameDB)
 	}
 	
 	public static let shared : Model = {
@@ -80,7 +83,7 @@ class Model: Codable {
 	// MARK: Type Methods
 	static func loadFromFiles() -> Model? {
 		do {
-			let jsonData = try Data(contentsOf: Constants.localDBStorageURL)
+			let jsonData = try Data(contentsOf: localDBStorageURL)
 			let model = try JSONDecoder().decode(Model.self, from: jsonData)
 			print("Decoded \(model.dataset.count) entries.")
 			return model
@@ -98,12 +101,11 @@ class Model: Codable {
 	
 	final func generateSharingURL(){
 		//the hash does not have to be secure, just the seed, so use secure seed directly
-		var bytes = [UInt8](repeating: 0, count: 10)
+		var bytes = [UInt8](repeating: 0, count: Model.hashlength)
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
-			let letters: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
-			let toURL: String = String(bytes.map{ byte in letters[Int(byte % UInt8(letters.count))] })
+			let toURL: String = String(bytes.map{ byte in Model.alphabet[Int(byte % UInt8(Model.alphabet.count))] })
 			deviceHash = toURL
 			_ = saveToFiles()
 		}
@@ -113,7 +115,7 @@ class Model: Codable {
 		do {
 			let data = try JSONEncoder().encode(self)
 			let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
-			try jsonFileWrapper.write(to: Constants.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
+			try jsonFileWrapper.write(to: Model.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
 			print("Saved database.")
 			
 			return true
@@ -130,7 +132,7 @@ class Model: Codable {
 	func eraseData() -> Bool {
 		do {
 			let fm = FileManager()
-			try fm.removeItem(at: Constants.localDBStorageURL)
+			try fm.removeItem(at: Model.localDBStorageURL)
 		} catch _ {
 			print("Could not delete all data.")
 			return false
