@@ -173,32 +173,14 @@
                                 <tableRow identifier="menuItem" id="qJ3-u7-VIU" customClass="MyRowController" customModule="Moodmeter_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="wMO-Tg-wzx">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="cloud" catalog="system" id="lS3-jo-ZwM"/>
-                                            <label alignment="center" verticalAlignment="center" text="Live Sharing" textAlignment="right" id="bL0-Wk-1d5"/>
+                                            <imageView alignment="left" verticalAlignment="center" id="lS3-jo-ZwM"/>
+                                            <label alignment="center" verticalAlignment="center" text="Button description" textAlignment="right" id="bL0-Wk-1d5"/>
                                         </items>
                                     </group>
                                     <connections>
                                         <outlet property="itemImage" destination="lS3-jo-ZwM" id="PtD-S3-XfB"/>
                                         <outlet property="itemLabel" destination="bL0-Wk-1d5" id="A6w-8O-j2u"/>
                                     </connections>
-                                </tableRow>
-                                <tableRow identifier="exporting" id="82Y-Bn-vM1">
-                                    <group key="rootItem" width="1" alignment="left" id="tYP-7A-ef8">
-                                        <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="stopwatch" catalog="system" id="jvB-mM-Jcb"/>
-                                            <label alignment="center" verticalAlignment="center" text="Reminder" id="Mct-h5-urH"/>
-                                        </items>
-                                    </group>
-                                </tableRow>
-                                <tableRow identifier="deleting" id="AmP-NR-8Iw">
-                                    <group key="rootItem" width="1" alignment="left" id="YWP-Wp-k8C">
-                                        <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="delete.right" catalog="system" id="5H8-Ej-PSt"/>
-                                            <label alignment="center" verticalAlignment="center" text="Delete data" textAlignment="right" id="dV4-5c-taw">
-                                                <color key="textColor" red="1" green="0.41568627450980389" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </label>
-                                        </items>
-                                    </group>
                                 </tableRow>
                             </items>
                         </table>
@@ -300,9 +282,4 @@
             <point key="canvasLocation" x="-234" y="360"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cloud" catalog="system" width="64" height="44"/>
-        <image name="delete.right" catalog="system" width="64" height="50"/>
-        <image name="stopwatch" catalog="system" width="60" height="64"/>
-    </resources>
 </document>
