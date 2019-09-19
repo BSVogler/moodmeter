@@ -32,11 +32,11 @@ class MenuInterfaceController: WKInterfaceController {
 		//export.itemLabel.setText("Export File")
 		
 		let reminder = self.table.rowController(at: 1) as! MyRowController
-		reminder.itemImage.setImage(UIImage(systemName: "square.and.arrow.up"))
+		reminder.itemImage.setImage(UIImage(systemName: "clock"))
 		reminder.itemLabel.setText("Reminder")
 		
 		let item2 = self.table.rowController(at: 2) as! MyRowController
-		item2.itemImage.setImage(UIImage(systemName: "stopwatch"))
+		item2.itemImage.setImage(UIImage(systemName: "delete.right"))
 		item2.itemLabel.setText("Delete data")
 		item2.itemLabel.setTextColor(#colorLiteral(red: 1, green: 0.4156862745, blue: 0.337254902, alpha: 1))
 	}
