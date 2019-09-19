@@ -241,8 +241,8 @@
                                 <action selector="codeChanged:" destination="a6e-TG-pPZ" id="blJ-IG-oAy"/>
                             </connections>
                         </textField>
-                        <button width="1" alignment="left" title="Import" id="ROq-0x-5gi">
-                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button width="1" alignment="left" title="Import" enabled="NO" id="ROq-0x-5gi">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.16320633565068496" green="0.14621682366986299" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="importButtonPressed" destination="a6e-TG-pPZ" id="cgV-SL-qzQ"/>
