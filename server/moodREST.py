@@ -98,6 +98,7 @@ def add_data(repohash):
     :param repohash:
     :return:
     """
+    repohash = repohash.lower()
     if request.method == 'POST':
         if not request.json:
             return abort(400)
@@ -109,19 +110,20 @@ def add_data(repohash):
             if access_new:
                 # integrate request?
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                    integrate(request_data["old_hash"], request_data["old_password"].encode('utf-8'), repohash)
+                    integrate(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), repohash)
                 add_measurements_to_csv(repohash, request_data["measurements"])
             else:  # no access
                 return access_new
         else:  # save to new hash
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                access_old = hasAccess(request_data["old_hash"], request_data["old_password"].encode('utf-8'))
+                old_hash = request_data["old_hash"].lower()
+                access_old = hasAccess(old_hash, request_data["old_password"].encode('utf-8'))
                 if access_old:
                     # move old data to new hash
-                    os.rename(userdata_folder + request_data["old_hash"], userdata_folder + repohash)
+                    os.rename(userdata_folder + old_hash, userdata_folder + repohash)
                     # success, so remove old password
-                    os.remove(password_folder + request_data["old_hash"])
+                    os.remove(password_folder + old_hash)
                     # append new data
                     if "measurements" in request_data:
                         with open(userdata_folder + repohash, "a") as fp:
