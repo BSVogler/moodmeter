@@ -35,6 +35,7 @@
 		A695314623254A4100CA08CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A695314523254A4100CA08CA /* SettingViewController.swift */; };
 		A6B1F74323303EA000AF4B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EFAFF8230CA5170004AF6D /* LaunchScreen.storyboard */; };
 		A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
+		A6C2254923339AB00026E9A8 /* ImportInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C2254823339AB00026E9A8 /* ImportInterfaceController.swift */; };
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
@@ -125,6 +126,7 @@
 		A65D5F3B232FF9D000737099 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		A695314523254A4100CA08CA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
+		A6C2254823339AB00026E9A8 /* ImportInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportInterfaceController.swift; sourceTree = "<group>"; };
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */,
 				A63FD44B233031E700F9F592 /* HistoryViewController.swift */,
 				A65256142332CC3A002F8B25 /* ShareInterfaceController.swift */,
+				A6C2254823339AB00026E9A8 /* ImportInterfaceController.swift */,
 			);
 			path = InterfaceController;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */,
 				A649C01C233151A80078BDDB /* Model.swift in Sources */,
 				A649C02523315A460078BDDB /* ApiRequests.swift in Sources */,
+				A6C2254923339AB00026E9A8 /* ImportInterfaceController.swift in Sources */,
 				A649C0212331592D0078BDDB /* MoodAPIjsonHttpClient.swift in Sources */,
 				A649C020233154D50078BDDB /* Face.swift in Sources */,
 				A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */,
