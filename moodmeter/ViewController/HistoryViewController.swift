@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftChartView
 
 class HistoryViewController: UIViewController {
 
@@ -27,10 +28,10 @@ class HistoryViewController: UIViewController {
 		formatter.dateStyle = .medium
 		formatter.timeStyle = .none
 		
+		//dataset to string
 		let lines = sortedDates.map {
 			return formatter.string(from:$0)+" "+(Model.shared.dataset[$0]?.getSmiley() ?? "")
 		}
-		historyLabel.text = lines.joined(separator: "\n")
 	}
 	
 	override func viewDidLoad() {
