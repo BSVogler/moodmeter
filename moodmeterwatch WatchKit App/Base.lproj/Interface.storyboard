@@ -121,13 +121,14 @@
                                     </connections>
                                 </button>
                                 <button width="0.33300000000000002" alignment="center" title="M" id="eKH-cD-cn9">
-                                    <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="15"/>
                                     <connections>
                                         <action selector="monthButtonTap" destination="ht7-Kj-mwk" id="pQo-tY-RGu"/>
                                     </connections>
                                 </button>
                                 <button width="0.33000000000000002" alignment="center" title="Y" id="Vbp-c2-Y0u">
+                                    <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="15"/>
                                     <connections>
                                         <action selector="yearButtonTap" destination="ht7-Kj-mwk" id="0pL-9n-vPF"/>
@@ -202,12 +203,20 @@
                         </label>
                         <label alignment="center" text="..." textAlignment="center" numberOfLines="3" id="akC-im-BDa"/>
                         <button width="1" alignment="left" title="New Link" id="S6S-tw-TA7">
+                            <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="generateNewLink" destination="75c-uB-v4o" id="hgH-pR-51x"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Import" id="41Z-e2-l2X">
+                            <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="a6e-TG-pPZ" kind="push" id="txo-C7-w3b"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" title="Delete and Disable" id="JIE-57-wMI">
                             <color key="titleColor" red="1" green="0.41662672969999998" blue="0.33724091299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="delete" destination="75c-uB-v4o" id="zgK-iD-g0V"/>
                             </connections>
@@ -218,7 +227,34 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="948" y="251"/>
+            <point key="canvasLocation" x="948" y="203"/>
+        </scene>
+        <!--Import Interface Controller-->
+        <scene sceneID="Suj-Kf-Xyx">
+            <objects>
+                <controller id="a6e-TG-pPZ" customClass="ImportInterfaceController" customModule="Moodmeter_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Importing merges the data and uses the new link" numberOfLines="3" id="6en-RV-hVa"/>
+                        <textField width="1" alignment="left" text="enter code" textContentType="new-password" id="Y3W-4b-hhh">
+                            <color key="textColor" red="0.1210669948630137" green="0.79722281678082196" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="codeChanged:" destination="a6e-TG-pPZ" id="blJ-IG-oAy"/>
+                            </connections>
+                        </textField>
+                        <button width="1" alignment="left" title="Import" id="ROq-0x-5gi">
+                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.16320633565068496" green="0.14621682366986299" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="importButtonPressed" destination="a6e-TG-pPZ" id="cgV-SL-qzQ"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="importButton" destination="ROq-0x-5gi" id="TjR-ay-Vc8"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1245" y="202"/>
         </scene>
         <!--Reminder-->
         <scene sceneID="IZF-jt-hU2">
