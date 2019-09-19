@@ -197,6 +197,9 @@
             <objects>
                 <controller identifier="Share" id="75c-uB-v4o" customClass="ShareInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
+                        <label alignment="left" text="Your link" id="sUr-SS-wsd">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
                         <label alignment="center" text="..." textAlignment="center" numberOfLines="3" id="akC-im-BDa"/>
                         <button width="1" alignment="left" title="New Link" id="S6S-tw-TA7">
                             <connections>

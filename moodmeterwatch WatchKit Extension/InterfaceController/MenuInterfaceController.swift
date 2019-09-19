@@ -45,12 +45,13 @@ class MenuInterfaceController: WKInterfaceController {
 		switch rowIndex {
 		case 0:
 			if Model.shared.deviceHash == nil {
-				let read = WKAlertAction(title: "Read", style: .default) {
-					
-				}
 				let accept = WKAlertAction(title: "Accept", style: .default) {
 					self.pushController(withName: "Share", context: nil)
 				}
+				let read = WKAlertAction(title: "Read", style: .default) {
+					self.presentAlert(withTitle: "Terms and conditions", message: "This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.This is a looong text.", preferredStyle: .actionSheet, actions: [accept])
+				}
+				
 				presentAlert(withTitle: "Terms and conditions", message: "By using the share feature you accept the terms and conditions.", preferredStyle: .actionSheet, actions: [read, accept])
 			} else {
 				pushController(withName: "Share", context: nil)
