@@ -353,9 +353,9 @@
                                             <action selector="reloadHash:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="t0z-Zq-a83"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-0C-9i0">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-0C-9i0">
                                         <rect key="frame" x="20" y="104" width="334" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqa-QO-POk">
@@ -413,7 +413,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="676"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
-                                        <rect key="frame" x="142" y="256.33333333333331" width="130" height="40"/>
+                                        <rect key="frame" x="142" y="255.66666666666669" width="130" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
@@ -424,14 +424,6 @@
                                             <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-is-5Is" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="20" y="145" width="374" height="82"/>
-                                        <string key="text">Maintain an updated copy to make the data available on other devices
-By using the share feature you agree to the terms and conditions.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C4Y-cz-syq">
                                         <rect key="frame" x="157.66666666666666" y="53" width="98.999999999999972" height="49.666666666666671"/>
                                         <constraints>
@@ -446,21 +438,33 @@ By using the share feature you agree to the terms and conditions.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
-                                        <rect key="frame" x="197" y="266" width="20" height="20"/>
+                                        <rect key="frame" x="197" y="265.66666666666669" width="20" height="20"/>
                                     </activityIndicatorView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpZ-Cd-aPa">
+                                        <rect key="frame" x="36" y="145" width="356" height="97"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="97" id="8SA-r2-vqk"/>
+                                        </constraints>
+                                        <string key="text">Maintain an updated copy to make the data available on other devices
+By using the share feature you agree to the terms and conditions.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
+                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="13.666666666666686" id="2M4-06-Ocl"/>
                                     <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
-                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" constant="39" id="F4M-ey-EOX"/>
-                                    <constraint firstAttribute="trailing" secondItem="DMu-is-5Is" secondAttribute="trailing" constant="20" id="GAD-y6-0Aj"/>
+                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="leading" secondItem="kz9-Ki-GeK" secondAttribute="leading" constant="36" id="D83-iF-PyM"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
-                                    <constraint firstItem="DMu-is-5Is" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="QXq-3F-hEr"/>
-                                    <constraint firstItem="DMu-is-5Is" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="WNU-Gk-j80"/>
+                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="23.666666666666686" id="S0Q-Te-2on"/>
+                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="centerY" secondItem="dgV-E5-zD5" secondAttribute="centerY" id="XEc-lW-2BA"/>
                                     <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
-                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="DMu-is-5Is" secondAttribute="bottom" constant="29.329999999999998" id="lEh-BH-EnT"/>
+                                    <constraint firstAttribute="trailing" secondItem="KpZ-Cd-aPa" secondAttribute="trailing" constant="22" id="fvr-qe-jgn"/>
                                     <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="pE6-iz-jPe"/>
                                     <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
+                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="zZM-YT-tde"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
@@ -510,12 +514,12 @@ By using the share feature you agree to the terms and conditions.</string>
                         <outlet property="shareLinkField" destination="OMK-0C-9i0" id="vsV-bJ-OXI"/>
                         <outlet property="shareLiveDataButton" destination="OL7-6r-7Co" id="Agn-32-zKJ"/>
                         <outlet property="sharedView" destination="Bdi-fG-Sd3" id="cuf-Aj-gsD"/>
-                        <outlet property="termsText" destination="DMu-is-5Is" id="k7q-of-UVl"/>
+                        <outlet property="termsText" destination="KpZ-Cd-aPa" id="pHr-I6-vG5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfn-yv-yTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3233" y="-243"/>
+            <point key="canvasLocation" x="3231.884057971015" y="-243.08035714285714"/>
         </scene>
     </scenes>
     <resources>

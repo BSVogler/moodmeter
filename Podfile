@@ -11,7 +11,6 @@ target 'Moodmeter' do
   use_frameworks!
 
   # Pods for moodbarometer
-	pod 'TTTAttributedLabel'
 	pod 'SwiftChartView'
 end
 
