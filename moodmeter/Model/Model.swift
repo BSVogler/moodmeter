@@ -96,40 +96,42 @@ class Model: Codable {
 	// MARK: Methods
 	/// if there is already a hash, it moves them
 	final func generateAndRegisterHash(done: @escaping () -> Void){
-		generateHash()
-		if let hash = userHash {
-			moveHash(to: hash, done: done)
-		} else {
-			MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements){ res in
-				done()
-			}
-		}
-	}
-	
-	final func generateHash() {
+		let oldHash = userHash
 		//the hash does not have to be secure, just the seed, so use secure seed directly
 		var bytes = [UInt8](repeating: 0, count: Model.hashlength)
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
 			let toURL: String = String(bytes.map{ byte in Model.alphabet[Int(byte % UInt8(Model.alphabet.count))] })
-			userHash = toURL
-			_ = saveToFiles()
+			if oldHash != nil {
+				moveHash(to: toURL){
+					_ = self.saveToFiles()
+					done()
+				}
+			} else {
+				//create by just posting
+				userHash = toURL
+				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements){ res in
+					_ = self.saveToFiles()
+					done()
+				}
+			}
 		}
 	}
 	
 	//I would like to return a more generic Result<>, but I was not able to do this
 	func importHash(_ hash: String, done: @escaping () -> Void) {
-		if (userHash == nil) {
+		guard userHash != nil else {
+			//this should not happen
 			generateAndRegisterHash(done: done)
-		} else {
-			moveHash(to: hash, done: done)
+			return
 		}
+		moveHash(to: hash, done: done)
 	}
 	//I would like to return a more generic Result<>, but I was not able to do this
 	func moveHash(to: String, done: @escaping () -> Void) {
-		if let userHash = self.userHash {
-			MoodAPIjsonHttpClient.shared.moveHash(old: userHash, new: to) { res in
+		if let old = self.userHash {
+			MoodAPIjsonHttpClient.shared.moveHash(old: old, new: to) { res in
 				self.userHash = to //use new only after request completed
 				done()
 			}

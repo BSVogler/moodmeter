@@ -14,17 +14,10 @@ class ShareInterfaceController: WKInterfaceController {
 	@IBOutlet weak var hashLabel: WKInterfaceLabel!
 	
 	@IBAction func generateNewLink() {
-		if Model.shared.userHash != nil {
-			hashLabel.setText("...wait...")
-			//generate new sharing url
-			Model.shared.generateAndRegisterHash(){
-				self.hashLabel.setText(Model.shared.sharingURL?.absoluteString)
-			}
-		} else {
-			//has no hash (only the case if there is a bug somehwere else), so make a new one
-			Model.shared.generateAndRegisterHash(){
-				self.hashLabel.setText(Model.shared.sharingURL?.absoluteString)
-			}
+		hashLabel.setText("...wait...")
+		//generate new sharing url
+		Model.shared.generateAndRegisterHash(){
+			self.hashLabel.setText(Model.shared.sharingURL?.absoluteString)
 		}
 	}
 	@IBAction func delete() {
@@ -50,7 +43,7 @@ class ShareInterfaceController: WKInterfaceController {
 		}
 	}
 	
-	override func willActivate() {
+	override func didAppear() {
 		self.hashLabel.setText(Model.shared.sharingURLShort)
 	}
 }

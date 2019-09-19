@@ -42,7 +42,9 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	}
 	
 	public func moveHash(old: String, new: String, done: @escaping (Result<MoveRequest>) -> Void){
-		let moveRequest = MoveRequest(password: Model.shared.password ?? "", old_hash: old)
+		let moveRequest = MoveRequest(password: Model.shared.password ?? "",
+									  old_password: Model.shared.password ?? "",
+									old_hash: old)
 		post(to: new,
 			 with: moveRequest,
 			 expecting: MoveRequest.self,

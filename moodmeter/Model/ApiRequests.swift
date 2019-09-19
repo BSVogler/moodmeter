@@ -37,6 +37,7 @@ struct DeleteRequest: AuthorizedRequest  {
 
 struct MoveRequest: AuthorizedRequest  {
 	var password: String
+	var old_password: String
 	var old_hash: String
 }
 

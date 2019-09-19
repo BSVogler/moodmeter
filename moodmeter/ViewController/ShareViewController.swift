@@ -67,8 +67,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		if let oldHash = Model.shared.userHash {
 			shareLinkField.text = "..."
 			//generate new sharing url
-			Model.shared.generateHash()
-			Model.shared.move(Model.shared.userHash){ res in
+			Model.shared.generateAndRegisterHash() {
 				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
 			}
 		} else {
