@@ -235,7 +235,7 @@
                 <controller id="a6e-TG-pPZ" customClass="ImportInterfaceController" customModule="Moodmeter_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Importing merges the data and uses the new link" numberOfLines="3" id="6en-RV-hVa"/>
-                        <textField width="1" alignment="left" text="enter code" textContentType="new-password" id="Y3W-4b-hhh">
+                        <textField width="1" alignment="left" text="enter code" textContentType="username" id="Y3W-4b-hhh">
                             <color key="textColor" red="0.1210669948630137" green="0.79722281678082196" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="codeChanged:" destination="a6e-TG-pPZ" id="blJ-IG-oAy"/>
