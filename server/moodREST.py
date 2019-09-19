@@ -18,9 +18,25 @@ if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
 
-def write_measurements_to_csv(repohash, measurements, limit=None):
+def delete(repohash):
+    os.remove(userdata_folder + repohash)
+    os.remove(password_folder + repohash)
+
+
+def integrate(old, old_password, new):
+    access_old = hasAccess(old, old_password)
+    if access_old:
+        # append old data
+        with open(userdata_folder + old, "r") as fp:
+            csvdata = fp.read()
+        with open(userdata_folder + new, "wa") as fp:
+            fp.write(csvdata)
+        # then delete
+        delete(old)
+
+def add_measurements_to_csv(repohash, measurements, limit=None):
     """
-    Transform python/json to csv
+    Integrates new measurements by transform the python/json to csv.
     :param fp: filepointer
     :param measurements: data with fields "day" and "mood"
     :param limit: filter dates before that date
@@ -30,6 +46,7 @@ def write_measurements_to_csv(repohash, measurements, limit=None):
 
     destination = open(userdata_folder + repohash, "w")
     source = open(userdata_folder + repohash + "~", "r")
+    #check if a line must be updated
     for line in source:
         update = False
         date_in_line = datetime.strptime(line[:line.find(";")], "%Y-%m-%dT")
@@ -37,7 +54,7 @@ def write_measurements_to_csv(repohash, measurements, limit=None):
             # update
             date_to_write = datetime.strptime(e["day"], "%Y-%m-%dT")  # string to date
             if date_to_write == date_in_line:
-                destination.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+                destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
                 update = True
                 measurements.pop(index)
                 break
@@ -46,7 +63,7 @@ def write_measurements_to_csv(repohash, measurements, limit=None):
 
     # append the rest
     for e in measurements:
-        destination.write(e["day"] + ";" + str(e["mood"]) + ";\n")
+        destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
 
     source.close()
     destination.close()
@@ -68,9 +85,9 @@ def hasAccess(repohash, password):
                                                binascii.unhexlify(stored_salt),
                                                10000)
         if binascii.unhexlify(stored_hash) != transmitted_hash:
-            return abort(Response("Invalid passwort"))
+            return abort(Response("Invalid passwort for "+repohash+"."))
     else:
-        return abort(Response("Password not found."))
+        return abort(Response("Password not found for "+repohash+"."))
     return True
 
 
@@ -88,23 +105,26 @@ def add_data(repohash):
         # check if file exists, then add new measurement
         if os.access(userdata_folder + repohash, os.R_OK):
             # check password
-            access = hasAccess(repohash, request_data["password"].encode('utf-8'))
-            if access:
-                write_measurements_to_csv(repohash, request_data["measurements"])
+            access_new = hasAccess(repohash, request_data["password"].encode('utf-8'))
+            if access_new:
+                # integrate request?
+                if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
+                    integrate(request_data["old_hash"], request_data["old_password"].encode('utf-8'), repohash)
+                add_measurements_to_csv(repohash, request_data["measurements"])
             else:  # no access
-                return access
-        else:  # save new entries
+                return access_new
+        else:  # save to new hash
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                # move old data to new hash
-                access = hasAccess(request_data["old_hash"], request_data["password"].encode('utf-8'))
-                if access:
+                access_old = hasAccess(request_data["old_hash"], request_data["old_password"].encode('utf-8'))
+                if access_old:
+                    # move old data to new hash
                     os.rename(userdata_folder + request_data["old_hash"], userdata_folder + repohash)
                     # success, so remove old password
                     os.remove(password_folder + request_data["old_hash"])
                     # append new data
                     if "measurements" in request_data:
-                        with open(userdata_folder + repohash, "wa") as fp:
+                        with open(userdata_folder + repohash, "a") as fp:
                             for e in request_data["measurements"]:
                                 fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
                 else:
@@ -112,7 +132,7 @@ def add_data(repohash):
                     return abort(403)
             else:
                 # initial write of data
-                with open(userdata_folder + repohash, "w") as fp:
+                with open(userdata_folder + repohash, "w+") as fp:
                     for e in request_data["measurements"]:
                         fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
 
