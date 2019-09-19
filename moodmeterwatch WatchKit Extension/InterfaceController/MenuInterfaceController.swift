@@ -59,9 +59,10 @@ class MenuInterfaceController: WKInterfaceController {
 			self.pushController(withName: "Reminder", context: nil)
 		case 2:
 			let accept = WKAlertAction(title: "Yes, delete", style: .destructive) {
+				_ = Model.shared.eraseData()
 			}
 			presentAlert(withTitle: "Delete data?", message: "This will permanently delete your local data on your watch and phone.", preferredStyle: .actionSheet, actions: [ accept])
-			_ = Model.shared.eraseData()
+			
 		default: print("export not supported")
 		}
 		
