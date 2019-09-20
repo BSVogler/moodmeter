@@ -54,6 +54,7 @@ class Face {
 	// MARK: functions
 	func moodChanged(){
 		Model.shared.dataset[date] = mood
+		Model.shared.saveToFiles()
 		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: Date(), mood: mood)]){res in
 		}
 	}
