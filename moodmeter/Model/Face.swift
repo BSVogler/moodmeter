@@ -26,10 +26,15 @@ class Face {
 		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 	
+	var _mood: Mood = 0
 	var mood: Mood {
-		didSet {
-			moodChanged()
+		set {
+			if newValue != _mood {
+				_mood = newValue
+				moodChanged()
+			}
 		}
+		get {return _mood}
 	}
 	
 	var isYesterday = false {
@@ -48,7 +53,6 @@ class Face {
 	
 	// MARK: Initializers
 	init() {
-		mood = 0
 		date = Date()
 		if let moodOnDate = Model.shared.dataset[date] {
 			mood = moodOnDate
