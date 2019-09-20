@@ -367,6 +367,7 @@
 				A65D5F1C232FF72C00737099 /* Frameworks */,
 				A65D5F1D232FF72C00737099 /* Resources */,
 				A43652D9474AA7F2D4B19D09 /* [CP] Embed Pods Frameworks */,
+				A6856F7B233540D100D88E8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -386,6 +387,7 @@
 				A6EFAFE5230CA5150004AF6D /* Frameworks */,
 				A6EFAFE6230CA5150004AF6D /* Resources */,
 				88333901129AC5BF84F19CA4 /* [CP] Embed Pods Frameworks */,
+				A6856F7C2335412C00D88E8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -538,6 +540,40 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-moodmeterwatch WatchKit Extension/Pods-moodmeterwatch WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A6856F7B233540D100D88E8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash    \nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
+		};
+		A6856F7C2335412C00D88E8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash    \nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
 		};
 		F54314FE010F032B8719A691 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
