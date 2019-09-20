@@ -17,8 +17,7 @@ class MenuInterfaceController: WKInterfaceController {
 	
 	@IBOutlet weak var table: WKInterfaceTable!
 	
-	override func awake(withContext context: Any?) {
-		super.awake(withContext: context)
+	override func willActivate() {
 		
 		// Configure interface objects here.
 		table.setNumberOfRows(3, withRowType: "menuItem")
