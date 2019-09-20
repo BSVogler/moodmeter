@@ -15,6 +15,7 @@ class SettingViewController: UIViewController {
 	@IBOutlet weak var reminderTimePicker: UIDatePicker!
 	@IBOutlet weak var notificationSwitch: UISwitch!
 	@IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var versionstring: UILabel!
 	
 	// MARK: IBActions
 	@IBAction func eraseButton(_ sender: Any) {
@@ -66,6 +67,7 @@ class SettingViewController: UIViewController {
 	// MARK: Initializer
 	convenience init() {
 		self.init(nibName:nil, bundle:nil)
+		
 	}
 	
 	override func viewDidLoad() {
@@ -84,6 +86,11 @@ class SettingViewController: UIViewController {
 												 second: 0,
 												 of: Date())
 		reminderTimePicker.date = date ?? Date()
+		
+		//Version string
+		let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+		let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+		versionstring.text = "Version \(versionNumber) (\(buildNumber))"
 	}
 	
 	func registerNotification(dateComponents: DateComponents){
