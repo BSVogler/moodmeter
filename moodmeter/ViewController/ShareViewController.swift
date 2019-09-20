@@ -42,7 +42,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		activityIndicator.isHidden = false
 		shareLiveDataButton.isHidden = true
 		activityIndicator.startAnimating()
-		Model.shared.generateAndRegisterSharingURL(){ res in
+		Model.shared.generateAndRegisterHash() {
 			self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
 			self.activityIndicator.stopAnimating()
 			self.showSharingActivated()
@@ -64,7 +64,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
-		if let oldHash = Model.shared.userHash {
+		if Model.shared.userHash != nil {
 			shareLinkField.text = "..."
 			//generate new sharing url
 			Model.shared.generateAndRegisterHash() {
@@ -72,7 +72,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 			}
 		} else {
 			//has no hash (only the case if there is a bug somehwere else), so make a new one
-			Model.shared.generateAndRegisterSharingURL(){ res in
+			Model.shared.generateAndRegisterHash(){ 
 				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
 			}
 		}
