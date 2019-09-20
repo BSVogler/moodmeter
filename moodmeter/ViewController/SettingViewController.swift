@@ -18,6 +18,12 @@ class SettingViewController: UIViewController {
 	@IBOutlet weak var versionstring: UILabel!
 	
 	// MARK: IBActions
+	
+	@IBAction func doneButtonPressed(_ sender: Any) {
+		//presentingViewController?.removeFromParent()
+		self.dismiss(animated: true, completion: nil)
+	}
+	
 	@IBAction func eraseButton(_ sender: Any) {
 		confirm(title: NSLocalizedString("Delete?",comment: ""), message: NSLocalizedString("Delete all locally saved data?",comment: "")) { action in
 			if Model.shared.eraseData() {
