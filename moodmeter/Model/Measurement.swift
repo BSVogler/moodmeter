@@ -73,6 +73,7 @@ class Measurement: Codable {
 	func moodChanged(){
 		Model.shared.dataset[date] = mood
 		_ = Model.shared.saveToFiles()
+		//send time of measurement
 		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [APIMeasurement(day: Date(), mood: mood)]){res in
 		}
 	}
