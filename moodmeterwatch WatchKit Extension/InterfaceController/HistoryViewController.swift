@@ -66,7 +66,7 @@ class HistoryInterfaceController: WKInterfaceController {
 	}
 	
 	func getDiagram(frame: CGRect) -> UIImage? {
-		UIGraphicsBeginImageContextWithOptions(frame.size, false, 1);
+		UIGraphicsBeginImageContextWithOptions(frame.size, false, WKInterfaceDevice.current().screenScale);
 		//let context = UIGraphicsGetCurrentContext()
 		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
 		//context?.fill(frame)
