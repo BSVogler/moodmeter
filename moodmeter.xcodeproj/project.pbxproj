@@ -11,15 +11,11 @@
 		A6049FDD232FFFF8003EF44F /* body.dae in Resources */ = {isa = PBXBuildFile; fileRef = A6049FDC232FFFF8003EF44F /* body.dae */; };
 		A6049FDF2330011B003EF44F /* body.scn in Resources */ = {isa = PBXBuildFile; fileRef = A6049FDE2330011B003EF44F /* body.scn */; };
 		A61306E023117E7E0010FF82 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61306DF23117E7E0010FF82 /* HistoryViewController.swift */; };
-		A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
 		A63AB970232BA39600303AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A63AB96E232BA39600303AEF /* Localizable.strings */; };
 		A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63FD44B233031E700F9F592 /* HistoryViewController.swift */; };
 		A649C0172330F8130078BDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65D5F2A232FF72D00737099 /* Assets.xcassets */; };
 		A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */; };
 		A649C01C233151A80078BDDB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2A4542318835300EFF474 /* Model.swift */; };
-		A649C01D233151AB0078BDDB /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632BBA32322EAA7003FA040 /* Measurement.swift */; };
-		A649C01F233154D50078BDDB /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01E233154D50078BDDB /* Face.swift */; };
-		A649C020233154D50078BDDB /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649C01E233154D50078BDDB /* Face.swift */; };
 		A649C0212331592D0078BDDB /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */; };
 		A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */; };
 		A649C02423315A3C0078BDDB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
@@ -39,6 +35,10 @@
 		A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C4DB612318274A00016297 /* ShareViewController.swift */; };
 		A6D237EE230CC5FC004DEBAE /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */; };
 		A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D237EF230CC68E004DEBAE /* ApiError.swift */; };
+		A6EC56D123364ECF008AB480 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EC56D023364ECF008AB480 /* Measurement.swift */; };
+		A6EC56D223364ECF008AB480 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EC56D023364ECF008AB480 /* Measurement.swift */; };
+		A6EC56D423364FD4008AB480 /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EC56D323364FD4008AB480 /* APIMeasurement.swift */; };
+		A6EC56D523364FD4008AB480 /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EC56D323364FD4008AB480 /* APIMeasurement.swift */; };
 		A6EFAFEC230CA5150004AF6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */; };
 		A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFED230CA5150004AF6D /* RootViewController.swift */; };
 		A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EFAFEF230CA5150004AF6D /* FaceViewController.swift */; };
@@ -101,13 +101,11 @@
 		A6049FDC232FFFF8003EF44F /* body.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = body.dae; sourceTree = "<group>"; };
 		A6049FDE2330011B003EF44F /* body.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = body.scn; sourceTree = "<group>"; };
 		A61306DF23117E7E0010FF82 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		A632BBA32322EAA7003FA040 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		A63AB968232B97D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A63AB96F232BA39600303AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63AB971232BA5D700303AEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A63FD44B233031E700F9F592 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A649C01A2331431B0078BDDB /* MenuInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
-		A649C01E233154D50078BDDB /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		A65256102332930A002F8B25 /* Moodmeter WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		A652561123329334002F8B25 /* Moodmeter WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Moodmeter WatchKit App.entitlements"; sourceTree = "<group>"; };
 		A652561223329358002F8B25 /* Moodmeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Moodmeter.entitlements; path = Moodmeter/Moodmeter.entitlements; sourceTree = "<group>"; };
@@ -130,6 +128,8 @@
 		A6C4DB612318274A00016297 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		A6D237EF230CC68E004DEBAE /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		A6EC56D023364ECF008AB480 /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
+		A6EC56D323364FD4008AB480 /* APIMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIMeasurement.swift; path = moodmeter/Model/APIMeasurement.swift; sourceTree = SOURCE_ROOT; };
 		A6EFAFE8230CA5150004AF6D /* Moodmeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodmeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6EFAFEB230CA5150004AF6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6EFAFED230CA5150004AF6D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -211,8 +211,7 @@
 			children = (
 				A6D237ED230CC5FC004DEBAE /* ApiRequests.swift */,
 				A6F2A4542318835300EFF474 /* Model.swift */,
-				A632BBA32322EAA7003FA040 /* Measurement.swift */,
-				A649C01E233154D50078BDDB /* Face.swift */,
+				A6EC56D023364ECF008AB480 /* Measurement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +222,7 @@
 				A6D237EF230CC68E004DEBAE /* ApiError.swift */,
 				A6EFB001230CC4C60004AF6D /* JsonHttpClient.swift */,
 				A6C05E212327E19300AA8205 /* MoodAPIjsonHttpClient.swift */,
+				A6EC56D323364FD4008AB480 /* APIMeasurement.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -607,17 +607,17 @@
 				A649C02423315A3C0078BDDB /* ApiError.swift in Sources */,
 				A65D5F3D232FF9D100737099 /* FaceInterfaceController.swift in Sources */,
 				A65D5F3E232FF9D100737099 /* ExtensionDelegate.swift in Sources */,
+				A6EC56D523364FD4008AB480 /* APIMeasurement.swift in Sources */,
 				A65256152332CC3A002F8B25 /* ShareInterfaceController.swift in Sources */,
 				A649C022233159FE0078BDDB /* JsonHttpClient.swift in Sources */,
 				A649C01B2331431B0078BDDB /* MenuInterfaceController.swift in Sources */,
+				A6EC56D223364ECF008AB480 /* Measurement.swift in Sources */,
 				A649C01C233151A80078BDDB /* Model.swift in Sources */,
 				A649C02523315A460078BDDB /* ApiRequests.swift in Sources */,
 				A6C2254923339AB00026E9A8 /* ImportInterfaceController.swift in Sources */,
 				A649C0212331592D0078BDDB /* MoodAPIjsonHttpClient.swift in Sources */,
-				A649C020233154D50078BDDB /* Face.swift in Sources */,
 				A65D5F3C232FF9D100737099 /* NotificationController.swift in Sources */,
 				A63FD44C233031E700F9F592 /* HistoryViewController.swift in Sources */,
-				A649C01D233151AB0078BDDB /* Measurement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,12 +627,12 @@
 			files = (
 				A6D237F0230CC68E004DEBAE /* ApiError.swift in Sources */,
 				A6EFAFEE230CA5150004AF6D /* RootViewController.swift in Sources */,
+				A6EC56D123364ECF008AB480 /* Measurement.swift in Sources */,
+				A6EC56D423364FD4008AB480 /* APIMeasurement.swift in Sources */,
 				A6EFAFF2230CA5150004AF6D /* PageViewController.swift in Sources */,
 				A6EFB002230CC4C70004AF6D /* JsonHttpClient.swift in Sources */,
 				A6C05E222327E19300AA8205 /* MoodAPIjsonHttpClient.swift in Sources */,
 				A6EFAFF0230CA5150004AF6D /* FaceViewController.swift in Sources */,
-				A632BBA42322EAA7003FA040 /* Measurement.swift in Sources */,
-				A649C01F233154D50078BDDB /* Face.swift in Sources */,
 				A6F2A4552318835300EFF474 /* Model.swift in Sources */,
 				A6D237EE230CC5FC004DEBAE /* ApiRequests.swift in Sources */,
 				A6C4DB622318274A00016297 /* ShareViewController.swift in Sources */,
