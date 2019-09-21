@@ -137,20 +137,64 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <label alignment="left" text="Monday" id="asf-Eg-sXi"/>
-                        <label alignment="right" text="--" id="EfS-Ii-yiQ"/>
-                        <label alignment="left" text="Tuesday" id="MeL-42-81e"/>
-                        <label alignment="right" text="--" id="i3g-d3-NFC"/>
-                        <label alignment="left" text="Wednesday" id="KtG-4Y-b2T"/>
-                        <label alignment="right" text="--" id="HLg-Sk-OQ9"/>
-                        <label alignment="left" text="Thursday" id="6M6-bW-d0m"/>
-                        <label alignment="right" text="--" id="Aig-vN-sbl"/>
-                        <label alignment="left" text="Friday" id="lLO-LO-dqb"/>
-                        <label alignment="right" text="--" id="Ofp-rT-Wuu"/>
-                        <label alignment="left" text="Saturday" id="Rc4-gV-vFR"/>
-                        <label alignment="right" text="--" id="7QB-p0-lDb"/>
-                        <label alignment="left" text="Sunday" id="e3z-17-LaG"/>
-                        <label alignment="right" text="--" id="NoC-oJ-lQb"/>
+                        <group width="1" alignment="left" id="tDQ-VC-RCg">
+                            <items>
+                                <imageView width="28" height="28" alignment="left" image="arrowtriangle.left.circle" catalog="system" id="4Gb-yW-85h">
+                                    <color key="tintColor" red="0.36376284250000002" green="0.31782427229999999" blue="0.075610017119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <imageView width="28" height="28" alignment="right" image="arrowtriangle.right.circle" catalog="system" id="mJA-CW-Ofs">
+                                    <color key="tintColor" red="0.36376284250000002" green="0.31782427229999999" blue="0.075610017119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="J6w-80-3ng">
+                            <items>
+                                <label alignment="left" text="Monday" id="asf-Eg-sXi"/>
+                                <label alignment="right" text="--" id="EfS-Ii-yiQ"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="m1O-ch-4cc">
+                            <items>
+                                <label alignment="left" text="Tuesday" id="343-Co-XPM"/>
+                                <label alignment="right" text="--" id="MUr-QR-m2M"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="3NU-1y-4OG">
+                            <items>
+                                <label alignment="left" text="Wednesday" id="cZb-oL-SOh"/>
+                                <label alignment="right" text="--" id="Lq2-Id-ga6"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="wNy-Zr-joR">
+                            <items>
+                                <label alignment="left" text="Thursday" id="4bz-QH-B6e"/>
+                                <label alignment="right" text="--" id="dsv-9e-xO0"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="S0k-47-Qs3">
+                            <items>
+                                <label alignment="left" text="Friday" id="tvx-hK-1kl"/>
+                                <label alignment="right" text="--" id="5Kg-Na-ufZ"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="HYv-Ef-zqO">
+                            <items>
+                                <label alignment="left" text="Saturday" id="S1Z-FF-bbL"/>
+                                <label alignment="right" text="--" id="eXs-lq-Dqm"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="KPP-Dx-nCJ">
+                            <items>
+                                <label alignment="left" text="Friday" id="F3k-uy-bXS"/>
+                                <label alignment="right" text="--" id="OF7-Dp-Z6Q"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="e6a-GX-NrK">
+                            <items>
+                                <label alignment="left" text="Sunday" id="zxd-2v-beF"/>
+                                <label alignment="right" text="--" id="oqh-XE-N6j"/>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="diagram" destination="fvI-Ho-qma" id="0ri-e8-mr9"/>
@@ -162,7 +206,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="404.30434782608694" y="360.87053571428572"/>
+            <point key="canvasLocation" x="404" y="364.5"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
@@ -324,4 +368,8 @@
             <point key="canvasLocation" x="-234" y="360"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowtriangle.left.circle" catalog="system" width="64" height="62"/>
+        <image name="arrowtriangle.right.circle" catalog="system" width="64" height="62"/>
+    </resources>
 </document>
