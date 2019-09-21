@@ -16,6 +16,4 @@ end
 
 target 'moodmeterwatch WatchKit Extension' do
 	use_frameworks!
-	
-	pod 'YOChartImageKit'
 end
