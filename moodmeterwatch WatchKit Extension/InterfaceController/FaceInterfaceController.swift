@@ -35,7 +35,7 @@ class FaceScene: WKInterfaceSCNScene {
 //MARK: - FaceInterfaceController
 @IBDesignable
 class FaceInterfaceController: WKInterfaceController {
-	let face = Face()
+	let face = Measurement()
 	
 	@IBInspectable public var isYesterday: Bool = false {
 		didSet {
@@ -55,7 +55,7 @@ class FaceInterfaceController: WKInterfaceController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
-		} else if face.mood < Face.moodToText.count-1 {
+		} else if face.mood < Measurement.moodToText.count-1 {
 			face.mood += 1
 		} else {
 			return
