@@ -9,6 +9,13 @@
 import WatchKit
 import YOChartImageKit
 
+
+enum AnalysisRange {
+	case week
+	case month
+	case year
+}
+
 class HistoryInterfaceController: WKInterfaceController {
 	
 	@IBOutlet weak var diagram: WKInterfaceImage!
@@ -17,20 +24,26 @@ class HistoryInterfaceController: WKInterfaceController {
 	@IBOutlet weak var monthButton: WKInterfaceButton!
 	@IBOutlet weak var yearButton: WKInterfaceButton!
 	
+	var analysisrange = AnalysisRange.week
+	
+	
 	@IBAction func weekButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
+		analysisrange = .week
 	}
 	@IBAction func monthButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
+		analysisrange = .month
 	}
 	@IBAction func yearButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
+		analysisrange = .year
 	}
 	
 	override func awake(withContext context: Any?) {
