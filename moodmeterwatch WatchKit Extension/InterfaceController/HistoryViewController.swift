@@ -113,6 +113,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		//now draw the content
 		let strokeColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
 		strokeColor.setStroke()
+		strokeColor.setFill()
 		
 		var points: [CGPoint] = []
 		if analysisrange == .week {
@@ -131,7 +132,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		for point in points {
 			let circle = UIBezierPath.init(arcCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
 			circle.lineWidth = 2;
-			circle.stroke()
+			circle.fill()
 			if lastpoint==nil {
 				lastpoint = point
 				path.move(to: point)
