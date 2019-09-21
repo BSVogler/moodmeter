@@ -18,7 +18,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		super.init(model.baseURL)
 	}
 	
-	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<MeasurementRequest>) -> Void){
+	public func postMeasurement(measurements: [APIMeasurement], done: @escaping (Result<MeasurementRequest>) -> Void){
 		if let deviceHash = model.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.password ?? "",
 											  measurements: measurements)

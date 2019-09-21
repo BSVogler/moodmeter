@@ -14,7 +14,7 @@ class FaceViewController: UIViewController {
 	var topLabel: String = ""
 	var modelController: PageViewController?
 	
-	private var face = Face()
+	private var face = Measurement()
 	
 	// MARK: - Outlets
 	@IBOutlet weak var dataLabel: UILabel!
@@ -26,7 +26,7 @@ class FaceViewController: UIViewController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
-		} else if face.mood < Face.moodToText.count-1 {
+		} else if face.mood < Measurement.moodToText.count-1 {
 			face.mood += 1
 		} else {
 			return

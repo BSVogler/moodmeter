@@ -14,11 +14,11 @@ typealias Mood = Int
 
 extension Mood {
 	func getSmiley() -> String {
-		return Face.moodToText[self]
+		return Measurement.moodToText[self]
 	}
 	
 	func getColor() -> UIColor {
-		return Face.moodToColor[self]
+		return Measurement.moodToColor[self]
 	}
 }
 
@@ -111,7 +111,7 @@ class Model: Codable {
 			} else {
 				//create by just posting
 				userHash = toURL
-				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements){ res in
+				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements.map{$0.apiMeasurement}){ res in
 					_ = self.saveToFiles()
 					done()
 				}
