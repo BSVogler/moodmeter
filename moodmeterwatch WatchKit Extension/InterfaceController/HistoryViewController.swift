@@ -69,37 +69,44 @@ class HistoryInterfaceController: WKInterfaceController {
 		//let context = UIGraphicsGetCurrentContext()
 		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
 		//context?.fill(frame)
+
 		let axisColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 		axisColor.setStroke()
 		let offsettop = CGFloat(2)
 		let offsettbottom = CGFloat(2)
-		let offsetleft = CGFloat(2)
+		let offsetleft = CGFloat(1)
 		let offsetright = CGFloat(2)
 		let usedAreaHeight = frame.height-offsettop-offsettbottom
 		let usedAreaWidth = frame.width-offsetleft-offsetright
 		let tickHeight = usedAreaHeight/5.0
-		for i in 1...5 {
-			let ytick = UIBezierPath()
-			let ypos = usedAreaHeight-CGFloat(i)*tickHeight+offsettop
-			ytick.move(to: CGPoint(x:1, y: ypos))
-			ytick.addLine(to: CGPoint(x:5, y: ypos))
-			ytick.lineWidth = 1;
-			ytick.stroke()
+		let tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
+		
+		for (i, color) in Measurement.moodToColor.suffix(from: 1).enumerated() {
+			color.setFill()
+			UIRectFill(CGRect(x: offsetleft, y: offsettop+CGFloat(i)*tickHeight, width: usedAreaWidth, height: usedAreaHeight/5))
 		}
 		
+//		for i in 1...5 {
+//			let ytick = UIBezierPath()
+//			let ypos = usedAreaHeight-CGFloat(i)*tickHeight+offsettop
+//			ytick.move(to: CGPoint(x:1, y: ypos))
+//			ytick.addLine(to: CGPoint(x:5, y: ypos))
+//			ytick.lineWidth = 1;
+//			ytick.stroke()
+//		}
+		
 		let yAxis = UIBezierPath()
-		yAxis.move(to: CGPoint(x:1, y:offsettop))
-		yAxis.addLine(to: CGPoint(x:1, y:frame.height-offsettbottom))
+		yAxis.move(to: CGPoint(x:offsetleft, y:offsettop))
+		yAxis.addLine(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
 		yAxis.lineWidth = 1;
 		yAxis.stroke()
 		
 		let xAxis = UIBezierPath()
-		xAxis.move(to: CGPoint(x:0, y:frame.height-offsettbottom))
-		xAxis.addLine(to: CGPoint(x:usedAreaWidth, y:frame.height-offsettbottom))
+		xAxis.move(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
+		xAxis.addLine(to: CGPoint(x:offsetleft+usedAreaWidth, y:frame.height-offsettbottom))
 		xAxis.lineWidth = 1;
 		xAxis.stroke()
 		
-		let tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
 		for i in 1...analysisrange.rawValue {
 			let tick = UIBezierPath()
 			let xpos = CGFloat(i)*tickWidth
@@ -110,7 +117,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		}
 		
 		//now draw the content
-		let strokeColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+		let strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 		strokeColor.setStroke()
 		strokeColor.setFill()
 		
@@ -119,8 +126,8 @@ class HistoryInterfaceController: WKInterfaceController {
 			//get measurements for this week
 			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
 			if let lastWeekDay = lastWeekDay {
-				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.map{$0.value}
-				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: CGFloat(i)*tickWidth,y: frame.height-offsettbottom-CGFloat(tickHeight)*CGFloat(mood))}
+				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.reversed().map{$0.value}
+				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: offsetleft+CGFloat(i)*tickWidth, y: frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood))}
 				points.append(contentsOf: points2)
 			}
 		}
