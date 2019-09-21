@@ -121,7 +121,7 @@ class HistoryInterfaceController: WKInterfaceController {
 			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
 			if let lastWeekDay = lastWeekDay {
 				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.map{$0.value}
-				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: CGFloat(i)*tickWidth,y: CGFloat(tickHeight)*CGFloat(mood))}
+				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: CGFloat(i)*tickWidth,y: frame.height-offsettbottom-CGFloat(tickHeight)*CGFloat(mood))}
 				points.append(contentsOf: points2)
 			}
 		}
