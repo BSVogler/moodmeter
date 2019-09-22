@@ -1,0 +1,69 @@
+
+/* Class = "UIButton"; normalTitle = "Erase all data"; ObjectID = "0W4-Yu-5H1"; */
+"0W4-Yu-5H1.normalTitle" = "Erase all data";
+
+/* Class = "UIButton"; normalTitle = "Reload"; ObjectID = "16K-Sv-Brw"; */
+"16K-Sv-Brw.normalTitle" = "Reload";
+
+/* Class = "UITextView"; text = "Maintain an updated copy to make the data available on other devices\nBy using the share feature you agree to the terms and conditions."; ObjectID = "KpZ-Cd-aPa"; */
+"KpZ-Cd-aPa.text" = "Maintain an updated copy to make the data available on other devices\nBy using the share feature you agree to the terms and conditions.";
+
+/* Class = "UIButton"; normalTitle = "Share live Data"; ObjectID = "OL7-6r-7Co"; */
+"OL7-6r-7Co.normalTitle" = "Share live Data";
+
+/* Class = "UILabel"; text = "App made with ♥︎ by Benedikt S. Vogler"; ObjectID = "RXR-ZZ-1EI"; */
+"RXR-ZZ-1EI.text" = "App made with ♥︎ by Benedikt S. Vogler";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "TNJ-OY-k8N"; */
+"TNJ-OY-k8N.text" = "Time";
+
+/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "XH5-V6-kwB"; */
+"XH5-V6-kwB.normalTitle" = "Settings";
+
+/* Class = "UILabel"; text = "Share Live Data"; ObjectID = "Xye-w0-hvE"; */
+"Xye-w0-hvE.text" = "Share Live Data";
+
+/* Class = "UINavigationItem"; title = "Share"; ObjectID = "bSg-jD-Ibq"; */
+"bSg-jD-Ibq.title" = "Share";
+
+/* Class = "UIButton"; normalTitle = "Delete and disable sharing"; ObjectID = "c7H-od-bZJ"; */
+"c7H-od-bZJ.normalTitle" = "Delete and disable sharing";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "cF2-Le-7mQ"; */
+"cF2-Le-7mQ.text" = "Today";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "dW3-9Y-1gy"; */
+"dW3-9Y-1gy.text" = "Version";
+
+/* Class = "UILabel"; text = "Share a copy of the data"; ObjectID = "eUh-Q5-ugd"; */
+"eUh-Q5-ugd.text" = "Share a copy of the data";
+
+/* Class = "UILabel"; text = "Feedback? developer@benediktsvogler.com"; ObjectID = "faj-vv-t6L"; */
+"faj-vv-t6L.text" = "Feedback? developer@benediktsvogler.com";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "g7i-g5-zda"; */
+"g7i-g5-zda.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "    Export file"; ObjectID = "gpo-7r-AMj"; */
+"gpo-7r-AMj.normalTitle" = "    Export file";
+
+/* Class = "UILabel"; text = "History"; ObjectID = "hBA-QD-yZx"; */
+"hBA-QD-yZx.text" = "History";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "jpO-hg-rsb"; */
+"jpO-hg-rsb.text" = "Settings";
+
+/* Class = "UILabel"; text = ":-|"; ObjectID = "p07-bN-Bxy"; */
+"p07-bN-Bxy.text" = ":-|";
+
+/* Class = "UIButton"; normalTitle = "Share link"; ObjectID = "rqa-QO-POk"; */
+"rqa-QO-POk.normalTitle" = "Share link";
+
+/* Class = "UILabel"; text = "Only people with that link can see you data. Generating a new link invalidates the old one."; ObjectID = "sGW-8B-86c"; */
+"sGW-8B-86c.text" = "Only people with that link can see you data. Generating a new link invalidates the old one.";
+
+/* Class = "UILabel"; text = "Enable reminder"; ObjectID = "tRj-AF-u7F"; */
+"tRj-AF-u7F.text" = "Enable reminder";
+
+/* Class = "UILabel"; text = "Your access link"; ObjectID = "y9c-2e-pzt"; */
+"y9c-2e-pzt.text" = "Your access link";
