@@ -5,7 +5,7 @@
 pod 'Alamofire'
 pod 'SwiftyBeaver', '~> 1.7'
 
-target 'Moodmeter' do
+target 'Moodtracker' do
 
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -14,6 +14,6 @@ target 'Moodmeter' do
 	pod 'SwiftChartView'
 end
 
-target 'moodmeterwatch WatchKit Extension' do
+target 'Moodtracker WatchKit Extension' do
 	use_frameworks!
 end

@@ -1,0 +1,923 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		73E3DF008CD2FD2BF8803FF7 /* Pods_Moodtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */; };
+		891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */; };
+		A68480B82337C4FC00ADB8EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */; };
+		A68480BA2337C4FC00ADB8EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68480B92337C4FC00ADB8EA /* ViewController.swift */; };
+		A68480BD2337C4FC00ADB8EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480BB2337C4FC00ADB8EA /* Main.storyboard */; };
+		A68480BF2337C4FE00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480BE2337C4FE00ADB8EA /* Assets.xcassets */; };
+		A68480C22337C4FE00ADB8EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */; };
+		A68480C72337C4FE00ADB8EA /* Moodtracker WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A68480CD2337C4FE00ADB8EA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480CB2337C4FE00ADB8EA /* Interface.storyboard */; };
+		A68480CF2337C4FF00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480CE2337C4FF00ADB8EA /* Assets.xcassets */; };
+		A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480E02337C50000ADB8EA /* Assets.xcassets */; };
+		A68480FE2337C55D00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480F42337C55C00ADB8EA /* Assets.xcassets */; };
+		A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481062337C65200ADB8EA /* AppDelegate.swift */; };
+		A68481092337C6B300ADB8EA /* Info_old.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68481082337C6B300ADB8EA /* Info_old.plist */; };
+		A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684810B2337C9FA00ADB8EA /* NotificationController.swift */; };
+		A68481162337C9FB00ADB8EA /* body.dae in Resources */ = {isa = PBXBuildFile; fileRef = A684810C2337C9FA00ADB8EA /* body.dae */; };
+		A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */; };
+		A68481182337C9FB00ADB8EA /* body.scn in Resources */ = {isa = PBXBuildFile; fileRef = A684810E2337C9FB00ADB8EA /* body.scn */; };
+		A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481102337C9FB00ADB8EA /* ImportInterfaceController.swift */; };
+		A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */; };
+		A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */; };
+		A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */; };
+		A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481142337C9FB00ADB8EA /* HistoryViewController.swift */; };
+		A68481432337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
+		A68481442337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
+		A68481452337CC5700ADB8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481422337CC5700ADB8EA /* Model.swift */; };
+		A68481462337CC5700ADB8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481422337CC5700ADB8EA /* Model.swift */; };
+		A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481472337CC5E00ADB8EA /* ApiError.swift */; };
+		A684814D2337CC5F00ADB8EA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481472337CC5E00ADB8EA /* ApiError.swift */; };
+		A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481482337CC5E00ADB8EA /* ApiRequests.swift */; };
+		A684814F2337CC5F00ADB8EA /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481482337CC5E00ADB8EA /* ApiRequests.swift */; };
+		A68481502337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */; };
+		A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */; };
+		A68481522337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */; };
+		A68481532337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */; };
+		A68481542337CC5F00ADB8EA /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */; };
+		A68481552337CC5F00ADB8EA /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */; };
+		A684815C2337CECD00ADB8EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A684815A2337CECD00ADB8EA /* Localizable.strings */; };
+		A684817C2337D14F00ADB8EA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481762337D14E00ADB8EA /* RootViewController.swift */; };
+		A684817D2337D14F00ADB8EA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481772337D14E00ADB8EA /* SettingViewController.swift */; };
+		A684817E2337D14F00ADB8EA /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481782337D14E00ADB8EA /* PageViewController.swift */; };
+		A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481792337D14E00ADB8EA /* FaceViewController.swift */; };
+		A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817A2337D14F00ADB8EA /* HistoryViewController.swift */; };
+		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A68480C82337C4FE00ADB8EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A68480AA2337C4FC00ADB8EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A68480C52337C4FE00ADB8EA;
+			remoteInfo = "moodtracker WatchKit App";
+		};
+		A68480D72337C4FF00ADB8EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A68480AA2337C4FC00ADB8EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A68480D42337C4FF00ADB8EA;
+			remoteInfo = "moodtracker WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A68480E92337C50000ADB8EA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A68480ED2337C50000ADB8EA /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A68480C72337C4FE00ADB8EA /* Moodtracker WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3922469255209CF4EAEDBDC8 /* Pods-Moodtracker WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		4F61A1BE61B605C3233918EE /* Pods-Moodtracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker/Pods-Moodtracker.debug.xcconfig"; sourceTree = "<group>"; };
+		5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodtracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69369A514871CC5BD3F8AC30 /* Pods-Moodtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker.release.xcconfig"; path = "Target Support Files/Pods-Moodtracker/Pods-Moodtracker.release.xcconfig"; sourceTree = "<group>"; };
+		75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodtracker_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480B22337C4FC00ADB8EA /* Moodtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A68480B92337C4FC00ADB8EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A68480BC2337C4FC00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A68480BE2337C4FE00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A68480C12337C4FE00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A68480C32337C4FE00ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodtracker WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480CC2337C4FE00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A68480CE2337C4FF00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A68480D02337C4FF00ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Moodtracker WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480E02337C50000ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A68480E22337C50000ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A68480F42337C55C00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Desktop/backup/moodmeter/Assets.xcassets; sourceTree = "<group>"; };
+		A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Moodmeter.entitlements; sourceTree = "<group>"; };
+		A68481062337C65200ADB8EA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A68481082337C6B300ADB8EA /* Info_old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_old.plist; sourceTree = "<group>"; };
+		A684810A2337C9FA00ADB8EA /* Moodtracker WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moodtracker WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		A684810B2337C9FA00ADB8EA /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A684810C2337C9FA00ADB8EA /* body.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = body.dae; sourceTree = "<group>"; };
+		A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		A684810E2337C9FB00ADB8EA /* body.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = body.scn; sourceTree = "<group>"; };
+		A68481102337C9FB00ADB8EA /* ImportInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportInterfaceController.swift; sourceTree = "<group>"; };
+		A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInterfaceController.swift; sourceTree = "<group>"; };
+		A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceInterfaceController.swift; sourceTree = "<group>"; };
+		A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
+		A68481142337C9FB00ADB8EA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		A68481412337CC5700ADB8EA /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Measurement.swift; path = moodtracker/Model/Measurement.swift; sourceTree = SOURCE_ROOT; };
+		A68481422337CC5700ADB8EA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = moodtracker/Model/Model.swift; sourceTree = SOURCE_ROOT; };
+		A68481472337CC5E00ADB8EA /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		A68481482337CC5E00ADB8EA /* ApiRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
+		A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpClient.swift; sourceTree = "<group>"; };
+		A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
+		A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMeasurement.swift; sourceTree = "<group>"; };
+		A684815B2337CECD00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A68481762337D14E00ADB8EA /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		A68481772337D14E00ADB8EA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A68481782337D14E00ADB8EA /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		A68481792337D14E00ADB8EA /* FaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
+		A684817A2337D14F00ADB8EA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		A684817B2337D14F00ADB8EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		A68481832337D27700ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A68481842337D27D00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A68481862337D33E00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A68480AF2337C4FC00ADB8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73E3DF008CD2FD2BF8803FF7 /* Pods_Moodtracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A68480D22337C4FF00ADB8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA9203C6C0984CB023FE550A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26E7D5B98D4F4F72C598685C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */,
+				75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A68480A92337C4FC00ADB8EA = {
+			isa = PBXGroup;
+			children = (
+				A68480B42337C4FC00ADB8EA /* moodtracker */,
+				A68480CA2337C4FE00ADB8EA /* moodtracker WatchKit App */,
+				A68480D92337C4FF00ADB8EA /* moodtracker WatchKit Extension */,
+				A68480B32337C4FC00ADB8EA /* Products */,
+				CD9E8E6C696D79A59050575C /* Pods */,
+				26E7D5B98D4F4F72C598685C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A68480B32337C4FC00ADB8EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A68480B22337C4FC00ADB8EA /* Moodtracker.app */,
+				A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */,
+				A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A68480B42337C4FC00ADB8EA /* moodtracker */ = {
+			isa = PBXGroup;
+			children = (
+				A68481062337C65200ADB8EA /* AppDelegate.swift */,
+				A68481342337CBF800ADB8EA /* Model */,
+				A68481272337CBB400ADB8EA /* API */,
+				A68480F42337C55C00ADB8EA /* Assets.xcassets */,
+				A68480C32337C4FE00ADB8EA /* Info.plist */,
+				A68481082337C6B300ADB8EA /* Info_old.plist */,
+				A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */,
+				A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */,
+				A68480B92337C4FC00ADB8EA /* ViewController.swift */,
+				A68480BB2337C4FC00ADB8EA /* Main.storyboard */,
+				A68480BE2337C4FE00ADB8EA /* Assets.xcassets */,
+				A684815A2337CECD00ADB8EA /* Localizable.strings */,
+				A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */,
+				A68481692337D11200ADB8EA /* ViewController */,
+			);
+			path = moodtracker;
+			sourceTree = "<group>";
+		};
+		A68480CA2337C4FE00ADB8EA /* moodtracker WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				A68480CB2337C4FE00ADB8EA /* Interface.storyboard */,
+				A68480CE2337C4FF00ADB8EA /* Assets.xcassets */,
+				A68480D02337C4FF00ADB8EA /* Info.plist */,
+			);
+			path = "moodtracker WatchKit App";
+			sourceTree = "<group>";
+		};
+		A68480D92337C4FF00ADB8EA /* moodtracker WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A684810C2337C9FA00ADB8EA /* body.dae */,
+				A684810E2337C9FB00ADB8EA /* body.scn */,
+				A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */,
+				A684810F2337C9FB00ADB8EA /* InterfaceController */,
+				A684810B2337C9FA00ADB8EA /* NotificationController.swift */,
+				A68480E02337C50000ADB8EA /* Assets.xcassets */,
+				A68480E22337C50000ADB8EA /* Info.plist */,
+				A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */,
+				A684810A2337C9FA00ADB8EA /* Moodtracker WatchKit Extension-Bridging-Header.h */,
+			);
+			path = "moodtracker WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		A684810F2337C9FB00ADB8EA /* InterfaceController */ = {
+			isa = PBXGroup;
+			children = (
+				A68481102337C9FB00ADB8EA /* ImportInterfaceController.swift */,
+				A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */,
+				A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */,
+				A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */,
+				A68481142337C9FB00ADB8EA /* HistoryViewController.swift */,
+			);
+			path = InterfaceController;
+			sourceTree = "<group>";
+		};
+		A68481272337CBB400ADB8EA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A68481472337CC5E00ADB8EA /* ApiError.swift */,
+				A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */,
+				A68481482337CC5E00ADB8EA /* ApiRequests.swift */,
+				A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */,
+				A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A68481342337CBF800ADB8EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A68481412337CC5700ADB8EA /* Measurement.swift */,
+				A68481422337CC5700ADB8EA /* Model.swift */,
+			);
+			name = Model;
+			path = API/Model;
+			sourceTree = "<group>";
+		};
+		A68481692337D11200ADB8EA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A68481792337D14E00ADB8EA /* FaceViewController.swift */,
+				A684817A2337D14F00ADB8EA /* HistoryViewController.swift */,
+				A68481782337D14E00ADB8EA /* PageViewController.swift */,
+				A68481762337D14E00ADB8EA /* RootViewController.swift */,
+				A68481772337D14E00ADB8EA /* SettingViewController.swift */,
+				A684817B2337D14F00ADB8EA /* ShareViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CD9E8E6C696D79A59050575C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F61A1BE61B605C3233918EE /* Pods-Moodtracker.debug.xcconfig */,
+				69369A514871CC5BD3F8AC30 /* Pods-Moodtracker.release.xcconfig */,
+				B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */,
+				3922469255209CF4EAEDBDC8 /* Pods-Moodtracker WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A68480B12337C4FC00ADB8EA /* Moodtracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A68480EE2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker" */;
+			buildPhases = (
+				F70AB3C86C7F9EB4312DD36B /* [CP] Check Pods Manifest.lock */,
+				A68480AE2337C4FC00ADB8EA /* Sources */,
+				A68480AF2337C4FC00ADB8EA /* Frameworks */,
+				A68480B02337C4FC00ADB8EA /* Resources */,
+				A68480ED2337C50000ADB8EA /* Embed Watch Content */,
+				A19016189DC8FAD585AB56D2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A68480C92337C4FE00ADB8EA /* PBXTargetDependency */,
+			);
+			name = Moodtracker;
+			productName = moodtracker;
+			productReference = A68480B22337C4FC00ADB8EA /* Moodtracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */;
+			buildPhases = (
+				A68480C42337C4FE00ADB8EA /* Resources */,
+				A68480E92337C50000ADB8EA /* Embed App Extensions */,
+				CA9203C6C0984CB023FE550A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A68480D82337C4FF00ADB8EA /* PBXTargetDependency */,
+			);
+			name = "Moodtracker WatchKit App";
+			productName = "moodtracker WatchKit App";
+			productReference = A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit Extension" */;
+			buildPhases = (
+				947257DCA67C08DE3300C202 /* [CP] Check Pods Manifest.lock */,
+				A68480D12337C4FF00ADB8EA /* Sources */,
+				A68480D22337C4FF00ADB8EA /* Frameworks */,
+				A68480D32337C4FF00ADB8EA /* Resources */,
+				1B898D7A80143377C7487B0A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Moodtracker WatchKit Extension";
+			productName = "moodtracker WatchKit Extension";
+			productReference = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A68480AA2337C4FC00ADB8EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = bsvogler;
+				TargetAttributes = {
+					A68480B12337C4FC00ADB8EA = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					A68480C52337C4FE00ADB8EA = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					A68480D42337C4FF00ADB8EA = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = A68480AD2337C4FC00ADB8EA /* Build configuration list for PBXProject "moodtracker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+			);
+			mainGroup = A68480A92337C4FC00ADB8EA;
+			productRefGroup = A68480B32337C4FC00ADB8EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A68480B12337C4FC00ADB8EA /* Moodtracker */,
+				A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */,
+				A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A68480B02337C4FC00ADB8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68480C22337C4FE00ADB8EA /* LaunchScreen.storyboard in Resources */,
+				A68480BF2337C4FE00ADB8EA /* Assets.xcassets in Resources */,
+				A684815C2337CECD00ADB8EA /* Localizable.strings in Resources */,
+				A68480FE2337C55D00ADB8EA /* Assets.xcassets in Resources */,
+				A68481092337C6B300ADB8EA /* Info_old.plist in Resources */,
+				A68480BD2337C4FC00ADB8EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A68480C42337C4FE00ADB8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68480CF2337C4FF00ADB8EA /* Assets.xcassets in Resources */,
+				A68480CD2337C4FE00ADB8EA /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A68480D32337C4FF00ADB8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68481182337C9FB00ADB8EA /* body.scn in Resources */,
+				A68481162337C9FB00ADB8EA /* body.dae in Resources */,
+				A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B898D7A80143377C7487B0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		947257DCA67C08DE3300C202 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moodtracker WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A19016189DC8FAD585AB56D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moodtracker/Pods-Moodtracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Moodtracker/Pods-Moodtracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Moodtracker/Pods-Moodtracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F70AB3C86C7F9EB4312DD36B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Moodtracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A68480AE2337C4FC00ADB8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A68481452337CC5700ADB8EA /* Model.swift in Sources */,
+				A684817C2337D14F00ADB8EA /* RootViewController.swift in Sources */,
+				A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */,
+				A68481432337CC5700ADB8EA /* Measurement.swift in Sources */,
+				A684817D2337D14F00ADB8EA /* SettingViewController.swift in Sources */,
+				A68481502337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */,
+				A68481522337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */,
+				A68480BA2337C4FC00ADB8EA /* ViewController.swift in Sources */,
+				A68480B82337C4FC00ADB8EA /* SceneDelegate.swift in Sources */,
+				A68481542337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,
+				A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */,
+				A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */,
+				A684817E2337D14F00ADB8EA /* PageViewController.swift in Sources */,
+				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
+				A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */,
+				A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A68480D12337C4FF00ADB8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A684814D2337CC5F00ADB8EA /* ApiError.swift in Sources */,
+				A684814F2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
+				A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */,
+				A68481442337CC5700ADB8EA /* Measurement.swift in Sources */,
+				A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */,
+				A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */,
+				A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */,
+				A68481462337CC5700ADB8EA /* Model.swift in Sources */,
+				A68481532337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */,
+				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
+				A68481552337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,
+				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
+				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
+				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A68480C92337C4FE00ADB8EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */;
+			targetProxy = A68480C82337C4FE00ADB8EA /* PBXContainerItemProxy */;
+		};
+		A68480D82337C4FF00ADB8EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */;
+			targetProxy = A68480D72337C4FF00ADB8EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A68480BB2337C4FC00ADB8EA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A68480BC2337C4FC00ADB8EA /* Base */,
+				A68481862337D33E00ADB8EA /* de */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A68480C12337C4FE00ADB8EA /* Base */,
+				A68481832337D27700ADB8EA /* de */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A68480CB2337C4FE00ADB8EA /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A68480CC2337C4FE00ADB8EA /* Base */,
+				A68481842337D27D00ADB8EA /* de */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		A684815A2337CECD00ADB8EA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A684815B2337CECD00ADB8EA /* Base */,
+				A68481852337D30400ADB8EA /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A68480E42337C50000ADB8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A68480E52337C50000ADB8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A68480E72337C50000ADB8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = "moodtracker WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "Moodtracker WatchKit Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "moodtracker WatchKit Extension/Moodtracker WatchKit Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		A68480E82337C50000ADB8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3922469255209CF4EAEDBDC8 /* Pods-Moodtracker WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = "moodtracker WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "Moodtracker WatchKit Extension";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "moodtracker WatchKit Extension/Moodtracker WatchKit Extension-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		A68480EB2337C50000ADB8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				IBSC_MODULE = moodtracker_WatchKit_Extension;
+				INFOPLIST_FILE = "moodtracker WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
+				PRODUCT_NAME = "Moodtracker WatchKit App";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		A68480EC2337C50000ADB8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				IBSC_MODULE = moodtracker_WatchKit_Extension;
+				INFOPLIST_FILE = "moodtracker WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
+				PRODUCT_NAME = "Moodtracker WatchKit App";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		A68480EF2337C50000ADB8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F61A1BE61B605C3233918EE /* Pods-Moodtracker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = moodtracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker;
+				PRODUCT_NAME = Moodtracker;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A68480F02337C50000ADB8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69369A514871CC5BD3F8AC30 /* Pods-Moodtracker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = moodtracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker;
+				PRODUCT_NAME = Moodtracker;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A68480AD2337C4FC00ADB8EA /* Build configuration list for PBXProject "moodtracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A68480E42337C50000ADB8EA /* Debug */,
+				A68480E52337C50000ADB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A68480E72337C50000ADB8EA /* Debug */,
+				A68480E82337C50000ADB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A68480EB2337C50000ADB8EA /* Debug */,
+				A68480EC2337C50000ADB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A68480EE2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A68480EF2337C50000ADB8EA /* Debug */,
+				A68480F02337C50000ADB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A68480AA2337C4FC00ADB8EA /* Project object */;
+}
