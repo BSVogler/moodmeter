@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +10,7 @@
         <!--Root View Controller-->
         <scene sceneID="clB-vc-fyl">
             <objects>
-                <viewController id="703-4V-yAM" customClass="RootViewController" customModule="Moodmeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="703-4V-yAM" customClass="RootViewController" customModule="Moodtracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="502-Ir-ELC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +29,7 @@
         <!--Face View Controller-->
         <scene sceneID="snT-py-3hH">
             <objects>
-                <viewController storyboardIdentifier="sbFace" id="S4R-Ja-viH" customClass="FaceViewController" customModule="Moodmeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbFace" id="S4R-Ja-viH" customClass="FaceViewController" customModule="Moodtracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZwX-cT-FIQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,7 +37,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1b-V9-EN7">
                                 <rect key="frame" x="0.0" y="69" width="414" height="827"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodmeter" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodtracker" customModuleProvider="target">
                                         <rect key="frame" x="166.66666666666666" y="365.66666666666669" width="80.666666666666657" height="95.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +111,7 @@
         <!--Setting View Controller-->
         <scene sceneID="5Zf-Ad-5CM">
             <objects>
-                <viewController id="Slk-0i-r66" customClass="SettingViewController" customModule="Moodmeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Slk-0i-r66" customClass="SettingViewController" customModule="Moodtracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fC-rL-NzY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +246,7 @@
         <!--History View Controller-->
         <scene sceneID="iRY-DP-jOA">
             <objects>
-                <viewController storyboardIdentifier="sbHistory" id="gSE-2D-ksZ" customClass="HistoryViewController" customModule="Moodmeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbHistory" id="gSE-2D-ksZ" customClass="HistoryViewController" customModule="Moodtracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7c3-eA-gzV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,16 +331,16 @@
         <!--Share-->
         <scene sceneID="2WO-cI-HCH">
             <objects>
-                <viewController storyboardIdentifier="sbShare" id="ZZ6-Fh-DNi" customClass="ShareViewController" customModule="Moodmeter" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j9u-nu-MkE" customClass="GradientView" customModule="Moodmeter" customModuleProvider="target">
+                <viewController storyboardIdentifier="sbShare" id="ZZ6-Fh-DNi" customClass="ShareViewController" customModule="Moodtracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j9u-nu-MkE" customClass="GradientView" customModule="Moodtracker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-B5-sSM">
-                                <rect key="frame" x="55" y="687" width="304" height="2"/>
+                                <rect key="frame" x="55" y="718" width="304" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share a copy of the data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-Q5-ugd">
-                                <rect key="frame" x="20" y="709" width="374" height="21"/>
+                                <rect key="frame" x="20" y="740" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4Kd-qC-KDc"/>
                                 </constraints>
@@ -350,7 +349,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpo-7r-AMj">
-                                <rect key="frame" x="106" y="750" width="202" height="62"/>
+                                <rect key="frame" x="146.66666666666666" y="781" width="120.99999999999997" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="121" id="8j3-rg-rBv"/>
                                 </constraints>
@@ -361,7 +360,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-fG-Sd3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only people with that link can see you data. Generating a new link invalidates the old one." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGW-8B-86c">
                                         <rect key="frame" x="20" y="146" width="374" height="65"/>
@@ -399,7 +398,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7H-od-bZJ">
-                                        <rect key="frame" x="116" y="651" width="182" height="30"/>
+                                        <rect key="frame" x="116" y="682" width="182" height="30"/>
                                         <state key="normal" title="Delete and disable sharing">
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -436,10 +435,10 @@
                                 </constraints>
                             </view>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz9-Ki-GeK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="645"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="676"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
-                                        <rect key="frame" x="106" y="255.66666666666669" width="202" height="40"/>
+                                        <rect key="frame" x="142" y="255.66666666666669" width="130" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
@@ -494,7 +493,7 @@ By using the share feature you agree to the terms and conditions.</string>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
-                                <rect key="frame" x="105.66666666666667" y="765.66666666666663" width="34.000000000000014" height="27.666666666666629"/>
+                                <rect key="frame" x="146" y="781.33333333333337" width="34" height="27.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26.5" id="BaI-uL-QWD"/>
                                     <constraint firstAttribute="width" constant="34" id="uhW-I7-QZn"/>
