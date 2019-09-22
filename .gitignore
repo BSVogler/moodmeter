@@ -3,3 +3,4 @@ Podfile.lock
 *.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
 *.pyc
+*.xcworkspacedata
