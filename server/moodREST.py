@@ -6,33 +6,26 @@ from flask import Flask, request, abort, make_response, Response
 import os
 import hashlib
 import shutil
+import csv
 
 application = Flask(__name__)
 
-password_folder = "passwords/"
 userdata_folder = "userdata/"
 
-if not os.path.isdir(password_folder):
-    os.makedirs(password_folder)
 if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
 
-def delete(repohash):
-    os.remove(userdata_folder + repohash)
-    os.remove(password_folder + repohash)
+def merge(fp, old, old_password, new):
+    # append old data
+    reader = csv.DictReader(fp)
+    measurements = []
+    for row in reader:
+        measurements.append((row[0], row[1]))
+    add_measurements_to_csv(new, measurements)
+    # then delete
+    os.remove(userdata_folder + old)
 
-
-def integrate(old, old_password, new):
-    access_old = hasAccess(old, old_password)
-    if access_old:
-        # append old data
-        with open(userdata_folder + old, "r") as fp:
-            csvdata = fp.read()
-        with open(userdata_folder + new, "wa") as fp:
-            fp.write(csvdata)
-        # then delete
-        delete(old)
 
 def add_measurements_to_csv(repohash, measurements, limit=None):
     """
@@ -46,18 +39,22 @@ def add_measurements_to_csv(repohash, measurements, limit=None):
 
     destination = open(userdata_folder + repohash, "w")
     source = open(userdata_folder + repohash + "~", "r")
-    #check if a line must be updated
+    # check if a line must be updated
+    skip = 2 #skip header
     for line in source:
         update = False
-        date_in_line = datetime.strptime(line[:line.find(";")], "%Y-%m-%dT")
-        for index, e in enumerate(measurements):
-            # update
-            date_to_write = datetime.strptime(e["day"], "%Y-%m-%dT")  # string to date
-            if date_to_write == date_in_line:
-                destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
-                update = True
-                measurements.pop(index)
-                break
+        if skip > 0:
+            skip -= 1
+        else:
+            date_in_line = datetime.strptime(line[:line.find(";")], "%Y-%m-%dT")
+            for index, e in enumerate(measurements):
+                # update
+                date_to_write = datetime.strptime(e["day"], "%Y-%m-%dT")  # string to date
+                if date_to_write == date_in_line:
+                    destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
+                    update = True
+                    measurements.pop(index)
+                    break
         if not update:
             destination.write(line)
 
@@ -76,19 +73,41 @@ def root():
 
 
 def hasAccess(repohash, password):
-    if os.access(password_folder + repohash, os.R_OK):
-        with open(password_folder + repohash, "r") as pfp:
-            stored_hash = pfp.readline()[:-1]  # ignore line break
-            stored_salt = pfp.readline()
+    if os.access(userdata_folder + repohash, os.R_OK):
+        pfp = open(userdata_folder + repohash, "r")
+        stored_hash = pfp.readline()[:-1]  # ignore line break
+        stored_salt = pfp.readline()[:-1]
         transmitted_hash = hashlib.pbkdf2_hmac('sha256',
                                                password,
                                                binascii.unhexlify(stored_salt),
                                                10000)
-        if binascii.unhexlify(stored_hash) != transmitted_hash:
-            return abort(Response("Invalid passwort for "+repohash+"."))
-    else:
-        return abort(Response("Password not found for "+repohash+"."))
-    return True
+        if binascii.unhexlify(stored_hash) == transmitted_hash:
+            return pfp
+    return None
+
+
+def writeFile(hash, password, measurements):
+    # save password
+    salt = os.urandom(16)
+    pw_hashed = hashlib.pbkdf2_hmac('sha256', password, salt, 10000)
+    # storing in a text file doubles the file size but this way we can easily use the line break to separate
+    # hash and salt when reading
+    with open(userdata_folder + hash, "w") as fp:
+        fp.write(binascii.hexlify(pw_hashed) + "\n")
+        fp.write(binascii.hexlify(salt) + "\n")
+        for e in measurements:
+            fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
+
+
+def readFile(hash, password):
+    fp = hasAccess(hash, password)
+    if fp is not None:
+        fp.readline() #skip password
+        fp.readline() #skip salt
+        csvdata = fp.read()
+        return csvdata
+        # else:
+        #    return "wrong password"
 
 
 @application.route('/<string:repohash>', methods=['POST', 'GET', 'DELETE'])
@@ -106,73 +125,55 @@ def add_data(repohash):
         # check if file exists, then add new measurement
         if os.access(userdata_folder + repohash, os.R_OK):
             # check password
-            access_new = hasAccess(repohash, request_data["password"].encode('utf-8'))
-            if access_new:
+            fp = hasAccess(repohash, request_data["password"].encode('utf-8'))
+            if fp is not None:
                 # integrate request?
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                    integrate(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), repohash)
+                    merge(fp, request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), repohash)
                 add_measurements_to_csv(repohash, request_data["measurements"])
             else:  # no access
-                return access_new
+                return abort(Response("Invalid passwort for "+repohash+"."))
         else:  # save to new hash
+            # append new data
+            measurements = None
+            if "measurements" in request_data:
+                measurements = request_data["measurements"]
+
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
                 old_hash = request_data["old_hash"].lower()
-                access_old = hasAccess(old_hash, request_data["old_password"].encode('utf-8'))
+                old_pw = request_data["old_password"].encode('utf-8')
+                access_old = hasAccess(old_hash, old_pw)
                 if access_old:
                     # move old data to new hash
                     os.rename(userdata_folder + old_hash, userdata_folder + repohash)
-                    # success, so remove old password
-                    os.remove(password_folder + old_hash)
-                    # append new data
-                    if "measurements" in request_data:
-                        with open(userdata_folder + repohash, "a") as fp:
-                            for e in request_data["measurements"]:
-                                fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
                 else:
                     # authentication failed
                     return abort(403)
-            else:
-                # initial write of data
-                with open(userdata_folder + repohash, "w+") as fp:
-                    for e in request_data["measurements"]:
-                        fp.write(e["day"] + ";" + str(e["mood"]) + "\n")
 
-            # save password
-            salt = os.urandom(16)
-            pw_hashed = hashlib.pbkdf2_hmac('sha256', (request_data["password"].encode('utf-8')), salt, 10000)
-            # storing in a text file doubles the file size but this way we can easily use the line break to separate
-            # hash and salt when reading
-            with open(password_folder + repohash, "w") as fp:
-                fp.write(binascii.hexlify(pw_hashed) + "\n")
-                fp.write(binascii.hexlify(salt))
+            writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
 
         return "ok"
     elif request.method == 'GET':
-        if os.access(userdata_folder + repohash, os.R_OK):
-            with open(userdata_folder + repohash, "r") as fp:
-                # todo check password properly
-                # if request_data["password"] != "empty":
-                csvdata = fp.read()
-                resp = make_response(csvdata, 200)
-                resp.headers["Content-Type"] = "text/csv"
-                return resp
-            # else:
-            #    return "wrong password"
+        # todo check password properly
+        # if "password" in request_data:
+        password = ""
+        csvdata = readFile(repohash, password)
+        resp = make_response(csvdata, 200)
+        resp.headers["Content-Type"] = "text/csv"
+        return resp
         return abort(404)
     elif request.method == 'DELETE':
         if not request.json:
             return abort(400)
         request_data = request.json["data"]
-        access = hasAccess(repohash, request_data["password"].encode('utf-8'))
-        if access:
+        fp = hasAccess(repohash, request_data["password"].encode('utf-8'))
+        if fp is not None:
             if os.access(userdata_folder + repohash, os.R_OK):
                 os.remove(userdata_folder + repohash)
-            if os.access(password_folder + repohash, os.R_OK):
-                os.remove(password_folder + repohash)
             return "ok"
         else:
-            return access
+            return abort(Response("Invalid passwort for "+repohash+"."))
 
 
 if __name__ == '__main__':
