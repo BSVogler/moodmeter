@@ -65,11 +65,11 @@ def add_measurements_to_csv(repohash, measurements, limit=None):
     :return: new csv content
     """
 
-    name_src = userdata_folder + repohash+".csv"
+    name_dst = userdata_folder + repohash+".csv"
     name_tmp = userdata_folder + repohash + ".csv~"
-    shutil.move(name_src, name_tmp)
+    shutil.move(name_dst, name_tmp)
 
-    destination = open(name_src, "w")
+    destination = open(name_dst, "w")
     source = open(name_tmp, "r")
     csvcontent = ""
     # check if a line must be updated
