@@ -30,6 +30,13 @@ if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
 def merge(fp_old_read, old, new):
+    """
+
+    :param fp_old_read:
+    :param old:
+    :param new:
+    :return: csv content
+    """
     # read old data
     reader = csv.reader(fp_old_read, delimiter=';')
     measurements = []
@@ -43,9 +50,10 @@ def merge(fp_old_read, old, new):
             measure["day"] = row[0]
             measure["mood"] = row[1]
             measurements.append(measure)
-    add_measurements_to_csv(new, measurements)
+    csv_content = add_measurements_to_csv(new, measurements)
     # then delete old
     os.remove(userdata_folder + old+".csv")
+    return csv_content
 
 
 def add_measurements_to_csv(repohash, measurements, limit=None):
@@ -54,7 +62,7 @@ def add_measurements_to_csv(repohash, measurements, limit=None):
     :param fp: filepointer
     :param measurements: data with fields "day" and "mood"
     :param limit: filter dates before that date
-    :return:
+    :return: new csv content
     """
 
     name_src = userdata_folder + repohash+".csv"
@@ -63,8 +71,10 @@ def add_measurements_to_csv(repohash, measurements, limit=None):
 
     destination = open(name_src, "w")
     source = open(name_tmp, "r")
+    csvcontent = ""
     # check if a line must be updated
     skip = 2 # skip header
+    writingcsv = False
     for line in source:
         update = False
         if skip > 0:
@@ -75,20 +85,29 @@ def add_measurements_to_csv(repohash, measurements, limit=None):
                 # update
                 date_to_write = datetime.strptime(e["day"], "%Y-%m-%dT")  # string to date
                 if date_to_write == date_in_line:
-                    destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
+                    line_out = e["day"] + ";" + str(e["mood"]) + "\n"
+                    csvcontent += line_out
+                    destination.write(line_out)
                     update = True
                     measurements.pop(index)
                     break
         if not update:
+            if writingcsv:
+                csvcontent += line
+            if skip == 0 and not writingcsv:
+                writingcsv = True
             destination.write(line)
 
     # append the rest
     for e in measurements:
-        destination.write(e["day"] + ";" + str(e["mood"]) + "\n")
+        line_out = e["day"] + ";" + str(e["mood"]) + "\n"
+        csvcontent += line_out
+        destination.write(line_out)
 
     source.close()
     destination.close()
     os.remove(name_tmp)
+    return csvcontent
 
 
 @application.route("/")
@@ -163,7 +182,11 @@ def add_data(repohash):
                     fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
                     if fp_old_read is not None:
                         merge(fp_old_read, request_data["old_hash"].lower(), repohash)
-                add_measurements_to_csv(repohash, request_data["measurements"])
+                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
+                csvdata = add_measurements_to_csv(repohash, request_data["measurements"])
+                resp = make_response(csvdata, 200)
+                resp.headers["Content-Type"] = "text/csv"
+                return resp
             else:  # no access
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
                 return abort(Response("Invalid passwort for "+repohash+"."))
