@@ -197,11 +197,17 @@ def add_data(repohash):
         # todo check password properly
         # if "password" in request_data:
         password = ""
-        csvdata = readFile(repohash, password)
-        resp = make_response(csvdata, 200)
-        resp.headers["Content-Type"] = "text/csv"
-        logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms get")
-        return resp
+        if not os.access(filename, os.R_OK):
+            return abort(404)
+        with open(filename) as fp:
+            fp.readline()  # skip password
+            fp.readline()  # skip salt
+            csvdata = fp.read()
+            resp = make_response(csvdata, 200)
+            resp.headers["Content-Type"] = "text/csv"
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms get")
+            return resp
+        return abort(500)
     elif request.method == 'DELETE':
         if not request.json:
             return abort(400)
