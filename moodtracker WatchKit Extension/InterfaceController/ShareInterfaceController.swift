@@ -16,8 +16,8 @@ class ShareInterfaceController: WKInterfaceController {
 	@IBAction func generateNewLink() {
 		hashLabel.setText("...wait...")
 		//generate new sharing url
-		Model.shared.generateAndRegisterHash(){
-			self.hashLabel.setText(Model.shared.sharingURL?.absoluteString)
+		Model.shared.sharing.generateAndRegisterHash(){
+			self.hashLabel.setText(Model.shared.sharing.URL?.absoluteString)
 		}
 	}
 	@IBAction func delete() {
@@ -25,7 +25,7 @@ class ShareInterfaceController: WKInterfaceController {
 			//wait for confirm from server
 			MoodAPIjsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
-				Model.shared.disableSharing()
+				Model.shared.sharing.disableSharing()
 				self.pop()
 			}
 		}
@@ -33,18 +33,18 @@ class ShareInterfaceController: WKInterfaceController {
 	}
 	
 	override func awake(withContext context: Any?) {
-		if Model.shared.sharingURLShort != nil {
-			hashLabel.setText(Model.shared.sharingURLShort)
+		if let shareURL = Model.shared.sharing.URLwithoutProtocol{
+			hashLabel.setText(shareURL)
 		} else {
 			hashLabel.setText("...wait...")
-			Model.shared.generateAndRegisterHash(){
-				self.hashLabel.setText(Model.shared.sharingURLShort)
+			Model.shared.sharing.generateAndRegisterHash(){
+				self.hashLabel.setText(Model.shared.sharing.URLwithoutProtocol)
 			}
 		}
 	}
 	
 	override func didAppear() {
-		self.hashLabel.setText(Model.shared.sharingURLShort)
+		self.hashLabel.setText(Model.shared.sharing.URLwithoutProtocol)
 	}
 }
 

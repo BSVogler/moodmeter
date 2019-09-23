@@ -24,11 +24,6 @@ extension Mood {
 
 class Model: Codable {
 	// MARK: Constants
-	//https://en.wikipedia.org/wiki/Birthday_attack
-	//with alphabet of 34 there are ~3*10^20 possibilities. Birthday paradoxon colission probability is aprox 10^-8 after 2.4 Mio tries
-	//for 5 107 billion tries are needed
-	static let hashlength = 5;
-	static let alphabet: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
 	static let fileNameDB = "data.json"
 	static var localDBStorageURL: URL {
 		guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -37,48 +32,11 @@ class Model: Codable {
 		return documentsDirectory.appendingPathComponent(fileNameDB)
 	}
 	
+	//this code is only run when intializing, this is not a computed property
 	public static let shared : Model = {
-		let model: Model? = loadFromFiles()
-		guard let modelg = model else {
-			return Model()
-		}
-		return modelg
+		let model = loadFromFiles() ?? Model()
+		return model
 	}()
-	
-	// MARK: stored properties
-	public private(set) var userHash: String?
-	var reminderEnabled: Bool = false
-	var reminderHour = 22
-	var reminderMinute = 00
-	var password: String? = "todo"
-	/// for getting the measurements as a read only array use `measurements`
-	var dataset = [Date: Mood]()
-	
-	let baseURL = URL(string: "https://mood.benediktsvogler.com")!
-	// MARK: Computed Properties
-	var sharingURL: URL? {
-		get{
-			guard let deviceHash = self.userHash else {
-				return nil
-			}
-			return baseURL.appendingPathComponent(deviceHash)
-		}
-	}
-	
-	var sharingURLShort: String? {
-		get{
-			guard let sharingURL = self.sharingURL else {
-				return nil
-			}
-			return (sharingURL.host ?? "")+sharingURL.path
-		}
-	}
-	
-	var measurements: [Measurement] {
-		get {
-			return dataset.map{Measurement(day: $0.key, mood: $0.value)}
-		}
-	}
 	
 	// MARK: Type Methods
 	static func loadFromFiles() -> Model? {
@@ -93,53 +51,27 @@ class Model: Codable {
 		}
 	}
 	
+	// MARK: stored properties
+	var reminderEnabled: Bool = false
+	var reminderHour = 22
+	var reminderMinute = 00
+	/// for getting the measurements as a read only array use `measurements`
+	var dataset = [Date: Mood]()
+	let sharing = Sharing()
+	
+	// MARK: Computed Properties
+	var measurements: [Measurement] {
+		get {
+			return dataset.map{Measurement(day: $0.key, mood: $0.value)}
+		}
+	}
+	
+	init(){
+		sharing.setModel(model: self)
+	}
+
+	
 	// MARK: Methods
-	/// if there is already a hash, it moves them
-	final func generateAndRegisterHash(done: @escaping () -> Void){
-		let oldHash = userHash
-		//the hash does not have to be secure, just the seed, so use secure seed directly
-		var bytes = [UInt8](repeating: 0, count: Model.hashlength)
-		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
-		
-		if status == errSecSuccess { // Always test the status.
-			let toURL: String = String(bytes.map{ byte in Model.alphabet[Int(byte % UInt8(Model.alphabet.count))] })
-			if oldHash != nil {
-				moveHash(to: toURL){
-					_ = self.saveToFiles()
-					done()
-				}
-			} else {
-				//create by just posting
-				userHash = toURL
-				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: measurements.map{$0.apiMeasurement}){ res in
-					_ = self.saveToFiles()
-					done()
-				}
-			}
-		}
-	}
-	
-	//I would like to return a more generic Result<>, but I was not able to do this
-	func importHash(_ hash: String, done: @escaping () -> Void) {
-		guard userHash != nil else {
-			//this should not happen
-			generateAndRegisterHash(done: done)
-			return
-		}
-		moveHash(to: hash, done: done)
-	}
-	//I would like to return a more generic Result<>, but I was not able to do this
-	func moveHash(to: String, done: @escaping () -> Void) {
-		if let old = self.userHash {
-			MoodAPIjsonHttpClient.shared.moveHash(old: old, new: to) { res in
-				self.userHash = to //use new only after request completed
-				done()
-			}
-		} else {
-			generateAndRegisterHash(done: done)
-		}
-	}
-	
 	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(self)
@@ -171,9 +103,5 @@ class Model: Codable {
 		return true
 	}
 	
-	func disableSharing(){
-		userHash = nil
-		_ = saveToFiles()
-	}
 }
 

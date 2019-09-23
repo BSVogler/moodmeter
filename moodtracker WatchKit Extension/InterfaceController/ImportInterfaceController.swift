@@ -16,7 +16,7 @@ class ImportInterfaceController: WKInterfaceController {
 	
 	@IBAction func codeChanged(_ value: NSString?) {
 		enteredHash = (value ?? "")  as String 
-		if Model.hashlength==value?.length {
+		if Sharing.hashlength==value?.length {
 			importButton.setEnabled(true)
 		} else {
 			importButton.setEnabled(false)
@@ -24,7 +24,7 @@ class ImportInterfaceController: WKInterfaceController {
 		
 	}
 	@IBAction func importButtonPressed() {
-		Model.shared.importHash(enteredHash) {
+		Model.shared.sharing.importHash(enteredHash) {
 			self.pop()
 		}
 	}

@@ -15,7 +15,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	init(model: Model) {
 		self.model = model
-		super.init(model.baseURL)
+		super.init(model.sharing.baseURL)
 	}
 	
 	func parseToDataset(_ input: [[String]]){
@@ -30,8 +30,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	}
 	
 	public func postMeasurement(measurements: [APIMeasurement], done: @escaping (Result<[[String]]>) -> Void){
-		if let deviceHash = model.userHash {
-			let mrequest = MeasurementRequest(password: Model.shared.password ?? "",
+		if let deviceHash = model.sharing.userHash {
+			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
 											  measurements: measurements)
 			post(to: deviceHash,
 				 with: mrequest,
@@ -48,8 +48,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	}
 	
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
-		if let deviceHash = model.userHash {
-			let del_request = DeleteRequest(password: Model.shared.password ?? "")
+		if let deviceHash = model.sharing.userHash {
+			let del_request = DeleteRequest(password: Model.shared.sharing.password ?? "")
 			delete(to: deviceHash,
 				   with: del_request,
 				   done: done)
@@ -60,8 +60,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	
 	typealias Dataset = [Date: Mood]
 	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
-		let moveRequest = MoveRequest(password: Model.shared.password ?? "",
-									  old_password: Model.shared.password ?? "",
+		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
+									  old_password: Model.shared.sharing.password ?? "",
 									  old_hash: old)
 		post(to: new,
 			 with: moveRequest,

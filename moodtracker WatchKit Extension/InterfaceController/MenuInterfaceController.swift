@@ -43,7 +43,7 @@ class MenuInterfaceController: WKInterfaceController {
 						didSelectRowAt rowIndex: Int){
 		switch rowIndex {
 		case 0:
-			if Model.shared.userHash == nil {
+			if Model.shared.sharing.userHash == nil {
 				let accept = WKAlertAction(title: "Accept", style: .default) {
 					self.pushController(withName: "Share", context: nil)
 				}

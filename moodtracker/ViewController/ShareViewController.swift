@@ -44,8 +44,8 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		activityIndicator.isHidden = false
 		shareLiveDataButton.isHidden = true
 		activityIndicator.startAnimating()
-		Model.shared.generateAndRegisterHash() {
-			self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+		Model.shared.sharing.generateAndRegisterHash() {
+			self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 			self.activityIndicator.stopAnimating()
 			self.showSharingActivated()
 			self.shareLiveDataButton.isHidden = false
@@ -59,23 +59,23 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 			
 			MoodAPIjsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
-				Model.shared.disableSharing()
+				Model.shared.sharing.disableSharing()
 				self.showSharingDeactivated()
 			}
 		}
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
-		if Model.shared.userHash != nil {
+		if Model.shared.sharing.userHash != nil {
 			shareLinkField.text = "..."
 			//generate new sharing url
-			Model.shared.generateAndRegisterHash() {
-				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+			Model.shared.sharing.generateAndRegisterHash() {
+				self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 			}
 		} else {
 			//has no hash (only the case if there is a bug somehwere else), so make a new one
-			Model.shared.generateAndRegisterHash(){ 
-				self.shareLinkField.text = Model.shared.sharingURL?.absoluteString
+			Model.shared.sharing.generateAndRegisterHash(){
+				self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 			}
 		}
 	}
@@ -83,7 +83,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBAction func exportLink(_ sender: Any) {
 		let textToShare = NSLocalizedString("My live mood data", comment: "")
 		
-		if let link = Model.shared.sharingURL {
+		if let link = Model.shared.sharing.URL {
 			let objectsToShare: [Any] = [textToShare, link]
 			let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 			
@@ -128,7 +128,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		activityIndicator.isHidden = true
-		if Model.shared.userHash == nil {
+		if Model.shared.sharing.userHash == nil {
 			showSharingDeactivated()
 		} else {
 			showSharingActivated()
@@ -156,7 +156,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	func showSharingActivated() {
 		sharedView.isHidden = false
 		activateSharing.isHidden = true
-		shareLinkField.text = Model.shared.sharingURL?.absoluteString
+		shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 	}
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

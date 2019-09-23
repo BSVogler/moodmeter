@@ -53,6 +53,8 @@
 		A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481792337D14E00ADB8EA /* FaceViewController.swift */; };
 		A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817A2337D14F00ADB8EA /* HistoryViewController.swift */; };
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
+		A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
+		A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +152,7 @@
 		A68481842337D27D00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		A6D0FEED23396A2000DA20F3 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = moodtracker/Model/Sharing.swift; sourceTree = SOURCE_ROOT; };
 		B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -287,6 +290,7 @@
 			children = (
 				A68481412337CC5700ADB8EA /* Measurement.swift */,
 				A68481422337CC5700ADB8EA /* Model.swift */,
+				A6D0FEED23396A2000DA20F3 /* Sharing.swift */,
 			);
 			name = Model;
 			path = API/Model;
@@ -556,6 +560,7 @@
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A67812B423392029008C4044 /* CSVDecoder.swift in Sources */,
 				A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */,
+				A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +573,7 @@
 				A684814F2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */,
 				A67812B523392029008C4044 /* CSVDecoder.swift in Sources */,
+				A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A68481442337CC5700ADB8EA /* Measurement.swift in Sources */,
 				A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */,
 				A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */,
