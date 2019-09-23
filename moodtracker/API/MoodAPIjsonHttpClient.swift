@@ -52,7 +52,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 			let del_request = DeleteRequest(password: Model.shared.password ?? "")
 			delete(to: deviceHash,
 				   with: del_request,
-				   expecting: DeleteRequest.self, done: done)
+				   done: done)
 		} else {
 			logger.error("no device Hash")
 		}
