@@ -24,7 +24,7 @@ struct APIMeasurement: Codable {
 	}
 	
 	func toMeasurement() -> Measurement? {
-		if let date = Date.fromJS(from: day) {
+		if let date = Date.fromJS(day) {
 			return Measurement(day: date, mood: mood)
 		} else {
 			return nil

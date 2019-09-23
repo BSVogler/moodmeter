@@ -107,7 +107,7 @@ class Measurement: Codable {
 
 // MARK: - Extension Date
 extension Date {
-	static func fromJS(from: String) -> Date? {
+	static func fromJS(_ from: String) -> Date? {
 		let dateFormatter = DateFormatter()
 		let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
 		dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
