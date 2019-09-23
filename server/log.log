@@ -1,0 +1,73 @@
+13:01:15,316 root INFO Running moodREST
+13:01:15,338 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:01:21,402 root INFO Running moodREST
+13:01:21,435 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:01:33,516 moodREST ERROR Exception on /a [POST]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/benediktvogler/projekt moodmeter/moodmeter/server/moodREST.py", line 179, in add_data
+    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+  File "/Users/benediktvogler/projekt moodmeter/moodmeter/server/moodREST.py", line 113, in writeFile
+    with open(userdata_folder + hash+".csv", "w") as fp:
+IOError: [Errno 2] No such file or directory: u'userdata/a.csv'
+13:01:33,548 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:01:33] "POST /a HTTP/1.1" 500 -
+13:01:42,337 root INFO Running moodREST
+13:01:42,358 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:01:46,624 moodREST ERROR Exception on /a [POST]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/benediktvogler/projekt moodmeter/moodmeter/server/moodREST.py", line 179, in add_data
+    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+  File "/Users/benediktvogler/projekt moodmeter/moodmeter/server/moodREST.py", line 113, in writeFile
+    with open(userdata_folder + hash+".csv", "w") as fp:
+IOError: [Errno 2] No such file or directory: u'userdata/a.csv'
+13:01:46,645 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:01:46] "POST /a HTTP/1.1" 500 -
+13:01:59,309 root INFO Running moodREST
+13:01:59,331 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:02:03,632 moodREST INFO 0.0132949352264 for request 192.168.2.3
+13:02:03,633 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:02:03] "POST /a HTTP/1.1" 200 -
+13:04:37,34 root INFO Running moodREST
+13:04:37,53 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:04:40,638 moodREST INFO 18.993139267ms for request 192.168.2.3
+13:04:40,640 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:04:40] "POST /a HTTP/1.1" 200 -
+13:05:06,946 moodREST INFO 15.7029628754ms for request 192.168.2.3
+13:05:06,947 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:05:06] "POST /a HTTP/1.1" 200 -
+13:05:08,69 moodREST INFO 14.8930549622ms for request 192.168.2.3
+13:05:08,69 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:05:08] "POST /a HTTP/1.1" 200 -
+13:05:55,888 moodREST INFO 27.5909900665ms for request 192.168.2.3
+13:05:55,888 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:05:55] "POST /b HTTP/1.1" 200 -
+13:06:13,50 moodREST INFO 14.0299797058ms for request 192.168.2.3
+13:06:13,51 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:06:13] "POST /b HTTP/1.1" 200 -
+13:06:46,250 moodREST INFO 13.5939121246ms for request 192.168.2.3
+13:06:46,250 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:06:46] "POST /b HTTP/1.1" 200 -
+13:09:10,978 root INFO Running moodREST
+13:09:11,0 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:09:15,400 moodREST INFO 16.8490409851ms for request 192.168.2.3
+13:09:15,403 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:09:15] "POST /b HTTP/1.1" 200 -
+13:10:08,866 root INFO
+13:10:08,891 werkzeug INFO
+13:10:11,541 moodREST INFO
+13:10:11,543 werkzeug INFO
+13:10:32,899 root INFO Running moodREST
+13:10:32,927 werkzeug INFO  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+13:10:34,830 moodREST INFO 15.3729915619ms for request 192.168.2.3
+13:10:34,832 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:10:34] "POST /b HTTP/1.1" 200 -
+13:18:11,139 werkzeug INFO 192.168.2.3 - - [23/Sep/2019 13:18:11] "POST /a HTTP/1.1" 403 -

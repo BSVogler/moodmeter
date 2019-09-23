@@ -7,14 +7,27 @@ import os
 import hashlib
 import shutil
 import csv
+import logging
+import time
+#from flask.logging import default_handler
+
 
 application = Flask(__name__)
 
 userdata_folder = "userdata/"
+logging.basicConfig(filename="moodRest.log",
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
+#application.logger.removeHandler(default_handler) # DSGVO no ip address saved
+
+logging.info("Running moodREST")
+
+logger = logging.getLogger('moodREST')
 
 if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
-
 
 def merge(fp_old_read, old, new):
     # read old data
@@ -128,10 +141,13 @@ def add_data(repohash):
     :param repohash:
     :return:
     """
+    start = time.time()
     repohash = repohash.lower()
     filename = userdata_folder + repohash+".csv"
+    action = "default"
     if request.method == 'POST':
         if not request.json:
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
             return abort(400)
         request_data = request.json["data"]
         # check if file exists, then add new measurement
@@ -143,11 +159,13 @@ def add_data(repohash):
                 # merge request?
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0\
                         and "old_password" in request_data:
+                    action = "merge"
                     fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
                     if fp_old_read is not None:
                         merge(fp_old_read, request_data["old_hash"].lower(), repohash)
                 add_measurements_to_csv(repohash, request_data["measurements"])
             else:  # no access
+                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
                 return abort(Response("Invalid passwort for "+repohash+"."))
         else:  # save to new hash
             # append new data
@@ -158,6 +176,7 @@ def add_data(repohash):
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
                 old_hash = request_data["old_hash"].lower()
+                action = "move"
                 old_pw = request_data["old_password"].encode('utf-8')
                 access_old = has_access(old_hash, old_pw)
                 if access_old:
@@ -166,10 +185,13 @@ def add_data(repohash):
                     os.rename(userdata_folder + old_hash+".csv", userdata_folder + repohash+".csv")
                 else:
                     # authentication failed
+                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms "+ action +" fail")
                     return abort(403)
 
             writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
-
+        # disable log because this may make the request slower.
+        #ip = request.remote_addr #only returning proxi address
+        logger.info("{:10.4f}".format((time.time()-start)*1000) +"ms "+action)
         return "ok"
     elif request.method == 'GET':
         # todo check password properly
@@ -178,8 +200,8 @@ def add_data(repohash):
         csvdata = readFile(repohash, password)
         resp = make_response(csvdata, 200)
         resp.headers["Content-Type"] = "text/csv"
+        logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms get")
         return resp
-        return abort(404)
     elif request.method == 'DELETE':
         if not request.json:
             return abort(400)
@@ -188,10 +210,13 @@ def add_data(repohash):
         if fp is not None:
             if os.access(filename, os.R_OK):
                 os.remove(filename)
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete")
             return "ok"
         else:
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete fail")
             return abort(Response("Invalid passwort for "+repohash+"."))
 
 
 if __name__ == '__main__':
     application.run()
+
