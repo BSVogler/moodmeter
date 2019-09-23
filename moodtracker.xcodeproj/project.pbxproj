@@ -16,7 +16,7 @@
 		A68480BD2337C4FC00ADB8EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480BB2337C4FC00ADB8EA /* Main.storyboard */; };
 		A68480BF2337C4FE00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480BE2337C4FE00ADB8EA /* Assets.xcassets */; };
 		A68480C22337C4FE00ADB8EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */; };
-		A68480C72337C4FE00ADB8EA /* Moodtracker WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A68480C72337C4FE00ADB8EA /* Moodtracker.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A68480C62337C4FE00ADB8EA /* Moodtracker.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A68480CD2337C4FE00ADB8EA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480CB2337C4FE00ADB8EA /* Interface.storyboard */; };
 		A68480CF2337C4FF00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480CE2337C4FF00ADB8EA /* Assets.xcassets */; };
 		A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -90,7 +90,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				A68480C72337C4FE00ADB8EA /* Moodtracker WatchKit App.app in Embed Watch Content */,
+				A68480C72337C4FE00ADB8EA /* Moodtracker.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,7 +111,7 @@
 		A68480BE2337C4FE00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68480C12337C4FE00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A68480C32337C4FE00ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moodtracker WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480C62337C4FE00ADB8EA /* Moodtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480CC2337C4FE00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		A68480CE2337C4FF00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68480D02337C4FF00ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				A68480B22337C4FC00ADB8EA /* Moodtracker.app */,
-				A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */,
+				A68480C62337C4FE00ADB8EA /* Moodtracker.app */,
 				A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -355,7 +355,7 @@
 			);
 			name = "Moodtracker WatchKit App";
 			productName = "moodtracker WatchKit App";
-			productReference = A68480C62337C4FE00ADB8EA /* Moodtracker WatchKit App.app */;
+			productReference = A68480C62337C4FE00ADB8EA /* Moodtracker.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */ = {
@@ -814,7 +814,7 @@
 				IBSC_MODULE = moodtracker_WatchKit_Extension;
 				INFOPLIST_FILE = "moodtracker WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
-				PRODUCT_NAME = "Moodtracker WatchKit App";
+				PRODUCT_NAME = Moodtracker;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -833,7 +833,7 @@
 				IBSC_MODULE = moodtracker_WatchKit_Extension;
 				INFOPLIST_FILE = "moodtracker WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
-				PRODUCT_NAME = "Moodtracker WatchKit App";
+				PRODUCT_NAME = Moodtracker;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

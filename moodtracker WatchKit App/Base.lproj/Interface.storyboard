@@ -82,7 +82,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodtracker_WatchKit_App" customModuleProvider="target">
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodtracker" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="Exhibit A" id="71U-CQ-QRm"/>
                     </items>
@@ -93,7 +93,7 @@
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodtracker_WatchKit_App" customModuleProvider="target">
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodtracker" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="How are you feeling?" id="AGy-cV-ovc"/>
                         <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2"/>
@@ -215,11 +215,11 @@
                     <items>
                         <table alignment="left" id="P0H-ex-w0U">
                             <items>
-                                <tableRow identifier="menuItem" id="qJ3-u7-VIU" customClass="MyRowController" customModule="Moodmeter_WatchKit_Extension">
+                                <tableRow identifier="menuItem" id="qJ3-u7-VIU" customClass="MyRowController" customModule="Moodtracker_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="wMO-Tg-wzx">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" id="lS3-jo-ZwM"/>
-                                            <label alignment="center" verticalAlignment="center" text="Button description" textAlignment="right" id="bL0-Wk-1d5"/>
+                                            <imageView alignment="left" verticalAlignment="center" image="cloud" catalog="system" id="lS3-jo-ZwM"/>
+                                            <label alignment="center" verticalAlignment="center" text="Button" textAlignment="right" id="bL0-Wk-1d5"/>
                                         </items>
                                     </group>
                                     <connections>
@@ -231,11 +231,11 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="table" destination="P0H-ex-w0U" id="cQ7-H2-NCY"/>
+                        <outlet property="table" destination="P0H-ex-w0U" id="Fdd-Ae-7M9"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="683" y="360.5"/>
+            <point key="canvasLocation" x="683" y="360"/>
         </scene>
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
@@ -371,5 +371,6 @@
     <resources>
         <image name="arrowtriangle.left.circle" catalog="system" width="64" height="62"/>
         <image name="arrowtriangle.right.circle" catalog="system" width="64" height="62"/>
+        <image name="cloud" catalog="system" width="64" height="44"/>
     </resources>
 </document>
