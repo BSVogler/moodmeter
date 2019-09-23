@@ -18,6 +18,17 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		super.init(model.baseURL)
 	}
 	
+	func parseToDataset(_ input: [[String]]){
+		for item in input {
+			guard let date = Date.fromJS(item[0]) else {
+				print("could not parse string (\(item[0])) to Date")
+				continue
+			}
+			
+			Model.shared.dataset[date] = Int(item[1])
+		}
+	}
+	
 	public func postMeasurement(measurements: [APIMeasurement], done: @escaping (Result<[[String]]>) -> Void){
 		if let deviceHash = model.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.password ?? "",
@@ -27,16 +38,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 				 responseType: .CSV,
 				 done: {(res: Result<[[String]]>) in
 					if res.isSuccess, let value = res.value {
-						for item in value {
-							guard let date = Date.fromJS(item[0]) else {
-								print("could not parse string (\(item[0])) to Date")
-								continue
-							}
-							
-							Model.shared.dataset[date] = Int(item[1])
-						}
+						self.parseToDataset(value)
 					}
-					
 					done(res)
 			})
 		} else {
@@ -56,18 +59,17 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	}
 	
 	typealias Dataset = [Date: Mood]
-	public func moveHash(old: String, new: String, done: @escaping (Result<Dataset>) -> Void){
+	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
 		let moveRequest = MoveRequest(password: Model.shared.password ?? "",
 									  old_password: Model.shared.password ?? "",
 									  old_hash: old)
 		post(to: new,
 			 with: moveRequest,
 			 responseType: .CSV,
-			 done: {(res: Result<Dataset>) in
-				if res.isSuccess, let dataset = res.value {
-					Model.shared.dataset = dataset
+			 done: {(res: Result<[[String]]>) in
+				if res.isSuccess, let value = res.value {
+					self.parseToDataset(value)
 				}
-				
 				done(res)
 		})
 	}
