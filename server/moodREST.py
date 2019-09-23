@@ -191,11 +191,6 @@ def add_data(repohash):
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
                 return abort(Response("Invalid passwort for "+repohash+"."))
         else:  # save to new hash
-            # append new data
-            measurements = None
-            if "measurements" in request_data:
-                measurements = request_data["measurements"]
-
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
                 old_hash = request_data["old_hash"].lower()
@@ -206,12 +201,19 @@ def add_data(repohash):
                     access_old.close()
                     # move old data to new hash
                     os.rename(userdata_folder + old_hash+".csv", userdata_folder + repohash+".csv")
+                    # optional append new measurements
+                    if "measurements" in request_data:
+                        measurements = request_data["measurements"]
+                        add_measurements_to_csv(repohash, measurements)
                 else:
                     # authentication failed
-                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms "+ action +" fail")
+                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
                     return abort(403)
-
-            writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+            else:
+                # initial write
+                if "measurements" in request_data:
+                    measurements = request_data["measurements"]
+                    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
         # disable log because this may make the request slower.
         #ip = request.remote_addr #only returning proxi address
         logger.info("{:10.4f}".format((time.time()-start)*1000) +"ms "+action)
