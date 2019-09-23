@@ -49,13 +49,16 @@ class Sharing: Codable {
 	// MARK: Methods
 	/// if there is already a hash, it moves them
 	final func generateAndRegisterHash(done: @escaping () -> Void){
+		guard let model = model else {
+			return
+		}
 		let oldHash = userHash
 		//the hash does not have to be secure, just the seed, so use secure seed directly
 		var bytes = [UInt8](repeating: 0, count: Sharing.self.hashlength)
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
-			let toURL: String = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
+			let toURL = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
 			if oldHash != nil {
 				moveHash(to: toURL){
 					_ = self.model?.saveToFiles()
@@ -64,11 +67,9 @@ class Sharing: Codable {
 			} else {
 				//create by just posting
 				userHash = toURL
-				if let model = model {
-					MoodAPIjsonHttpClient.shared.postMeasurement(measurements: model.measurements.map{$0.apiMeasurement}){ res in
-						_ = self.model?.saveToFiles()
-						done()
-					}
+				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: model.measurements.map{$0.apiMeasurement}){ res in
+					_ = self.model?.saveToFiles()
+					done()
 				}
 			}
 		}

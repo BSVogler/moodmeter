@@ -66,6 +66,7 @@ class Model: Codable {
 		}
 	}
 	
+	// MARK: Initializer
 	init(){
 		sharing.setModel(model: self)
 	}
