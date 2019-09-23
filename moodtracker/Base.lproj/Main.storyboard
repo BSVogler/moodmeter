@@ -258,7 +258,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="loW-wN-kPe">
-                                <rect key="frame" x="325" y="95" width="69" height="37.000000000000014"/>
+                                <rect key="frame" x="325" y="95" width="69" height="36.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36.329999999999998" id="P5M-Di-MwY"/>
                                 </constraints>
@@ -380,6 +380,9 @@
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-0C-9i0">
                                         <rect key="frame" x="20" y="104" width="334" height="34"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" link="YES"/>
+                                        </accessibility>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -412,6 +415,64 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz9-Ki-GeK">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="676"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
+                                                <rect key="frame" x="142" y="255.66666666666669" width="130" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Share live Data" backgroundImage="borderbutton"/>
+                                                <connections>
+                                                    <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C4Y-cz-syq">
+                                                <rect key="frame" x="157.66666666666666" y="53" width="98.999999999999972" height="49.666666666666671"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="55" id="bLv-l0-SCW"/>
+                                                    <constraint firstAttribute="width" constant="99" id="gc1-SE-8Fx"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xye-w0-hvE">
+                                                <rect key="frame" x="139" y="113" width="136" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
+                                                <rect key="frame" x="197" y="265.66666666666669" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpZ-Cd-aPa">
+                                                <rect key="frame" x="36" y="145" width="356" height="97"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="97" id="8SA-r2-vqk"/>
+                                                </constraints>
+                                                <string key="text">Maintain an updated copy to make the data available on other devices
+By using the share feature you agree to the terms and conditions.</string>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
+                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="13.666666666666686" id="2M4-06-Ocl"/>
+                                            <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
+                                            <constraint firstItem="KpZ-Cd-aPa" firstAttribute="leading" secondItem="kz9-Ki-GeK" secondAttribute="leading" constant="36" id="D83-iF-PyM"/>
+                                            <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
+                                            <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="23.666666666666686" id="S0Q-Te-2on"/>
+                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="centerY" secondItem="dgV-E5-zD5" secondAttribute="centerY" id="XEc-lW-2BA"/>
+                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
+                                            <constraint firstAttribute="trailing" secondItem="KpZ-Cd-aPa" secondAttribute="trailing" constant="22" id="fvr-qe-jgn"/>
+                                            <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="pE6-iz-jPe"/>
+                                            <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
+                                            <constraint firstItem="KpZ-Cd-aPa" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="zZM-YT-tde"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="rqa-QO-POk" firstAttribute="top" secondItem="sGW-8B-86c" secondAttribute="bottom" constant="69" id="08d-k8-xcT"/>
@@ -422,9 +483,12 @@
                                     <constraint firstItem="sGW-8B-86c" firstAttribute="top" secondItem="OMK-0C-9i0" secondAttribute="bottom" constant="8" id="HzG-1y-CjG"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="leading" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="13" id="MSc-FW-M1R"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="QiV-ap-idD"/>
+                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="centerY" secondItem="Bdi-fG-Sd3" secondAttribute="centerY" id="TFg-hP-khM"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y9c-2e-pzt" secondAttribute="trailing" constant="8" id="TSK-Hs-kV1"/>
                                     <constraint firstItem="rqa-QO-POk" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="WEj-AA-rJG"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="top" secondItem="y9c-2e-pzt" secondAttribute="bottom" constant="20" id="Yk6-yt-zPH"/>
+                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="28" id="d5y-q9-frY"/>
+                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="daa-0p-sbt"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="104" id="dfu-oL-43t"/>
                                     <constraint firstAttribute="trailing" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="60" id="dyi-Q0-son"/>
                                     <constraint firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="fKX-Xo-R71"/>
@@ -432,64 +496,7 @@
                                     <constraint firstAttribute="trailing" secondItem="sGW-8B-86c" secondAttribute="trailing" constant="20" id="qZJ-of-cdO"/>
                                     <constraint firstItem="FdJ-0D-A7Z" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" constant="4" id="rd7-hh-iAj"/>
                                     <constraint firstItem="y9c-2e-pzt" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="52" id="sTO-A2-CmE"/>
-                                </constraints>
-                            </view>
-                            <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz9-Ki-GeK">
-                                <rect key="frame" x="0.0" y="44" width="414" height="676"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
-                                        <rect key="frame" x="142" y="255.66666666666669" width="130" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Share live Data" backgroundImage="borderbutton"/>
-                                        <connections>
-                                            <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C4Y-cz-syq">
-                                        <rect key="frame" x="157.66666666666666" y="53" width="98.999999999999972" height="49.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="bLv-l0-SCW"/>
-                                            <constraint firstAttribute="width" constant="99" id="gc1-SE-8Fx"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xye-w0-hvE">
-                                        <rect key="frame" x="139" y="113" width="136" height="24"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
-                                        <rect key="frame" x="197" y="265.66666666666669" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpZ-Cd-aPa">
-                                        <rect key="frame" x="36" y="145" width="356" height="97"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="97" id="8SA-r2-vqk"/>
-                                        </constraints>
-                                        <string key="text">Maintain an updated copy to make the data available on other devices
-By using the share feature you agree to the terms and conditions.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
-                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="13.666666666666686" id="2M4-06-Ocl"/>
-                                    <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
-                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="leading" secondItem="kz9-Ki-GeK" secondAttribute="leading" constant="36" id="D83-iF-PyM"/>
-                                    <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
-                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="23.666666666666686" id="S0Q-Te-2on"/>
-                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="centerY" secondItem="dgV-E5-zD5" secondAttribute="centerY" id="XEc-lW-2BA"/>
-                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
-                                    <constraint firstAttribute="trailing" secondItem="KpZ-Cd-aPa" secondAttribute="trailing" constant="22" id="fvr-qe-jgn"/>
-                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="pE6-iz-jPe"/>
-                                    <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
-                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="zZM-YT-tde"/>
+                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="centerX" secondItem="sGW-8B-86c" secondAttribute="centerX" id="xSH-kD-ybd"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
@@ -503,17 +510,13 @@ By using the share feature you agree to the terms and conditions.</string>
                         <color key="backgroundColor" red="1" green="1" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="top" secondItem="j9u-nu-MkE" secondAttribute="top" id="12E-E0-3Fi"/>
-                            <constraint firstItem="eUh-Q5-ugd" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="bottom" constant="20" id="3EG-VL-D4Z"/>
                             <constraint firstItem="gpo-7r-AMj" firstAttribute="top" secondItem="eUh-Q5-ugd" secondAttribute="bottom" constant="20" id="5FU-X0-lBB"/>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="leading" secondItem="OgE-fI-45v" secondAttribute="leading" id="6Zm-cp-o26"/>
-                            <constraint firstItem="kz9-Ki-GeK" firstAttribute="leading" secondItem="OgE-fI-45v" secondAttribute="leading" id="6hB-b3-pTE"/>
                             <constraint firstItem="OgE-fI-45v" firstAttribute="trailing" secondItem="eUh-Q5-ugd" secondAttribute="trailing" constant="20" id="DLi-ZJ-1mW"/>
                             <constraint firstItem="gpo-7r-AMj" firstAttribute="centerX" secondItem="j9u-nu-MkE" secondAttribute="centerX" id="FFc-nX-3zm"/>
                             <constraint firstItem="eUh-Q5-ugd" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="bottom" constant="8" id="FlQ-eD-Z2q"/>
                             <constraint firstItem="iO4-af-4pE" firstAttribute="centerY" secondItem="gpo-7r-AMj" secondAttribute="centerY" id="Jwt-Yt-90p"/>
                             <constraint firstItem="TEz-B5-sSM" firstAttribute="leading" secondItem="j9u-nu-MkE" secondAttribute="leadingMargin" constant="35" id="R3s-GR-ERL"/>
-                            <constraint firstItem="kz9-Ki-GeK" firstAttribute="trailing" secondItem="OgE-fI-45v" secondAttribute="trailing" id="aAr-L6-MQv"/>
-                            <constraint firstItem="kz9-Ki-GeK" firstAttribute="top" secondItem="OgE-fI-45v" secondAttribute="top" id="aK5-6W-lgf"/>
                             <constraint firstItem="eUh-Q5-ugd" firstAttribute="top" secondItem="TEz-B5-sSM" secondAttribute="bottom" constant="20" id="d8z-L8-kJj"/>
                             <constraint firstItem="OgE-fI-45v" firstAttribute="bottom" secondItem="gpo-7r-AMj" secondAttribute="bottom" constant="50" id="dyg-6I-gs8"/>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="trailing" secondItem="OgE-fI-45v" secondAttribute="trailing" id="km5-eg-zHC"/>

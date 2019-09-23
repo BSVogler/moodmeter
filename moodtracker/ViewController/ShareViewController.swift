@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: - GradientView
 @IBDesignable
 final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 	@IBInspectable var startColor: UIColor = UIColor.clear
@@ -26,7 +27,8 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 	}
 }
 
-class ShareViewController: UIViewController, UIDocumentInteractionControllerDelegate {
+//MARK: - ShareViewController
+class ShareViewController: UIViewController, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
 	
 	// MARK: Outlets
 	@IBOutlet weak var activateSharing: UIView!
@@ -131,6 +133,9 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		} else {
 			showSharingActivated()
 		}
+		shareLinkField.delegate = self
+		//disable keyboard
+		shareLinkField.inputView = UIView.init(frame: .zero)
 	}
 	
 	// MARK: Functions
@@ -152,5 +157,11 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		sharedView.isHidden = false
 		activateSharing.isHidden = true
 		shareLinkField.text = Model.shared.sharingURL?.absoluteString
+	}
+	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		// copy to pasteboard
+		UIPasteboard.general.string = shareLinkField.text
+		return textField != shareLinkField
 	}
 }
