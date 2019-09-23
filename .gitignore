@@ -4,3 +4,4 @@ Podfile.lock
 *.xcodeproj/xcuserdata/
 *.pyc
 *.xcworkspacedata
+server/moodRest.log
