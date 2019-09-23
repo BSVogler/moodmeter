@@ -19,7 +19,6 @@
 		A68480CF2337C4FF00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480CE2337C4FF00ADB8EA /* Assets.xcassets */; };
 		A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480E02337C50000ADB8EA /* Assets.xcassets */; };
-		A68480FE2337C55D00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480F42337C55C00ADB8EA /* Assets.xcassets */; };
 		A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481062337C65200ADB8EA /* AppDelegate.swift */; };
 		A68481092337C6B300ADB8EA /* Info_old.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68481082337C6B300ADB8EA /* Info_old.plist */; };
 		A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684810B2337C9FA00ADB8EA /* NotificationController.swift */; };
@@ -117,7 +116,6 @@
 		A68480E02337C50000ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68480E22337C50000ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		A68480F42337C55C00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Desktop/backup/moodmeter/Assets.xcassets; sourceTree = "<group>"; };
 		A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Moodmeter.entitlements; sourceTree = "<group>"; };
 		A68481062337C65200ADB8EA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A68481082337C6B300ADB8EA /* Info_old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_old.plist; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				A68481062337C65200ADB8EA /* AppDelegate.swift */,
 				A68481342337CBF800ADB8EA /* Model */,
 				A68481272337CBB400ADB8EA /* API */,
-				A68480F42337C55C00ADB8EA /* Assets.xcassets */,
 				A68480C32337C4FE00ADB8EA /* Info.plist */,
 				A68481082337C6B300ADB8EA /* Info_old.plist */,
 				A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */,
@@ -427,7 +424,6 @@
 				A68480C22337C4FE00ADB8EA /* LaunchScreen.storyboard in Resources */,
 				A68480BF2337C4FE00ADB8EA /* Assets.xcassets in Resources */,
 				A684815C2337CECD00ADB8EA /* Localizable.strings in Resources */,
-				A68480FE2337C55D00ADB8EA /* Assets.xcassets in Resources */,
 				A68481092337C6B300ADB8EA /* Info_old.plist in Resources */,
 				A68480BD2337C4FC00ADB8EA /* Main.storyboard in Resources */,
 			);
