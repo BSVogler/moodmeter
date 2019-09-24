@@ -176,14 +176,17 @@ def add_data(repohash):
             if fp_new is not None:
                 fp_new.close()
                 # merge request?
+                csvdata = ""
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0\
                         and "old_password" in request_data:
                     action = "merge"
                     fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
+                    #can read old?
                     if fp_old_read is not None:
-                        merge(fp_old_read, request_data["old_hash"].lower(), repohash)
+                        csvdata = merge(fp_old_read, request_data["old_hash"].lower(), repohash)
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
-                csvdata = add_measurements_to_csv(repohash, request_data["measurements"])
+                if "measurements" in request_data:
+                    csvdata = add_measurements_to_csv(repohash, request_data["measurements"])
                 resp = make_response(csvdata, 200)
                 resp.headers["Content-Type"] = "text/csv"
                 return resp
