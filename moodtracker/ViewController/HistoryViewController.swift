@@ -12,30 +12,29 @@ import SwiftChartView
 class HistoryViewController: UIViewController {
 
 	@IBOutlet weak var diagramImage: UIImageView!
+	@IBOutlet weak var rangeSelector: UISegmentedControl!
 	
+	// MARK: IBActions
 	@IBAction func displayRangeChanged(_ sender: Any) {
-		
-	}
-	
-	private lazy var chartPoints: [ChartPoint] = {
-		var chartPoints: [ChartPoint] = []
-		let moods = Model.shared.measurements.map{$0.mood}
-		for i in 0 ..< moods.count {
-			let chartPoint = ChartPoint(label: "11-0\(i+1)", value: Double(moods[i])/5.0)
-			chartPoints.append(chartPoint)
+		switch rangeSelector.selectedSegmentIndex {
+		case 0:
+			diagram.analysisrange = .week
+		case 1:
+			diagram.analysisrange = .month
+		default:
+			diagram.analysisrange = .year
 		}
-		return chartPoints
-	}()
+		refreshRendering()
+	}
+	//properties
+	private let diagram = Diagram()
 	
+	// MARK: functions
 	func refreshRendering(){
-		let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
-		let formatter = DateFormatter()
-		formatter.dateStyle = .medium
-		formatter.timeStyle = .none
+		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
 		
 		//dataset to string
-		let diagram = Diagram(frame: diagramImage.frame, analysisrange: .week)
-		diagramImage.image = diagram.getImage(scale: UIScreen.main.scale)
+		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
 	}
 	
 	override func viewDidLoad() {

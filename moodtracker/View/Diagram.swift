@@ -17,28 +17,31 @@ enum AnalysisRange: Int {
 }
 
 class Diagram {
-	let frame: CGRect
 	let axisColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 	let offsettop = CGFloat(2)
 	let offsettbottom = CGFloat(15)
 	let offsetleft = CGFloat(1)
 	let offsetright = CGFloat(2)
-	let usedAreaHeight: CGFloat
-	let usedAreaWidth: CGFloat
-	let tickHeight: CGFloat
-	let tickWidth: CGFloat
-	let analysisrange: AnalysisRange
+	var frame: CGRect = CGRect.zero {
+		didSet {
+			usedAreaHeight = frame.height-offsettop-offsettbottom
+			usedAreaWidth = frame.width-offsetleft-offsetright
+			tickHeight = usedAreaHeight/5.0
+			tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
+		}
+	}
+	var usedAreaHeight =  CGFloat(0)
+	var usedAreaWidth = CGFloat(0)
+	var tickHeight = CGFloat(0)
+	var tickWidth = CGFloat(0)
+	var analysisrange = AnalysisRange.week
 	
-	init(frame: CGRect, analysisrange: AnalysisRange){
-		self.frame = frame
-		usedAreaHeight = frame.height-offsettop-offsettbottom
-		usedAreaWidth = frame.width-offsetleft-offsetright
-		tickHeight = usedAreaHeight/5.0
-		tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
-		self.analysisrange = analysisrange
+	init() {
+		
 	}
 	
-	func getImage(scale: CGFloat) -> UIImage {
+	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
+		self.frame = frame
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
 		axisColor.setStroke()
 		//let context = UIGraphicsGetCurrentContext()
