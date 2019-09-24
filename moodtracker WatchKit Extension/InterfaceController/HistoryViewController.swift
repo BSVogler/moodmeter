@@ -8,11 +8,7 @@
 
 import WatchKit
 
-enum AnalysisRange: Int {
-	case week = 7
-	case month = 30
-	case year = 12
-}
+
 
 class HistoryInterfaceController: WKInterfaceController {
 	
@@ -60,100 +56,10 @@ class HistoryInterfaceController: WKInterfaceController {
 	func redraw(){
 		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
 		let frame = CGRect(x: 0, y: 0, width: self.contentFrame.width, height: 100)
-		let image = getDiagram(frame: frame)
+		let image = Diagram(frame: frame, analysisrange: analysisrange).getImage(scale: WKInterfaceDevice.current().screenScale)
 		self.diagram.setImage(image)
 	}
 	
-	func getDiagram(frame: CGRect) -> UIImage? {
-		UIGraphicsBeginImageContextWithOptions(frame.size, false, WKInterfaceDevice.current().screenScale);
-		//let context = UIGraphicsGetCurrentContext()
-		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
-		//context?.fill(frame)
-
-		let axisColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-		axisColor.setStroke()
-		let offsettop = CGFloat(2)
-		let offsettbottom = CGFloat(2)
-		let offsetleft = CGFloat(1)
-		let offsetright = CGFloat(2)
-		let usedAreaHeight = frame.height-offsettop-offsettbottom
-		let usedAreaWidth = frame.width-offsetleft-offsetright
-		let tickHeight = usedAreaHeight/5.0
-		let tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
-		
-		for (i, color) in Measurement.moodToColor.suffix(from: 1).reversed().enumerated() {
-			color.setFill()
-			UIRectFill(CGRect(x: offsetleft, y: offsettop+CGFloat(i)*tickHeight, width: usedAreaWidth, height: usedAreaHeight/5))
-		}
-		
-//		for i in 1...5 {
-//			let ytick = UIBezierPath()
-//			let ypos = usedAreaHeight-CGFloat(i)*tickHeight+offsettop
-//			ytick.move(to: CGPoint(x:1, y: ypos))
-//			ytick.addLine(to: CGPoint(x:5, y: ypos))
-//			ytick.lineWidth = 1;
-//			ytick.stroke()
-//		}
-		
-		let yAxis = UIBezierPath()
-		yAxis.move(to: CGPoint(x:offsetleft, y:offsettop))
-		yAxis.addLine(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
-		yAxis.lineWidth = 1;
-		yAxis.stroke()
-		
-		let xAxis = UIBezierPath()
-		xAxis.move(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
-		xAxis.addLine(to: CGPoint(x:offsetleft+usedAreaWidth, y:frame.height-offsettbottom))
-		xAxis.lineWidth = 1;
-		xAxis.stroke()
-		
-		for i in 1...analysisrange.rawValue {
-			let tick = UIBezierPath()
-			let xpos = CGFloat(i)*tickWidth
-			tick.move(to: CGPoint(x:xpos, y: frame.height-offsettbottom))
-			tick.addLine(to: CGPoint(x:xpos, y: frame.height-offsettbottom-4))
-			tick.lineWidth = 1;
-			tick.stroke()
-		}
-		
-		//now draw the content
-		let strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-		strokeColor.setStroke()
-		strokeColor.setFill()
-		
-		var points: [CGPoint] = []
-		if analysisrange == .week {
-			//get measurements for this week
-			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
-			if let lastWeekDay = lastWeekDay {
-				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.reversed().map{$0.value}
-				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: offsetleft+CGFloat(i)*tickWidth, y: frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood))}
-				points.append(contentsOf: points2)
-			}
-		}
-		
-		//draw points and connect them
-		var lastpoint: CGPoint? = nil
-		let path = UIBezierPath()
-		for point in points {
-			let circle = UIBezierPath.init(arcCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
-			circle.lineWidth = 2;
-			circle.fill()
-			if lastpoint==nil {
-				lastpoint = point
-				path.move(to: point)
-			} else {
-				path.addLine(to: point)
-			}
-		}
-		path.lineWidth = 2;
-		path.stroke()
-		
-		
-		let image2 = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-		return image2
-	}
 	
 	override func didDeactivate() {
 		// This method is called when watch view controller is no longer visible

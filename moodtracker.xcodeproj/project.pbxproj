@@ -53,6 +53,8 @@
 		A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481792337D14E00ADB8EA /* FaceViewController.swift */; };
 		A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817A2337D14F00ADB8EA /* HistoryViewController.swift */; };
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
+		A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
+		A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
 		A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
 		A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
 /* End PBXBuildFile section */
@@ -152,6 +154,7 @@
 		A68481842337D27D00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		A6B61C58233A63C3009A9658 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
 		A6D0FEED23396A2000DA20F3 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = moodtracker/Model/Sharing.swift; sourceTree = SOURCE_ROOT; };
 		B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +232,7 @@
 				A68480BE2337C4FE00ADB8EA /* Assets.xcassets */,
 				A684815A2337CECD00ADB8EA /* Localizable.strings */,
 				A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */,
+				A6B61C57233A6389009A9658 /* View */,
 				A68481692337D11200ADB8EA /* ViewController */,
 			);
 			path = moodtracker;
@@ -307,6 +311,14 @@
 				A684817B2337D14F00ADB8EA /* ShareViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A6B61C57233A6389009A9658 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6B61C58233A63C3009A9658 /* Diagram.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CD9E8E6C696D79A59050575C /* Pods */ = {
@@ -556,6 +568,7 @@
 				A68481542337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,
 				A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */,
 				A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */,
+				A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */,
 				A684817E2337D14F00ADB8EA /* PageViewController.swift in Sources */,
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A67812B423392029008C4044 /* CSVDecoder.swift in Sources */,
@@ -579,6 +592,7 @@
 				A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */,
 				A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */,
 				A68481462337CC5700ADB8EA /* Model.swift in Sources */,
+				A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */,
 				A68481532337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */,
 				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
 				A68481552337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,

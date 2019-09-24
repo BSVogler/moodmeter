@@ -11,7 +11,12 @@ import SwiftChartView
 
 class HistoryViewController: UIViewController {
 
-	@IBOutlet weak var diagram: LineChartView!
+	@IBOutlet weak var diagramImage: UIImageView!
+	
+	@IBAction func displayRangeChanged(_ sender: Any) {
+		
+	}
+	
 	private lazy var chartPoints: [ChartPoint] = {
 		var chartPoints: [ChartPoint] = []
 		let moods = Model.shared.measurements.map{$0.mood}
@@ -29,14 +34,11 @@ class HistoryViewController: UIViewController {
 		formatter.timeStyle = .none
 		
 		//dataset to string
-		let lines = sortedDates.map {
-			return formatter.string(from:$0)+" "+(Model.shared.dataset[$0]?.getSmiley() ?? "")
-		}
+		let diagram = Diagram(frame: diagramImage.frame, analysisrange: .week)
+		diagramImage.image = diagram.getImage(scale: UIScreen.main.scale)
 	}
 	
 	override func viewDidLoad() {
-		diagram.chartPoints = chartPoints
-		diagram.pointStyle = .circle
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

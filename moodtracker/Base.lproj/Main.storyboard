@@ -272,40 +272,27 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-0m-hJX" customClass="LineChartView" customModule="SwiftChartView">
-                                <rect key="frame" x="20" y="199" width="374" height="161"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lc7-dE-ZKA">
+                                <rect key="frame" x="20" y="197" width="374" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="161" id="6Pe-QP-bHW"/>
+                                    <constraint firstAttribute="height" constant="31" id="PJI-kK-TuX"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="axisColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="xLabelFontSize">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="yLabelFontSize">
-                                        <real key="value" value="17"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="yAxisOffsets">
-                                        <real key="value" value="28"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="yMargin">
-                                        <real key="value" value="17"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <segments>
+                                    <segment title="Week"/>
+                                    <segment title="Second"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <connections>
+                                    <action selector="displayRangeChanged:" destination="gSE-2D-ksZ" eventType="valueChanged" id="PMH-CT-DUK"/>
+                                </connections>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-VY-eBy">
+                                <rect key="frame" x="20" y="244" width="374" height="176"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ioJ-0m-hJX" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="A7f-BB-RP7"/>
+                            <constraint firstItem="lc7-dE-ZKA" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="36a-mf-OGd"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hBA-QD-yZx" secondAttribute="trailing" symbolic="YES" id="CoP-Jq-cdc"/>
                             <constraint firstItem="loW-wN-kPe" firstAttribute="width" secondItem="XH5-V6-kwB" secondAttribute="width" constant="12" id="ETS-Pl-pIp"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="17" id="LiI-Ba-lbk"/>
@@ -313,15 +300,18 @@
                             <constraint firstItem="loW-wN-kPe" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="51" id="TwR-gu-QZz"/>
                             <constraint firstItem="loW-wN-kPe" firstAttribute="centerX" secondItem="XH5-V6-kwB" secondAttribute="centerX" id="VbX-lV-aXh"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="afi-DX-1Ej"/>
-                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="ioJ-0m-hJX" secondAttribute="trailing" constant="20" id="sMb-8I-q8d"/>
+                            <constraint firstItem="lc7-dE-ZKA" firstAttribute="top" secondItem="XH5-V6-kwB" secondAttribute="bottom" constant="28" id="bcn-cH-nW8"/>
+                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="gUI-VY-eBy" secondAttribute="trailing" constant="20" id="fY8-Ey-rNF"/>
+                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="lc7-dE-ZKA" secondAttribute="trailing" constant="20" id="hB1-4C-XD5"/>
+                            <constraint firstItem="gUI-VY-eBy" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="lLa-lC-TJ6"/>
+                            <constraint firstItem="gUI-VY-eBy" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="16" id="rer-CB-16a"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="XH5-V6-kwB" secondAttribute="trailing" constant="26" id="tRr-Gr-f8o"/>
-                            <constraint firstItem="ioJ-0m-hJX" firstAttribute="top" secondItem="XH5-V6-kwB" secondAttribute="bottom" constant="30" id="zdb-Gg-xbm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mjb-MQ-pve"/>
                     </view>
                     <navigationItem key="navigationItem" id="qqs-dh-8uc"/>
                     <connections>
-                        <outlet property="diagram" destination="ioJ-0m-hJX" id="tIe-1i-eUq"/>
+                        <outlet property="diagramImage" destination="gUI-VY-eBy" id="LYI-Mf-9SX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNu-cw-Jo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
