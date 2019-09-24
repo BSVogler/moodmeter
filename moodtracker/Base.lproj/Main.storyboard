@@ -286,8 +286,11 @@
                                     <action selector="displayRangeChanged:" destination="gSE-2D-ksZ" eventType="valueChanged" id="PMH-CT-DUK"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-VY-eBy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-VY-eBy">
                                 <rect key="frame" x="20" y="244" width="374" height="176"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="upt-iG-E28"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
