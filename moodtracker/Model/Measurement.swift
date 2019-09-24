@@ -69,6 +69,11 @@ class Measurement: Codable {
 		self.mood = mood
 	}
 	
+	init(day: String, mood: Mood){
+		self.date = Date.fromJS(day) ?? Date()
+		self.mood = mood
+	}
+	
 	// MARK: functions
 	func moodChanged(){
 		Model.shared.dataset[date] = mood
