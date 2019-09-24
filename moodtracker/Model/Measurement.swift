@@ -26,6 +26,12 @@ class Measurement: Codable {
 		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 	
+	var apiMeasurement: APIMeasurement {
+		get {
+			APIMeasurement(day: date, mood: mood)
+		}
+	}
+	
 	var mood: Mood {
 		set {
 			if newValue != _mood {
@@ -63,17 +69,12 @@ class Measurement: Codable {
 		self.mood = mood
 	}
 	
-	init(day: String, mood: Mood){
-		self.date = Date.fromJS(day) ?? Date()
-		self.mood = mood
-	}
-	
 	// MARK: functions
 	func moodChanged(){
 		Model.shared.dataset[date] = mood
 		_ = Model.shared.saveToFiles()
 		//send time of measurement
-		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [self]){res in
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [APIMeasurement(day: Date(), mood: mood)]){res in
 		}
 	}
 	
