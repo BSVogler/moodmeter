@@ -32,15 +32,7 @@ class Measurement: Codable {
 		}
 	}
 	
-	var mood: Mood {
-		set {
-			if newValue != _mood {
-				_mood = newValue
-				moodChanged()
-			}
-		}
-		get {_mood}
-	}
+	var mood: Mood = 0
 	
 	var isYesterday = false {
 		didSet {
@@ -54,7 +46,6 @@ class Measurement: Codable {
 	
 	// MARK: Stored properties
 	private var dateWithoutHours: Date = Date()
-	var _mood: Mood = 0
 	
 	// MARK: Initializers
 	init() {

@@ -55,8 +55,10 @@ class FaceInterfaceController: WKInterfaceController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
+			face.moodChanged()
 		} else if face.mood < Measurement.moodToText.count-1 {
 			face.mood += 1
+			face.moodChanged()
 		} else {
 			return
 		}
@@ -67,8 +69,10 @@ class FaceInterfaceController: WKInterfaceController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 2
+			face.moodChanged()
 		} else if face.mood > 1 {
 			face.mood -= 1
+			face.moodChanged()
 		} else {
 			return
 		}
@@ -78,6 +82,7 @@ class FaceInterfaceController: WKInterfaceController {
 	@IBAction func tapped(_ sender: Any) {
 		if face.mood == 0 {
 			face.mood = 3
+			face.moodChanged()
 			refreshDisplay()
 		}
 	}
