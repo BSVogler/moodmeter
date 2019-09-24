@@ -62,7 +62,6 @@ class JsonHttpClient {
 	
 	func get<TResponse: Decodable>(
 		to endpoint: String,
-		expecting responseType: TResponse.Type,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		request(using: .get, to: endpoint, with: nil as String?, done: done)
