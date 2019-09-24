@@ -197,7 +197,7 @@
                         </group>
                     </items>
                     <connections>
-                        <outlet property="diagram" destination="fvI-Ho-qma" id="0ri-e8-mr9"/>
+                        <outlet property="diagramImage" destination="fvI-Ho-qma" id="Oqt-gD-dpd"/>
                         <outlet property="label" destination="asf-Eg-sXi" id="sOu-xY-Hm4"/>
                         <outlet property="monthButton" destination="eKH-cD-cn9" id="GXy-kh-war"/>
                         <outlet property="weekButton" destination="nMt-3O-QA4" id="xFh-wo-rpt"/>
