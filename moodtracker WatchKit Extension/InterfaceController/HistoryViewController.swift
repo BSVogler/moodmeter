@@ -81,7 +81,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		let tickHeight = usedAreaHeight/5.0
 		let tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
 		
-		for (i, color) in Measurement.moodToColor.suffix(from: 1).enumerated() {
+		for (i, color) in Measurement.moodToColor.suffix(from: 1).reversed().enumerated() {
 			color.setFill()
 			UIRectFill(CGRect(x: offsetleft, y: offsettop+CGFloat(i)*tickHeight, width: usedAreaWidth, height: usedAreaHeight/5))
 		}
