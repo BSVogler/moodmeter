@@ -46,25 +46,27 @@ class JsonHttpClient {
 	func put<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
-		expecting responseType: TResponse.Type,
+		responseType: ResponseType = .CSV,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
-		request(using: .put, to: endpoint, with: data, done: done)
+		request(using: .put, to: endpoint, with: data, responseType: responseType, done: done)
 	}
 	
 	func delete<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
+		responseType: ResponseType = .JSON,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
-		request(using: .delete, to: endpoint, with: data, done: done)
+		request(using: .delete, to: endpoint, with: data, responseType: responseType, done: done)
 	}
 	
 	func get<TResponse: Decodable>(
 		to endpoint: String,
+		responseType: ResponseType = .CSV,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
-		request(using: .get, to: endpoint, with: nil as String?, done: done)
+		request(using: .get, to: endpoint, with: nil as String?, responseType: responseType, done: done)
 	}
 	
 	// MARK: Private Instance Methods
