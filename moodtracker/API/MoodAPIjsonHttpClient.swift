@@ -25,7 +25,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 				continue
 			}
 			
-			Model.shared.dataset[date] = Int(item[1])
+			model.dataset[date] = Int(item[1])
 		}
 	}
 	
@@ -58,7 +58,6 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		}
 	}
 	
-	typealias Dataset = [Date: Mood]
 	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
 		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
 									  old_password: Model.shared.sharing.password ?? "",
@@ -67,6 +66,15 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 			 with: moveRequest,
 			 responseType: .CSV,
 			 done: {(res: Result<[[String]]>) in
+				if res.isSuccess, let value = res.value {
+					self.parseToDataset(value)
+				}
+				done(res)
+		})
+	}
+	
+	public func getData(hash: String, done: @escaping (Result<[[String]]>) -> Void){
+		get(to: hash, done: {(res: Result<[[String]]>) in
 				if res.isSuccess, let value = res.value {
 					self.parseToDataset(value)
 				}

@@ -92,4 +92,11 @@ class Sharing: Codable {
 		userHash = nil
 		_ = Model.shared.saveToFiles()
 	}
+	
+	func refresh(){
+		if let userHash = userHash {
+			MoodAPIjsonHttpClient.shared.getData(hash: userHash){ res in
+			}
+		}
+	}
 }
