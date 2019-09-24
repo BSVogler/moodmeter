@@ -28,7 +28,7 @@ protocol AuthorizedRequest: Codable {
 
 struct MeasurementRequest: AuthorizedRequest  {
 	let password: String
-	let measurements: [APIMeasurement]
+	let measurements: [Measurement]
 }
 
 struct DeleteRequest: AuthorizedRequest  {
