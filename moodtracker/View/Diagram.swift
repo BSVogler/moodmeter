@@ -20,7 +20,7 @@ class Diagram {
 	let frame: CGRect
 	let axisColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 	let offsettop = CGFloat(2)
-	let offsettbottom = CGFloat(2)
+	let offsettbottom = CGFloat(15)
 	let offsetleft = CGFloat(1)
 	let offsetright = CGFloat(2)
 	let usedAreaHeight: CGFloat
@@ -28,7 +28,7 @@ class Diagram {
 	let tickHeight: CGFloat
 	let tickWidth: CGFloat
 	let analysisrange: AnalysisRange
-
+	
 	init(frame: CGRect, analysisrange: AnalysisRange){
 		self.frame = frame
 		usedAreaHeight = frame.height-offsettop-offsettbottom
@@ -36,6 +36,21 @@ class Diagram {
 		tickHeight = usedAreaHeight/5.0
 		tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
 		self.analysisrange = analysisrange
+	}
+	
+	func getImage(scale: CGFloat) -> UIImage {
+		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
+		axisColor.setStroke()
+		//let context = UIGraphicsGetCurrentContext()
+		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
+		//context?.fill(frame)
+		drawBackground()
+		drawAxis()
+		drawPath()
+		
+		let image = UIGraphicsGetImageFromCurrentImageContext()!
+		UIGraphicsEndImageContext()
+		return image
 	}
 	
 	func drawBackground(){
@@ -58,50 +73,124 @@ class Diagram {
 		xAxis.lineWidth = 1;
 		xAxis.stroke()
 		
-		for i in 1...analysisrange.rawValue {
+		let paragraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.alignment = .center
+		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 12)!,
+					 NSAttributedString.Key.paragraphStyle: paragraphStyle,
+					 NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
+		
+		//get label description
+		var labels: [String] = []
+		switch analysisrange {
+		case .week:
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "EEEE"
+			var dateComponents = DateComponents()
+			for month in 1..<8 {
+				//starting from a monday
+				dateComponents.year = 2019
+				dateComponents.month = 4
+				dateComponents.day = month
+				if let date = Calendar.current.date(from: dateComponents) {
+					let weekday = dateFormatter.string(from: date).prefix(3).capitalized
+					labels.append(weekday)
+				}
+			}
+		case .month:
+			labels = ["1","8", "15", "21","28"]
+		case .year:
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "MMMM"
+			var dateComponents = DateComponents()
+			for month in 1...12 {
+				dateComponents.month = month
+				if let date = Calendar.current.date(from: dateComponents) {
+					let monthShort = dateFormatter.string(from: date).capitalized
+					labels.append(String(monthShort.first!))
+				}
+			}
+		}
+		
+		//draw dasges
+		let dashes: [ CGFloat ] = [ 3.0, 2.0 ]
+		let tickWidth = usedAreaWidth / CGFloat(labels.count)
+		for i in 1..<labels.count {
 			let tick = UIBezierPath()
+			tick.setLineDash(dashes, count: dashes.count, phase: 0.0)
+			tick.lineCapStyle = .round
 			let xpos = CGFloat(i)*tickWidth
-			tick.move(to: CGPoint(x:xpos, y: frame.height-offsettbottom))
-			tick.addLine(to: CGPoint(x:xpos, y: frame.height-offsettbottom-4))
-			tick.lineWidth = 1;
+			tick.move(to: CGPoint(x:xpos, y: frame.height))
+			tick.addLine(to: CGPoint(x:xpos, y:0))
+			tick.lineWidth = 0.8;
 			tick.stroke()
+		}
+		//draw labels
+		for (index, label) in labels.enumerated() {
+			label.draw(with: CGRect(x: CGFloat(index)*tickWidth, y: frame.height-offsettbottom, width: tickWidth, height: offsettbottom), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
 		}
 	}
 	
-	func getImage(scale: CGFloat) -> UIImage {
-		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
-		axisColor.setStroke()
-		//let context = UIGraphicsGetCurrentContext()
-		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
-		//context?.fill(frame)
-		drawBackground()
-		drawAxis()
-		//		for i in 1...5 {
-		//			let ytick = UIBezierPath()
-		//			let ypos = usedAreaHeight-CGFloat(i)*tickHeight+offsettop
-		//			ytick.move(to: CGPoint(x:1, y: ypos))
-		//			ytick.addLine(to: CGPoint(x:5, y: ypos))
-		//			ytick.lineWidth = 1;
-		//			ytick.stroke()
-		//		}
-		
-		
+	func getPoints() -> [CGPoint] {
+		var points: [CGPoint] = []
+		let unitFlags:Set<Calendar.Component> = [.hour, .day, .month, .year,.minute,.hour,.second, .calendar]
+		switch analysisrange {
+		case .week:
+			//get measurements for this week
+			//todo, needs the days since monday
+			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
+			if let lastWeekDay = lastWeekDay {
+				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.reversed().map{$0.value}
+				points = moods.enumerated().map { (arg) -> CGPoint in
+					let (i, mood) = arg
+					let x: CGFloat = offsetleft+CGFloat(i)*tickWidth+CGFloat(0.5)*tickWidth
+					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood)
+					return CGPoint(x: x, y: y)
+				}
+			}
+		case .month:
+			var dateComponents = Calendar.current.dateComponents(unitFlags, from: Date())
+			dateComponents.day = 1
+			//get measurements for this week
+			if let firstDayMonth = dateComponents.date {
+				let moods = Model.shared.dataset.filter{$0.key > firstDayMonth}.reversed().map{$0.value}
+				points = moods.enumerated().map { (arg) -> CGPoint in
+					let (i, mood) = arg
+					let x: CGFloat = offsetleft+CGFloat(i)*tickWidth+CGFloat(0.5)*tickWidth
+					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood)
+					return CGPoint(x: x, y: y)
+				}
+			}
+		case .year:
+			for month in 1...12 {
+				var dateComponents = Calendar.current.dateComponents(unitFlags, from: Date())
+				dateComponents.day = 1
+				dateComponents.month = month
+				var dateComponentsNext = Calendar.current.dateComponents(unitFlags, from: Date())
+				dateComponentsNext.day = 1
+				dateComponentsNext.month = month+1
+				//get measurements for this week
+				if let currentMonth = dateComponents.date,
+					let nextMonth = dateComponentsNext.date {
+					let datesinMonth = Model.shared.dataset.filter{$0.key > currentMonth && $0.key < nextMonth }
+					if datesinMonth.count > 0 {
+						let avgmood = datesinMonth.reduce(0) { $0 + $1.value } / datesinMonth.count
+						let x: CGFloat = offsetleft+CGFloat(month)*tickWidth+CGFloat(0.5)*tickWidth
+						let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(avgmood)
+						points.append(CGPoint(x: x, y: y))
+					}
+				}
+			}
+		}
+		return points
+	}
+	
+	func drawPath(){
 		//now draw the content
 		let strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 		strokeColor.setStroke()
 		strokeColor.setFill()
 		
-		var points: [CGPoint] = []
-		if analysisrange == .week {
-			//get measurements for this week
-			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
-			if let lastWeekDay = lastWeekDay {
-				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.reversed().map{$0.value}
-				let points2 = moods.enumerated().map { (i, mood) in CGPoint(x: offsetleft+CGFloat(i)*tickWidth, y: frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood))}
-				points.append(contentsOf: points2)
-			}
-		}
-		
+		let points = getPoints()
 		//draw points and connect them
 		var lastpoint: CGPoint? = nil
 		let path = UIBezierPath()
@@ -118,9 +207,5 @@ class Diagram {
 		}
 		path.lineWidth = 2
 		path.stroke()
-		
-		let image = UIGraphicsGetImageFromCurrentImageContext()!
-		UIGraphicsEndImageContext()
-		return image
 	}
 }
