@@ -66,12 +66,6 @@ class Model: Codable {
 		}
 	}
 	
-	// MARK: Initializer
-	init(){
-		sharing.setModel(model: self)
-	}
-
-	
 	// MARK: Methods
 	func saveToFiles() -> Bool {
 		do {

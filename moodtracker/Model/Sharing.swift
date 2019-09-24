@@ -20,7 +20,6 @@ class Sharing: Codable {
 	public private(set) var userHash: String?
 	var password: String? = "todo"
 	let baseURL = NSURL(string: "https://mood.benediktsvogler.com")! as URL
-	weak var model: Model?
 	
 	// MARK: Computed Properties
 	var URL: URL? {
@@ -42,16 +41,9 @@ class Sharing: Codable {
 		}
 	}
 	
-	func setModel(model: Model){
-		self.model = model
-	}
-	
 	// MARK: Methods
 	/// if there is already a hash, it moves them
 	final func generateAndRegisterHash(done: @escaping () -> Void){
-		guard let model = model else {
-			return
-		}
 		let oldHash = userHash
 		//the hash does not have to be secure, just the seed, so use secure seed directly
 		var bytes = [UInt8](repeating: 0, count: Sharing.self.hashlength)
@@ -61,14 +53,14 @@ class Sharing: Codable {
 			let toURL = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
 			if oldHash != nil {
 				moveHash(to: toURL){
-					_ = self.model?.saveToFiles()
+					_ = Model.shared.saveToFiles()
 					done()
 				}
 			} else {
 				//create by just posting
 				userHash = toURL
-				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: model.measurements.map{$0.apiMeasurement}){ res in
-					_ = self.model?.saveToFiles()
+				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
+					_ = Model.shared.saveToFiles()
 					done()
 				}
 			}
@@ -98,6 +90,6 @@ class Sharing: Codable {
 	
 	func disableSharing(){
 		userHash = nil
-		_ = model?.saveToFiles()
+		_ = Model.shared.saveToFiles()
 	}
 }
