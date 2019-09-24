@@ -74,7 +74,9 @@ class Model: Codable {
 	// MARK: Methods
 	func saveToFiles() -> Bool {
 		do {
-			let data = try JSONEncoder().encode(self)
+			let encoder = JSONEncoder()
+			encoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
+			let data = try encoder.encode(self)
 			let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
 			try jsonFileWrapper.write(to: Model.localDBStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
 			print("Saved database.")
