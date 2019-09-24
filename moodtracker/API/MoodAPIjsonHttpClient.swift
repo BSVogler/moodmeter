@@ -16,6 +16,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 	init(model: Model) {
 		self.model = model
 		super.init(model.sharing.baseURL)
+		super.decoder.dateDecodingStrategy = .formatted(Measurement.dateFormatter)
+		super.encoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
 	}
 	
 	func parseToDataset(_ input: [[String]]){
@@ -29,7 +31,7 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		}
 	}
 	
-	public func postMeasurement(measurements: [APIMeasurement], done: @escaping (Result<[[String]]>) -> Void){
+	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
 		if let deviceHash = model.sharing.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
 											  measurements: measurements)

@@ -34,12 +34,6 @@ class Measurement: Codable {
 		return calendar.date(byAdding: .day, value: -1, to: Date())
 	}
 	
-	var apiMeasurement: APIMeasurement {
-		get {
-			APIMeasurement(day: date, mood: mood)
-		}
-	}
-	
 	// MARK: Stored properties
 	var mood: Mood = 0
 	private var day: Date = Date()//without hours and minutes
@@ -78,7 +72,7 @@ class Measurement: Codable {
 		Model.shared.dataset[date] = mood
 		_ = Model.shared.saveToFiles()
 		//send time of measurement
-		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [APIMeasurement(day: Date(), mood: mood)]){res in
+		MoodAPIjsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: date, mood: mood)]){res in
 		}
 	}
 	
@@ -118,5 +112,4 @@ extension Date {
 	func toJS() -> String {
 		return Measurement.dateFormatter.string(from: self)
 	}
-	
 }

@@ -44,8 +44,6 @@
 		A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */; };
 		A68481522337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */; };
 		A68481532337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */; };
-		A68481542337CC5F00ADB8EA /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */; };
-		A68481552337CC5F00ADB8EA /* APIMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */; };
 		A684815C2337CECD00ADB8EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A684815A2337CECD00ADB8EA /* Localizable.strings */; };
 		A684817C2337D14F00ADB8EA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481762337D14E00ADB8EA /* RootViewController.swift */; };
 		A684817D2337D14F00ADB8EA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481772337D14E00ADB8EA /* SettingViewController.swift */; };
@@ -142,7 +140,6 @@
 		A68481482337CC5E00ADB8EA /* ApiRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpClient.swift; sourceTree = "<group>"; };
 		A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodAPIjsonHttpClient.swift; sourceTree = "<group>"; };
-		A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMeasurement.swift; sourceTree = "<group>"; };
 		A684815B2337CECD00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A68481762337D14E00ADB8EA /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A68481772337D14E00ADB8EA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -280,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				A68481472337CC5E00ADB8EA /* ApiError.swift */,
-				A684814B2337CC5F00ADB8EA /* APIMeasurement.swift */,
 				A68481482337CC5E00ADB8EA /* ApiRequests.swift */,
 				A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */,
 				A684814A2337CC5E00ADB8EA /* MoodAPIjsonHttpClient.swift */,
@@ -565,7 +561,6 @@
 				A68481522337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */,
 				A68480BA2337C4FC00ADB8EA /* ViewController.swift in Sources */,
 				A68480B82337C4FC00ADB8EA /* SceneDelegate.swift in Sources */,
-				A68481542337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,
 				A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */,
 				A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */,
 				A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */,
@@ -595,7 +590,6 @@
 				A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */,
 				A68481532337CC5F00ADB8EA /* MoodAPIjsonHttpClient.swift in Sources */,
 				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
-				A68481552337CC5F00ADB8EA /* APIMeasurement.swift in Sources */,
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
 				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,

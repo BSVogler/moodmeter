@@ -21,8 +21,8 @@ enum ResponseType {
 // MARK: - JsonHttpClient
 class JsonHttpClient {
 	// MARK: Stored Instance Properties
-	private let decoder = JSONDecoder()
-	private let encoder = JSONEncoder()
+	let decoder = JSONDecoder()
+	let encoder = JSONEncoder()
 	private let csvdecoder = CSVDecoder()
 	private let baseUrl: URL
 	private let loggerPrefixLength = 150

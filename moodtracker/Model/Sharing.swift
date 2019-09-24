@@ -59,8 +59,7 @@ class Sharing: Codable {
 			} else {
 				//create by just posting
 				userHash = toURL
-				let apimeasures = Model.shared.measurements.map{ $0.apiMeasurement }
-				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: apimeasures){ res in
+				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
 					_ = Model.shared.saveToFiles()
 					done()
 				}
