@@ -57,13 +57,18 @@ class Model: Codable {
 	var reminderMinute = 00
 	/// for getting the measurements as a read only array use `measurements`
 	var dataset = [Date: Mood]()
-	let sharing = Sharing()
+	let sharing: Sharing
 	
 	// MARK: Computed Properties
 	var measurements: [Measurement] {
 		get {
 			return dataset.map{Measurement(day: $0.key, mood: $0.value)}
 		}
+	}
+	
+	init(){
+		//init sharing shere and not in constructor list, so it is loaded by hidden generated constructor
+		sharing = Sharing()
 	}
 	
 	// MARK: Methods
