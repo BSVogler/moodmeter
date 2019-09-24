@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="69" width="414" height="827"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":-|" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p07-bN-Bxy" customClass="DesignableLabel" customModule="Moodtracker" customModuleProvider="target">
-                                        <rect key="frame" x="166.66666666666666" y="365.66666666666669" width="80.666666666666657" height="95.666666666666686"/>
+                                        <rect key="frame" x="159.16666666666669" y="373.16666666666669" width="95.666666666666657" height="80.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                 <rect key="frame" x="20" y="678" width="374" height="30"/>
                                 <color key="tintColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Erase all data">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="eraseButton:" destination="Slk-0i-r66" eventType="touchUpInside" id="px0-Gt-KkA"/>
@@ -258,7 +258,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="loW-wN-kPe">
-                                <rect key="frame" x="325" y="95" width="69" height="36.333333333333343"/>
+                                <rect key="frame" x="325" y="95" width="69" height="37.000000000000014"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36.329999999999998" id="P5M-Di-MwY"/>
                                 </constraints>
@@ -274,7 +274,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-0m-hJX" customClass="LineChartView" customModule="SwiftChartView">
                                 <rect key="frame" x="20" y="199" width="374" height="161"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="161" id="6Pe-QP-bHW"/>
                                 </constraints>
@@ -283,7 +283,7 @@
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="axisColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="xLabelFontSize">
                                         <real key="value" value="15"/>
@@ -359,6 +359,13 @@
                                     <action selector="exportFileButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="Wqc-h6-116"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
+                                <rect key="frame" x="146" y="781.33333333333337" width="34" height="27.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26.5" id="BaI-uL-QWD"/>
+                                    <constraint firstAttribute="width" constant="34" id="uhW-I7-QZn"/>
+                                </constraints>
+                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-fG-Sd3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                 <subviews>
@@ -403,7 +410,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7H-od-bZJ">
                                         <rect key="frame" x="116" y="682" width="182" height="30"/>
                                         <state key="normal" title="Delete and disable sharing">
-                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="deleteShared:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="7ow-VW-pFp"/>
@@ -415,64 +422,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz9-Ki-GeK">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="676"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
-                                                <rect key="frame" x="142" y="255.66666666666669" width="130" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <state key="normal" title="Share live Data" backgroundImage="borderbutton"/>
-                                                <connections>
-                                                    <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
-                                                </connections>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C4Y-cz-syq">
-                                                <rect key="frame" x="157.66666666666666" y="53" width="98.999999999999972" height="49.666666666666671"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="55" id="bLv-l0-SCW"/>
-                                                    <constraint firstAttribute="width" constant="99" id="gc1-SE-8Fx"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xye-w0-hvE">
-                                                <rect key="frame" x="139" y="113" width="136" height="24"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
-                                                <rect key="frame" x="197" y="265.66666666666669" width="20" height="20"/>
-                                            </activityIndicatorView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpZ-Cd-aPa">
-                                                <rect key="frame" x="36" y="145" width="356" height="97"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="97" id="8SA-r2-vqk"/>
-                                                </constraints>
-                                                <string key="text">Maintain an updated copy to make the data available on other devices
-By using the share feature you agree to the terms and conditions.</string>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="kz9-Ki-GeK" secondAttribute="top" constant="50" id="0di-Fq-DkO"/>
-                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="13.666666666666686" id="2M4-06-Ocl"/>
-                                            <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="5aH-5p-PuH"/>
-                                            <constraint firstItem="KpZ-Cd-aPa" firstAttribute="leading" secondItem="kz9-Ki-GeK" secondAttribute="leading" constant="36" id="D83-iF-PyM"/>
-                                            <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="Hor-eq-tv9"/>
-                                            <constraint firstItem="dgV-E5-zD5" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="23.666666666666686" id="S0Q-Te-2on"/>
-                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="centerY" secondItem="dgV-E5-zD5" secondAttribute="centerY" id="XEc-lW-2BA"/>
-                                            <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="ZiD-Sq-XL8"/>
-                                            <constraint firstAttribute="trailing" secondItem="KpZ-Cd-aPa" secondAttribute="trailing" constant="22" id="fvr-qe-jgn"/>
-                                            <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="kz9-Ki-GeK" secondAttribute="centerX" id="pE6-iz-jPe"/>
-                                            <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="C4Y-cz-syq" secondAttribute="bottom" constant="8" id="qoG-w5-ans"/>
-                                            <constraint firstItem="KpZ-Cd-aPa" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="zZM-YT-tde"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="rqa-QO-POk" firstAttribute="top" secondItem="sGW-8B-86c" secondAttribute="bottom" constant="69" id="08d-k8-xcT"/>
@@ -483,12 +432,9 @@ By using the share feature you agree to the terms and conditions.</string>
                                     <constraint firstItem="sGW-8B-86c" firstAttribute="top" secondItem="OMK-0C-9i0" secondAttribute="bottom" constant="8" id="HzG-1y-CjG"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="leading" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="13" id="MSc-FW-M1R"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="leading" secondItem="Bdi-fG-Sd3" secondAttribute="leading" constant="20" id="QiV-ap-idD"/>
-                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="centerY" secondItem="Bdi-fG-Sd3" secondAttribute="centerY" id="TFg-hP-khM"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y9c-2e-pzt" secondAttribute="trailing" constant="8" id="TSK-Hs-kV1"/>
                                     <constraint firstItem="rqa-QO-POk" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" id="WEj-AA-rJG"/>
                                     <constraint firstItem="OMK-0C-9i0" firstAttribute="top" secondItem="y9c-2e-pzt" secondAttribute="bottom" constant="20" id="Yk6-yt-zPH"/>
-                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="28" id="d5y-q9-frY"/>
-                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="daa-0p-sbt"/>
                                     <constraint firstItem="16K-Sv-Brw" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="104" id="dfu-oL-43t"/>
                                     <constraint firstAttribute="trailing" secondItem="OMK-0C-9i0" secondAttribute="trailing" constant="60" id="dyi-Q0-son"/>
                                     <constraint firstAttribute="trailing" secondItem="16K-Sv-Brw" secondAttribute="trailing" id="fKX-Xo-R71"/>
@@ -496,31 +442,85 @@ By using the share feature you agree to the terms and conditions.</string>
                                     <constraint firstAttribute="trailing" secondItem="sGW-8B-86c" secondAttribute="trailing" constant="20" id="qZJ-of-cdO"/>
                                     <constraint firstItem="FdJ-0D-A7Z" firstAttribute="centerX" secondItem="Bdi-fG-Sd3" secondAttribute="centerX" constant="4" id="rd7-hh-iAj"/>
                                     <constraint firstItem="y9c-2e-pzt" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="top" constant="52" id="sTO-A2-CmE"/>
-                                    <constraint firstItem="kz9-Ki-GeK" firstAttribute="centerX" secondItem="sGW-8B-86c" secondAttribute="centerX" id="xSH-kD-ybd"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iO4-af-4pE">
-                                <rect key="frame" x="146" y="781.33333333333337" width="34" height="27.333333333333371"/>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osd-Jq-hfQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="710"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C4Y-cz-syq">
+                                        <rect key="frame" x="157.66666666666666" y="59" width="98.999999999999972" height="49.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="bLv-l0-SCW"/>
+                                            <constraint firstAttribute="width" constant="99" id="gc1-SE-8Fx"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Live Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xye-w0-hvE">
+                                        <rect key="frame" x="139" y="106" width="136" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dgV-E5-zD5">
+                                        <rect key="frame" x="197" y="259" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-6r-7Co">
+                                        <rect key="frame" x="142" y="249" width="130" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="K0F-RG-sD6"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="mjk-tz-1Xc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Share live Data" backgroundImage="borderbutton"/>
+                                        <connections>
+                                            <action selector="shareLiveButton:" destination="ZZ6-Fh-DNi" eventType="touchUpInside" id="3H7-kd-6WI"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KpZ-Cd-aPa">
+                                        <rect key="frame" x="20" y="138" width="374" height="97"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="97" id="8SA-r2-vqk"/>
+                                        </constraints>
+                                        <string key="text">Maintain an updated copy to make the data available on other devices
+By using the share feature you agree to the terms and conditions.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26.5" id="BaI-uL-QWD"/>
-                                    <constraint firstAttribute="width" constant="34" id="uhW-I7-QZn"/>
+                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="leading" secondItem="Osd-Jq-hfQ" secondAttribute="leading" constant="20" id="Txr-Mx-Og6"/>
+                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="top" secondItem="Xye-w0-hvE" secondAttribute="bottom" constant="8" id="Uyw-i0-SOT"/>
+                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="centerX" secondItem="Osd-Jq-hfQ" secondAttribute="centerX" id="brM-0T-fjO"/>
+                                    <constraint firstItem="dgV-E5-zD5" firstAttribute="centerY" secondItem="OL7-6r-7Co" secondAttribute="centerY" id="ef2-qn-Vq7"/>
+                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="top" secondItem="KpZ-Cd-aPa" secondAttribute="bottom" constant="14" id="gt9-Nt-Ksh"/>
+                                    <constraint firstItem="C4Y-cz-syq" firstAttribute="top" secondItem="Osd-Jq-hfQ" secondAttribute="top" constant="56" id="hYr-pm-uGb"/>
+                                    <constraint firstItem="Xye-w0-hvE" firstAttribute="top" secondItem="Osd-Jq-hfQ" secondAttribute="top" constant="106" id="hst-1e-eN2"/>
+                                    <constraint firstItem="OL7-6r-7Co" firstAttribute="centerX" secondItem="Osd-Jq-hfQ" secondAttribute="centerX" id="nw2-kV-wjM"/>
+                                    <constraint firstItem="KpZ-Cd-aPa" firstAttribute="centerX" secondItem="Osd-Jq-hfQ" secondAttribute="centerX" id="rgU-ze-jAa"/>
+                                    <constraint firstItem="Xye-w0-hvE" firstAttribute="centerX" secondItem="Osd-Jq-hfQ" secondAttribute="centerX" id="vdl-ml-Aw2"/>
+                                    <constraint firstItem="C4Y-cz-syq" firstAttribute="centerX" secondItem="Osd-Jq-hfQ" secondAttribute="centerX" id="x9C-hp-60i"/>
+                                    <constraint firstAttribute="trailing" secondItem="KpZ-Cd-aPa" secondAttribute="trailing" constant="20" id="zkh-ge-hyc"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Osd-Jq-hfQ" firstAttribute="leading" secondItem="OgE-fI-45v" secondAttribute="leading" id="01k-7M-MPX"/>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="top" secondItem="j9u-nu-MkE" secondAttribute="top" id="12E-E0-3Fi"/>
                             <constraint firstItem="gpo-7r-AMj" firstAttribute="top" secondItem="eUh-Q5-ugd" secondAttribute="bottom" constant="20" id="5FU-X0-lBB"/>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="leading" secondItem="OgE-fI-45v" secondAttribute="leading" id="6Zm-cp-o26"/>
+                            <constraint firstItem="Osd-Jq-hfQ" firstAttribute="top" secondItem="j9u-nu-MkE" secondAttribute="top" id="8SG-5b-zaL"/>
                             <constraint firstItem="OgE-fI-45v" firstAttribute="trailing" secondItem="eUh-Q5-ugd" secondAttribute="trailing" constant="20" id="DLi-ZJ-1mW"/>
                             <constraint firstItem="gpo-7r-AMj" firstAttribute="centerX" secondItem="j9u-nu-MkE" secondAttribute="centerX" id="FFc-nX-3zm"/>
                             <constraint firstItem="eUh-Q5-ugd" firstAttribute="top" secondItem="Bdi-fG-Sd3" secondAttribute="bottom" constant="8" id="FlQ-eD-Z2q"/>
                             <constraint firstItem="iO4-af-4pE" firstAttribute="centerY" secondItem="gpo-7r-AMj" secondAttribute="centerY" id="Jwt-Yt-90p"/>
                             <constraint firstItem="TEz-B5-sSM" firstAttribute="leading" secondItem="j9u-nu-MkE" secondAttribute="leadingMargin" constant="35" id="R3s-GR-ERL"/>
+                            <constraint firstItem="TEz-B5-sSM" firstAttribute="top" secondItem="Osd-Jq-hfQ" secondAttribute="bottom" constant="8" id="Wp5-YN-VwY"/>
                             <constraint firstItem="eUh-Q5-ugd" firstAttribute="top" secondItem="TEz-B5-sSM" secondAttribute="bottom" constant="20" id="d8z-L8-kJj"/>
                             <constraint firstItem="OgE-fI-45v" firstAttribute="bottom" secondItem="gpo-7r-AMj" secondAttribute="bottom" constant="50" id="dyg-6I-gs8"/>
                             <constraint firstItem="Bdi-fG-Sd3" firstAttribute="trailing" secondItem="OgE-fI-45v" secondAttribute="trailing" id="km5-eg-zHC"/>
                             <constraint firstItem="gpo-7r-AMj" firstAttribute="leading" secondItem="iO4-af-4pE" secondAttribute="trailing" constant="-33.5" id="mB1-gJ-UwC"/>
+                            <constraint firstItem="Osd-Jq-hfQ" firstAttribute="trailing" secondItem="OgE-fI-45v" secondAttribute="trailing" id="nKj-a9-St5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TEz-B5-sSM" secondAttribute="trailing" constant="35" id="nPj-HK-NMl"/>
                             <constraint firstItem="eUh-Q5-ugd" firstAttribute="leading" secondItem="OgE-fI-45v" secondAttribute="leading" constant="20" id="y6f-vU-jwf"/>
                         </constraints>
@@ -536,7 +536,7 @@ By using the share feature you agree to the terms and conditions.</string>
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="bSg-jD-Ibq"/>
                     <connections>
-                        <outlet property="activateSharing" destination="kz9-Ki-GeK" id="DG9-6a-3Q5"/>
+                        <outlet property="activateSharing" destination="Osd-Jq-hfQ" id="gwD-Kw-k80"/>
                         <outlet property="activityIndicator" destination="dgV-E5-zD5" id="kT8-T9-bJo"/>
                         <outlet property="exportButton" destination="gpo-7r-AMj" id="3Lf-6J-QFu"/>
                         <outlet property="shareLinkField" destination="OMK-0C-9i0" id="vsV-bJ-OXI"/>
