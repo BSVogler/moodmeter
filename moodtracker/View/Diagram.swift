@@ -37,31 +37,35 @@ class Diagram {
 	var analysisrange = AnalysisRange.week
 	var selectedDate = Date(){
 		didSet{
-			let calendar = Calendar.current
-			switch analysisrange {
-			case .week:
-				lowerDate = selectedDate.previous(.monday)
-				higherDate = selectedDate.next(.monday)
-			case .month:
-				let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
-				lowerDate = calendar.date(from: firstComponents)
-				var nextComponents = DateComponents()
-				nextComponents.month = 1
-				higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
-			case .year:
-				let dateComponents = calendar.dateComponents([.year], from: selectedDate)
-				lowerDate = calendar.date(from: dateComponents)
-				if let lowerDate = lowerDate {
-					higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
-				}
-			}
+			updateBounds()
 		}
 	}
 	var lowerDate: Date? = Date()
 	var higherDate: Date? = Date()
 	
 	init() {
-		
+		updateBounds()
+	}
+	
+	private func updateBounds(){
+		let calendar = Calendar.current
+		switch analysisrange {
+		case .week:
+			lowerDate = selectedDate.previous(.monday)
+			higherDate = selectedDate.next(.monday)
+		case .month:
+			let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
+			lowerDate = calendar.date(from: firstComponents)
+			var nextComponents = DateComponents()
+			nextComponents.month = 1
+			higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
+		case .year:
+			let dateComponents = calendar.dateComponents([.year], from: selectedDate)
+			lowerDate = calendar.date(from: dateComponents)
+			if let lowerDate = lowerDate {
+				higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
+			}
+		}
 	}
 	
 	func navigateBack(){
