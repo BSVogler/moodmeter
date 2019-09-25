@@ -6,6 +6,7 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import UIKit
 
@@ -28,7 +29,7 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 }
 
 //MARK: - ShareViewController
-class ShareViewController: UIViewController, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
+class ShareViewController: UIViewController {
 	
 	// MARK: Outlets
 	@IBOutlet weak var activateSharing: UIView!
@@ -39,6 +40,20 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var shareLiveDataButton: UIButton!
 	
+    // MARK: Overridden/ Lifecycle Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicator.isHidden = true
+        if Model.shared.sharing.userHash == nil {
+            showSharingDeactivated()
+        } else {
+            showSharingActivated()
+        }
+        shareLinkField.delegate = self
+        //disable keyboard
+        shareLinkField.inputView = UIView.init(frame: .zero)
+    }
+    
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
 		activityIndicator.isHidden = false
@@ -92,10 +107,6 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		}
 	}
 	
-	func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self
-    }
-	
 	@IBAction func exportFileButton(_ sender: Any) {
 		let labelBefore = exportButton.titleLabel?.text
 		exportButton.titleLabel?.text = NSLocalizedString("Exporting…", comment: "")//never visible, but this triggers some fade-out animation
@@ -124,21 +135,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		exportButton.titleLabel?.text = labelBefore
 	}
 	
-	// MARK: Override
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		activityIndicator.isHidden = true
-		if Model.shared.sharing.userHash == nil {
-			showSharingDeactivated()
-		} else {
-			showSharingActivated()
-		}
-		shareLinkField.delegate = self
-		//disable keyboard
-		shareLinkField.inputView = UIView.init(frame: .zero)
-	}
-	
-	// MARK: Functions
+	// MARK: Instance Methods
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
@@ -158,10 +155,22 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		activateSharing.isHidden = true
 		shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 	}
-	
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		// copy to pasteboard
-		UIPasteboard.general.string = shareLinkField.text
-		return textField != shareLinkField
-	}
+
+}
+
+// MARK: - Extensions
+// MARK: UITextFieldDelegate
+extension ShareViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // copy to pasteboard
+        UIPasteboard.general.string = shareLinkField.text
+        return textField != shareLinkField
+    }
+}
+
+// MARK: UIDocumentInteractionControllerDelegate
+extension ShareViewController: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
 }
