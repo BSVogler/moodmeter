@@ -17,8 +17,8 @@ class HistoryViewController: UIViewController {
     private let diagram = Diagram()
     
     // MARK: IBOutlets
-	@IBOutlet weak var diagramImage: UIImageView!
-	@IBOutlet weak var rangeSelector: UISegmentedControl!
+	@IBOutlet private weak var diagramImage: UIImageView!
+	@IBOutlet private weak var rangeSelector: UISegmentedControl!
 	
     // MARK: Overridden/ Lifecycle Methods
     override func viewDidLoad() {

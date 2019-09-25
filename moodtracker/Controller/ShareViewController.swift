@@ -32,13 +32,13 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 class ShareViewController: UIViewController {
 	
 	// MARK: Outlets
-	@IBOutlet weak var activateSharing: UIView!
-	@IBOutlet weak var sharedView: UIView!
-	@IBOutlet weak var shareLinkField: UITextField!
-	@IBOutlet weak var termsText: UITextView!
-	@IBOutlet weak var exportButton: UIButton!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-	@IBOutlet weak var shareLiveDataButton: UIButton!
+	@IBOutlet private weak var activateSharing: UIView!
+	@IBOutlet private weak var sharedView: UIView!
+	@IBOutlet private weak var shareLinkField: UITextField!
+	@IBOutlet private weak var termsText: UITextView!
+	@IBOutlet private weak var exportButton: UIButton!
+	@IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet private weak var shareLiveDataButton: UIButton!
 	
     // MARK: Overridden/ Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {

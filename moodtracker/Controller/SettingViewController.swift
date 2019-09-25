@@ -14,10 +14,10 @@ import UserNotifications
 class SettingViewController: UIViewController {
 	
 	// MARK: IBOutlets
-	@IBOutlet weak var reminderTimePicker: UIDatePicker!
-	@IBOutlet weak var notificationSwitch: UISwitch!
-	@IBOutlet weak var timeLabel: UILabel!
-	@IBOutlet weak var versionstring: UILabel!
+	@IBOutlet private weak var reminderTimePicker: UIDatePicker!
+	@IBOutlet private weak var notificationSwitch: UISwitch!
+	@IBOutlet private weak var timeLabel: UILabel!
+	@IBOutlet private weak var versionstring: UILabel!
 	
     // MARK: Initializer
     convenience init() {

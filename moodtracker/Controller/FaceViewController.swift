@@ -23,9 +23,9 @@ class FaceViewController: UIViewController {
 	private var face = Measurement()
 	
 	// MARK: IBOutlets
-	@IBOutlet weak var dataLabel: UILabel!
-	@IBOutlet weak var innerView: UIView!
-	@IBOutlet weak var moodLabel: UILabel!
+	@IBOutlet private weak var dataLabel: UILabel!
+	@IBOutlet private weak var innerView: UIView!
+	@IBOutlet private weak var moodLabel: UILabel!
     
     // MARK: Overridden/ Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
