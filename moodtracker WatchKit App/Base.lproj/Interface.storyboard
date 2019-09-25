@@ -137,19 +137,20 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <group width="1" alignment="left" id="tDQ-VC-RCg">
+                        <group width="1" height="28" alignment="left" id="tDQ-VC-RCg">
                             <items>
-                                <button width="28" height="28" alignment="left" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
+                                <button width="28" height="28" alignment="left" verticalAlignment="center" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="navigateBack" destination="ht7-Kj-mwk" id="syY-iv-1bu"/>
                                     </connections>
                                 </button>
-                                <label alignment="center" verticalAlignment="center" text="Average" id="WAP-kc-GnL">
+                                <label height="1" alignment="center" verticalAlignment="center" text="Range" id="WAP-kc-GnL">
                                     <color key="textColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </label>
-                                <button width="28" height="28" alignment="right" backgroundImage="arrowtriangle.right.circle" catalog="system" id="er7-zd-fQr">
+                                <button width="28" height="28" alignment="right" verticalAlignment="center" backgroundImage="arrowtriangle.right.circle" catalog="system" id="er7-zd-fQr">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="20"/>
                                     <connections>
                                         <action selector="navigateForward" destination="ht7-Kj-mwk" id="D3j-8x-6yC"/>
                                     </connections>
