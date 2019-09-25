@@ -41,9 +41,15 @@ class HistoryViewController: UIViewController {
 	
 	// MARK: stored properties
 	private let diagram = Diagram()
-	let formatter: DateFormatter = {
+	let formatterWeek: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "dd MMM YY"
+		formatter.locale = Calendar.current.locale
+		return formatter
+	}()
+	let formatterMonth: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "MMMM YYYY"
 		formatter.locale = Calendar.current.locale
 		return formatter
 	}()
@@ -55,9 +61,17 @@ class HistoryViewController: UIViewController {
 		//dataset to string
 		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
 		
-		if let lower = diagram.lowerDate,
-			let higher = diagram.higherDate {
-			rangeDisplay.text = "\(formatter.string(from: lower)) - \(formatter.string(from: higher))"
+		switch diagram.analysisrange {
+		case .year:
+			let dateComponents = Calendar.current.dateComponents([.year], from: diagram.selectedDate)
+			rangeDisplay.text = "\(dateComponents.year!)"
+		case .week:
+			if let lower = diagram.lowerDate,
+				let higher = diagram.higherDate {
+				rangeDisplay.text = "\(formatterWeek.string(from: lower)) - \(formatterWeek.string(from: higher))"
+			}
+		case .month:
+			rangeDisplay.text = "\(formatterMonth.string(from: diagram.selectedDate))"
 		}
 	}
 	
