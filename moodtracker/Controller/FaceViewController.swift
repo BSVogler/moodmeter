@@ -6,21 +6,35 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import UIKit
 
+// MARK: - DesignableLabel
+@IBDesignable
+class DesignableLabel: UILabel {
+}
+
+// MARK: - FaceViewController
 class FaceViewController: UIViewController {
 
-	// MARK: - Stored properties
+	// MARK: Stored Instance Properties
 	var topLabel: String = ""
 	var modelController: PageViewController?
-	
 	private var face = Measurement()
 	
-	// MARK: - Outlets
+	// MARK: IBOutlets
 	@IBOutlet weak var dataLabel: UILabel!
 	@IBOutlet weak var innerView: UIView!
 	@IBOutlet weak var moodLabel: UILabel!
-	
+    
+    // MARK: Overridden/ Lifecycle Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.dataLabel!.text = topLabel
+        face.mood = Model.shared.dataset[face.date] ?? 0
+        refreshDisplay()
+    }
+    
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
 		//mood 0 is only internal special case
@@ -58,15 +72,7 @@ class FaceViewController: UIViewController {
 		}
 	}
 	
-	// MARK: - Overrides
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		self.dataLabel!.text = topLabel
-		face.mood = Model.shared.dataset[face.date] ?? 0
-		refreshDisplay()
-	}
-	
-	// MARK: Functions
+	// MARK: Instance Methods
 	func refreshDisplay(){
 		moodLabel.text = face.getSmiley()
 		self.view.backgroundColor = face.getColor()
@@ -78,11 +84,8 @@ class FaceViewController: UIViewController {
 	}
 }
 
-// MARK: - Extension
-@IBDesignable
-class DesignableLabel: UILabel {
-}
-
+// MARK: - Extensions
+// MARK: UIView: IBInspectable
 extension UIView {
 	@IBInspectable
 	var rotation: Int {
