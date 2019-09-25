@@ -114,7 +114,7 @@
                         <group width="1" alignment="center" id="OH9-aY-Jgs">
                             <items>
                                 <button width="0.33000000000000002" alignment="center" verticalAlignment="center" title="W" id="nMt-3O-QA4">
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="15"/>
                                     <connections>
                                         <action selector="weekButtonTap" destination="ht7-Kj-mwk" id="aiB-KE-7oE"/>
@@ -137,14 +137,24 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <group width="1" alignment="left" id="tDQ-VC-RCg">
+                        <group width="1" height="28" alignment="left" id="tDQ-VC-RCg">
                             <items>
-                                <imageView width="28" height="28" alignment="left" image="arrowtriangle.left.circle" catalog="system" id="4Gb-yW-85h">
-                                    <color key="tintColor" red="0.36376284250000002" green="0.31782427229999999" blue="0.075610017119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </imageView>
-                                <imageView width="28" height="28" alignment="right" image="arrowtriangle.right.circle" catalog="system" id="mJA-CW-Ofs">
-                                    <color key="tintColor" red="0.36376284250000002" green="0.31782427229999999" blue="0.075610017119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </imageView>
+                                <button width="28" height="28" alignment="left" verticalAlignment="center" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
+                                    <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="navigateBack" destination="ht7-Kj-mwk" id="syY-iv-1bu"/>
+                                    </connections>
+                                </button>
+                                <label height="1" alignment="center" verticalAlignment="center" text="Range" id="WAP-kc-GnL">
+                                    <color key="textColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                                <button width="28" height="28" alignment="right" verticalAlignment="center" backgroundImage="arrowtriangle.right.circle" catalog="system" id="er7-zd-fQr">
+                                    <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="20"/>
+                                    <connections>
+                                        <action selector="navigateForward" destination="ht7-Kj-mwk" id="D3j-8x-6yC"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                         <group width="1" alignment="left" id="J6w-80-3ng">
@@ -206,7 +216,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="404" y="364.5"/>
+            <point key="canvasLocation" x="404" y="364"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
