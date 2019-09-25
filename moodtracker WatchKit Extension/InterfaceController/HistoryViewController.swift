@@ -23,12 +23,12 @@ class HistoryInterfaceController: WKInterfaceController {
 	@IBAction func weekButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
-		weekButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
+		weekButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		diagram.analysisrange = .week
 		redraw()
 	}
 	@IBAction func monthButtonTap() {
-		monthButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
+		monthButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		diagram.analysisrange = .month
@@ -36,7 +36,7 @@ class HistoryInterfaceController: WKInterfaceController {
 	}
 	@IBAction func yearButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
-		yearButton.setBackgroundColor(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
+		yearButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		diagram.analysisrange = .year
 		redraw()
