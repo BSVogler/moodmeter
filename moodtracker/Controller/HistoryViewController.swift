@@ -41,7 +41,7 @@ class HistoryViewController: UIViewController {
 		refreshRendering()
 	}
 
-	// MARK: Instance Methods
+	// MARK: Private Instance Methods
 	private func refreshRendering(){
 		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
 		
