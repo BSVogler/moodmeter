@@ -29,6 +29,16 @@ class Measurement: Codable {
     var mood: Mood = 0
     private var day: Date = Date()//without hours and minutes
     
+    var isYesterday = false {
+        didSet {
+            if isYesterday {
+                date = yesterday ?? date
+            } else {
+                date = Date()
+            }
+        }
+    }
+    
 	// MARK: Computed Properties
 	var date: Date {
 		set {
@@ -40,17 +50,6 @@ class Measurement: Codable {
 	var yesterday: Date? {
 		let calendar = Calendar.current
 		return calendar.date(byAdding: .day, value: -1, to: Date())
-	}
-	
-	//Declaration quick help says it is a computed property, but code says it is a stored property
-	var isYesterday = false {
-		didSet {
-			if isYesterday {
-				date = yesterday ?? date
-			} else {
-				date = Date()
-			}
-		}
 	}
 	
 	// MARK: Initializers

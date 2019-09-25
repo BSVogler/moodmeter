@@ -6,17 +6,22 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import CoreGraphics
 import UIKit
 
+// MARK: - Enum AnalysisRange
 enum AnalysisRange: Int {
 	case week = 7
 	case month = 30
 	case year = 12
 }
 
+// MARK: - Diagram
 class Diagram {
+    
+    // MARK: Stored Instance Properties
 	let axisColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 	let offsettop = CGFloat(2)
 	let offsettbottom = CGFloat(15)
@@ -37,10 +42,12 @@ class Diagram {
 	var analysisrange = AnalysisRange.week
 	var selectedDate = Date()
 	
+    // MARK: Initializers
 	init() {
 		
 	}
 	
+    // MARK: Instance Methods
 	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
 		self.frame = frame
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)

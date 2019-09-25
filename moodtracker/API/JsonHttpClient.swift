@@ -34,7 +34,7 @@ class JsonHttpClient {
 	}
 	
 	// MARK: Instance Methods
-	//with is a codable (serializable) class or struct
+	// with is-a-codable (serializable) class or struct
 	func post<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
