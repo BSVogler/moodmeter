@@ -57,7 +57,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")
 		) { action in
 			
-			MoodAPIjsonHttpClient.shared.delete { res in
+			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
 				Model.shared.sharing.disableSharing()
 				self.showSharingDeactivated()

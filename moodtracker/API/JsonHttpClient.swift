@@ -13,6 +13,7 @@ import SwiftyBeaver
 
 let logger = SwiftyBeaver.self
 
+// MARK: - Enum Response Type
 enum ResponseType {
 	case JSON
 	case CSV
