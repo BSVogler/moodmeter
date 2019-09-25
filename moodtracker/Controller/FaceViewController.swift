@@ -95,7 +95,5 @@ extension UIView {
 			let radians = ((CGFloat.pi) * CGFloat(newValue) / CGFloat(180.0))
 			self.transform = CGAffineTransform(rotationAngle: radians)
 		}
-	}
-	
+	}	
 }
-

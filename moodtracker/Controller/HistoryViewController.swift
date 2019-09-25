@@ -43,9 +43,9 @@ class HistoryViewController: UIViewController {
 
 	// MARK: Private Instance Methods
 	private func refreshRendering(){
-		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
+		// let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
 		
-		//dataset to string
+		// dataset to string
 		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
 	}
 	

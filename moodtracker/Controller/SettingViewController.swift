@@ -21,8 +21,7 @@ class SettingViewController: UIViewController {
 	
     // MARK: Initializer
     convenience init() {
-        self.init(nibName:nil, bundle:nil)
-        
+        self.init(nibName: nil, bundle: nil)
     }
     
     // MARK: Overridden/ Lifecycle Methods
