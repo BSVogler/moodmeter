@@ -87,32 +87,15 @@ class Diagram {
 		var labels: [String] = []
 		switch analysisrange {
 		case .week:
-			let dateFormatter = DateFormatter()
-			dateFormatter.dateFormat = "EEEE"
-			var dateComponents = DateComponents()
-			for month in 1..<8 {
-				//starting from a monday
-				dateComponents.year = 2019
-				dateComponents.month = 4
-				dateComponents.day = month
-				if let date = Calendar.current.date(from: dateComponents) {
-					let weekday = dateFormatter.string(from: date).prefix(3).capitalized
-					labels.append(weekday)
-				}
-			}
+			var calendar = Calendar(identifier: .gregorian)
+			calendar.locale = Locale.current
+			labels = calendar.weekdaySymbols.map{String($0.prefix(3))}
 		case .month:
 			labels = ["1","8", "15", "21","28"]
 		case .year:
-			let dateFormatter = DateFormatter()
-			dateFormatter.dateFormat = "MMMM"
-			var dateComponents = DateComponents()
-			for month in 1...12 {
-				dateComponents.month = month
-				if let date = Calendar.current.date(from: dateComponents) {
-					let monthShort = dateFormatter.string(from: date).capitalized
-					labels.append(String(monthShort.first!))
-				}
-			}
+			var calendar = Calendar(identifier: .gregorian)
+			calendar.locale = Locale.current
+			labels = calendar.monthSymbols.map{String($0.prefix(3))}
 		}
 		
 		//draw dasges
