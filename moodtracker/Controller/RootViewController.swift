@@ -6,16 +6,18 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import UIKit
 
-class RootViewController: UIViewController, UIPageViewControllerDelegate {
-	
+// MARK: - RootViewController
+class RootViewController: UIViewController {
+    
+    // MARK: Stored Instance Properties
+    let pageControl = UIPageControl()
 	var pageViewController: UIPageViewController?
-	let pageControl = UIPageControl()
-	
 	var _modelController: PageViewController? = nil
 	
-	// MARK: computed property
+	// MARK: Computed Properties
 	var modelController: PageViewController {
 		// Return the model controller object, creating it if necessary.
 		// In more complex implementations, the model controller may be passed to the view controller.
@@ -25,7 +27,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 		return _modelController!
 	}
 	
-	// MARK: overrides
+	// MARK: Overridden/ Lifecycle Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -54,28 +56,28 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 		
 		configurePageControl()
 	}
-
-
-	
-	// MARK: - UIPageViewController delegate methods
-	
-	func configurePageControl() {
-		self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
-		self.pageControl.numberOfPages = modelController.pageTitles.count
-		self.pageControl.currentPage = 1
-		self.pageControl.tintColor = UIColor.black
-		self.pageControl.pageIndicatorTintColor = UIColor.white
-		self.pageControl.currentPageIndicatorTintColor = UIColor.black
-		self.pageViewController?.view.addSubview(pageControl)
-	}
-	// MARK: Delegate functions
-	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-		// the current page is the number of the highlighted dot
-		self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
-	}
 }
 
 // MARK: - Extensions
+// MARK: UIPageViewControllerDelegate
+extension RootViewController: UIPageViewControllerDelegate {
+    
+    func configurePageControl() {
+        self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
+        self.pageControl.numberOfPages = modelController.pageTitles.count
+        self.pageControl.currentPage = 1
+        self.pageControl.tintColor = UIColor.black
+        self.pageControl.pageIndicatorTintColor = UIColor.white
+        self.pageControl.currentPageIndicatorTintColor = UIColor.black
+        self.pageViewController?.view.addSubview(pageControl)
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        // the current page is the number of the highlighted dot
+        self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
+    }
+}
+
+// MARK: alert(), confirm()
 extension UIViewController {
 	public func alert(title: String, message: String) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
