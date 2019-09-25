@@ -34,7 +34,11 @@ class Diagram {
 	var usedAreaWidth = CGFloat(0)
 	var tickHeight = CGFloat(0)
 	var tickWidth = CGFloat(0)
-	var analysisrange = AnalysisRange.week
+	var analysisrange = AnalysisRange.week{
+		didSet{
+			updateBounds()
+		}
+	}
 	var selectedDate = Date(){
 		didSet{
 			updateBounds()
