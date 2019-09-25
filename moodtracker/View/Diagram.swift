@@ -204,7 +204,7 @@ class Diagram {
 			for month in 1...12 {
 				var dateComponents = Calendar.current.dateComponents([.year, .month], from: selectedDate)
 				dateComponents.month = month
-				let lowerDateMonth = dateComponents.date
+				let lowerDateMonth = Calendar.current.date(from:dateComponents)
 				if let lowerDateMonth = lowerDateMonth,
 				   let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
 					let datesinMonth = Model.shared.dataset.filter{$0.key > lowerDateMonth && $0.key < higherDateMonth }
