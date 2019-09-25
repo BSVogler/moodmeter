@@ -37,21 +37,22 @@ class Diagram {
 	var analysisrange = AnalysisRange.week
 	var selectedDate = Date(){
 		didSet{
+			let calendar = Calendar.current
 			switch analysisrange {
 			case .week:
 				lowerDate = selectedDate.previous(.monday)
 				higherDate = selectedDate.next(.monday)
 			case .month:
-				let firstComponents = Calendar.current.dateComponents([.year, .month], from: selectedDate)
-				lowerDate = Calendar.current.date(from: firstComponents)
+				let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
+				lowerDate = calendar.date(from: firstComponents)
 				var nextComponents = DateComponents()
 				nextComponents.month = 1
-				higherDate = Calendar.current.date(byAdding: nextComponents, to: selectedDate)
+				higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
 			case .year:
-				let dateComponents = Calendar.current.dateComponents([.year], from: selectedDate)
-				lowerDate = Calendar.current.date(from: dateComponents)
-				if let lowerDate = lowerDate{
-					higherDate = Calendar.current.date(byAdding: .year, value: 1, to: lowerDate)
+				let dateComponents = calendar.dateComponents([.year], from: selectedDate)
+				lowerDate = calendar.date(from: dateComponents)
+				if let lowerDate = lowerDate {
+					higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
 				}
 			}
 		}
