@@ -257,14 +257,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="loW-wN-kPe">
-                                <rect key="frame" x="325" y="95" width="69" height="37.000000000000014"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36.329999999999998" id="P5M-Di-MwY"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-V6-kwB">
-                                <rect key="frame" x="331" y="139" width="57" height="30"/>
+                                <rect key="frame" x="337" y="139" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="XH5-V6-kwB" id="exK-g5-w4v">
@@ -305,7 +299,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-fB-TOF">
-                                <rect key="frame" x="360" y="233" width="34" height="33"/>
+                                <rect key="frame" x="360" y="239" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="KjS-1S-32r"/>
                                     <constraint firstAttribute="height" constant="34" id="pcH-Rz-HZW"/>
@@ -317,7 +311,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xx6-Em-Rok">
-                                <rect key="frame" x="20" y="234" width="34" height="33"/>
+                                <rect key="frame" x="20" y="239" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="dYJ-Zs-zoY"/>
                                     <constraint firstAttribute="height" constant="34" id="pHP-Nh-hB8"/>
@@ -329,29 +323,42 @@
                                     <action selector="navigateForward:" destination="gSE-2D-ksZ" eventType="touchUpInside" id="eqq-Me-aIj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kd-CZ-sMS">
+                                <rect key="frame" x="348" y="102" width="35" height="35.666666666666671"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="SAz-sZ-mzX"/>
+                                    <constraint firstAttribute="height" constant="35" id="cZP-ew-IYa"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="gear" catalog="system"/>
+                                <connections>
+                                    <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="2kd-CZ-sMS" id="Fag-IZ-R77">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lc7-dE-ZKA" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="36a-mf-OGd"/>
                             <constraint firstItem="S6p-jh-1lR" firstAttribute="centerX" secondItem="7c3-eA-gzV" secondAttribute="centerX" id="4KC-lm-Ldl"/>
-                            <constraint firstItem="Xx6-Em-Rok" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="5" id="CnN-q2-Knb"/>
+                            <constraint firstItem="mjb-MQ-pve" firstAttribute="bottom" secondItem="gUI-VY-eBy" secondAttribute="bottom" constant="387" id="5KR-6u-Awq"/>
+                            <constraint firstItem="Xx6-Em-Rok" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="10" id="CnN-q2-Knb"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hBA-QD-yZx" secondAttribute="trailing" symbolic="YES" id="CoP-Jq-cdc"/>
-                            <constraint firstItem="loW-wN-kPe" firstAttribute="width" secondItem="XH5-V6-kwB" secondAttribute="width" constant="12" id="ETS-Pl-pIp"/>
+                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="XH5-V6-kwB" secondAttribute="trailing" constant="20" id="HTz-KD-mOl"/>
                             <constraint firstItem="qP0-MN-TdL" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="5" id="JUN-zV-1aR"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="17" id="LiI-Ba-lbk"/>
-                            <constraint firstItem="XH5-V6-kwB" firstAttribute="top" secondItem="loW-wN-kPe" secondAttribute="bottom" constant="7.6699999999999999" id="M52-Ns-t7V"/>
                             <constraint firstItem="S6p-jh-1lR" firstAttribute="top" secondItem="qP0-MN-TdL" secondAttribute="bottom" constant="8" id="QyS-L1-dih"/>
-                            <constraint firstItem="loW-wN-kPe" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="51" id="TwR-gu-QZz"/>
-                            <constraint firstItem="loW-wN-kPe" firstAttribute="centerX" secondItem="XH5-V6-kwB" secondAttribute="centerX" id="VbX-lV-aXh"/>
-                            <constraint firstItem="FAb-fB-TOF" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="4" id="aBl-uf-lMT"/>
+                            <constraint firstItem="FAb-fB-TOF" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="10" id="aBl-uf-lMT"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="afi-DX-1Ej"/>
+                            <constraint firstItem="gUI-VY-eBy" firstAttribute="top" secondItem="Xx6-Em-Rok" secondAttribute="bottom" constant="27" id="ar6-cy-Ng6"/>
+                            <constraint firstItem="2kd-CZ-sMS" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="58" id="b8N-cy-r52"/>
                             <constraint firstItem="lc7-dE-ZKA" firstAttribute="top" secondItem="XH5-V6-kwB" secondAttribute="bottom" constant="28" id="bcn-cH-nW8"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="FAb-fB-TOF" secondAttribute="trailing" constant="20" id="bhU-NI-f8t"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="gUI-VY-eBy" secondAttribute="trailing" constant="20" id="fY8-Ey-rNF"/>
+                            <constraint firstItem="2kd-CZ-sMS" firstAttribute="centerX" secondItem="XH5-V6-kwB" secondAttribute="centerX" id="fi1-hU-MhV"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="lc7-dE-ZKA" secondAttribute="trailing" constant="20" id="hB1-4C-XD5"/>
                             <constraint firstItem="gUI-VY-eBy" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="lLa-lC-TJ6"/>
-                            <constraint firstItem="gUI-VY-eBy" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="71" id="rer-CB-16a"/>
-                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="XH5-V6-kwB" secondAttribute="trailing" constant="26" id="tRr-Gr-f8o"/>
+                            <constraint firstItem="XH5-V6-kwB" firstAttribute="firstBaseline" secondItem="2kd-CZ-sMS" secondAttribute="baseline" constant="61.000000000000028" id="nm4-yb-C6b"/>
                             <constraint firstItem="qP0-MN-TdL" firstAttribute="centerX" secondItem="7c3-eA-gzV" secondAttribute="centerX" id="xLd-0a-xkC"/>
                             <constraint firstItem="Xx6-Em-Rok" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="yLL-do-qp0"/>
                         </constraints>
@@ -597,4 +604,7 @@ By using the share feature you agree to the terms and conditions.</string>
         <image name="gear" catalog="system" width="64" height="60"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="exK-g5-w4v"/>
+    </inferredMetricsTieBreakers>
 </document>
