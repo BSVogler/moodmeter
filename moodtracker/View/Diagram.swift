@@ -35,6 +35,7 @@ class Diagram {
 	var tickHeight = CGFloat(0)
 	var tickWidth = CGFloat(0)
 	var analysisrange = AnalysisRange.week
+	var selectedDate = Date()
 	
 	init() {
 		
@@ -139,29 +140,29 @@ class Diagram {
 		switch analysisrange {
 		case .week:
 			//get measurements for this week
-			//todo, needs the days since monday
-			let lastWeekDay = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())
-			if let lastWeekDay = lastWeekDay {
-				let moods = Model.shared.dataset.filter{$0.key > lastWeekDay}.reversed().map{$0.value}
-				points = moods.enumerated().map { (arg) -> CGPoint in
-					let (i, mood) = arg
-					let x: CGFloat = offsetleft+CGFloat(i)*tickWidth+CGFloat(0.5)*tickWidth
-					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood)
-					return CGPoint(x: x, y: y)
-				}
-			}
+			let lastWeekDay = Date().previous(.monday)
+			let measurements = Model.shared.measurements.filter{$0.date > lastWeekDay}
+			points = measurements.enumerated().map { (i, measurement) -> CGPoint in
+				let intervalSinceFirst = measurement.date.timeIntervalSince(lastWeekDay)
+				let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
+				let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
+				let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
+				return CGPoint(x: x, y: y)
+			}.sorted{$0.x > $1.x}
 		case .month:
+			//get measurements for this month
 			var dateComponents = Calendar.current.dateComponents(unitFlags, from: Date())
 			dateComponents.day = 1
-			//get measurements for this week
+			dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
 			if let firstDayMonth = dateComponents.date {
-				let moods = Model.shared.dataset.filter{$0.key > firstDayMonth}.reversed().map{$0.value}
-				points = moods.enumerated().map { (arg) -> CGPoint in
-					let (i, mood) = arg
-					let x: CGFloat = offsetleft+CGFloat(i)*tickWidth+CGFloat(0.5)*tickWidth
-					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(mood)
+				let measurements = Model.shared.measurements.filter{$0.date > firstDayMonth}
+				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
+					let intervalSinceFirst = measurement.date.timeIntervalSince(firstDayMonth)
+					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
+					let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
+					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
 					return CGPoint(x: x, y: y)
-				}
+				}.sorted{$0.x > $1.x}
 			}
 		case .year:
 			for month in 1...12 {
