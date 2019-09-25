@@ -41,6 +41,28 @@ class Diagram {
 		
 	}
 	
+	func navigateBack(){
+		switch analysisrange {
+		case .week:
+			selectedDate = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate) ?? selectedDate
+		case .month:
+			selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) ?? selectedDate
+		case .year:
+			selectedDate = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate) ?? selectedDate
+		}
+	}
+	
+	func navigateForward(){
+		switch analysisrange {
+		case .week:
+			selectedDate = Calendar.current.date(byAdding: .day, value: 7, to: selectedDate) ?? selectedDate
+		case .month:
+			selectedDate = Calendar.current.date(byAdding: .month, value: 1, to: selectedDate) ?? selectedDate
+		case .year:
+			selectedDate = Calendar.current.date(byAdding: .year, value: 1, to: selectedDate) ?? selectedDate
+		}
+	}
+	
 	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
 		self.frame = frame
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
@@ -119,14 +141,15 @@ class Diagram {
 	
 	func getPoints() -> [CGPoint] {
 		var points: [CGPoint] = []
-		let unitFlags:Set<Calendar.Component> = [.hour, .day, .month, .year,.minute,.hour,.second, .calendar]
+		let unitFlags:Set<Calendar.Component> = [.day, .month, .year, .calendar]
 		switch analysisrange {
 		case .week:
 			//get measurements for this week
-			let lastWeekDay = Date().previous(.monday)
-			let measurements = Model.shared.measurements.filter{$0.date > lastWeekDay}
+			let lastMonday = selectedDate.previous(.monday)
+			let nextMonday = selectedDate.next(.monday)
+			let measurements = Model.shared.measurements.filter{$0.date > lastMonday && $0.date < nextMonday}
 			points = measurements.enumerated().map { (i, measurement) -> CGPoint in
-				let intervalSinceFirst = measurement.date.timeIntervalSince(lastWeekDay)
+				let intervalSinceFirst = measurement.date.timeIntervalSince(lastMonday)
 				let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
 				let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
 				let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
@@ -134,11 +157,13 @@ class Diagram {
 			}.sorted{$0.x > $1.x}
 		case .month:
 			//get measurements for this month
-			var dateComponents = Calendar.current.dateComponents(unitFlags, from: Date())
-			dateComponents.day = 1
-			dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
-			if let firstDayMonth = dateComponents.date {
-				let measurements = Model.shared.measurements.filter{$0.date > firstDayMonth}
+			let firstComponents = Calendar.current.dateComponents([.year, .month], from: selectedDate)
+			var nextComponents = DateComponents()
+			nextComponents.month = 1
+			//dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
+			if let firstDayMonth = Calendar.current.date(from: firstComponents),
+				let firstDayNextMonth = Calendar.current.date(byAdding: nextComponents, to: selectedDate) {
+				let measurements = Model.shared.measurements.filter{$0.date > firstDayMonth && $0.date < firstDayNextMonth}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
 					let intervalSinceFirst = measurement.date.timeIntervalSince(firstDayMonth)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
@@ -149,15 +174,10 @@ class Diagram {
 			}
 		case .year:
 			for month in 1...12 {
-				var dateComponents = Calendar.current.dateComponents(unitFlags, from: Date())
-				dateComponents.day = 1
+				var dateComponents = Calendar.current.dateComponents([.year, .month], from: selectedDate)
 				dateComponents.month = month
-				var dateComponentsNext = Calendar.current.dateComponents(unitFlags, from: Date())
-				dateComponentsNext.day = 1
-				dateComponentsNext.month = month+1
-				//get measurements for this week
 				if let currentMonth = dateComponents.date,
-					let nextMonth = dateComponentsNext.date {
+				   let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentMonth) {
 					let datesinMonth = Model.shared.dataset.filter{$0.key > currentMonth && $0.key < nextMonth }
 					if datesinMonth.count > 0 {
 						let avgmood = datesinMonth.reduce(0) { $0 + $1.value } / datesinMonth.count

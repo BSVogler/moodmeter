@@ -10,7 +10,7 @@ import UIKit
 import SwiftChartView
 
 class HistoryViewController: UIViewController {
-
+	
 	@IBOutlet weak var diagramImage: UIImageView!
 	@IBOutlet weak var rangeSelector: UISegmentedControl!
 	
@@ -26,7 +26,18 @@ class HistoryViewController: UIViewController {
 		}
 		refreshRendering()
 	}
-	//properties
+	
+	@IBAction func navigateForward(_ sender: Any) {
+		diagram.navigateForward()
+		refreshRendering()
+	}
+	
+	@IBAction func navigateBackwards(_ sender: Any) {
+		diagram.navigateBack()
+		refreshRendering()
+	}
+	
+	// MARK: stored properties
 	private let diagram = Diagram()
 	
 	// MARK: functions

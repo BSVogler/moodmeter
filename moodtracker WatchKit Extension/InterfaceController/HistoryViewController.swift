@@ -42,6 +42,15 @@ class HistoryInterfaceController: WKInterfaceController {
 		redraw()
 	}
 	
+	@IBAction func navigateBack() {
+		diagram.navigateBack()
+		redraw()
+	}
+	
+	@IBAction func navigateForward() {
+		diagram.navigateForward()
+		redraw()
+	}
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
 	}
