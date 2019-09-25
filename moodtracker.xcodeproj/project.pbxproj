@@ -228,21 +228,18 @@
 		A68480B42337C4FC00ADB8EA /* moodtracker */ = {
 			isa = PBXGroup;
 			children = (
-				805FAB3C233BC95200D4E52A /* Extensions */,
 				A68481062337C65200ADB8EA /* AppDelegate.swift */,
-				A68481342337CBF800ADB8EA /* Model */,
-				A68481272337CBB400ADB8EA /* API */,
 				A68480C32337C4FE00ADB8EA /* Info.plist */,
 				A68481082337C6B300ADB8EA /* Info_old.plist */,
 				A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */,
 				A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */,
-				A68480B92337C4FC00ADB8EA /* ViewController.swift */,
-				A68480BB2337C4FC00ADB8EA /* Main.storyboard */,
-				A68480BE2337C4FE00ADB8EA /* Assets.xcassets */,
 				A684815A2337CECD00ADB8EA /* Localizable.strings */,
-				A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */,
+				805FAB3C233BC95200D4E52A /* Extensions */,
+				A68481272337CBB400ADB8EA /* API */,
+				A68481342337CBF800ADB8EA /* Model */,
 				A6B61C57233A6389009A9658 /* View */,
-				A68481692337D11200ADB8EA /* ViewController */,
+				A68481692337D11200ADB8EA /* Controller */,
+				A68480BE2337C4FE00ADB8EA /* Assets.xcassets */,
 			);
 			path = moodtracker;
 			sourceTree = "<group>";
@@ -308,9 +305,10 @@
 			path = API/Model;
 			sourceTree = "<group>";
 		};
-		A68481692337D11200ADB8EA /* ViewController */ = {
+		A68481692337D11200ADB8EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A68480B92337C4FC00ADB8EA /* ViewController.swift */,
 				A68481792337D14E00ADB8EA /* FaceViewController.swift */,
 				A684817A2337D14F00ADB8EA /* HistoryViewController.swift */,
 				A68481782337D14E00ADB8EA /* PageViewController.swift */,
@@ -318,13 +316,15 @@
 				A68481772337D14E00ADB8EA /* SettingViewController.swift */,
 				A684817B2337D14F00ADB8EA /* ShareViewController.swift */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A6B61C57233A6389009A9658 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A6B61C58233A63C3009A9658 /* Diagram.swift */,
+				A68480BB2337C4FC00ADB8EA /* Main.storyboard */,
+				A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
