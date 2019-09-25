@@ -257,15 +257,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-V6-kwB">
-                                <rect key="frame" x="337" y="139" width="57" height="30"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="XH5-V6-kwB" id="exK-g5-w4v">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lc7-dE-ZKA">
                                 <rect key="frame" x="20" y="197" width="374" height="32"/>
                                 <constraints>
@@ -320,18 +311,26 @@
                                 <state key="normal" backgroundImage="arrow.left.circle" catalog="system"/>
                                 <connections>
                                     <action selector="navigateBackwards:" destination="gSE-2D-ksZ" eventType="touchUpInside" id="Lm7-OU-BaR"/>
-                                    <action selector="navigateForward:" destination="gSE-2D-ksZ" eventType="touchUpInside" id="eqq-Me-aIj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kd-CZ-sMS">
-                                <rect key="frame" x="348" y="102" width="35" height="35.666666666666671"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iO-X0-7AD">
+                                <rect key="frame" x="337" y="98" width="57" height="30"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="9iO-X0-7AD" id="Ti9-it-nlo">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfo-Ao-HPW">
+                                <rect key="frame" x="348" y="61.000000000000014" width="35" height="35.666666666666657"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="SAz-sZ-mzX"/>
-                                    <constraint firstAttribute="height" constant="35" id="cZP-ew-IYa"/>
+                                    <constraint firstAttribute="width" constant="35" id="NjP-cT-9w3"/>
+                                    <constraint firstAttribute="height" constant="35" id="cv3-nq-8Xo"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="gear" catalog="system"/>
                                 <connections>
-                                    <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="2kd-CZ-sMS" id="Fag-IZ-R77">
+                                    <segue destination="Slk-0i-r66" kind="popoverPresentation" popoverAnchorView="sfo-Ao-HPW" id="VYH-7w-rhF">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -341,24 +340,23 @@
                         <constraints>
                             <constraint firstItem="lc7-dE-ZKA" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="36a-mf-OGd"/>
                             <constraint firstItem="S6p-jh-1lR" firstAttribute="centerX" secondItem="7c3-eA-gzV" secondAttribute="centerX" id="4KC-lm-Ldl"/>
-                            <constraint firstItem="mjb-MQ-pve" firstAttribute="bottom" secondItem="gUI-VY-eBy" secondAttribute="bottom" constant="387" id="5KR-6u-Awq"/>
                             <constraint firstItem="Xx6-Em-Rok" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="10" id="CnN-q2-Knb"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hBA-QD-yZx" secondAttribute="trailing" symbolic="YES" id="CoP-Jq-cdc"/>
-                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="XH5-V6-kwB" secondAttribute="trailing" constant="20" id="HTz-KD-mOl"/>
+                            <constraint firstItem="lc7-dE-ZKA" firstAttribute="top" secondItem="hBA-QD-yZx" secondAttribute="bottom" constant="100" id="CpN-a3-ePS"/>
                             <constraint firstItem="qP0-MN-TdL" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="5" id="JUN-zV-1aR"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="17" id="LiI-Ba-lbk"/>
                             <constraint firstItem="S6p-jh-1lR" firstAttribute="top" secondItem="qP0-MN-TdL" secondAttribute="bottom" constant="8" id="QyS-L1-dih"/>
+                            <constraint firstItem="sfo-Ao-HPW" firstAttribute="centerX" secondItem="9iO-X0-7AD" secondAttribute="centerX" id="Qya-4E-OfM"/>
                             <constraint firstItem="FAb-fB-TOF" firstAttribute="top" secondItem="lc7-dE-ZKA" secondAttribute="bottom" constant="10" id="aBl-uf-lMT"/>
                             <constraint firstItem="hBA-QD-yZx" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="afi-DX-1Ej"/>
                             <constraint firstItem="gUI-VY-eBy" firstAttribute="top" secondItem="Xx6-Em-Rok" secondAttribute="bottom" constant="27" id="ar6-cy-Ng6"/>
-                            <constraint firstItem="2kd-CZ-sMS" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="58" id="b8N-cy-r52"/>
-                            <constraint firstItem="lc7-dE-ZKA" firstAttribute="top" secondItem="XH5-V6-kwB" secondAttribute="bottom" constant="28" id="bcn-cH-nW8"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="FAb-fB-TOF" secondAttribute="trailing" constant="20" id="bhU-NI-f8t"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="gUI-VY-eBy" secondAttribute="trailing" constant="20" id="fY8-Ey-rNF"/>
-                            <constraint firstItem="2kd-CZ-sMS" firstAttribute="centerX" secondItem="XH5-V6-kwB" secondAttribute="centerX" id="fi1-hU-MhV"/>
                             <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="lc7-dE-ZKA" secondAttribute="trailing" constant="20" id="hB1-4C-XD5"/>
+                            <constraint firstItem="sfo-Ao-HPW" firstAttribute="top" secondItem="mjb-MQ-pve" secondAttribute="top" constant="17" id="ito-u1-Jf3"/>
                             <constraint firstItem="gUI-VY-eBy" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="lLa-lC-TJ6"/>
-                            <constraint firstItem="XH5-V6-kwB" firstAttribute="firstBaseline" secondItem="2kd-CZ-sMS" secondAttribute="baseline" constant="61.000000000000028" id="nm4-yb-C6b"/>
+                            <constraint firstItem="9iO-X0-7AD" firstAttribute="top" secondItem="sfo-Ao-HPW" secondAttribute="bottom" constant="2" id="vEe-kS-yrF"/>
+                            <constraint firstItem="mjb-MQ-pve" firstAttribute="trailing" secondItem="9iO-X0-7AD" secondAttribute="trailing" constant="20" id="vhg-SU-Yml"/>
                             <constraint firstItem="qP0-MN-TdL" firstAttribute="centerX" secondItem="7c3-eA-gzV" secondAttribute="centerX" id="xLd-0a-xkC"/>
                             <constraint firstItem="Xx6-Em-Rok" firstAttribute="leading" secondItem="mjb-MQ-pve" secondAttribute="leading" constant="20" id="yLL-do-qp0"/>
                         </constraints>
@@ -366,7 +364,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qqs-dh-8uc"/>
                     <connections>
+                        <outlet property="averageLabel" destination="qP0-MN-TdL" id="S5B-do-c1U"/>
                         <outlet property="diagramImage" destination="gUI-VY-eBy" id="LYI-Mf-9SX"/>
+                        <outlet property="rangeDisplay" destination="S6p-jh-1lR" id="He4-1R-ePu"/>
                         <outlet property="rangeSelector" destination="lc7-dE-ZKA" id="rzO-22-ZKI"/>
                     </connections>
                 </viewController>
@@ -605,6 +605,6 @@ By using the share feature you agree to the terms and conditions.</string>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="exK-g5-w4v"/>
+        <segue reference="VYH-7w-rhF"/>
     </inferredMetricsTieBreakers>
 </document>

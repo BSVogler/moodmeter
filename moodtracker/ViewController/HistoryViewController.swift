@@ -13,6 +13,8 @@ class HistoryViewController: UIViewController {
 	
 	@IBOutlet weak var diagramImage: UIImageView!
 	@IBOutlet weak var rangeSelector: UISegmentedControl!
+	@IBOutlet weak var rangeDisplay: UILabel!
+	@IBOutlet weak var averageLabel: UILabel!
 	
 	// MARK: IBActions
 	@IBAction func displayRangeChanged(_ sender: Any) {
@@ -39,6 +41,12 @@ class HistoryViewController: UIViewController {
 	
 	// MARK: stored properties
 	private let diagram = Diagram()
+	let formatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "dd MMM YY"
+		formatter.locale = Calendar.current.locale
+		return formatter
+	}()
 	
 	// MARK: functions
 	func refreshRendering(){
@@ -46,6 +54,11 @@ class HistoryViewController: UIViewController {
 		
 		//dataset to string
 		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
+		
+		if let lower = diagram.lowerDate,
+			let higher = diagram.higherDate {
+			rangeDisplay.text = "\(formatter.string(from: lower)) - \(formatter.string(from: higher))"
+		}
 	}
 	
 	override func viewDidLoad() {
