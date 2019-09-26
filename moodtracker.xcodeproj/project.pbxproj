@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		73E3DF008CD2FD2BF8803FF7 /* Pods_Moodtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */; };
+		802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B5457233CC2F300ADC7B9 /* Mood.swift */; };
+		802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B5457233CC2F300ADC7B9 /* Mood.swift */; };
 		805FAB3E233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
-		80AB741D233CBECF0009D794 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB741C233CBECF0009D794 /* Mood.swift */; };
+		808A2116233CC54C009915A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2114233CC54B009915A0 /* Profile.swift */; };
+		808A2117233CC54C009915A0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2115233CC54B009915A0 /* Reminder.swift */; };
 		891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */; };
 		A67812B423392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A67812B523392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
@@ -107,8 +110,10 @@
 		5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodtracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69369A514871CC5BD3F8AC30 /* Pods-Moodtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker.release.xcconfig"; path = "Target Support Files/Pods-Moodtracker/Pods-Moodtracker.release.xcconfig"; sourceTree = "<group>"; };
 		75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodtracker_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		802B5457233CC2F300ADC7B9 /* Mood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mood.swift; path = moodtracker/Model/Mood.swift; sourceTree = "<group>"; };
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
-		80AB741C233CBECF0009D794 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Mood.swift; path = moodtracker/Extensions/Mood.swift; sourceTree = SOURCE_ROOT; };
+		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodtracker/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
+		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodtracker/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -297,10 +302,12 @@
 		A68481342337CBF800ADB8EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				802B5457233CC2F300ADC7B9 /* Mood.swift */,
 				A68481412337CC5700ADB8EA /* Measurement.swift */,
 				A68481422337CC5700ADB8EA /* Model.swift */,
 				A6D0FEED23396A2000DA20F3 /* Sharing.swift */,
-				80AB741C233CBECF0009D794 /* Mood.swift */,
+				808A2114233CC54B009915A0 /* Profile.swift */,
+				808A2115233CC54B009915A0 /* Reminder.swift */,
 			);
 			name = Model;
 			path = API/Model;
@@ -565,6 +572,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */,
+				808A2116233CC54C009915A0 /* Profile.swift in Sources */,
 				A68481452337CC5700ADB8EA /* Model.swift in Sources */,
 				A684817C2337D14F00ADB8EA /* RootViewController.swift in Sources */,
 				A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */,
@@ -578,10 +587,10 @@
 				A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */,
 				A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */,
 				A684817E2337D14F00ADB8EA /* PageViewController.swift in Sources */,
+				808A2117233CC54C009915A0 /* Reminder.swift in Sources */,
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A67812B423392029008C4044 /* CSVDecoder.swift in Sources */,
 				A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */,
-				80AB741D233CBECF0009D794 /* Mood.swift in Sources */,
 				A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */,
 			);
@@ -606,6 +615,7 @@
 				A68481532337CC5F00ADB8EA /* MoodApiJsonHttpClient.swift in Sources */,
 				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
+				802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
 			);
