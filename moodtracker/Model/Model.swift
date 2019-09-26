@@ -1,6 +1,6 @@
 //
 //  Model.swift
-//  moodbarometer
+//  moodtracker
 //
 //  Created by Benedikt Stefan Vogler on 30.08.19.
 //  Copyright © 2019 bsvogler. All rights reserved.
@@ -11,8 +11,16 @@ import Foundation
 import Alamofire
 import UIKit.UIColor
 
+// MARK: Model
 class Model: Codable {
-	// MARK: Constants
+    
+	// MARK: Stored Type Properties
+    // this code is only run when intializing, this is not a computed property
+    public static let shared : Model = {
+        let model = loadFromFiles() ?? Model()
+        return model
+    }()
+    
 	static let fileNameDB = "data.json"
 	static var localDBStorageURL: URL {
 		guard let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -21,26 +29,7 @@ class Model: Codable {
 		return documentsDirectory.appendingPathComponent(fileNameDB)
 	}
 	
-	//this code is only run when intializing, this is not a computed property
-	public static let shared : Model = {
-		let model = loadFromFiles() ?? Model()
-		return model
-	}()
-	
-	// MARK: Type Methods
-	static func loadFromFiles() -> Model? {
-		do {
-			let jsonData = try Data(contentsOf: localDBStorageURL)
-			let model = try JSONDecoder().decode(Model.self, from: jsonData)
-			print("Decoded \(model.dataset.count) entries.")
-			return model
-		} catch {
-			print("Could not load all data: \(error)")
-			return nil
-		}
-	}
-	
-	// MARK: stored properties
+	// MARK: Stored Instance Properties
 	var reminderEnabled: Bool = false
 	var reminderHour = 22
 	var reminderMinute = 00
@@ -55,12 +44,26 @@ class Model: Codable {
 		}
 	}
 	
+    // MARK: Initializers
 	init(){
 		//init sharing shere and not in constructor list, so it is loaded by hidden generated constructor
 		sharing = Sharing()
 	}
+    
+    // MARK: Type Methods
+    static func loadFromFiles() -> Model? {
+        do {
+            let jsonData = try Data(contentsOf: localDBStorageURL)
+            let model = try JSONDecoder().decode(Model.self, from: jsonData)
+            print("Decoded \(model.dataset.count) entries.")
+            return model
+        } catch {
+            print("Could not load all data: \(error)")
+            return nil
+        }
+    }
 	
-	// MARK: Methods
+	// MARK: Instance Methods
 	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(self)
@@ -91,6 +94,4 @@ class Model: Codable {
 		_ = saveToFiles()
 		return true
 	}
-	
 }
-

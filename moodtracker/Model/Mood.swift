@@ -1,6 +1,6 @@
 //
 //  Mood.swift
-//  Moodtracker
+//  moodtracker
 //
 //  Created by Lukas Gerhardt on 26.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.

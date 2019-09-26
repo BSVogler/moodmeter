@@ -1,6 +1,6 @@
 //
 //  Reminder.swift
-//  moodmeter
+//  moodtracker
 //
 //  Created by Lukas Gerhardt on 22.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.
