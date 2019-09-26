@@ -137,7 +137,7 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <group width="1" height="38" alignment="left" id="tDQ-VC-RCg">
+                        <group width="1" height="52" alignment="left" id="tDQ-VC-RCg">
                             <items>
                                 <button width="28" height="28" alignment="left" verticalAlignment="center" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -217,7 +217,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="404" y="369"/>
+            <point key="canvasLocation" x="404" y="388"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
@@ -322,7 +322,7 @@
                                 <action selector="pushReminderSwitch:" destination="nHo-9K-4H5" id="7Rc-uO-yZ0"/>
                             </connections>
                         </switch>
-                        <group width="85" alignment="center" hidden="YES" id="JdB-Dg-vO4">
+                        <group width="90" alignment="center" id="JdB-Dg-vO4">
                             <items>
                                 <picker width="0.47999999999999998" height="100" alignment="left" id="ESo-E1-PrA">
                                     <connections>
