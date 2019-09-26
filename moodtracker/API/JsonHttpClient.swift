@@ -13,18 +13,18 @@ import SwiftyBeaver
 
 let logger = SwiftyBeaver.self
 
-// MARK: - Enum Response Type
+// MARK: - Enum ResponseType
 enum ResponseType {
-	case JSON
-	case CSV
+	case json
+	case csv
 }
 
 // MARK: - JsonHttpClient
 class JsonHttpClient {
 	// MARK: Stored Instance Properties
-	let decoder = JSONDecoder()
-	let encoder = JSONEncoder()
-	private let csvdecoder = CSVDecoder()
+	let jsonDecoder = JSONDecoder()
+	let jsonEncoder = JSONEncoder()
+	private let csvDecoder = CSVDecoder()
 	private let baseUrl: URL
 	private let loggerPrefixLength = 150
 	
@@ -37,7 +37,7 @@ class JsonHttpClient {
 	func post<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
-		responseType: ResponseType = .JSON,
+		responseType: ResponseType = .json,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		request(using: .post, to: endpoint, with: data, responseType: responseType, done: done)
@@ -46,7 +46,7 @@ class JsonHttpClient {
 	func put<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
-		responseType: ResponseType = .CSV,
+		responseType: ResponseType = .csv,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		request(using: .put, to: endpoint, with: data, responseType: responseType, done: done)
@@ -55,7 +55,7 @@ class JsonHttpClient {
 	func delete<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,
-		responseType: ResponseType = .JSON,
+		responseType: ResponseType = .json,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		request(using: .delete, to: endpoint, with: data, responseType: responseType, done: done)
@@ -63,7 +63,7 @@ class JsonHttpClient {
 	
 	func get<TResponse: Decodable>(
 		to endpoint: String,
-		responseType: ResponseType = .CSV,
+		responseType: ResponseType = .csv,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		request(using: .get, to: endpoint, with: nil as String?, responseType: responseType, done: done)
@@ -74,7 +74,7 @@ class JsonHttpClient {
 		using method: HTTPMethod,
 		to endpoint: String,
 		with body: TData?,
-		responseType: ResponseType = .JSON,
+		responseType: ResponseType = .json,
 		done: @escaping (Result<TResponse>) -> Void
 	) {
 		let url = baseUrl.appendingPathComponent(endpoint)
@@ -84,7 +84,7 @@ class JsonHttpClient {
 		
 		if let body = body {
 			let wrappedBody = ApiRequest(data: body)
-			guard let json = try? encoder.encode(wrappedBody) else {
+			guard let json = try? jsonEncoder.encode(wrappedBody) else {
 				done(.failure(ApiError.serializeError))
 				return
 			}
@@ -120,13 +120,13 @@ class JsonHttpClient {
 		}
 	}
 	
-	private func decodeAndPropagate<TResponse: Decodable>(data: Data, responseType: ResponseType = .JSON, done: @escaping (Result<TResponse>) -> Void) {
+	private func decodeAndPropagate<TResponse: Decodable>(data: Data, responseType: ResponseType = .json, done: @escaping (Result<TResponse>) -> Void) {
 		var decodedResult: ApiResponse<TResponse>?
 		do {
-			if responseType == .JSON {
-				decodedResult = try self.decoder.decode(ApiResponse<TResponse>.self, from: data)
+			if responseType == .json {
+				decodedResult = try self.jsonDecoder.decode(ApiResponse<TResponse>.self, from: data)
 			} else {
-				decodedResult = try self.csvdecoder.decode(ApiResponse<TResponse>.self, from: data)
+				decodedResult = try self.csvDecoder.decode(ApiResponse<TResponse>.self, from: data)
 			}
 		} catch let error {
 			logger.warning("Could not parse result.")

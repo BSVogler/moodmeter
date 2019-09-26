@@ -23,8 +23,8 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	init(model: Model) {
 		self.model = model
 		super.init(model.sharing.baseURL)
-		super.decoder.dateDecodingStrategy = .formatted(Measurement.dateFormatter)
-		super.encoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
+		super.jsonDecoder.dateDecodingStrategy = .formatted(Measurement.dateFormatter)
+		super.jsonEncoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
 	}
 	
     // MARK: Instance Methods
@@ -45,7 +45,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 											  measurements: measurements)
 			post(to: deviceHash,
 				 with: mrequest,
-				 responseType: .CSV,
+				 responseType: .csv,
 				 done: {(res: Result<[[String]]>) in
 					if res.isSuccess, let value = res.value {
 						self.parseToDataset(value)
@@ -74,7 +74,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 									  old_hash: old)
 		post(to: new,
 			 with: moveRequest,
-			 responseType: .CSV,
+			 responseType: .csv,
 			 done: {(res: Result<[[String]]>) in
 				if res.isSuccess, let value = res.value {
 					self.parseToDataset(value)

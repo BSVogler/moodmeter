@@ -14,16 +14,16 @@ enum Weekday: String {
     case monday, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
-// MARK: - Enum Seach Direction
+// MARK: - Enum SearchDirection
 enum SearchDirection {
-    case Next
-    case Previous
+    case next
+    case previous
     
     var calendarSearchDirection: Calendar.SearchDirection {
         switch self {
-        case .Next:
+        case .next:
             return .forward
-        case .Previous:
+        case .previous:
             return .backward
         }
     }
@@ -49,13 +49,13 @@ extension Date {
     }
     
     func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
-        return get(.Next,
+        return get(.next,
                    weekday,
                    considerToday: considerToday)
     }
     
     func previous(_ weekday: Weekday, considerToday: Bool = false) -> Date {
-        return get(.Previous,
+        return get(.previous,
                    weekday,
                    considerToday: considerToday)
     }
