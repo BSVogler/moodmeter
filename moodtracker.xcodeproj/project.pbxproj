@@ -10,6 +10,7 @@
 		73E3DF008CD2FD2BF8803FF7 /* Pods_Moodtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D19139DB8D02CD50C674D /* Pods_Moodtracker.framework */; };
 		805FAB3E233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
+		80AB741D233CBECF0009D794 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB741C233CBECF0009D794 /* Mood.swift */; };
 		891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */; };
 		A67812B423392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A67812B523392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
@@ -107,6 +108,7 @@
 		69369A514871CC5BD3F8AC30 /* Pods-Moodtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker.release.xcconfig"; path = "Target Support Files/Pods-Moodtracker/Pods-Moodtracker.release.xcconfig"; sourceTree = "<group>"; };
 		75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodtracker_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
+		80AB741C233CBECF0009D794 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Mood.swift; path = moodtracker/Extensions/Mood.swift; sourceTree = SOURCE_ROOT; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,10 +229,10 @@
 			isa = PBXGroup;
 			children = (
 				A68481062337C65200ADB8EA /* AppDelegate.swift */,
+				A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */,
 				A68480C32337C4FE00ADB8EA /* Info.plist */,
 				A68481082337C6B300ADB8EA /* Info_old.plist */,
 				A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */,
-				A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */,
 				A684815A2337CECD00ADB8EA /* Localizable.strings */,
 				805FAB3C233BC95200D4E52A /* Extensions */,
 				A68481272337CBB400ADB8EA /* API */,
@@ -298,6 +300,7 @@
 				A68481412337CC5700ADB8EA /* Measurement.swift */,
 				A68481422337CC5700ADB8EA /* Model.swift */,
 				A6D0FEED23396A2000DA20F3 /* Sharing.swift */,
+				80AB741C233CBECF0009D794 /* Mood.swift */,
 			);
 			name = Model;
 			path = API/Model;
@@ -578,6 +581,7 @@
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A67812B423392029008C4044 /* CSVDecoder.swift in Sources */,
 				A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */,
+				80AB741D233CBECF0009D794 /* Mood.swift in Sources */,
 				A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */,
 			);

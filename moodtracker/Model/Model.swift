@@ -6,21 +6,10 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import Alamofire
 import UIKit.UIColor
-
-typealias Mood = Int
-
-extension Mood {
-	func getSmiley() -> String {
-		return Measurement.moodToText[self]
-	}
-	
-	func getColor() -> UIColor {
-		return Measurement.moodToColor[self]
-	}
-}
 
 class Model: Codable {
 	// MARK: Constants
