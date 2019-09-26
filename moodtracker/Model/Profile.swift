@@ -13,7 +13,7 @@ import Foundation
 struct Profile: Codable {
     
     // MARK: Stored Instance Properties
-    var hash: String?
+    var sharingHash: SharingHash?
     var reminder = Reminder()
-    var dataset: [Measurement]
+    var dataset: [Measurement] = []
 }

@@ -14,6 +14,9 @@
 		805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		808A2116233CC54C009915A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2114233CC54B009915A0 /* Profile.swift */; };
 		808A2117233CC54C009915A0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2115233CC54B009915A0 /* Reminder.swift */; };
+		8097026B233CCE3500947957 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026A233CCE3500947957 /* Constants.swift */; };
+		8097026D233CCE3F00947957 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026C233CCE3F00947957 /* DataHandler.swift */; };
+		8097026F233CE47700947957 /* SharingHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026E233CE47700947957 /* SharingHash.swift */; };
 		891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */; };
 		A67812B423392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A67812B523392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
@@ -39,8 +42,6 @@
 		A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481142337C9FB00ADB8EA /* HistoryViewController.swift */; };
 		A68481432337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
 		A68481442337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
-		A68481452337CC5700ADB8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481422337CC5700ADB8EA /* Model.swift */; };
-		A68481462337CC5700ADB8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481422337CC5700ADB8EA /* Model.swift */; };
 		A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481472337CC5E00ADB8EA /* ApiError.swift */; };
 		A684814D2337CC5F00ADB8EA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481472337CC5E00ADB8EA /* ApiError.swift */; };
 		A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481482337CC5E00ADB8EA /* ApiRequests.swift */; };
@@ -58,8 +59,6 @@
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
 		A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
 		A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
-		A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
-		A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +113,9 @@
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodtracker/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodtracker/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
+		8097026A233CCE3500947957 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = moodtracker/Model/Constants.swift; sourceTree = SOURCE_ROOT; };
+		8097026C233CCE3F00947957 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataHandler.swift; path = moodtracker/Model/DataHandler.swift; sourceTree = SOURCE_ROOT; };
+		8097026E233CE47700947957 /* SharingHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharingHash.swift; path = moodtracker/Model/SharingHash.swift; sourceTree = SOURCE_ROOT; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +145,6 @@
 		A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
 		A68481142337C9FB00ADB8EA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A68481412337CC5700ADB8EA /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Measurement.swift; path = moodtracker/Model/Measurement.swift; sourceTree = SOURCE_ROOT; };
-		A68481422337CC5700ADB8EA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = moodtracker/Model/Model.swift; sourceTree = SOURCE_ROOT; };
 		A68481472337CC5E00ADB8EA /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		A68481482337CC5E00ADB8EA /* ApiRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequests.swift; sourceTree = "<group>"; };
 		A68481492337CC5E00ADB8EA /* JsonHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpClient.swift; sourceTree = "<group>"; };
@@ -160,7 +161,6 @@
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A6B61C58233A63C3009A9658 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
-		A6D0FEED23396A2000DA20F3 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = moodtracker/Model/Sharing.swift; sourceTree = SOURCE_ROOT; };
 		B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -302,11 +302,12 @@
 		A68481342337CBF800ADB8EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				802B5457233CC2F300ADC7B9 /* Mood.swift */,
+				8097026A233CCE3500947957 /* Constants.swift */,
+				8097026C233CCE3F00947957 /* DataHandler.swift */,
 				A68481412337CC5700ADB8EA /* Measurement.swift */,
-				A68481422337CC5700ADB8EA /* Model.swift */,
-				A6D0FEED23396A2000DA20F3 /* Sharing.swift */,
+				802B5457233CC2F300ADC7B9 /* Mood.swift */,
 				808A2114233CC54B009915A0 /* Profile.swift */,
+				8097026E233CE47700947957 /* SharingHash.swift */,
 				808A2115233CC54B009915A0 /* Reminder.swift */,
 			);
 			name = Model;
@@ -573,9 +574,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */,
+				8097026B233CCE3500947957 /* Constants.swift in Sources */,
 				808A2116233CC54C009915A0 /* Profile.swift in Sources */,
-				A68481452337CC5700ADB8EA /* Model.swift in Sources */,
+				8097026F233CE47700947957 /* SharingHash.swift in Sources */,
 				A684817C2337D14F00ADB8EA /* RootViewController.swift in Sources */,
+				8097026D233CCE3F00947957 /* DataHandler.swift in Sources */,
 				A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */,
 				A68481432337CC5700ADB8EA /* Measurement.swift in Sources */,
 				A684817D2337D14F00ADB8EA /* SettingViewController.swift in Sources */,
@@ -591,7 +594,6 @@
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A67812B423392029008C4044 /* CSVDecoder.swift in Sources */,
 				A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */,
-				A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A684814C2337CC5F00ADB8EA /* ApiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,12 +606,10 @@
 				A684814F2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */,
 				A67812B523392029008C4044 /* CSVDecoder.swift in Sources */,
-				A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */,
 				A68481442337CC5700ADB8EA /* Measurement.swift in Sources */,
 				A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */,
 				A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */,
 				A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */,
-				A68481462337CC5700ADB8EA /* Model.swift in Sources */,
 				A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */,
 				805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */,
 				A68481532337CC5F00ADB8EA /* MoodApiJsonHttpClient.swift in Sources */,

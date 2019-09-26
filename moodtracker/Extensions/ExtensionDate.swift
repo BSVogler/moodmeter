@@ -32,9 +32,19 @@ enum SearchDirection {
 // MARK: - Extension Date
 extension Date {
     
+    // MARK: Stored Type Properties
+    static var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
+        dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'" //JS format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return dateFormatter
+    }
+    
     // MARK: Type Methods
     static func fromJS(_ from: String) -> Date? {
-        return Measurement.dateFormatter.date(from: from)
+        return Date.dateFormatter.date(from: from)
     }
     
     static func getWeekDaysInEnglish() -> [String] {
@@ -45,7 +55,7 @@ extension Date {
     
     // MARK: Instance Methods
     func toJS() -> String {
-        return Measurement.dateFormatter.string(from: self)
+        return Date.dateFormatter.string(from: self)
     }
     
     func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
