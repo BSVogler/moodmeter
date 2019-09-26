@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nHo-9K-4H5">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XEc-Ya-93C">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -317,21 +317,22 @@
                 <controller identifier="Reminder" id="nHo-9K-4H5" customClass="ReminderInterfaceController" customModule="Moodtracker_WatchKit_Extension">
                     <items>
                         <switch width="1" alignment="left" title="Enable Reminder" id="oYb-SR-boS">
+                            <color key="tintColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="pushReminderSwitch:" destination="nHo-9K-4H5" id="7Rc-uO-yZ0"/>
                             </connections>
                         </switch>
-                        <group width="85" alignment="center" id="JdB-Dg-vO4">
+                        <group width="85" alignment="center" hidden="YES" id="JdB-Dg-vO4">
                             <items>
-                                <picker width="0.45000000000000001" height="100" alignment="left" id="ESo-E1-PrA">
+                                <picker width="0.47999999999999998" height="100" alignment="left" id="ESo-E1-PrA">
                                     <connections>
                                         <action selector="hourChanged:" destination="nHo-9K-4H5" id="70b-6W-YFc"/>
                                     </connections>
                                 </picker>
-                                <label alignment="center" verticalAlignment="center" text=":" id="4j9-m3-r0x">
+                                <label width="0.040000000000000001" alignment="center" verticalAlignment="center" text=":" id="4j9-m3-r0x">
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </label>
-                                <picker width="0.45000000000000001" height="100" alignment="right" id="qHy-2r-1w2">
+                                <picker width="0.47999999999999998" height="100" alignment="right" id="qHy-2r-1w2">
                                     <connections>
                                         <action selector="minuteChanged:" destination="nHo-9K-4H5" id="4Dg-DG-RnP"/>
                                     </connections>
