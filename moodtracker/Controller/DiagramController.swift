@@ -25,7 +25,7 @@ class DiagramController {
 	
 	let formatterWeek: DateFormatter = {
 		let formatter = DateFormatter()
-		formatter.dateFormat = "dd MMM YY"
+		formatter.dateFormat = "d. MMM"
 		formatter.locale = Calendar.current.locale
 		return formatter
 	}()
@@ -35,6 +35,14 @@ class DiagramController {
 		formatter.locale = Calendar.current.locale
 		return formatter
 	}()
+	let formatterWeekWithYear: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "d. MMM ’YY"
+		formatter.locale = Calendar.current.locale
+		formatter.locale = Calendar.current.locale
+		return formatter
+	}()
+
 	
 	
 	// MARK: Initializers
@@ -92,9 +100,23 @@ class DiagramController {
 			let dateComponents = Calendar.current.dateComponents([.year], from: selectedDate)
 			return "\(dateComponents.year!)"
 		case .week:
+			//check if both have the same year
 			if let lower = lowerDate,
 				let higher = higherDate {
-				return "\(formatterWeek.string(from: lower)) - \(formatterWeek.string(from: higher))"
+				let yearFirst = Calendar.current.dateComponents([.year], from: lower).year
+				let yearSecond = Calendar.current.dateComponents([.year], from: higher).year
+				if yearFirst == yearSecond {
+					let monthFirst = Calendar.current.dateComponents([.month], from: lower).month
+					let monthSecond = Calendar.current.dateComponents([.month], from: higher).month
+					if monthFirst == monthSecond,
+						let dayFirst = Calendar.current.dateComponents([.day], from: lower).day {
+						return "\(dayFirst). - \(formatterWeekWithYear.string(from: higher))"
+					} else {
+						return "\(formatterWeek.string(from: lower)) - \(formatterWeekWithYear.string(from: higher))"
+					}
+				} else {
+					return "\(formatterWeekWithYear.string(from: lower)) - \(formatterWeekWithYear.string(from: higher))"
+				}
 			}
 		case .month:fallthrough
 		default:
