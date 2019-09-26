@@ -84,7 +84,7 @@ class Diagram {
 		
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .center
-		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 12)!,
+		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 12)!,
 					 NSAttributedString.Key.paragraphStyle: paragraphStyle,
 					 NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
 		

@@ -58,6 +58,7 @@
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
 		A6B1BB38233CCA0F00C62E71 /* DiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */; };
 		A6B1BB39233CCA0F00C62E71 /* DiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */; };
+		A6B1BB3E233D2F2600C62E71 /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */; };
 		A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
 		A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
 		A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
@@ -162,6 +163,7 @@
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramController.swift; sourceTree = "<group>"; };
+		A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		A6B61C58233A63C3009A9658 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
 		A6D0FEED23396A2000DA20F3 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = moodtracker/Model/Sharing.swift; sourceTree = SOURCE_ROOT; };
 		B80DD53A4E0040BE9A96C429 /* Pods-Moodtracker WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodtracker WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodtracker WatchKit Extension/Pods-Moodtracker WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */,
 				A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */,
 				A68481142337C9FB00ADB8EA /* HistoryViewController.swift */,
+				A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */,
 			);
 			path = InterfaceController;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */,
 				805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */,
 				A68481532337CC5F00ADB8EA /* MoodApiJsonHttpClient.swift in Sources */,
+				A6B1BB3E233D2F2600C62E71 /* ReminderInterfaceController.swift in Sources */,
 				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
 				A6B1BB39233CCA0F00C62E71 /* DiagramController.swift in Sources */,

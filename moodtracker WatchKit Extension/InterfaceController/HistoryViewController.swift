@@ -8,8 +8,6 @@
 
 import WatchKit
 
-
-
 class HistoryInterfaceController: WKInterfaceController {
 	
 	//MARK: IBOutlets
