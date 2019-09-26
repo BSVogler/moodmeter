@@ -11,7 +11,6 @@ target 'Moodtracker' do
   use_frameworks!
 
   # Pods for moodbarometer
-	pod 'SwiftChartView'
 end
 
 target 'Moodtracker WatchKit Extension' do
