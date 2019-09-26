@@ -20,7 +20,15 @@ class Sharing: Codable {
 	
 	//MARK: Stored Instance Properties
     let baseURL = NSURL(string: "https://mood.benediktsvogler.com")! as URL
-	public private(set) var userHash: String?
+	private(set) var userHash: String? {
+		get {
+			return self._userHash
+		}
+		set {
+			self._userHash = newValue?.uppercased()
+		}
+	}
+	var _userHash: String?
 	var password: String? = "todo"
 
 	// MARK: Computed Properties
@@ -52,15 +60,15 @@ class Sharing: Codable {
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
-			let toURL = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
+			let toURLpath = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
 			if oldHash != nil {
-				moveHash(to: toURL){
+				moveHash(to: toURLpath){
 					_ = Model.shared.saveToFiles()
 					done()
 				}
 			} else {
 				//create by just posting
-				userHash = toURL
+				userHash = toURLpath
 				MoodApiJsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
 					_ = Model.shared.saveToFiles()
 					done()
