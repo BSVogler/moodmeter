@@ -95,6 +95,9 @@ class Diagram {
 			var calendar = Calendar(identifier: .gregorian)
 			calendar.locale = Locale.current
 			labels = calendar.weekdaySymbols.map{String($0.prefix(3))}
+			//sunday should be last day of the week
+			labels.append(labels[0])
+			labels.remove(at: 0)
 		case .month:
 			labels = ["1","8", "15", "21","28"]
 		case .year:
