@@ -47,6 +47,7 @@ class HistoryViewController: UIViewController {
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		self.diagram = Diagram(controller: diagramController)
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.refreshRendering), name: Measurement.changedNotification, object: nil)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -55,7 +56,7 @@ class HistoryViewController: UIViewController {
 	}
 	
 	// MARK: functions
-	func refreshRendering(){
+	@objc func refreshRendering(){
 		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
 		
 		//dataset to string

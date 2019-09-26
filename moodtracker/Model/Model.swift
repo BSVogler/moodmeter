@@ -34,7 +34,11 @@ class Model: Codable {
 	var reminderHour = 22
 	var reminderMinute = 00
 	/// for getting the measurements as a read only array use `measurements`
-	var dataset = [Date: Mood]()
+	var dataset = [Date: Mood]() {
+		didSet{
+			NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
+		}
+	}
 	let sharing: Sharing
 	
 	// MARK: Computed Properties

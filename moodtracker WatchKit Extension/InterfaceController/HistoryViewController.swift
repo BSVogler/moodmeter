@@ -59,9 +59,10 @@ class HistoryInterfaceController: WKInterfaceController {
 	override init() {
 		diagram = Diagram(controller: diagramController)
 		super.init()
+		NotificationCenter.default.addObserver(self, selector: #selector(self.redraw), name: Measurement.changedNotification, object: nil)
 	}
 	
-	func redraw(){
+	@objc func redraw(){
 		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
 		let image = diagram.getImage(frame: self.contentFrame, scale: WKInterfaceDevice.current().screenScale)
 		self.diagramImage.setImage(image)
