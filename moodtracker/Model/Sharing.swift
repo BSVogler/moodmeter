@@ -6,8 +6,10 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 
+// MARK: Sharing
 class Sharing: Codable {
 	
 	//https://en.wikipedia.org/wiki/Birthday_attack
@@ -16,11 +18,11 @@ class Sharing: Codable {
 	static let hashlength = 10;
 	static let alphabet: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
 	
-	//MARK: Stored Properties
+	//MARK: Stored Instance Properties
+    let baseURL = NSURL(string: "https://mood.benediktsvogler.com")! as URL
 	public private(set) var userHash: String?
 	var password: String? = "todo"
-	let baseURL = NSURL(string: "https://mood.benediktsvogler.com")! as URL
-	
+
 	// MARK: Computed Properties
 	var URL: URL? {
 		get{
@@ -41,7 +43,7 @@ class Sharing: Codable {
 		}
 	}
 	
-	// MARK: Methods
+	// MARK: Instance Methods
 	/// if there is already a hash, it moves them
 	final func generateAndRegisterHash(done: @escaping () -> Void){
 		let oldHash = userHash
@@ -59,7 +61,7 @@ class Sharing: Codable {
 			} else {
 				//create by just posting
 				userHash = toURL
-				MoodAPIjsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
+				MoodApiJsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
 					_ = Model.shared.saveToFiles()
 					done()
 				}
@@ -76,10 +78,11 @@ class Sharing: Codable {
 		}
 		moveHash(to: hash, done: done)
 	}
+    
 	//I would like to return a more generic Result<>, but I was not able to do this
 	func moveHash(to: String, done: @escaping () -> Void) {
 		if let old = self.userHash {
-			MoodAPIjsonHttpClient.shared.moveHash(old: old, new: to) { res in
+			MoodApiJsonHttpClient.shared.moveHash(old: old, new: to) { res in
 				self.userHash = to //use new only after request completed
 				done()
 			}
@@ -95,7 +98,7 @@ class Sharing: Codable {
 	
 	func refresh(){
 		if let userHash = userHash {
-			MoodAPIjsonHttpClient.shared.getData(hash: userHash){ res in
+			MoodApiJsonHttpClient.shared.getData(hash: userHash){ res in
 			}
 		}
 	}

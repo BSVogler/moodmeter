@@ -6,7 +6,10 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import UIKit
+
+// MARK: - PageViewController
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -15,11 +18,12 @@ import UIKit
  
  There is no need to actually create view controllers for each page in advance -- indeed doing so incurs unnecessary overhead. Given the data model, these methods create, configure, and return a new view controller on demand.
  */
-
-class PageViewController: NSObject, UIPageViewControllerDataSource {
+class PageViewController: NSObject {
 	
+    // MARK: Stored Instance Properties
 	var pageTitles: [String] = []
 
+    // MARK: Initializers
 	/// Create the data model.
 	override init() {
 		pageTitles = [NSLocalizedString("Yesterday", comment: ""),
@@ -29,6 +33,7 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 		super.init()
 	}
 	
+    // MARK: Instance Methods
 	/// Return the data view controller for the given index.
 	/// - Parameter index: <#index description#>
 	/// - Parameter storyboard: <#storyboard description#>
@@ -74,31 +79,32 @@ class PageViewController: NSObject, UIPageViewControllerDataSource {
 			}
 		}
 	}
-
-	// MARK: - Page View Controller Data Source
-
-	func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-	    var index = self.indexOfViewController(viewController)
-	    if (index == 0) || (index == NSNotFound) {
-	        return nil
-	    }
-	    
-	    index -= 1
-	    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
-	}
-
-	func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-	    var index = self.indexOfViewController(viewController)
-	    if index == NSNotFound {
-	        return nil
-	    }
-	    
-	    index += 1
-	    if index == self.pageTitles.count {
-	        return nil
-	    }
-	    return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
-	}
-
 }
 
+// MARK: - Extensions
+// MARK: UIPageViewControllerDataSource
+extension PageViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        var index = self.indexOfViewController(viewController)
+        if (index == 0) || (index == NSNotFound) {
+            return nil
+        }
+        
+        index -= 1
+        return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        var index = self.indexOfViewController(viewController)
+        if index == NSNotFound {
+            return nil
+        }
+        
+        index += 1
+        if index == self.pageTitles.count {
+            return nil
+        }
+        return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+    }
+}

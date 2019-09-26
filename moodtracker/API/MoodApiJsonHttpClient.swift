@@ -1,18 +1,25 @@
 //
-//  MoodAPI.swift
+//  MoodApiJsonHttpClient.swift
 //  Moodmeter
 //
 //  Created by Benedikt Stefan Vogler on 10.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import Alamofire
 
-class MoodAPIjsonHttpClient: JsonHttpClient {
+// MARK: - MoodApiJsonHttpClient
+class MoodApiJsonHttpClient: JsonHttpClient {
+    
+    // MARK: Stored Type Properties
+    public static let shared = MoodApiJsonHttpClient(model: Model.shared)
+
+    // MARK: Stored Instance Properties
 	let model: Model
-	public static let shared = MoodAPIjsonHttpClient(model: Model.shared)
 	
+    // MARK: Initializers
 	init(model: Model) {
 		self.model = model
 		super.init(model.sharing.baseURL)
@@ -20,7 +27,8 @@ class MoodAPIjsonHttpClient: JsonHttpClient {
 		super.encoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
 	}
 	
-	func parseToDataset(_ input: [[String]]){
+    // MARK: Instance Methods
+	public func parseToDataset(_ input: [[String]]){
 		for item in input {
 			guard let date = Date.fromJS(item[0]) else {
 				print("could not parse string (\(item[0])) to Date")

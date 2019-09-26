@@ -6,9 +6,13 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 
+// MARK: - CSVDecoder
 class CSVDecoder {
+    
+    // MARK: Instance Methods
 	open func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
 		guard let data = String(bytes: data, encoding: .utf8) else {
 			throw ApiError.parseError(message: "could not cast to string")

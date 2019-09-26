@@ -23,7 +23,7 @@ class ShareInterfaceController: WKInterfaceController {
 	@IBAction func delete() {
 		let accept = WKAlertAction(title: NSLocalizedString("Yes, delete", comment: ""), style: .destructive) {
 			//wait for confirm from server
-			MoodAPIjsonHttpClient.shared.delete { res in
+			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
 				Model.shared.sharing.disableSharing()
 				self.pop()

@@ -6,6 +6,7 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import UIKit
 
@@ -28,17 +29,31 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 }
 
 //MARK: - ShareViewController
-class ShareViewController: UIViewController, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
+class ShareViewController: UIViewController {
 	
 	// MARK: Outlets
-	@IBOutlet weak var activateSharing: UIView!
-	@IBOutlet weak var sharedView: UIView!
-	@IBOutlet weak var shareLinkField: UITextField!
-	@IBOutlet weak var termsText: UITextView!
-	@IBOutlet weak var exportButton: UIButton!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-	@IBOutlet weak var shareLiveDataButton: UIButton!
+	@IBOutlet private weak var activateSharing: UIView!
+	@IBOutlet private weak var sharedView: UIView!
+	@IBOutlet private weak var shareLinkField: UITextField!
+	@IBOutlet private weak var termsText: UITextView!
+	@IBOutlet private weak var exportButton: UIButton!
+	@IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet private weak var shareLiveDataButton: UIButton!
 	
+    // MARK: Overridden/ Lifecycle Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicator.isHidden = true
+        if Model.shared.sharing.userHash == nil {
+            showSharingDeactivated()
+        } else {
+            showSharingActivated()
+        }
+        shareLinkField.delegate = self
+        //disable keyboard
+        shareLinkField.inputView = UIView.init(frame: .zero)
+    }
+    
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
 		activityIndicator.isHidden = false
@@ -57,7 +72,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")
 		) { action in
 			
-			MoodAPIjsonHttpClient.shared.delete { res in
+			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
 				Model.shared.sharing.disableSharing()
 				self.showSharingDeactivated()
@@ -92,10 +107,6 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		}
 	}
 	
-	func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self
-    }
-	
 	@IBAction func exportFileButton(_ sender: Any) {
 		let labelBefore = exportButton.titleLabel?.text
 		exportButton.titleLabel?.text = NSLocalizedString("Exporting…", comment: "")//never visible, but this triggers some fade-out animation
@@ -124,21 +135,7 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		exportButton.titleLabel?.text = labelBefore
 	}
 	
-	// MARK: Override
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		activityIndicator.isHidden = true
-		if Model.shared.sharing.userHash == nil {
-			showSharingDeactivated()
-		} else {
-			showSharingActivated()
-		}
-		shareLinkField.delegate = self
-		//disable keyboard
-		shareLinkField.inputView = UIView.init(frame: .zero)
-	}
-	
-	// MARK: Functions
+	// MARK: Instance Methods
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
@@ -158,10 +155,22 @@ class ShareViewController: UIViewController, UIDocumentInteractionControllerDele
 		activateSharing.isHidden = true
 		shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 	}
-	
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		// copy to pasteboard
-		UIPasteboard.general.string = shareLinkField.text
-		return textField != shareLinkField
-	}
+
+}
+
+// MARK: - Extensions
+// MARK: UITextFieldDelegate
+extension ShareViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // copy to pasteboard
+        UIPasteboard.general.string = shareLinkField.text
+        return textField != shareLinkField
+    }
+}
+
+// MARK: UIDocumentInteractionControllerDelegate
+extension ShareViewController: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
 }

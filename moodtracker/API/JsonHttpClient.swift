@@ -13,6 +13,7 @@ import SwiftyBeaver
 
 let logger = SwiftyBeaver.self
 
+// MARK: - Enum Response Type
 enum ResponseType {
 	case JSON
 	case CSV
@@ -33,7 +34,6 @@ class JsonHttpClient {
 	}
 	
 	// MARK: Instance Methods
-	//with is a codable (serializable) class or struct
 	func post<TData: Encodable, TResponse: Decodable>(
 		to endpoint: String,
 		with data: TData,

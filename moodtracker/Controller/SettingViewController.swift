@@ -6,19 +6,49 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import UIKit
 import UserNotifications
 
+// MARK: - SettingViewController
 class SettingViewController: UIViewController {
 	
 	// MARK: IBOutlets
-	@IBOutlet weak var reminderTimePicker: UIDatePicker!
-	@IBOutlet weak var notificationSwitch: UISwitch!
-	@IBOutlet weak var timeLabel: UILabel!
-	@IBOutlet weak var versionstring: UILabel!
+	@IBOutlet private weak var reminderTimePicker: UIDatePicker!
+	@IBOutlet private weak var notificationSwitch: UISwitch!
+	@IBOutlet private weak var timeLabel: UILabel!
+	@IBOutlet private weak var versionstring: UILabel!
 	
+    // MARK: Initializer
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    // MARK: Overridden/ Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
+        Model.shared.reminderEnabled = notificationSwitch.isOn
+        reminderTimePicker.isHidden = !notificationSwitch.isOn
+        timeLabel.isHidden = !notificationSwitch.isOn
+        
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        
+        let date = dateComponents.calendar?.date(bySettingHour: Model.shared.reminderHour,
+                                                 minute: Model.shared.reminderMinute,
+                                                 second: 0,
+                                                 of: Date())
+        reminderTimePicker.date = date ?? Date()
+        
+        //Version string
+        let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        versionstring.text = "Version \(versionNumber) (\(buildNumber))"
+    }
+    
 	// MARK: IBActions
-	
 	@IBAction func doneButtonPressed(_ sender: Any) {
 		//presentingViewController?.removeFromParent()
 		self.dismiss(animated: true, completion: nil)
@@ -33,7 +63,6 @@ class SettingViewController: UIViewController {
 			}
 		}
 	}
-	
 
 	@IBAction func timeChanced(_ sender: Any) {
 		
@@ -69,36 +98,8 @@ class SettingViewController: UIViewController {
 		timeLabel.isHidden = !notificationSwitch.isOn
 		_ = Model.shared.saveToFiles()
 	}
-	
-	// MARK: Initializer
-	convenience init() {
-		self.init(nibName:nil, bundle:nil)
-		
-	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view.
-		notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
-		Model.shared.reminderEnabled = notificationSwitch.isOn
-		reminderTimePicker.isHidden = !notificationSwitch.isOn
-		timeLabel.isHidden = !notificationSwitch.isOn
-		
-		var dateComponents = DateComponents()
-		dateComponents.calendar = Calendar.current
-		
-		let date = dateComponents.calendar?.date(bySettingHour: Model.shared.reminderHour,
-												 minute: Model.shared.reminderMinute,
-												 second: 0,
-												 of: Date())
-		reminderTimePicker.date = date ?? Date()
-		
-		//Version string
-		let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-		let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-		versionstring.text = "Version \(versionNumber) (\(buildNumber))"
-	}
-	
+
+	// MARK: Instance Methods
 	func registerNotification(dateComponents: DateComponents){
 		let content = UNMutableNotificationContent()
 		content.title = NSLocalizedString("Mood Time", comment: "")
