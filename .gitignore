@@ -5,3 +5,4 @@ Podfile.lock
 *.pyc
 *.xcworkspacedata
 server/moodRest.log
+*.xcuserstate

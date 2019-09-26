@@ -1,6 +1,6 @@
 //
 //  SettingViewController.swift
-//  Moodmeter
+//  moodtracker
 //
 //  Created by Benedikt Stefan Vogler on 08.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.

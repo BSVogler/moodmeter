@@ -1,6 +1,6 @@
 //
-//  Face.swift
-//  moodmeter
+//  Measurement.swift
+//  moodtracker
 //
 //  Created by Benedikt Stefan Vogler on 17.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  ModelController.swift
-//  moodbarometer
+//  moodtracker
 //
 //  Created by Benedikt Stefan Vogler on 21.08.19.
 //  Copyright © 2019 bsvogler. All rights reserved.
