@@ -20,39 +20,39 @@ class HistoryViewController: UIViewController {
 	@IBAction func displayRangeChanged(_ sender: Any) {
 		switch rangeSelector.selectedSegmentIndex {
 		case 0:
-			diagram.analysisrange = .week
+			diagramController.analysisrange = .week
 		case 1:
-			diagram.analysisrange = .month
+			diagramController.analysisrange = .month
 		default:
-			diagram.analysisrange = .year
+			diagramController.analysisrange = .year
 		}
 		refreshRendering()
 	}
 	
 	@IBAction func navigateForward(_ sender: Any) {
-		diagram.navigateForward()
+		diagramController.navigateForward()
 		refreshRendering()
 	}
 	
 	@IBAction func navigateBackwards(_ sender: Any) {
-		diagram.navigateBack()
+		diagramController.navigateBack()
 		refreshRendering()
 	}
 	
 	// MARK: stored properties
-	private let diagram = Diagram()
-	let formatterWeek: DateFormatter = {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "dd MMM YY"
-		formatter.locale = Calendar.current.locale
-		return formatter
-	}()
-	let formatterMonth: DateFormatter = {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "MMMM YYYY"
-		formatter.locale = Calendar.current.locale
-		return formatter
-	}()
+	let diagramController = DiagramController()
+	private let diagram : Diagram
+	
+	// MARK: initializers
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		self.diagram = Diagram(controller: diagramController)
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+	}
+	
+	required init?(coder: NSCoder) {
+		self.diagram = Diagram(controller: diagramController)
+		super.init(coder: coder)
+	}
 	
 	// MARK: functions
 	func refreshRendering(){
@@ -61,18 +61,7 @@ class HistoryViewController: UIViewController {
 		//dataset to string
 		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
 		
-		switch diagram.analysisrange {
-		case .year:
-			let dateComponents = Calendar.current.dateComponents([.year], from: diagram.selectedDate)
-			rangeDisplay.text = "\(dateComponents.year!)"
-		case .week:
-			if let lower = diagram.lowerDate,
-				let higher = diagram.higherDate {
-				rangeDisplay.text = "\(formatterWeek.string(from: lower)) - \(formatterWeek.string(from: higher))"
-			}
-		case .month:
-			rangeDisplay.text = "\(formatterMonth.string(from: diagram.selectedDate))"
-		}
+		rangeDisplay.text = diagramController.getRangeText()
 	}
 	
 	override func viewDidLoad() {

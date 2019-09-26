@@ -137,7 +137,7 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <group width="1" height="28" alignment="left" id="tDQ-VC-RCg">
+                        <group width="1" height="38" alignment="left" id="tDQ-VC-RCg">
                             <items>
                                 <button width="28" height="28" alignment="left" verticalAlignment="center" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,8 +145,9 @@
                                         <action selector="navigateBack" destination="ht7-Kj-mwk" id="syY-iv-1bu"/>
                                     </connections>
                                 </button>
-                                <label height="1" alignment="center" verticalAlignment="center" text="Range" id="WAP-kc-GnL">
+                                <label height="52" alignment="center" text="1. August - 3 September 2019" textAlignment="center" numberOfLines="2" id="WAP-kc-GnL">
                                     <color key="textColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                 </label>
                                 <button width="28" height="28" alignment="right" verticalAlignment="center" backgroundImage="arrowtriangle.right.circle" catalog="system" id="er7-zd-fQr">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -208,15 +209,15 @@
                     </items>
                     <connections>
                         <outlet property="diagramImage" destination="fvI-Ho-qma" id="Oqt-gD-dpd"/>
-                        <outlet property="label" destination="asf-Eg-sXi" id="sOu-xY-Hm4"/>
                         <outlet property="monthButton" destination="eKH-cD-cn9" id="GXy-kh-war"/>
+                        <outlet property="rangeLabel" destination="WAP-kc-GnL" id="pho-hq-yfS"/>
                         <outlet property="weekButton" destination="nMt-3O-QA4" id="xFh-wo-rpt"/>
                         <outlet property="yearButton" destination="Vbp-c2-Y0u" id="bbF-aM-6dQ"/>
                         <segue destination="hk2-7S-aFQ" kind="relationship" relationship="nextPage" id="dz3-67-LaW"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="404" y="364"/>
+            <point key="canvasLocation" x="404" y="369"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
