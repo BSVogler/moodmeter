@@ -30,12 +30,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Instance Methods
 	public func parseToDataset(_ input: [[String]]){
 		for item in input {
-			guard let date = Date.fromJS(item[0]) else {
-				print("could not parse string (\(item[0])) to Date")
-				continue
-			}
-			
-			model.dataset[date] = Int(item[1])
+			model.dataset[item[0]] = Int(item[1])
 		}
 	}
 	

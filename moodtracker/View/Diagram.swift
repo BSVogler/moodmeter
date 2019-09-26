@@ -162,7 +162,8 @@ class Diagram {
 				let lowerDateMonth = Calendar.current.date(from:dateComponents)
 				if let lowerDateMonth = lowerDateMonth,
 				   let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
-					let datesinMonth = Model.shared.dataset.filter{$0.key > lowerDateMonth && $0.key < higherDateMonth }
+					let datesinMonth = Model.shared.dataset.filter{let date = Date.fromJS($0.key) ?? Date()
+						return date > lowerDateMonth && date < higherDateMonth }
 					if datesinMonth.count > 0 {
 						let avgmood = datesinMonth.reduce(0) { $0 + $1.value } / datesinMonth.count
 						let x: CGFloat = offsetleft+CGFloat(month)*tickWidth+CGFloat(0.5)*tickWidth

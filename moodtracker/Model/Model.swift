@@ -34,7 +34,7 @@ class Model: Codable {
 	var reminderHour = 22
 	var reminderMinute = 00
 	/// for getting the measurements as a read only array use `measurements`
-	var dataset = [Date: Mood]() {
+	var dataset = [String: Mood]() {
 		didSet{
 			NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
 		}
@@ -83,7 +83,7 @@ class Model: Codable {
 	}
 	
 	func exportCSV() -> String {
-		return "Date; Mood\n"+dataset.map {return "\($0.key.toJS());\($0.value)"}.joined(separator: "\n")
+		return "Date; Mood\n"+dataset.map {return "\($0.key);\($0.value)"}.joined(separator: "\n")
 	}
 	
 	func eraseData() -> Bool {

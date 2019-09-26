@@ -56,7 +56,7 @@ class Measurement: Codable {
 	// MARK: Initializers
 	init() {
 		date = Date()
-		if let moodOnDate = Model.shared.dataset[date] {
+		if let moodOnDate = Model.shared.dataset[date.toJS()] {
 			mood = moodOnDate
 		}
 	}
@@ -73,7 +73,7 @@ class Measurement: Codable {
 	
 	// MARK: Instance Methods
 	func moodChanged(){
-		Model.shared.dataset[date] = mood
+		Model.shared.dataset[date.toJS()] = mood
 		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
 		_ = Model.shared.saveToFiles()
 		//send time of measurement
