@@ -17,6 +17,7 @@
 		891282C232970FC8DBEFCA62 /* Pods_Moodtracker_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CDC445D123E6D253C0FD85 /* Pods_Moodtracker_WatchKit_Extension.framework */; };
 		A64DEC5E233E501D00A9EBA0 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DEC5D233E501D00A9EBA0 /* Notifications.swift */; };
 		A64DEC5F233E501D00A9EBA0 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DEC5D233E501D00A9EBA0 /* Notifications.swift */; };
+		A67113D9233E96B100A53093 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67113D8233E96B100A53093 /* ImportViewController.swift */; };
 		A67812B423392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A67812B523392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A68480B82337C4FC00ADB8EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */; };
@@ -120,6 +121,7 @@
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodtracker/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodtracker/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
 		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodassist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodassist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				A684817B2337D14F00ADB8EA /* ShareViewController.swift */,
 				A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */,
 				A64DEC5D233E501D00A9EBA0 /* Notifications.swift */,
+				A67113D8233E96B100A53093 /* ImportViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */,
 				A6B61C59233A63C4009A9658 /* Diagram.swift in Sources */,
 				A684817E2337D14F00ADB8EA /* PageViewController.swift in Sources */,
+				A67113D9233E96B100A53093 /* ImportViewController.swift in Sources */,
 				A6B1BB38233CCA0F00C62E71 /* DiagramController.swift in Sources */,
 				808A2117233CC54C009915A0 /* Reminder.swift in Sources */,
 				A684814E2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,

@@ -84,7 +84,11 @@ class Sharing: Codable {
 			generateAndRegisterHash(done: done)
 			return
 		}
-		moveHash(to: hash, done: done)
+		if Sharing.hashlength == hash.count {
+			moveHash(to: hash, done: done)
+		} else {
+			done()
+		}
 	}
     
 	//I would like to return a more generic Result<>, but I was not able to do this
