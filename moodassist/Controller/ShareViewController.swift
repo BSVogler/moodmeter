@@ -145,7 +145,7 @@ class ShareViewController: UIViewController {
 			print("String or Localization error")
 			return
 		}
-		let url = URL(string:"https://benediktsvogler.com/terms")!
+		let url = URL(string:"https://moodassist.cloud/terms")!
 		attributedString.addAttribute(.link, value: url, range: foundRange)
 		termsText.attributedText = attributedString
 	}
