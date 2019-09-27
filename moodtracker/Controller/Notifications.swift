@@ -6,15 +6,20 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import UserNotifications
 
+// MARK: - Notifications
 class Notifications {
+    
+    // MARK: Type Methods
 	static func registerNotification() {
 		var dateComponents = DateComponents()
 		dateComponents.calendar = Calendar.current
-		dateComponents.hour = Model.shared.reminderHour
-		dateComponents.minute = Model.shared.reminderMinute
+        let reminder = DataHandler.userProfile.reminder
+        dateComponents.hour = reminder.hour
+        dateComponents.minute = reminder.minute
 		let content = UNMutableNotificationContent()
 		content.badge = 1
 		content.title = NSLocalizedString("Mood Time", comment: "")

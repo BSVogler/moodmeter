@@ -44,8 +44,8 @@ class Diagram {
 	init(controller: DiagramController){
 		self.controller = controller
 	}
+    
 	// MARK: Instance Methods
-	
 	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
 		self.frame = frame
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
@@ -127,7 +127,7 @@ class Diagram {
 			//get measurements for this week
 			if let lowerDate = controller.lowerDate,
 				let higherDate = controller.higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+                let measurements = DataHandler.userProfile.dataset.filter{$0.day > lowerDate && $0.day < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
 					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
@@ -141,7 +141,7 @@ class Diagram {
 			//dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
 			if let lowerDate = controller.lowerDate,
 				let higherDate = controller.higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+				let measurements = DataHandler.userProfile.dataset.filter{$0.day > lowerDate && $0.day < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
 					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
@@ -196,25 +196,4 @@ class Diagram {
 		path.lineWidth = 2
 		path.stroke()
 	}
-    
-    private func updateBounds(){
-        let calendar = Calendar.current
-        switch analysisrange {
-        case .week:
-            lowerDate = selectedDate.previous(.monday)
-            higherDate = selectedDate.next(.monday)
-        case .month:
-            let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
-            lowerDate = calendar.date(from: firstComponents)
-            var nextComponents = DateComponents()
-            nextComponents.month = 1
-            higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
-        case .year:
-            let dateComponents = calendar.dateComponents([.year], from: selectedDate)
-            lowerDate = calendar.date(from: dateComponents)
-            if let lowerDate = lowerDate {
-                higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
-            }
-        }
-    }
 }

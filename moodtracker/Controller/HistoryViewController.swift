@@ -85,24 +85,11 @@ class HistoryViewController: UIViewController {
 	
     // MARK: Instance Methods
 	@objc func refreshRendering(){
-		// let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
-		
-		// dataset to string
-		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
-		
-		switch diagram.analysisrange {
-		case .year:
-			let dateComponents = Calendar.current.dateComponents([.year], from: diagram.selectedDate)
-			rangeDisplay.text = "\(dateComponents.year!)"
-		case .week:
-			if let lower = diagram.lowerDate,
-				let higher = diagram.higherDate {
-                rangeDisplay.text = "\(Constants.formatterWeek.string(from: lower)) - \(Constants.formatterWeek.string(from: higher))"
-			}
-		case .month:
-            rangeDisplay.text = "\(Constants.formatterMonth.string(from: diagram.selectedDate))"
-		}
-		rangeDisplay.text = diagramController.getRangeText()
-
+		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
+        
+        //dataset to string
+        diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
+        
+        rangeDisplay.text = diagramController.getRangeText()
 	}
 }
