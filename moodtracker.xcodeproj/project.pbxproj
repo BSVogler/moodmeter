@@ -12,6 +12,11 @@
 		802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B5457233CC2F300ADC7B9 /* Mood.swift */; };
 		805FAB3E233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
+		80650526233E7EC600175F14 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026C233CCE3F00947957 /* DataHandler.swift */; };
+		80650527233E7FD100175F14 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2114233CC54B009915A0 /* Profile.swift */; };
+		80650528233E7FE700175F14 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026A233CCE3500947957 /* Constants.swift */; };
+		80650529233E801400175F14 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2115233CC54B009915A0 /* Reminder.swift */; };
+		8065052A233E801900175F14 /* SharingHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026E233CE47700947957 /* SharingHash.swift */; };
 		808A2116233CC54C009915A0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2114233CC54B009915A0 /* Profile.swift */; };
 		808A2117233CC54C009915A0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2115233CC54B009915A0 /* Reminder.swift */; };
 		8097026B233CCE3500947957 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026A233CCE3500947957 /* Constants.swift */; };
@@ -607,21 +612,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				A684814D2337CC5F00ADB8EA /* ApiError.swift in Sources */,
+				80650528233E7FE700175F14 /* Constants.swift in Sources */,
 				A684814F2337CC5F00ADB8EA /* ApiRequests.swift in Sources */,
 				A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */,
 				A67812B523392029008C4044 /* CSVDecoder.swift in Sources */,
 				A68481442337CC5700ADB8EA /* Measurement.swift in Sources */,
 				A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */,
 				A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */,
+				80650527233E7FD100175F14 /* Profile.swift in Sources */,
+				80650526233E7EC600175F14 /* DataHandler.swift in Sources */,
 				A68481512337CC5F00ADB8EA /* JsonHttpClient.swift in Sources */,
 				A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */,
 				805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */,
+				8065052A233E801900175F14 /* SharingHash.swift in Sources */,
 				A68481532337CC5F00ADB8EA /* MoodApiJsonHttpClient.swift in Sources */,
 				A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */,
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
 				802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
+				80650529233E801400175F14 /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

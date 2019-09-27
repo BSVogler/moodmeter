@@ -14,15 +14,14 @@ import Alamofire
 class MoodApiJsonHttpClient: JsonHttpClient {
     
     // MARK: Stored Type Properties
-    public static let shared = MoodApiJsonHttpClient(model: Model.shared)
-
-    // MARK: Stored Instance Properties
-	let model: Model
+    public static let shared = MoodApiJsonHttpClient()
 	
+    // MARK: Stored Instance Properties
+    var userProfile = DataHandler.userProfile
+    
     // MARK: Initializers
-	init(model: Model) {
-		self.model = model
-		super.init(model.sharing.baseURL)
+	init() {
+		super.init(Hosts.baseURL)
 		super.jsonDecoder.dateDecodingStrategy = .formatted(Date.dateFormatter)
 		super.jsonEncoder.dateEncodingStrategy = .formatted(Date.dateFormatter)
 	}
@@ -30,20 +29,30 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Instance Methods
 	public func parseToDataset(_ input: [[String]]){
 		for item in input {
+            // TODO: What is at 0, 1? Use descriptive values or add documentation
 			guard let date = Date.fromJS(item[0]) else {
-				print("could not parse string (\(item[0])) to Date")
+				print("Could not parse String (\(item[0])) to Date")
 				continue
 			}
-			
-			model.dataset[date] = Int(item[1])
+            
+            // replace
+            if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == date}),
+                let mood = Int(item[1]) {
+                existingMsmtEntry.mood = mood
+            } else {
+                // append
+                userProfile.dataset.append(Measurement(day: date, mood: <#T##Mood#>))
+            }
 		}
 	}
 	
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
-		if let deviceHash = model.sharing.userHash {
-			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
-											  measurements: measurements)
-			post(to: deviceHash,
+		if let sharingHash = userProfile.sharingHash,
+            let userHash = sharingHash.userHash {
+            
+            let mrequest = MeasurementRequest(password: sharingHash.password ?? "",
+                                              measurements: measurements)
+            post(to: userHash,
 				 with: mrequest,
 				 responseType: .csv,
 				 done: {(res: Result<[[String]]>) in
@@ -53,34 +62,42 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 					done(res)
 			})
 		} else {
-			logger.error("no device Hash")
+			logger.error("No user hash")
 		}
 	}
 	
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
-		if let deviceHash = model.sharing.userHash {
-			let del_request = DeleteRequest(password: Model.shared.sharing.password ?? "")
-			delete(to: deviceHash,
-				   with: del_request,
+        
+		if let sharingHash = userProfile.sharingHash,
+        let userHash = sharingHash.userHash {
+			let delRequest = DeleteRequest(password: sharingHash.password ?? "")
+			delete(to: userHash,
+				   with: delRequest,
 				   done: done)
 		} else {
-			logger.error("no device Hash")
+			logger.error("No user hash")
 		}
 	}
 	
-	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
-		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
-									  old_password: Model.shared.sharing.password ?? "",
-									  old_hash: old)
-		post(to: new,
-			 with: moveRequest,
-			 responseType: .csv,
-			 done: {(res: Result<[[String]]>) in
-				if res.isSuccess, let value = res.value {
-					self.parseToDataset(value)
-				}
-				done(res)
-		})
+	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void) {
+        
+        if let sharingHash = userProfile.sharingHash {
+            let moveRequest = MoveRequest(password: sharingHash.password ?? "",
+                                          old_password: sharingHash.password ?? "",
+                                          old_hash: old)
+            post(to: new,
+                 with: moveRequest,
+                 responseType: .csv,
+                 done: {(res: Result<[[String]]>) in
+                    if res.isSuccess, let value = res.value {
+                        self.parseToDataset(value)
+                    }
+                    done(res)
+            })
+        } else {
+            
+            logger.error("No user hash")
+        }
 	}
 	
 	public func getData(hash: String, done: @escaping (Result<[[String]]>) -> Void){

@@ -1,22 +1,28 @@
 //
-//  MenInterfaceController.swift
+//  MenuInterfaceController.swift
 //  moodmeterwatch WatchKit Extension
 //
 //  Created by Benedikt Stefan Vogler on 17.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
+
+// MARK: Imports
 import WatchKit
 import Foundation
 
+// MARK: MyRowController
 class MyRowController: NSObject {
 	@IBOutlet weak var itemLabel: WKInterfaceLabel!
 	@IBOutlet weak var itemImage: WKInterfaceImage!
 }
 
+// MARK: MenuInterfaceController
 class MenuInterfaceController: WKInterfaceController {
 	
+    // MARK: IBOutlets
 	@IBOutlet weak var table: WKInterfaceTable!
 	
+    // MARK: Overridden/ Lifecycle Methods
 	override func willActivate() {
 		
 		// Configure interface objects here.
@@ -39,11 +45,12 @@ class MenuInterfaceController: WKInterfaceController {
 		item2.itemLabel.setText("Delete data")
 		item2.itemLabel.setTextColor(#colorLiteral(red: 1, green: 0.4156862745, blue: 0.337254902, alpha: 1))
 	}
+    
 	override func table(_ table: WKInterfaceTable,
 						didSelectRowAt rowIndex: Int){
 		switch rowIndex {
 		case 0:
-			if Model.shared.sharing.userHash == nil {
+            if DataHandler.userProfile.sharingHash == nil {
 				let accept = WKAlertAction(title: "Accept", style: .default) {
 					self.pushController(withName: "Share", context: nil)
 				}
@@ -59,7 +66,7 @@ class MenuInterfaceController: WKInterfaceController {
 			self.pushController(withName: "Reminder", context: nil)
 		case 2:
 			let accept = WKAlertAction(title: "Yes, delete", style: .destructive) {
-				_ = Model.shared.eraseData()
+				_ = DataHandler.eraseData()
 			}
 			presentAlert(withTitle: "Delete data?", message: "This will permanently delete your local data on your watch and phone.", preferredStyle: .actionSheet, actions: [ accept])
 			

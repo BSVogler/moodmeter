@@ -30,6 +30,7 @@ class SharingHash: Codable {
     
     // MARK: Stored Instance Properties
     var userHash: String?
+    var password: String?
     
     // MARK: Computed Properties
     var url: URL? {

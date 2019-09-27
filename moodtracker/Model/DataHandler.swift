@@ -19,9 +19,9 @@ enum DataHandler {
     static func loadFromFiles() -> Profile? {
         do {
             let jsonData = try Data(contentsOf: LocalStorageConstants.documentDirectoryStorageURL)
-            let model = try JSONDecoder().decode(Profile.self, from: jsonData)
-            print("Decoded \(model.dataset.count) entries.")
-            return model
+            let profile = try JSONDecoder().decode(Profile.self, from: jsonData)
+            print("Decoded \(profile.dataset.count) entries.")
+            return profile
         } catch {
             print("Could not load all data: \(error)")
             return nil
