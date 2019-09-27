@@ -29,7 +29,7 @@ class ImportViewController: UIViewController {
 	}
 	
 	@IBAction func importButtonPressed() {
-        DataHandler.userProfile.sharingHash?.importHash(enteredHash) {
+        DataHandler.userProfile.sharingHash.importHash(enteredHash) {
 			self.dismiss(animated: true, completion: nil)
 		}
 	}

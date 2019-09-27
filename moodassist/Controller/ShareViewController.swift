@@ -32,7 +32,7 @@ final class GradientView: UIView, UIDocumentInteractionControllerDelegate {
 class ShareViewController: UIViewController {
 	
     // MARK: Stored Instance Properties
-    var sharingHash: SharingHash? { // just for code convenience
+    var sharingHash: SharingHash { // just for code convenience
         return DataHandler.userProfile.sharingHash
     }
     
@@ -49,7 +49,7 @@ class ShareViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.isHidden = true
-        if sharingHash == nil {
+		if sharingHash.userHash == nil {
             showSharingDeactivated()
         } else {
             showSharingActivated()
@@ -64,8 +64,8 @@ class ShareViewController: UIViewController {
 		activityIndicator.isHidden = false
 		shareLiveDataButton.isHidden = true
 		activityIndicator.startAnimating()
-		sharingHash?.generateAndRegisterHash() {
-            self.shareLinkField.text = self.sharingHash?.url?.absoluteString
+		sharingHash.generateAndRegisterHash() {
+            self.shareLinkField.text = self.sharingHash.url?.absoluteString
 			self.activityIndicator.stopAnimating()
 			self.showSharingActivated()
 			self.shareLiveDataButton.isHidden = false
@@ -79,24 +79,24 @@ class ShareViewController: UIViewController {
 			
 			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
-                self.sharingHash?.disableSharing()
+                self.sharingHash.disableSharing()
 				self.showSharingDeactivated()
 			}
 		}
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
-		if let sharingHash = sharingHash {
+		if sharingHash.userHash != nil {
 			shareLinkField.text = "..."
 			// generate new sharing url
 			sharingHash.generateAndRegisterHash() {
-                self.shareLinkField.text = sharingHash.url?.absoluteString
+				self.shareLinkField.text = self.sharingHash.url?.absoluteString
 			}
 		} else {
             DataHandler.userProfile.sharingHash = SharingHash()
 			// has no hash (only the case if there is a bug somehwere else), so make a new one
-			sharingHash?.generateAndRegisterHash(){
-                self.shareLinkField.text = self.sharingHash?.url?.absoluteString
+			sharingHash.generateAndRegisterHash(){
+                self.shareLinkField.text = self.sharingHash.url?.absoluteString
 			}
 		}
 	}
@@ -104,7 +104,7 @@ class ShareViewController: UIViewController {
 	@IBAction func exportLink(_ sender: Any) {
 		let textToShare = NSLocalizedString("My live mood data", comment: "")
 		
-        if let link = sharingHash?.url {
+        if let link = sharingHash.url {
 			let objectsToShare: [Any] = [textToShare, link]
 			let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 			
@@ -159,7 +159,7 @@ class ShareViewController: UIViewController {
 	func showSharingActivated() {
 		sharedView.isHidden = false
 		activateSharing.isHidden = true
-        shareLinkField.text = sharingHash?.url?.absoluteString
+        shareLinkField.text = sharingHash.url?.absoluteString
 	}
 
 }

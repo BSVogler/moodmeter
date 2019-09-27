@@ -50,7 +50,7 @@ class MenuInterfaceController: WKInterfaceController {
 						didSelectRowAt rowIndex: Int){
 		switch rowIndex {
 		case 0:
-            if DataHandler.userProfile.sharingHash == nil {
+			if DataHandler.userProfile.sharingHash.userHash == nil {
 				let accept = WKAlertAction(title: "Accept", style: .default) {
 					self.pushController(withName: "Share", context: nil)
 				}
