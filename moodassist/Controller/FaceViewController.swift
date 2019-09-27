@@ -78,6 +78,10 @@ class FaceViewController: UIViewController {
 		}
 	}
 	
+	func setToYesterday(){
+		face.day = Date.yesterday ?? Date()
+	}
+	
 }
 
 // MARK: - Extensions

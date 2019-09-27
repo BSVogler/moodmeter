@@ -119,12 +119,3 @@ class FaceInterfaceController: WKInterfaceController {
 //		filter?.geometry?.replaceMaterial(at: 0, with: material)
 	}
 }
-
-/// workaround for IB not setting values for @IBInspectable
-class Yesterday: FaceInterfaceController { // What does this workaround do?
-	override func willActivate(){
-		super.willActivate()
-		isYesterday = true
-		face.day = Date.yesterday ?? Date()
-	}
-}
