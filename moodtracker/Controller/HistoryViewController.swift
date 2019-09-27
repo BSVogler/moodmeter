@@ -8,7 +8,6 @@
 
 // MARK: Imports
 import UIKit
-import SwiftChartView
 
 // MARK: HistoryViewController
 class HistoryViewController: UIViewController {
@@ -30,7 +29,9 @@ class HistoryViewController: UIViewController {
     }
     
     // MARK: Stored Instance Properties
-    private let diagram = Diagram()
+    let diagramController = DiagramController()
+    private let diagram: Diagram
+
 
     // MARK: IBOutlets
 	@IBOutlet weak var diagramImage: UIImageView!
@@ -38,6 +39,18 @@ class HistoryViewController: UIViewController {
 	@IBOutlet weak var rangeDisplay: UILabel!
 	@IBOutlet weak var averageLabel: UILabel!
 	
+    // MARK: Initializers
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.diagram = Diagram(controller: diagramController)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshRendering), name: Measurement.changedNotification, object: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.diagram = Diagram(controller: diagramController)
+        super.init(coder: coder)
+    }
+    
     // Overridden/ Lifecycle Methods
     override func viewDidLoad() {
     }
@@ -50,30 +63,31 @@ class HistoryViewController: UIViewController {
 	@IBAction func displayRangeChanged(_ sender: Any) {
 		switch rangeSelector.selectedSegmentIndex {
 		case 0:
-			diagram.analysisrange = .week
+			diagramController.analysisrange = .week
 		case 1:
-			diagram.analysisrange = .month
+			diagramController.analysisrange = .month
 		default:
-			diagram.analysisrange = .year
+			diagramController.analysisrange = .year
 		}
 		refreshRendering()
 	}
 	
 	@IBAction func navigateForward(_ sender: Any) {
-		diagram.navigateForward()
+		diagramController.navigateForward()
 		refreshRendering()
 	}
 	
 	@IBAction func navigateBackwards(_ sender: Any) {
-		diagram.navigateBack()
+		diagramController.navigateBack()
 		refreshRendering()
 	}
+
 	
-	// MARK: Private Instance Methods
-	private func refreshRendering(){
-		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
+    // MARK: Instance Methods
+	@objc func refreshRendering(){
+		// let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
 		
-		//dataset to string
+		// dataset to string
 		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
 		
 		switch diagram.analysisrange {
@@ -88,6 +102,7 @@ class HistoryViewController: UIViewController {
 		case .month:
             rangeDisplay.text = "\(Constants.formatterMonth.string(from: diagram.selectedDate))"
 		}
-	}
+		rangeDisplay.text = diagramController.getRangeText()
 
+	}
 }

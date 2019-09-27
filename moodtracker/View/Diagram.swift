@@ -31,54 +31,20 @@ class Diagram {
 		didSet {
 			usedAreaHeight = frame.height-offsettop-offsettbottom
 			usedAreaWidth = frame.width-offsetleft-offsetright
-			tickHeight = usedAreaHeight / 5.0
-			tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
+			tickHeight = usedAreaHeight/5.0
+			tickWidth = usedAreaWidth / CGFloat(controller.analysisrange.rawValue)
 		}
 	}
 	var usedAreaHeight =  CGFloat(0)
 	var usedAreaWidth = CGFloat(0)
 	var tickHeight = CGFloat(0)
 	var tickWidth = CGFloat(0)
-	var analysisrange = AnalysisRange.week{
-		didSet {
-			updateBounds()
-		}
-	}
-	var selectedDate = Date(){
-		didSet {
-			updateBounds()
-		}
-	}
-	var lowerDate: Date? = Date()
-	var higherDate: Date? = Date()
+	var controller: DiagramController
 	
-    // MARK: Initializers
-	init() {
-		updateBounds()
+	init(controller: DiagramController){
+		self.controller = controller
 	}
-	
-    // MARK: Instance Methods
-	func navigateBack() {
-		switch analysisrange {
-		case .week:
-			selectedDate = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate) ?? selectedDate
-		case .month:
-			selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) ?? selectedDate
-		case .year:
-			selectedDate = Calendar.current.date(byAdding: .year, value: -1, to: selectedDate) ?? selectedDate
-		}
-	}
-	
-	func navigateForward(){
-		switch analysisrange {
-		case .week:
-			selectedDate = Calendar.current.date(byAdding: .day, value: 7, to: selectedDate) ?? selectedDate
-		case .month:
-			selectedDate = Calendar.current.date(byAdding: .month, value: 1, to: selectedDate) ?? selectedDate
-		case .year:
-			selectedDate = Calendar.current.date(byAdding: .year, value: 1, to: selectedDate) ?? selectedDate
-		}
-	}
+	// MARK: Instance Methods
 	
 	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
 		self.frame = frame
@@ -104,13 +70,7 @@ class Diagram {
 		}
 	}
 	
-	private func drawAxis() {
-		let yAxis = UIBezierPath()
-		yAxis.move(to: CGPoint(x:offsetleft, y:offsettop))
-		yAxis.addLine(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
-		yAxis.lineWidth = 1;
-		yAxis.stroke()
-		
+	func drawAxis(){
 		let xAxis = UIBezierPath()
 		xAxis.move(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
 		xAxis.addLine(to: CGPoint(x:offsetleft+usedAreaWidth, y:frame.height-offsettbottom))
@@ -119,17 +79,20 @@ class Diagram {
 		
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .center
-		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 12)!,
+		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 12)!,
 					 NSAttributedString.Key.paragraphStyle: paragraphStyle,
 					 NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
 		
 		// get label description
 		var labels: [String] = []
-		switch analysisrange {
+		switch controller.analysisrange {
 		case .week:
 			var calendar = Calendar(identifier: .gregorian)
 			calendar.locale = Locale.current
 			labels = calendar.weekdaySymbols.map{String($0.prefix(3))}
+			//sunday should be last day of the week
+			labels.append(labels[0])
+			labels.remove(at: 0)
 		case .month:
 			labels = ["1","8", "15", "21","28"]
 		case .year:
@@ -159,15 +122,12 @@ class Diagram {
 	
 	private func getPoints() -> [CGPoint] {
 		var points: [CGPoint] = []
-		switch analysisrange {
+		switch controller.analysisrange {
 		case .week:
-			// get measurements for this week
-			if let lowerDate = lowerDate,
-			   let higherDate = higherDate {
-                let measurements = DataHandler.userProfile.dataset
-                    .filter({ $0.day > lowerDate && $0.day < higherDate })
-                    .sorted(by: { $0.day < $1.day })
-                
+			//get measurements for this week
+			if let lowerDate = controller.lowerDate,
+				let higherDate = controller.higherDate {
+				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
 					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
@@ -179,11 +139,9 @@ class Diagram {
 		case .month:
 			//get measurements for this month
 			//dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
-			if let lowerDate = lowerDate,
-			   let higherDate = higherDate {
-				let measurements = DataHandler.userProfile.dataset
-                .filter({ $0.day > lowerDate && $0.day < higherDate })
-                .sorted(by: { $0.day < $1.day })
+			if let lowerDate = controller.lowerDate,
+				let higherDate = controller.higherDate {
+				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
 					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
@@ -194,7 +152,7 @@ class Diagram {
 			}
 		case .year:
 			for month in 1...12 {
-				var dateComponents = Calendar.current.dateComponents([.year, .month], from: selectedDate)
+				var dateComponents = Calendar.current.dateComponents([.year, .month], from: controller.selectedDate)
 				dateComponents.month = month
 				let lowerDateMonth = Calendar.current.date(from:dateComponents)
 				if let lowerDateMonth = lowerDateMonth,

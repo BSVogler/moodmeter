@@ -8,49 +8,66 @@
 
 import WatchKit
 
-
-
 class HistoryInterfaceController: WKInterfaceController {
 	
+	//MARK: IBOutlets
 	@IBOutlet weak var diagramImage: WKInterfaceImage!
-	@IBOutlet weak var label: WKInterfaceLabel!
 	@IBOutlet weak var weekButton: WKInterfaceButton!
 	@IBOutlet weak var monthButton: WKInterfaceButton!
 	@IBOutlet weak var yearButton: WKInterfaceButton!
+	@IBOutlet weak var rangeLabel: WKInterfaceLabel!
 	
-	let diagram = Diagram()
+	//MARK: Stored Properties
+	let diagramController = DiagramController()
+	let diagram: Diagram
 	
+	//MARK: IBActions
 	@IBAction func weekButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
-		diagram.analysisrange = .week
+		diagramController.analysisrange = .week
 		redraw()
 	}
 	@IBAction func monthButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
-		diagram.analysisrange = .month
+		diagramController.analysisrange = .month
 		redraw()
 	}
 	@IBAction func yearButtonTap() {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
-		diagram.analysisrange = .year
+		diagramController.analysisrange = .year
 		redraw()
 	}
 	
 	@IBAction func navigateBack() {
-		diagram.navigateBack()
+		diagramController.navigateBack()
 		redraw()
 	}
 	
 	@IBAction func navigateForward() {
-		diagram.navigateForward()
+		diagramController.navigateForward()
 		redraw()
 	}
+	
+	override init() {
+		diagram = Diagram(controller: diagramController)
+		super.init()
+		NotificationCenter.default.addObserver(self, selector: #selector(self.redraw), name: Measurement.changedNotification, object: nil)
+	}
+	
+	@objc func redraw(){
+		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
+		let image = diagram.getImage(frame: self.contentFrame, scale: WKInterfaceDevice.current().screenScale)
+		self.diagramImage.setImage(image)
+		rangeLabel.setText(diagramController.getRangeText())
+	}
+	
+	//MARK: overrides
 	override func awake(withContext context: Any?) {
 		super.awake(withContext: context)
 	}
@@ -60,13 +77,6 @@ class HistoryInterfaceController: WKInterfaceController {
 		super.willActivate()
 		redraw()
 	}
-	
-	func redraw(){
-		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
-		let image = diagram.getImage(frame: self.contentFrame, scale: WKInterfaceDevice.current().screenScale)
-		self.diagramImage.setImage(image)
-	}
-	
 	
 	override func didDeactivate() {
 		// This method is called when watch view controller is no longer visible

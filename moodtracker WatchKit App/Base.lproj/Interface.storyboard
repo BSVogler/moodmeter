@@ -69,7 +69,9 @@
                     <items>
                         <label alignment="left" text="Reminder! It is time to tell me your mood." numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="MoodReminder" id="JfB-70-Muf">
+                        <color key="sashColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </notificationCategory>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -82,9 +84,9 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodtracker" customModuleProvider="target">
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Exhibit A" id="71U-CQ-QRm"/>
+                        <label alignment="left" text="only relevant for watch os 4" numberOfLines="0" id="71U-CQ-QRm"/>
                     </items>
                 </controller>
             </objects>
@@ -93,18 +95,38 @@
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodtracker" customModuleProvider="target">
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="How are you feeling?" id="AGy-cV-ovc"/>
-                        <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2"/>
-                        <button width="1" alignment="left" title=":-)" id="YtB-rs-Ei5"/>
-                        <button width="1" alignment="left" title=":-|" id="TOs-Z6-9aD"/>
-                        <button width="1" alignment="left" title=":-/" id="sKa-cM-83b"/>
-                        <button width="1" alignment="left" title=":-(" id="Sva-r4-aKA"/>
+                        <label alignment="left" text="How are you feeling?" numberOfLines="0" id="AGy-cV-ovc"/>
+                        <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2">
+                            <connections>
+                                <action selector="veryGood" destination="eXb-UN-Cd0" id="Jve-BK-pfD"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title=":-)" id="YtB-rs-Ei5">
+                            <connections>
+                                <action selector="good" destination="eXb-UN-Cd0" id="K04-Gi-C0z"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title=":-|" id="TOs-Z6-9aD">
+                            <connections>
+                                <action selector="okay" destination="eXb-UN-Cd0" id="2ow-ji-31L"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title=":-/" id="sKa-cM-83b">
+                            <connections>
+                                <action selector="meh" destination="eXb-UN-Cd0" id="I9A-As-7Do"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title=":-(" id="Sva-r4-aKA">
+                            <connections>
+                                <action selector="bad" destination="eXb-UN-Cd0" id="vfk-xw-hf4"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="248" y="882"/>
+            <point key="canvasLocation" x="248" y="881.5"/>
         </scene>
         <!--History-->
         <scene sceneID="lRt-Ob-uup">
@@ -137,7 +159,7 @@
                             </items>
                         </group>
                         <imageView height="97" alignment="left" id="fvI-Ho-qma" userLabel="Diagram"/>
-                        <group width="1" height="28" alignment="left" id="tDQ-VC-RCg">
+                        <group width="1" height="52" alignment="left" id="tDQ-VC-RCg">
                             <items>
                                 <button width="28" height="28" alignment="left" verticalAlignment="center" backgroundImage="arrowtriangle.left.circle" catalog="system" id="ooH-Ye-vDk">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,8 +167,9 @@
                                         <action selector="navigateBack" destination="ht7-Kj-mwk" id="syY-iv-1bu"/>
                                     </connections>
                                 </button>
-                                <label height="1" alignment="center" verticalAlignment="center" text="Range" id="WAP-kc-GnL">
+                                <label height="52" alignment="center" text="1. August - 3 September 2019" textAlignment="center" numberOfLines="2" id="WAP-kc-GnL">
                                     <color key="textColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                 </label>
                                 <button width="28" height="28" alignment="right" verticalAlignment="center" backgroundImage="arrowtriangle.right.circle" catalog="system" id="er7-zd-fQr">
                                     <color key="backgroundColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -208,15 +231,15 @@
                     </items>
                     <connections>
                         <outlet property="diagramImage" destination="fvI-Ho-qma" id="Oqt-gD-dpd"/>
-                        <outlet property="label" destination="asf-Eg-sXi" id="sOu-xY-Hm4"/>
                         <outlet property="monthButton" destination="eKH-cD-cn9" id="GXy-kh-war"/>
+                        <outlet property="rangeLabel" destination="WAP-kc-GnL" id="pho-hq-yfS"/>
                         <outlet property="weekButton" destination="nMt-3O-QA4" id="xFh-wo-rpt"/>
                         <outlet property="yearButton" destination="Vbp-c2-Y0u" id="bbF-aM-6dQ"/>
                         <segue destination="hk2-7S-aFQ" kind="relationship" relationship="nextPage" id="dz3-67-LaW"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="404" y="364"/>
+            <point key="canvasLocation" x="404" y="388"/>
         </scene>
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
@@ -255,7 +278,7 @@
                         <label alignment="left" text="Your link" id="sUr-SS-wsd">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
-                        <label alignment="center" text="..." textAlignment="center" numberOfLines="3" id="akC-im-BDa"/>
+                        <label alignment="center" text="..." textAlignment="center" numberOfLines="0" id="akC-im-BDa"/>
                         <button width="1" alignment="left" title="New Link" id="S6S-tw-TA7">
                             <color key="backgroundColor" red="0.16320633570000001" green="0.1462168237" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -288,7 +311,7 @@
             <objects>
                 <controller id="a6e-TG-pPZ" customClass="ImportInterfaceController" customModule="Moodtracker_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Importing merges the data and uses the new link" numberOfLines="3" id="6en-RV-hVa"/>
+                        <label alignment="left" text="Importing merges the data and uses the new link" numberOfLines="0" id="6en-RV-hVa"/>
                         <textField width="1" alignment="left" text="enter code" textContentType="username" id="Y3W-4b-hhh">
                             <color key="textColor" red="0.1210669948630137" green="0.79722281678082196" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -313,10 +336,38 @@
         <!--Reminder-->
         <scene sceneID="IZF-jt-hU2">
             <objects>
-                <controller identifier="Reminder" id="nHo-9K-4H5">
+                <controller identifier="Reminder" id="nHo-9K-4H5" customClass="ReminderInterfaceController" customModule="Moodtracker_WatchKit_Extension">
                     <items>
-                        <picker height="100" alignment="left" id="qHy-2r-1w2"/>
+                        <switch width="1" alignment="left" title="Enable Reminder" id="oYb-SR-boS">
+                            <color key="tintColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="pushReminderSwitch:" destination="nHo-9K-4H5" id="7Rc-uO-yZ0"/>
+                            </connections>
+                        </switch>
+                        <group width="90" alignment="center" id="JdB-Dg-vO4">
+                            <items>
+                                <picker width="0.47999999999999998" height="100" alignment="left" id="ESo-E1-PrA">
+                                    <connections>
+                                        <action selector="hourChanged:" destination="nHo-9K-4H5" id="70b-6W-YFc"/>
+                                    </connections>
+                                </picker>
+                                <label width="0.040000000000000001" alignment="center" verticalAlignment="center" text=":" id="4j9-m3-r0x">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                                <picker width="0.47999999999999998" height="100" alignment="right" id="qHy-2r-1w2">
+                                    <connections>
+                                        <action selector="minuteChanged:" destination="nHo-9K-4H5" id="4Dg-DG-RnP"/>
+                                    </connections>
+                                </picker>
+                            </items>
+                        </group>
                     </items>
+                    <connections>
+                        <outlet property="hourPicker" destination="ESo-E1-PrA" id="O9X-Pd-W7R"/>
+                        <outlet property="minutePicker" destination="qHy-2r-1w2" id="z5W-u5-3Gg"/>
+                        <outlet property="notificationSwitch" destination="oYb-SR-boS" id="lh9-0E-DUv"/>
+                        <outlet property="reminderTimePicker" destination="JdB-Dg-vO4" id="fJy-vM-0x4"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="948" y="508"/>

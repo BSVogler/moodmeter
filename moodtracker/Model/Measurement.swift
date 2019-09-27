@@ -13,6 +13,8 @@ import UIKit.UIColor
 // MARK: - Measurement
 class Measurement: Codable {
     
+    // MARK: Stored Type Properties
+    static let changedNotification = Notification.Name("measurementsChanged")
     // MARK: Stored Instance Properties
     /// Sends update to server when changed (didSet is not being called on initialization)
     var mood: Mood {

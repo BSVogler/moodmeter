@@ -125,12 +125,15 @@
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodtracker/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodtracker/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
-		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		8097026A233CCE3500947957 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = moodtracker/Model/Constants.swift; sourceTree = SOURCE_ROOT; };
 		8097026C233CCE3F00947957 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataHandler.swift; path = moodtracker/Model/DataHandler.swift; sourceTree = SOURCE_ROOT; };
 		8097026E233CE47700947957 /* SharingHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharingHash.swift; path = moodtracker/Model/SharingHash.swift; sourceTree = SOURCE_ROOT; };
 		80970271233E40A700947957 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+=======
+		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+>>>>>>> 80c7a29f53bd9521f7ff80f41bb9f31444ebf07c
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodassist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodassist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };

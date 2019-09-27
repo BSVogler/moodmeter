@@ -32,10 +32,18 @@ class SettingViewController: UIViewController {
     // MARK: Overridden/ Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        notificationSwitch.setOn(reminder.isEnabled, animated: false)
-        reminderTimePicker.isHidden = !notificationSwitch.isOn
-        timeLabel.isHidden = !notificationSwitch.isOn
+
+		// disable if is not authorized
+		UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+			if(settings.authorizationStatus != .authorized) {
+				//ui updates msut be performed in main thread
+				DispatchQueue.main.async {
+					self.setEnabled(false)
+				}
+			}
+		}
+		
+        self.setEnabled(reminder.isEnabled)
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
@@ -51,7 +59,7 @@ class SettingViewController: UIViewController {
         let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
         versionstring.text = "Version \(versionNumber) (\(buildNumber))"
     }
-    
+	
 	// MARK: IBActions
 	@IBAction func doneButtonPressed(_ sender: Any) {
 		//presentingViewController?.removeFromParent()
@@ -69,70 +77,38 @@ class SettingViewController: UIViewController {
 	}
 
 	@IBAction func timeChanced(_ sender: Any) {
-		
-		// Configure the recurring date.
-		var dateComponents = DateComponents()
-		dateComponents.calendar = Calendar.current
-
-		let hourOfTheDay = dateComponents.calendar?.component(Calendar.Component.hour, from: reminderTimePicker.date)
-		dateComponents.hour = hourOfTheDay
-		if let hourOfTheDay = hourOfTheDay {
-            DataHandler.userProfile.reminder.hour = hourOfTheDay
-		}
-		
-		let minuteOfTheDay = dateComponents.calendar?.component(Calendar.Component.minute, from: reminderTimePicker.date)
-		dateComponents.minute = minuteOfTheDay
-		if let minuteOfTheDay = minuteOfTheDay {
-            DataHandler.userProfile.reminder.minute = minuteOfTheDay
-		}
-		
-		registerNotification(dateComponents: dateComponents)
+		Notifications.registerNotification()
 		if sender is UIDatePicker {
 			_ = DataHandler.saveToFiles()
 		}
 	}
 	
 	@IBAction func pushSwitch(_ sender: Any) {
-		if notificationSwitch.isOn {
-			registerNotificationRights()
-			timeChanced(sender)
-		}
-        DataHandler.userProfile.reminder.isEnabled = notificationSwitch.isOn
-		reminderTimePicker.isHidden = !notificationSwitch.isOn
-		timeLabel.isHidden = !notificationSwitch.isOn
-        _ = DataHandler.saveToFiles()
+		setEnabled(notificationSwitch.isOn)
 	}
-
+	
 	// MARK: Instance Methods
-	func registerNotification(dateComponents: DateComponents){
-		let content = UNMutableNotificationContent()
-		content.title = NSLocalizedString("Mood Time", comment: "")
-		content.body = NSLocalizedString("It is time to give me your mood.", comment: "")
-		// Create the trigger as a repeating event.
-		let trigger = UNCalendarNotificationTrigger(
-			dateMatching: dateComponents, repeats: true)
-		
-		// Create the request
-		let uuidString = UUID().uuidString
-		let request = UNNotificationRequest(identifier: uuidString,
-											content: content, trigger: trigger)
-		
-		// Schedule the request with the system.
-		let notificationCenter = UNUserNotificationCenter.current()
-		notificationCenter.removeAllPendingNotificationRequests()
-		notificationCenter.add(request) { (error) in
-			if error != nil {
-				print(error ?? "could not register notification")
+	func setEnabled(_ enabled: Bool){
+		if enabled {
+			//todo, check if this fails #11
+			Notifications.registerNotificationRights()
+			Notifications.registerNotification()
+			//temporaryugly fix for #11
+			UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+				if(settings.authorizationStatus != .authorized) {
+					//ui updates msut be performed in main thread
+					DispatchQueue.main.async {
+						self.alert(title: "No rights", message: "Please enable notifications for this app in your system settings.")
+						self.setEnabled(false)
+					}
+				}
 			}
 		}
+        reminder.isEnabled = enabled
+		notificationSwitch.setOn(reminder.isEnabled, animated: false)
+		reminderTimePicker.isHidden = reminder.isEnabled
+		timeLabel.isHidden = reminder.isEnabled
+		_ = DataHandler.saveToFiles()
 	}
-	
-	func registerNotificationRights() {
-	  UNUserNotificationCenter.current() // 1
-		.requestAuthorization(options: [.alert, .sound, .badge]) { // 2
-		  granted, error in
-		  print("Permission granted: \(granted)") // 3
-	  }
-	}
-	
+
 }

@@ -35,4 +35,14 @@ class NotificationController: WKUserNotificationInterfaceController {
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
     }
+	@IBAction func veryGood() {
+	}
+	@IBAction func good() {
+	}
+	@IBAction func okay() {
+	}
+	@IBAction func meh() {
+	}
+	@IBAction func bad() {
+	}
 }
