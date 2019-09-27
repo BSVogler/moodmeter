@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B5457233CC2F300ADC7B9 /* Mood.swift */; };
-		802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802B5457233CC2F300ADC7B9 /* Mood.swift */; };
 		805FAB3E233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		805FAB3F233BC97000D4E52A /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805FAB3D233BC97000D4E52A /* ExtensionDate.swift */; };
 		80650526233E7EC600175F14 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097026C233CCE3F00947957 /* DataHandler.swift */; };
@@ -123,7 +121,6 @@
 		5059F80589308A6E418A74A3 /* Pods-Moodassist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodassist.debug.xcconfig"; path = "Target Support Files/Pods-Moodassist/Pods-Moodassist.debug.xcconfig"; sourceTree = "<group>"; };
 		69369A514871CC5BD3F8AC30 /* Pods-moodassist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodassist.release.xcconfig"; path = "Target Support Files/Pods-moodassist/Pods-moodassist.release.xcconfig"; sourceTree = "<group>"; };
 		74BDA90C7B1526F4CEAF849E /* Pods_Moodassist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moodassist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		802B5457233CC2F300ADC7B9 /* Mood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mood.swift; path = moodassist/Model/Mood.swift; sourceTree = SOURCE_ROOT; };
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodassist/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodassist/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
@@ -326,7 +323,6 @@
 				8097026A233CCE3500947957 /* Constants.swift */,
 				8097026C233CCE3F00947957 /* DataHandler.swift */,
 				A68481412337CC5700ADB8EA /* Measurement.swift */,
-				802B5457233CC2F300ADC7B9 /* Mood.swift */,
 				808A2114233CC54B009915A0 /* Profile.swift */,
 				8097026E233CE47700947957 /* SharingHash.swift */,
 				808A2115233CC54B009915A0 /* Reminder.swift */,
@@ -601,7 +597,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				8097026B233CCE3500947957 /* Constants.swift in Sources */,
 				808A2116233CC54C009915A0 /* Profile.swift in Sources */,
 				8097026F233CE47700947957 /* SharingHash.swift in Sources */,
@@ -654,7 +649,6 @@
 				A64DEC5F233E501D00A9EBA0 /* Notifications.swift in Sources */,
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
 				A6B1BB39233CCA0F00C62E71 /* DiagramController.swift in Sources */,
-				802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
 				80650529233E801400175F14 /* Reminder.swift in Sources */,
