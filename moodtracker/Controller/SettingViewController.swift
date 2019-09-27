@@ -13,11 +13,6 @@ import UserNotifications
 // MARK: - SettingViewController
 class SettingViewController: UIViewController {
 	
-    // MARK: Stored Instance Properties
-    var reminder: Reminder { // just for code convenience
-        return DataHandler.userProfile.reminder
-    }
-    
 	// MARK: IBOutlets
 	@IBOutlet private weak var reminderTimePicker: UIDatePicker!
 	@IBOutlet private weak var notificationSwitch: UISwitch!
@@ -43,13 +38,13 @@ class SettingViewController: UIViewController {
 			}
 		}
 		
-        self.setEnabled(reminder.isEnabled)
+        self.setEnabled(DataHandler.userProfile.reminder.isEnabled)
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         
-        let date = dateComponents.calendar?.date(bySettingHour: reminder.hour,
-                                                 minute: reminder.minute,
+        let date = dateComponents.calendar?.date(bySettingHour: DataHandler.userProfile.reminder.hour,
+                                                 minute: DataHandler.userProfile.reminder.minute,
                                                  second: 0,
                                                  of: Date())
         reminderTimePicker.date = date ?? Date()
@@ -104,7 +99,8 @@ class SettingViewController: UIViewController {
 				}
 			}
 		}
-        DataHandler.userProfile.reminder.isEnabled = enabled
+		var reminder = DataHandler.userProfile.reminder
+        reminder.isEnabled = enabled
 		notificationSwitch.setOn(reminder.isEnabled, animated: false)
 		reminderTimePicker.isHidden = reminder.isEnabled
 		timeLabel.isHidden = reminder.isEnabled
