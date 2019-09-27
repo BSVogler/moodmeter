@@ -19,32 +19,34 @@ class ReminderInterfaceController: WKInterfaceController {
 	@IBOutlet weak var minutePicker: WKInterfacePicker!
 	
 	@IBAction func pushReminderSwitch(_ value: Bool) {
-		Model.shared.reminderEnabled = value
-		if value {
-			registerNotificationRights()
-			registerNotification()
-		}
-		reminderTimePicker.setHidden(!value)
-		_ = Model.shared.saveToFiles()
+		setEnabled(value)
 	}
 	
 	@IBAction func hourChanged(_ value: Int) {
 		if Model.shared.reminderEnabled {
 			Model.shared.reminderHour = value
-			registerNotification()
 		}
 	}
 	
 	@IBAction func minuteChanged(_ value: Int) {
 		if Model.shared.reminderEnabled {
 			Model.shared.reminderMinute = value
-			registerNotification()
 		}
 	}
 	
 	override init() {
 		super.init()
 		notificationSwitch.setOn(Model.shared.reminderEnabled)
+		//disable if is not authorized
+		UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+			if(settings.authorizationStatus != .authorized) {
+				//ui updates must be performed in main thread
+				DispatchQueue.main.async {
+					self.setEnabled(false)
+				}
+			}
+		}
+		
 		reminderTimePicker.setHidden(!Model.shared.reminderEnabled)
 		let hours = (0...23).map{ value -> WKPickerItem in
 			let item = WKPickerItem()
@@ -62,43 +64,32 @@ class ReminderInterfaceController: WKInterfaceController {
 		minutePicker.setSelectedItemIndex(Model.shared.reminderMinute)
 	}
 	
-	// MARK: Instance Methods
-	func registerNotification() {
-		var dateComponents = DateComponents()
-		dateComponents.calendar = Calendar.current
-		dateComponents.hour = Model.shared.reminderHour
-		dateComponents.minute = Model.shared.reminderMinute
-		let content = UNMutableNotificationContent()
-		content.title = NSLocalizedString("Mood Time", comment: "")
-		content.body = NSLocalizedString("It is time to give me your mood.", comment: "")
-		// Create the trigger as a repeating event.
-		let trigger = UNCalendarNotificationTrigger(
-			dateMatching: dateComponents, repeats: true)
-		
-		// Create the request
-		let uuidString = UUID().uuidString
-		let request = UNNotificationRequest(identifier: uuidString,
-											content: content, trigger: trigger)
-		
-		// Schedule the request with the system.
-		let notificationCenter = UNUserNotificationCenter.current()
-		notificationCenter.removeAllPendingNotificationRequests()
-		notificationCenter.add(request) { (error) in
-			if error != nil {
-				print(error ?? "could not register notification")
+	func setEnabled(_ enabled: Bool){
+		if enabled {
+			Notifications.registerNotificationRights()
+			Notifications.registerNotification()
+			//temporaryugly fix for #11
+			UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+				if(settings.authorizationStatus != .authorized) {
+					//ui updates must be performed in main thread
+					DispatchQueue.main.async {
+						self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for this app in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+						self.setEnabled(false)
+					}
+				}
 			}
 		}
+		Model.shared.reminderEnabled = enabled
+		self.notificationSwitch.setOn(Model.shared.reminderEnabled)
+		self.reminderTimePicker.setHidden(!Model.shared.reminderEnabled)
+		_ = Model.shared.saveToFiles()
 	}
 	
-	func registerNotificationRights() {
-		UNUserNotificationCenter.current() // 1
-			.requestAuthorization(options: [.alert, .sound, .badge]) { // 2
-				granted, error in
-				print("Permission granted: \(granted)") // 3
-		}
-	}
-	
+	// MARK: Deinitializer
 	deinit {
 		_ = Model.shared.saveToFiles()
+		if Model.shared.reminderEnabled {
+			Notifications.registerNotification()
+		}
 	}
 }
