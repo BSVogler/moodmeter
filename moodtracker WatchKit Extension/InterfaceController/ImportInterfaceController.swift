@@ -6,31 +6,38 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import WatchKit
 
+// MARK: ImportInterfaceController
 class ImportInterfaceController: WKInterfaceController {
+    
+    // MARK: Stored Instance Properties
 	var enteredHash: String = ""
 	
+    // MARK: IBOutlets
 	@IBOutlet weak var importButton: WKInterfaceButton!
 	
-	@IBAction func codeChanged(_ value: NSString?) {
-		enteredHash = (value ?? "")  as String 
-		if Sharing.hashlength==value?.length {
-			importButton.setEnabled(true)
-		} else {
-			importButton.setEnabled(false)
-		}
-		
+    // MARK: Overridden/ Lifecycle Methods
+    override func awake(withContext context: Any?) {
+        importButton.setEnabled(false)
+    }
+    
+    // MARK: IBActions
+    @IBAction func codeChanged(_ value: NSString?) {
+        if let value = value,
+            SharingConstants.hashLength == value.length {
+            importButton.setEnabled(true)
+        } else {
+            importButton.setEnabled(false)
+        }
 	}
+    
 	@IBAction func importButtonPressed() {
-		Model.shared.sharing.importHash(enteredHash) {
+        DataHandler.userProfile.sharingHash?.importHash(enteredHash) {
 			self.pop()
 		}
-	}
-	
-	override func awake(withContext context: Any?) {
-		importButton.setEnabled(false)
 	}
 	
 }

@@ -35,11 +35,11 @@ class FaceScene: WKInterfaceSCNScene {
 //MARK: - FaceInterfaceController
 @IBDesignable
 class FaceInterfaceController: WKInterfaceController {
+    
+    // MARK: Stored Instance Properties
 	let face = Measurement()
-	
 	@IBInspectable public var isYesterday: Bool = false {
 		didSet {
-			self.face.isYesterday = isYesterday
 			refreshDisplay()
 		}
 	}
@@ -50,15 +50,37 @@ class FaceInterfaceController: WKInterfaceController {
 	@IBOutlet weak var moodLabel: WKInterfaceLabel!
 	@IBOutlet weak var background: WKInterfaceGroup!
 	
+    // MARK: Overridden/ Lifecycle Methods
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
+        // Configure interface objects here.
+    }
+    
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
+        super.willActivate()
+        //connect the watchkit scene with the scene outlet
+        if let interfacescene = scenekitscene,
+            interfacescene.scene == nil {
+            interfacescene.scene = FaceScene().scene
+        }
+        refreshDisplay()
+    }
+    
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: Any) {
-		//mood 0 is only internal special case
+		// mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
-			face.moodChanged()
-		} else if face.mood < Measurement.moodToText.count-1 {
+			// face.moodChanged() this is not needed anymore, as mood is directly changed in Measurement instance
+		} else if face.mood < MoodConstants.moodToText.count-1 {
 			face.mood += 1
-			face.moodChanged()
+			// face.moodChanged()
 		} else {
 			return
 		}
@@ -69,10 +91,10 @@ class FaceInterfaceController: WKInterfaceController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 2
-			face.moodChanged()
+			// face.moodChanged()
 		} else if face.mood > 1 {
 			face.mood -= 1
-			face.moodChanged()
+			// face.moodChanged()
 		} else {
 			return
 		}
@@ -82,36 +104,14 @@ class FaceInterfaceController: WKInterfaceController {
 	@IBAction func tapped(_ sender: Any) {
 		if face.mood == 0 {
 			face.mood = 3
-			face.moodChanged()
+			// face.moodChanged()
 			refreshDisplay()
 		}
 	}
-	
-	
-	// MARK: Overrides
-	override func awake(withContext context: Any?) {
-		super.awake(withContext: context)
-		// Configure interface objects here.
-	}
-	
-	override func willActivate() {
-		// This method is called when watch view controller is about to be visible to user
-		super.willActivate()
-		//connect the watchkit scene with the scene outlet
-		if let interfacescene = scenekitscene,
-			interfacescene.scene == nil {
-			interfacescene.scene = FaceScene().scene
-		}
-		refreshDisplay()
-	}
-	
-	override func didDeactivate() {
-		// This method is called when watch view controller is no longer visible
-		super.didDeactivate()
-	}
-	
-	func refreshDisplay(){
-		moodLabel.setText(face.mood.getSmiley())
+
+    // MARK: Private Instance Methods
+	private func refreshDisplay(){
+		moodLabel.setText(face.getSmiley())
 		background.setBackgroundColor(face.getColor())
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
@@ -120,8 +120,8 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 }
 
-//workaround for IB not setting values for @IBInspectable
-class Yesterday: FaceInterfaceController {
+/// workaround for IB not setting values for @IBInspectable
+class Yesterday: FaceInterfaceController { // What does this workaround do?
 	override func willActivate(){
 		super.willActivate()
 		isYesterday = true

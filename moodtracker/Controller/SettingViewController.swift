@@ -13,6 +13,11 @@ import UserNotifications
 // MARK: - SettingViewController
 class SettingViewController: UIViewController {
 	
+    // MARK: Stored Instance Properties
+    var reminder: Reminder { // just for code convenience
+        return DataHandler.userProfile.reminder
+    }
+    
 	// MARK: IBOutlets
 	@IBOutlet private weak var reminderTimePicker: UIDatePicker!
 	@IBOutlet private weak var notificationSwitch: UISwitch!
@@ -28,16 +33,15 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
-        Model.shared.reminderEnabled = notificationSwitch.isOn
+        notificationSwitch.setOn(reminder.isEnabled, animated: false)
         reminderTimePicker.isHidden = !notificationSwitch.isOn
         timeLabel.isHidden = !notificationSwitch.isOn
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         
-        let date = dateComponents.calendar?.date(bySettingHour: Model.shared.reminderHour,
-                                                 minute: Model.shared.reminderMinute,
+        let date = dateComponents.calendar?.date(bySettingHour: reminder.hour,
+                                                 minute: reminder.minute,
                                                  second: 0,
                                                  of: Date())
         reminderTimePicker.date = date ?? Date()
@@ -56,7 +60,7 @@ class SettingViewController: UIViewController {
 	
 	@IBAction func eraseButton(_ sender: Any) {
 		confirm(title: NSLocalizedString("Delete?",comment: ""), message: NSLocalizedString("Delete all locally saved data?",comment: "")) { action in
-			if Model.shared.eraseData() {
+            if DataHandler.eraseData() {
 				self.alert(title:NSLocalizedString("Deleting",comment: ""), message: NSLocalizedString("Deleted all data",comment: ""))
 			} else {
 				self.alert(title:NSLocalizedString("Deleting",comment: ""), message: NSLocalizedString("Deleting of all data not possible",comment: ""))
@@ -73,18 +77,18 @@ class SettingViewController: UIViewController {
 		let hourOfTheDay = dateComponents.calendar?.component(Calendar.Component.hour, from: reminderTimePicker.date)
 		dateComponents.hour = hourOfTheDay
 		if let hourOfTheDay = hourOfTheDay {
-			Model.shared.reminderHour = hourOfTheDay
+            DataHandler.userProfile.reminder.hour = hourOfTheDay
 		}
 		
 		let minuteOfTheDay = dateComponents.calendar?.component(Calendar.Component.minute, from: reminderTimePicker.date)
 		dateComponents.minute = minuteOfTheDay
 		if let minuteOfTheDay = minuteOfTheDay {
-			Model.shared.reminderMinute = minuteOfTheDay
+            DataHandler.userProfile.reminder.minute = minuteOfTheDay
 		}
 		
 		registerNotification(dateComponents: dateComponents)
 		if sender is UIDatePicker {
-			_ = Model.shared.saveToFiles()
+			_ = DataHandler.saveToFiles()
 		}
 	}
 	
@@ -93,10 +97,10 @@ class SettingViewController: UIViewController {
 			registerNotificationRights()
 			timeChanced(sender)
 		}
-		Model.shared.reminderEnabled = notificationSwitch.isOn
+        DataHandler.userProfile.reminder.isEnabled = notificationSwitch.isOn
 		reminderTimePicker.isHidden = !notificationSwitch.isOn
 		timeLabel.isHidden = !notificationSwitch.isOn
-		_ = Model.shared.saveToFiles()
+        _ = DataHandler.saveToFiles()
 	}
 
 	// MARK: Instance Methods

@@ -35,17 +35,19 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 				continue
 			}
             
-            // replace
-            if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == date}),
-                let mood = Int(item[1]) {
-                existingMsmtEntry.mood = mood
-            } else {
-                // append
-                userProfile.dataset.append(Measurement(day: date, mood: <#T##Mood#>))
+            if let mood = Int(item[1]) {
+                // replace mood value if existing
+                if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == date}) {
+                    existingMsmtEntry.mood = mood
+                } else {
+                    // append
+                    userProfile.dataset.append(Measurement(day: date, mood: mood))
+                }
             }
 		}
 	}
 	
+    // Can this take single measurements or only the whole dataset? Update documentation, please.
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
 		if let sharingHash = userProfile.sharingHash,
             let userHash = sharingHash.userHash {

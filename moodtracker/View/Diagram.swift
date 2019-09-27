@@ -31,7 +31,7 @@ class Diagram {
 		didSet {
 			usedAreaHeight = frame.height-offsettop-offsettbottom
 			usedAreaWidth = frame.width-offsetleft-offsetright
-			tickHeight = usedAreaHeight/5.0
+			tickHeight = usedAreaHeight / 5.0
 			tickWidth = usedAreaWidth / CGFloat(analysisrange.rawValue)
 		}
 	}
@@ -40,12 +40,12 @@ class Diagram {
 	var tickHeight = CGFloat(0)
 	var tickWidth = CGFloat(0)
 	var analysisrange = AnalysisRange.week{
-		didSet{
+		didSet {
 			updateBounds()
 		}
 	}
 	var selectedDate = Date(){
-		didSet{
+		didSet {
 			updateBounds()
 		}
 	}
@@ -57,28 +57,8 @@ class Diagram {
 		updateBounds()
 	}
 	
-	private func updateBounds(){
-		let calendar = Calendar.current
-		switch analysisrange {
-		case .week:
-			lowerDate = selectedDate.previous(.monday)
-			higherDate = selectedDate.next(.monday)
-		case .month:
-			let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
-			lowerDate = calendar.date(from: firstComponents)
-			var nextComponents = DateComponents()
-			nextComponents.month = 1
-			higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
-		case .year:
-			let dateComponents = calendar.dateComponents([.year], from: selectedDate)
-			lowerDate = calendar.date(from: dateComponents)
-			if let lowerDate = lowerDate {
-				higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
-			}
-		}
-	}
-	
-	func navigateBack(){
+    // MARK: Instance Methods
+	func navigateBack() {
 		switch analysisrange {
 		case .week:
 			selectedDate = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate) ?? selectedDate
@@ -100,7 +80,6 @@ class Diagram {
 		}
 	}
 	
-    // MARK: Instance Methods
 	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
 		self.frame = frame
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
@@ -117,14 +96,15 @@ class Diagram {
 		return image
 	}
 	
-	func drawBackground(){
-		for (i, color) in Measurement.moodToColor.suffix(from: 1).reversed().enumerated() {
+    // MARK: Private Instance Methods
+	private func drawBackground() {
+		for (i, color) in MoodConstants.moodToColor.suffix(from: 1).reversed().enumerated() {
 			color.setFill()
 			UIRectFill(CGRect(x: offsetleft, y: offsettop+CGFloat(i)*tickHeight, width: usedAreaWidth, height: usedAreaHeight/5))
 		}
 	}
 	
-	func drawAxis(){
+	private func drawAxis() {
 		let yAxis = UIBezierPath()
 		yAxis.move(to: CGPoint(x:offsetleft, y:offsettop))
 		yAxis.addLine(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
@@ -143,7 +123,7 @@ class Diagram {
 					 NSAttributedString.Key.paragraphStyle: paragraphStyle,
 					 NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
 		
-		//get label description
+		// get label description
 		var labels: [String] = []
 		switch analysisrange {
 		case .week:
@@ -158,7 +138,7 @@ class Diagram {
 			labels = calendar.monthSymbols.map{String($0.prefix(3))}
 		}
 		
-		//draw dasges
+		// draw dashes
 		let dashes: [ CGFloat ] = [ 3.0, 2.0 ]
 		let tickWidth = usedAreaWidth / CGFloat(labels.count)
 		for i in 1..<labels.count {
@@ -177,16 +157,19 @@ class Diagram {
 		}
 	}
 	
-	func getPoints() -> [CGPoint] {
+	private func getPoints() -> [CGPoint] {
 		var points: [CGPoint] = []
 		switch analysisrange {
 		case .week:
-			//get measurements for this week
+			// get measurements for this week
 			if let lowerDate = lowerDate,
 			   let higherDate = higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+                let measurements = DataHandler.userProfile.dataset
+                    .filter({ $0.day > lowerDate && $0.day < higherDate })
+                    .sorted(by: { $0.day < $1.day })
+                
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
-					let intervalSinceFirst = measurement.date.timeIntervalSince(lowerDate)
+					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
 					let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
 					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
@@ -198,9 +181,11 @@ class Diagram {
 			//dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
 			if let lowerDate = lowerDate,
 			   let higherDate = higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+				let measurements = DataHandler.userProfile.dataset
+                .filter({ $0.day > lowerDate && $0.day < higherDate })
+                .sorted(by: { $0.day < $1.day })
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
-					let intervalSinceFirst = measurement.date.timeIntervalSince(lowerDate)
+					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
 					let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
 					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
@@ -214,11 +199,13 @@ class Diagram {
 				let lowerDateMonth = Calendar.current.date(from:dateComponents)
 				if let lowerDateMonth = lowerDateMonth,
 				   let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
-					let datesinMonth = Model.shared.dataset.filter{$0.key > lowerDateMonth && $0.key < higherDateMonth }
-					if datesinMonth.count > 0 {
-						let avgmood = datesinMonth.reduce(0) { $0 + $1.value } / datesinMonth.count
+                    
+                    let datesInMonth = DataHandler.userProfile.dataset.filter{ $0.day > lowerDateMonth && $0.day < higherDateMonth }
+                    
+					if datesInMonth.count > 0 {
+						let avgMood = datesInMonth.reduce(0) { $0 + $1.mood } / datesInMonth.count
 						let x: CGFloat = offsetleft+CGFloat(month)*tickWidth+CGFloat(0.5)*tickWidth
-						let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(avgmood)
+						let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(avgMood)
 						points.append(CGPoint(x: x, y: y))
 					}
 				}
@@ -227,7 +214,7 @@ class Diagram {
 		return points
 	}
 	
-	func drawPath(){
+	private func drawPath(){
 		//now draw the content
 		let strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 		strokeColor.setStroke()
@@ -251,4 +238,25 @@ class Diagram {
 		path.lineWidth = 2
 		path.stroke()
 	}
+    
+    private func updateBounds(){
+        let calendar = Calendar.current
+        switch analysisrange {
+        case .week:
+            lowerDate = selectedDate.previous(.monday)
+            higherDate = selectedDate.next(.monday)
+        case .month:
+            let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
+            lowerDate = calendar.date(from: firstComponents)
+            var nextComponents = DateComponents()
+            nextComponents.month = 1
+            higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
+        case .year:
+            let dateComponents = calendar.dateComponents([.year], from: selectedDate)
+            lowerDate = calendar.date(from: dateComponents)
+            if let lowerDate = lowerDate {
+                higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
+            }
+        }
+    }
 }

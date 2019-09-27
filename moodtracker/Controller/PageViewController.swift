@@ -35,8 +35,6 @@ class PageViewController: NSObject {
 	
     // MARK: Instance Methods
 	/// Return the data view controller for the given index.
-	/// - Parameter index: <#index description#>
-	/// - Parameter storyboard: <#storyboard description#>
 	func viewControllerAtIndex(_ index: Int, storyboard: UIStoryboard) -> UIViewController? {
 		if index >= pageTitles.count {
 		    return nil
@@ -56,11 +54,6 @@ class PageViewController: NSObject {
 		
 		if let dataViewController = dataViewController as? FaceViewController {
 			dataViewController.topLabel = self.pageTitles[index]
-		}
-		
-		if index == 0,
-		   let dataViewController = dataViewController as? FaceViewController {
-			dataViewController.setToYesterday()
 		}
 
 		return dataViewController

@@ -17,12 +17,22 @@ class Measurement: Codable {
     /// Sends update to server when changed (didSet is not being called on initialization)
     var mood: Mood {
         didSet {
-            MoodApiJsonHttpClient.shared.postMeasurement(measurements: self) { _ in }
+            MoodApiJsonHttpClient.shared.postMeasurement(measurements: [self]) { _ in }
         }
     }
     var day: Date
     
 	// MARK: Initializers
+    init() {
+        let today = Date().normalized()
+        self.day = today
+        if let exisitingMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == today }) {
+            self.mood = exisitingMsmt.mood
+        } else {
+            self.mood = 0
+        }
+    }
+    
 	init(day: Date, mood: Mood) {
         self.day = day.normalized()
 		self.mood = mood
@@ -32,13 +42,15 @@ class Measurement: Codable {
 	init(day: String, mood: Mood) {
         if let date = Date.fromJS(day) {
             self.day = date.normalized()
+        } else {
+            self.day = Date().normalized()
         }
 		self.mood = mood
 	}
 	
 	// MARK: Instance Methods
     func getSmiley() -> String {
-		return Mood.moodToText[mood]
+		return MoodConstants.moodToText[mood]
 	}
 	
 	func getColor() -> UIColor {
@@ -51,15 +63,14 @@ class Measurement: Codable {
 			let brightnessP = UnsafeMutablePointer<CGFloat>(&brightness)
 			var alpha: CGFloat = 0.0
 			let alphaP = UnsafeMutablePointer<CGFloat>(&alpha)
-			Mood.moodToColor[mood].getHue(hueP, saturation: saturationP, brightness: brightnessP, alpha: alphaP)
+			MoodConstants.moodToColor[mood].getHue(hueP, saturation: saturationP, brightness: brightnessP, alpha: alphaP)
 			return UIColor(hue: hue, saturation: saturation, brightness: brightness*0.7, alpha: alpha)
 		}
-		return Mood.moodToColor[mood]
+		return MoodConstants.moodToColor[mood]
 	}
     
-    // MARK: Private Instance Methods
     /// returns true, when this instance's date equals yesterday's date
-    private func isFromYesterday() -> Bool {
+    func isFromYesterday() -> Bool {
         return self.day == Date.yesterday
     }
 }

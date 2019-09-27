@@ -31,7 +31,7 @@ class FaceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.dataLabel!.text = topLabel
-        face.mood = Model.shared.dataset[face.date] ?? 0
+        // face.mood = Model.shared.dataset[face.date] ?? 0
         refreshDisplay()
     }
     
@@ -40,10 +40,8 @@ class FaceViewController: UIViewController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
-			face.moodChanged()
-		} else if face.mood < Measurement.moodToText.count-1 {
+		} else if face.mood < MoodConstants.moodToText.count-1 {
 			face.mood += 1
-			face.moodChanged()
 		} else {
 			return
 		}
@@ -54,10 +52,8 @@ class FaceViewController: UIViewController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 2
-			face.moodChanged()
 		} else if face.mood > 1 {
 			face.mood -= 1
-			face.moodChanged()
 		} else {
 			return
 		}
@@ -67,7 +63,6 @@ class FaceViewController: UIViewController {
 	@IBAction func tapped(_ sender: Any) {
 		if face.mood == 0 {
 			face.mood = 3
-			face.moodChanged()
 			refreshDisplay()
 		}
 	}
@@ -79,9 +74,6 @@ class FaceViewController: UIViewController {
 		innerView.backgroundColor = self.view.backgroundColor
 	}
 	
-	func setToYesterday(){
-		face.setToYesterday()
-	}
 }
 
 // MARK: - Extensions
