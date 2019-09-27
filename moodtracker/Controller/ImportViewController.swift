@@ -6,15 +6,21 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 import UIKit
 
+// MARK: - ImportViewController
 class ImportViewController: UIViewController {
+    
+    // MARK: Stored Instance Properties
 	var enteredHash: String = ""
 	
-	@IBOutlet weak var codeField: UITextField!
-	@IBOutlet weak var importButton: UIButton!
+    // MARK: IBOutlets
+	@IBOutlet private weak var codeField: UITextField!
+	@IBOutlet private weak var importButton: UIButton!
 	
+    // MARK: IBActions
 	@IBAction func codeChanged(_ sender: Any) {
 		enteredHash = codeField.text ?? ""
         if SharingConstants.hashLength == enteredHash.count {
@@ -24,6 +30,7 @@ class ImportViewController: UIViewController {
 		}
 		
 	}
+    
 	@IBAction func cancel(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}
