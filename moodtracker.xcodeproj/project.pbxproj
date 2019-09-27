@@ -138,7 +138,6 @@
 		A68480F62337C55C00ADB8EA /* Moodmeter.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Moodmeter.entitlements; sourceTree = "<group>"; };
 		A68481062337C65200ADB8EA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A68481082337C6B300ADB8EA /* Info_old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_old.plist; sourceTree = "<group>"; };
-		A684810A2337C9FA00ADB8EA /* Moodtracker WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moodtracker WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		A684810B2337C9FA00ADB8EA /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		A684810C2337C9FA00ADB8EA /* body.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = body.dae; sourceTree = "<group>"; };
 		A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -278,7 +277,6 @@
 				A68480E02337C50000ADB8EA /* Assets.xcassets */,
 				A68480E22337C50000ADB8EA /* Info.plist */,
 				A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */,
-				A684810A2337C9FA00ADB8EA /* Moodtracker WatchKit Extension-Bridging-Header.h */,
 			);
 			path = "moodtracker WatchKit Extension";
 			sourceTree = "<group>";
@@ -826,7 +824,6 @@
 				PRODUCT_NAME = "Moodtracker WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "moodtracker WatchKit Extension/Moodtracker WatchKit Extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -852,7 +849,6 @@
 				PRODUCT_NAME = "Moodtracker WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "moodtracker WatchKit Extension/Moodtracker WatchKit Extension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 6.0;
