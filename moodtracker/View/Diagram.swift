@@ -70,12 +70,6 @@ class Diagram {
 	}
 	
 	func drawAxis(){
-		let yAxis = UIBezierPath()
-		yAxis.move(to: CGPoint(x:offsetleft, y:offsettop))
-		yAxis.addLine(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
-		yAxis.lineWidth = 1;
-		yAxis.stroke()
-		
 		let xAxis = UIBezierPath()
 		xAxis.move(to: CGPoint(x:offsetleft, y:frame.height-offsettbottom))
 		xAxis.addLine(to: CGPoint(x:offsetleft+usedAreaWidth, y:frame.height-offsettbottom))
