@@ -84,7 +84,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="only relevant for watch os 4" numberOfLines="0" id="71U-CQ-QRm"/>
                     </items>
@@ -95,7 +95,7 @@
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="How are you feeling?" numberOfLines="0" id="AGy-cV-ovc"/>
                         <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2">
@@ -244,7 +244,7 @@
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
             <objects>
-                <controller id="hk2-7S-aFQ" customClass="MenuInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller id="hk2-7S-aFQ" customClass="MenuInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="P0H-ex-w0U">
                             <items>
