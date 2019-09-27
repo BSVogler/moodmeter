@@ -383,9 +383,9 @@
 			productReference = A68480B22337C4FC00ADB8EA /* Moodassist.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */ = {
+		A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */;
+			buildConfigurationList = A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit App" */;
 			buildPhases = (
 				A68480C42337C4FE00ADB8EA /* Resources */,
 				A68480E92337C50000ADB8EA /* Embed App Extensions */,
@@ -396,7 +396,7 @@
 			dependencies = (
 				A68480D82337C4FF00ADB8EA /* PBXTargetDependency */,
 			);
-			name = "Moodtracker WatchKit App";
+			name = "Moodassist WatchKit App";
 			productName = "moodtracker WatchKit App";
 			productReference = A68480C62337C4FE00ADB8EA /* Moodassist.app */;
 			productType = "com.apple.product-type.application.watchapp2";
@@ -458,7 +458,7 @@
 			projectRoot = "";
 			targets = (
 				A68480B12337C4FC00ADB8EA /* Moodassist */,
-				A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */,
+				A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */,
 				A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */,
 			);
 		};
@@ -644,7 +644,7 @@
 /* Begin PBXTargetDependency section */
 		A68480C92337C4FE00ADB8EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */;
+			target = A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */;
 			targetProxy = A68480C82337C4FE00ADB8EA /* PBXContainerItemProxy */;
 		};
 		A68480D82337C4FF00ADB8EA /* PBXTargetDependency */ = {
@@ -969,7 +969,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */ = {
+		A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A68480EB2337C50000ADB8EA /* Debug */,
