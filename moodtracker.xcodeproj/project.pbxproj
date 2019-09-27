@@ -36,7 +36,7 @@
 		A68480C72337C4FE00ADB8EA /* Moodassist.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A68480C62337C4FE00ADB8EA /* Moodassist.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A68480CD2337C4FE00ADB8EA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68480CB2337C4FE00ADB8EA /* Interface.storyboard */; };
 		A68480CF2337C4FF00ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480CE2337C4FF00ADB8EA /* Assets.xcassets */; };
-		A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A68480D62337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68480E02337C50000ADB8EA /* Assets.xcassets */; };
 		A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481062337C65200ADB8EA /* AppDelegate.swift */; };
 		A68481092337C6B300ADB8EA /* Info_old.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68481082337C6B300ADB8EA /* Info_old.plist */; };
@@ -97,7 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A68480D62337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex in Embed App Extensions */,
+				A68480D62337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,12 +125,12 @@
 		805FAB3D233BC97000D4E52A /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodtracker/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodtracker/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
-		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		8097026A233CCE3500947957 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = moodtracker/Model/Constants.swift; sourceTree = SOURCE_ROOT; };
 		8097026C233CCE3F00947957 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataHandler.swift; path = moodtracker/Model/DataHandler.swift; sourceTree = SOURCE_ROOT; };
 		8097026E233CE47700947957 /* SharingHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharingHash.swift; path = moodtracker/Model/SharingHash.swift; sourceTree = SOURCE_ROOT; };
 		80970271233E40A700947957 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A68480B22337C4FC00ADB8EA /* Moodassist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moodassist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		A68480CC2337C4FE00ADB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		A68480CE2337C4FF00ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68480D02337C4FF00ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Moodtracker WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Moodassist WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68480E02337C50000ADB8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68480E22337C50000ADB8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			children = (
 				A68480B22337C4FC00ADB8EA /* Moodassist.app */,
 				A68480C62337C4FE00ADB8EA /* Moodassist.app */,
-				A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */,
+				A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -392,9 +392,9 @@
 			productReference = A68480B22337C4FC00ADB8EA /* Moodassist.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */ = {
+		A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */;
+			buildConfigurationList = A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit App" */;
 			buildPhases = (
 				A68480C42337C4FE00ADB8EA /* Resources */,
 				A68480E92337C50000ADB8EA /* Embed App Extensions */,
@@ -405,14 +405,14 @@
 			dependencies = (
 				A68480D82337C4FF00ADB8EA /* PBXTargetDependency */,
 			);
-			name = "Moodtracker WatchKit App";
+			name = "Moodassist WatchKit App";
 			productName = "moodtracker WatchKit App";
 			productReference = A68480C62337C4FE00ADB8EA /* Moodassist.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */ = {
+		A68480D42337C4FF00ADB8EA /* Moodassist WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit Extension" */;
+			buildConfigurationList = A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit Extension" */;
 			buildPhases = (
 				947257DCA67C08DE3300C202 /* [CP] Check Pods Manifest.lock */,
 				A68480D12337C4FF00ADB8EA /* Sources */,
@@ -424,9 +424,9 @@
 			);
 			dependencies = (
 			);
-			name = "Moodtracker WatchKit Extension";
+			name = "Moodassist WatchKit Extension";
 			productName = "moodtracker WatchKit Extension";
-			productReference = A68480D52337C4FF00ADB8EA /* Moodtracker WatchKit Extension.appex */;
+			productReference = A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -467,8 +467,8 @@
 			projectRoot = "";
 			targets = (
 				A68480B12337C4FC00ADB8EA /* Moodassist */,
-				A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */,
-				A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */,
+				A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */,
+				A68480D42337C4FF00ADB8EA /* Moodassist WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -658,12 +658,12 @@
 /* Begin PBXTargetDependency section */
 		A68480C92337C4FE00ADB8EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A68480C52337C4FE00ADB8EA /* Moodtracker WatchKit App */;
+			target = A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */;
 			targetProxy = A68480C82337C4FE00ADB8EA /* PBXContainerItemProxy */;
 		};
 		A68480D82337C4FF00ADB8EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A68480D42337C4FF00ADB8EA /* Moodtracker WatchKit Extension */;
+			target = A68480D42337C4FF00ADB8EA /* Moodassist WatchKit Extension */;
 			targetProxy = A68480D72337C4FF00ADB8EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -839,7 +839,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "Moodtracker WatchKit Extension";
+				PRODUCT_NAME = "Moodassist WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -864,7 +864,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "Moodtracker WatchKit Extension";
+				PRODUCT_NAME = "Moodassist WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -974,7 +974,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit Extension" */ = {
+		A68480E62337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A68480E72337C50000ADB8EA /* Debug */,
@@ -983,7 +983,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodtracker WatchKit App" */ = {
+		A68480EA2337C50000ADB8EA /* Build configuration list for PBXNativeTarget "Moodassist WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A68480EB2337C50000ADB8EA /* Debug */,
