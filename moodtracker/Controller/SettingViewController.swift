@@ -104,7 +104,7 @@ class SettingViewController: UIViewController {
 				}
 			}
 		}
-        reminder.isEnabled = enabled
+        DataHandler.userProfile.reminder.isEnabled = enabled
 		notificationSwitch.setOn(reminder.isEnabled, animated: false)
 		reminderTimePicker.isHidden = reminder.isEnabled
 		timeLabel.isHidden = reminder.isEnabled

@@ -17,7 +17,7 @@ class ImportViewController: UIViewController {
 	
 	@IBAction func codeChanged(_ sender: Any) {
 		enteredHash = codeField.text ?? ""
-		if Sharing.hashlength == enteredHash.count {
+        if SharingConstants.hashLength == enteredHash.count {
 			importButton.isEnabled = true
 		} else {
 			importButton.isEnabled = false
@@ -29,7 +29,7 @@ class ImportViewController: UIViewController {
 	}
 	
 	@IBAction func importButtonPressed() {
-		Model.shared.sharing.importHash(enteredHash) {
+        DataHandler.userProfile.sharingHash?.importHash(enteredHash) {
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
