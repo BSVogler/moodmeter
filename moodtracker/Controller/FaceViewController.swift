@@ -77,6 +77,10 @@ class FaceViewController: UIViewController {
 		moodLabel.text = face.getSmiley()
 		self.view.backgroundColor = face.getColor()
 		innerView.backgroundColor = self.view.backgroundColor
+		if !face.isYesterday,
+			face.mood != 0 {
+			UIApplication.shared.applicationIconBadgeNumber = 0;
+		}
 	}
 	
 	func setToYesterday(){

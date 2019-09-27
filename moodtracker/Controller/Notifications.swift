@@ -16,6 +16,7 @@ class Notifications {
 		dateComponents.hour = Model.shared.reminderHour
 		dateComponents.minute = Model.shared.reminderMinute
 		let content = UNMutableNotificationContent()
+		content.badge = 1
 		content.title = NSLocalizedString("Mood Time", comment: "")
 		content.body = NSLocalizedString("It is time to give me your mood.", comment: "")
 		// Create the trigger as a repeating event.
