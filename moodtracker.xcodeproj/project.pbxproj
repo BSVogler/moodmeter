@@ -820,7 +820,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "Moodtracker WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -845,7 +845,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "Moodtracker WatchKit Extension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -870,7 +870,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp;
 				PRODUCT_NAME = Moodassist;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -896,7 +896,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist.watchkitapp;
 				PRODUCT_NAME = Moodassist;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -918,7 +918,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist;
 				PRODUCT_NAME = Moodassist;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -937,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.moodtracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsvogler.moodassist;
 				PRODUCT_NAME = Moodassist;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
