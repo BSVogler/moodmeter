@@ -44,7 +44,7 @@ enum DataHandler {
     
     static func exportCSV() -> String {
         return "Date; Mood\n" + userProfile.dataset
-            .map{ "\($0.date.toJS());\($0.mood)" }
+            .map{ "\($0.day.toJS());\($0.mood)" }
             .joined(separator: "\n")
     }
     

@@ -42,6 +42,16 @@ extension Date {
         return dateFormatter
     }
     
+    /// returns yesterday's date as a time-"normalized" (12:00) `Date` instance
+    static var yesterday: Date? {
+        let calendar = Calendar.current
+        if let date = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: Date()),
+            let yesterday = calendar.date(byAdding: .day, value: -1, to: date) {
+            return yesterday.normalized()
+        }
+        return nil
+    }
+    
     // MARK: Type Methods
     static func fromJS(_ from: String) -> Date? {
         return Date.dateFormatter.date(from: from)
@@ -54,6 +64,12 @@ extension Date {
     }
     
     // MARK: Instance Methods
+    func normalized() -> Date {
+        let calendar = Calendar.current
+        let date = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+        return date
+    }
+    
     func toJS() -> String {
         return Date.dateFormatter.string(from: self)
     }

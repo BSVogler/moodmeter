@@ -8,17 +8,6 @@
 
 // MARK: Imports
 import Foundation
-import UIKit
 
 // MARK: - Mood
 typealias Mood = Int
-
-extension Mood {
-    func getSmiley() -> String {
-        return Measurement.moodToText[self]
-    }
-    
-    func getColor() -> UIColor {
-        return Measurement.moodToColor[self]
-    }
-}
