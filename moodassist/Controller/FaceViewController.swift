@@ -78,7 +78,7 @@ class FaceViewController: UIViewController {
 		}
 		faceRenderer.scale = UIScreen.main.scale
 		faceRenderer.mood = face.mood
-		faceImageView.image = faceRenderer.getImage(frame: faceImageView.frame)
+		faceImageView.image = faceRenderer.getImage(rect: faceImageView.frame)
 		
 	}
 	

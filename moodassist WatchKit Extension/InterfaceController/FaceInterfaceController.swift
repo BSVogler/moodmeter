@@ -35,7 +35,16 @@ class FaceScene: WKInterfaceSCNScene {
 //MARK: - FaceInterfaceController
 @IBDesignable
 class FaceInterfaceController: WKInterfaceController {
+	
+	// MARK: Outlets
+	@IBOutlet weak var dateLabel: WKInterfaceLabel!
+	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene?
+	@IBOutlet weak var background: WKInterfaceGroup!
+	@IBOutlet weak var faceImage: WKInterfaceImage!
+	
+	// MARK: Stored Properties
 	let face = Measurement()
+	private var faceRenderer = FaceRenderer()
 	
 	@IBInspectable public var isYesterday: Bool = false {
 		didSet {
@@ -43,12 +52,6 @@ class FaceInterfaceController: WKInterfaceController {
 			refreshDisplay()
 		}
 	}
-	
-	// MARK: Outlets
-	@IBOutlet weak var dateLabel: WKInterfaceLabel!
-	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene?
-	@IBOutlet weak var moodLabel: WKInterfaceLabel!
-	@IBOutlet weak var background: WKInterfaceGroup!
 	
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: Any) {
@@ -111,8 +114,13 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	func refreshDisplay(){
-		moodLabel.setText(face.mood.getSmiley())
 		background.setBackgroundColor(face.getColor())
+		faceRenderer.scale = WKInterfaceDevice.current().screenScale
+		faceRenderer.mood = face.mood
+		faceRenderer.offsetY = -self.contentFrame.height/5
+		//make it a rectangle
+		let frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: self.contentFrame.height)
+		faceImage.setImage(faceRenderer.getImage(rect: frame))
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()
