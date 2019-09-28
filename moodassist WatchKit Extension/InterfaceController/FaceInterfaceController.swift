@@ -125,5 +125,6 @@ class Yesterday: FaceInterfaceController { // What does this workaround do?
 	override func willActivate(){
 		super.willActivate()
 		isYesterday = true
+		face.day = Date.yesterday ?? Date()
 	}
 }

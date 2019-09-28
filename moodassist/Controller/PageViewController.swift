@@ -52,6 +52,11 @@ class PageViewController: NSObject {
 		}
 		let dataViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: identifier)
 		
+		if index == 0,
+		   let dataViewController = dataViewController as? FaceViewController {
+			dataViewController.setToYesterday()
+		}
+		
 		if let dataViewController = dataViewController as? FaceViewController {
 			dataViewController.topLabel = self.pageTitles[index]
 		}

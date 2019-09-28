@@ -49,10 +49,8 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	
     // Can this take single measurements or only the whole dataset? Update documentation, please.
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
-		if let sharingHash = userProfile.sharingHash,
-            let userHash = sharingHash.userHash {
-            
-            let mrequest = MeasurementRequest(password: sharingHash.password ?? "",
+		if let userHash = userProfile.sharingHash.userHash {
+            let mrequest = MeasurementRequest(password: userProfile.sharingHash.password ?? "",
                                               measurements: measurements)
             post(to: userHash,
 				 with: mrequest,
@@ -69,10 +67,8 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	}
 	
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
-        
-		if let sharingHash = userProfile.sharingHash,
-        let userHash = sharingHash.userHash {
-			let delRequest = DeleteRequest(password: sharingHash.password ?? "")
+        if let userHash = userProfile.sharingHash.userHash {
+			let delRequest = DeleteRequest(password: userProfile.sharingHash.password ?? "")
 			delete(to: userHash,
 				   with: delRequest,
 				   done: done)
@@ -83,9 +79,9 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	
 	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void) {
         
-        if let sharingHash = userProfile.sharingHash {
-            let moveRequest = MoveRequest(password: sharingHash.password ?? "",
-                                          old_password: sharingHash.password ?? "",
+		if userProfile.sharingHash.userHash != nil {
+            let moveRequest = MoveRequest(password: userProfile.sharingHash.password ?? "",
+                                          old_password: userProfile.sharingHash.password ?? "",
                                           old_hash: old)
             post(to: new,
                  with: moveRequest,

@@ -9,7 +9,7 @@
         <!--Yesterday-->
         <scene sceneID="TbZ-OT-ec3">
             <objects>
-                <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="Yesterday" customModule="Moodtracker_WatchKit_Extension">
+                <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="Yesterday" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <sceneKitScene width="136" height="192" alignment="left" id="w8w-4h-Igo"/>
                         <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="vertical" radius="0.0" id="fQg-vE-5n1">
@@ -84,7 +84,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="only relevant for watch os 4" numberOfLines="0" id="71U-CQ-QRm"/>
                     </items>
@@ -95,7 +95,7 @@
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodassist" customModuleProvider="target">
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="How are you feeling?" numberOfLines="0" id="AGy-cV-ovc"/>
                         <button width="1" alignment="left" title=":-D" id="TpI-gP-BW2">
@@ -131,7 +131,7 @@
         <!--History-->
         <scene sceneID="lRt-Ob-uup">
             <objects>
-                <controller identifier="History" id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller identifier="History" id="ht7-Kj-mwk" customClass="HistoryInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="center" id="OH9-aY-Jgs">
                             <items>
@@ -244,11 +244,11 @@
         <!--Menu Interface Controller-->
         <scene sceneID="HbR-Sd-BVs">
             <objects>
-                <controller id="hk2-7S-aFQ" customClass="MenuInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller id="hk2-7S-aFQ" customClass="MenuInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="P0H-ex-w0U">
                             <items>
-                                <tableRow identifier="menuItem" id="qJ3-u7-VIU" customClass="MyRowController" customModule="Moodtracker_WatchKit_Extension">
+                                <tableRow identifier="menuItem" id="qJ3-u7-VIU" customClass="MyRowController" customModule="Moodassist_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="wMO-Tg-wzx">
                                         <items>
                                             <imageView alignment="left" verticalAlignment="center" image="cloud" catalog="system" id="lS3-jo-ZwM"/>
@@ -264,7 +264,7 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="table" destination="P0H-ex-w0U" id="Fdd-Ae-7M9"/>
+                        <outlet property="table" destination="P0H-ex-w0U" id="Yzm-aT-lfk"/>
                     </connections>
                 </controller>
             </objects>
@@ -273,7 +273,7 @@
         <!--Share-->
         <scene sceneID="jNd-Lx-l3d">
             <objects>
-                <controller identifier="Share" id="75c-uB-v4o" customClass="ShareInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller identifier="Share" id="75c-uB-v4o" customClass="ShareInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Your link" id="sUr-SS-wsd">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -309,7 +309,7 @@
         <!--Import Interface Controller-->
         <scene sceneID="Suj-Kf-Xyx">
             <objects>
-                <controller id="a6e-TG-pPZ" customClass="ImportInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller id="a6e-TG-pPZ" customClass="ImportInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Importing merges the data and uses the new link" numberOfLines="0" id="6en-RV-hVa"/>
                         <textField width="1" alignment="left" text="enter code" textContentType="username" id="Y3W-4b-hhh">
@@ -336,7 +336,7 @@
         <!--Reminder-->
         <scene sceneID="IZF-jt-hU2">
             <objects>
-                <controller identifier="Reminder" id="nHo-9K-4H5" customClass="ReminderInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller identifier="Reminder" id="nHo-9K-4H5" customClass="ReminderInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <switch width="1" alignment="left" title="Enable Reminder" id="oYb-SR-boS">
                             <color key="tintColor" red="0.92850462150000002" green="0.62659551059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -375,7 +375,7 @@
         <!--Face Interface Controller-->
         <scene sceneID="EKV-w9-z0k">
             <objects>
-                <controller fullBounds="YES" fullScreen="YES" id="XEc-Ya-93C" customClass="FaceInterfaceController" customModule="Moodtracker_WatchKit_Extension">
+                <controller fullBounds="YES" fullScreen="YES" id="XEc-Ya-93C" customClass="FaceInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
                         <sceneKitScene width="136" height="192" alignment="left" id="RUW-ZX-zGI"/>
                         <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="vertical" radius="0.0" id="eqo-ng-dzv">

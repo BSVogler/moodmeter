@@ -10,6 +10,9 @@
 import Foundation
 import UIKit.UIColor
 
+// MARK: - Mood
+typealias Mood = Int
+
 // MARK: - Measurement
 class Measurement: Codable {
     

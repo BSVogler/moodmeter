@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  moodtracker
+//  moodassist
 //
 //  Created by Benedikt Stefan Vogler on 22.09.19.
 //  Copyright © 2019 bsvogler. All rights reserved.

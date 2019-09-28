@@ -35,7 +35,7 @@ class ImportInterfaceController: WKInterfaceController {
 	}
     
 	@IBAction func importButtonPressed() {
-        DataHandler.userProfile.sharingHash?.importHash(enteredHash) {
+        DataHandler.userProfile.sharingHash.importHash(enteredHash) {
 			self.pop()
 		}
 	}

@@ -14,39 +14,35 @@ import WatchKit
 class ShareInterfaceController: WKInterfaceController {
 	
     // MARK: Stored Instance Properties
-    var sharingHash = DataHandler.userProfile.sharingHash
+	var sharingHash = DataHandler.userProfile.sharingHash
     
     // MARK: IBOutlets
 	@IBOutlet weak var hashLabel: WKInterfaceLabel!
 	
     // MARK: Overridden/ Lifecycle Methods
     override func awake(withContext context: Any?) {
-        if let sharingHash = sharingHash,
+		if let _ = sharingHash.userHash,
             let shareURL = sharingHash.urlWithoutProtocol {
             hashLabel.setText(shareURL)
         } else {
             hashLabel.setText("...wait...")
-            sharingHash?.generateAndRegisterHash() {
-                self.hashLabel.setText(self.sharingHash?.urlWithoutProtocol)
+            sharingHash.generateAndRegisterHash() {
+                self.hashLabel.setText(self.sharingHash.urlWithoutProtocol)
             }
         }
     }
     
     override func didAppear() {
-        self.hashLabel.setText(sharingHash?.urlWithoutProtocol)
+        self.hashLabel.setText(sharingHash.urlWithoutProtocol)
     }
     
     // MARK: IBActions
 	@IBAction func generateNewLink() {
 		hashLabel.setText("...wait...")
         
-        // if doesn't exist yet, create
-        if sharingHash == nil {
-            sharingHash = SharingHash()
-        }
 		// generate new sharing url
-        sharingHash?.generateAndRegisterHash() {
-            self.hashLabel.setText(self.sharingHash?.url?.absoluteString)
+        sharingHash.generateAndRegisterHash() {
+            self.hashLabel.setText(self.sharingHash.url?.absoluteString)
 		}
 	}
     
@@ -55,7 +51,7 @@ class ShareInterfaceController: WKInterfaceController {
 			//wait for confirm from server
 			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
-                self.sharingHash?.disableSharing()
+                self.sharingHash.disableSharing()
 				self.pop()
 			}
 		}
