@@ -63,11 +63,11 @@ class HistoryViewController: UIViewController {
 	@IBAction func displayRangeChanged(_ sender: Any) {
 		switch rangeSelector.selectedSegmentIndex {
 		case 0:
-			diagramController.analysisrange = .week
+			diagramController.analysisRange = .week
 		case 1:
-			diagramController.analysisrange = .month
+			diagramController.analysisRange = .month
 		default:
-			diagramController.analysisrange = .year
+			diagramController.analysisRange = .year
 		}
 		refreshRendering()
 	}

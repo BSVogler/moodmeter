@@ -32,7 +32,7 @@ class Diagram {
 			usedAreaHeight = frame.height-offsettop-offsettbottom
 			usedAreaWidth = frame.width-offsetleft-offsetright
 			tickHeight = usedAreaHeight/5.0
-			tickWidth = usedAreaWidth / CGFloat(controller.analysisrange.rawValue)
+			tickWidth = usedAreaWidth / CGFloat(controller.analysisRange.rawValue)
 		}
 	}
 	var usedAreaHeight =  CGFloat(0)
@@ -85,7 +85,7 @@ class Diagram {
 		
 		// get label description
 		var labels: [String] = []
-		switch controller.analysisrange {
+		switch controller.analysisRange {
 		case .week:
 			var calendar = Calendar(identifier: .gregorian)
 			calendar.locale = Locale.current
@@ -122,7 +122,7 @@ class Diagram {
 	
 	private func getPoints() -> [CGPoint] {
 		var points: [CGPoint] = []
-		switch controller.analysisrange {
+		switch controller.analysisRange {
 		case .week:
 			//get measurements for this week
 			if let lowerDate = controller.lowerDate,

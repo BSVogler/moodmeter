@@ -6,17 +6,20 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import Foundation
 
+// MARK: DiagramController
 class DiagramController {
-	// MARK: Stored properties
-	var analysisrange = AnalysisRange.week{
-		didSet{
+    
+	// MARK: Stored Instance Properties
+	var analysisRange = AnalysisRange.week {
+		didSet {
 			updateBounds()
 		}
 	}
-	var selectedDate = Date(){
-		didSet{
+	var selectedDate = Date() {
+		didSet {
 			updateBounds()
 		}
 	}
@@ -42,38 +45,15 @@ class DiagramController {
 		formatter.locale = Calendar.current.locale
 		return formatter
 	}()
-
-	
 	
 	// MARK: Initializers
 	init() {
 		updateBounds()
 	}
 	
-	// MARK: Instance Methods
-	private func updateBounds(){
-		let calendar = Calendar.current
-		switch analysisrange {
-		case .week:
-			lowerDate = selectedDate.previous(.monday)
-			higherDate = selectedDate.next(.monday)
-		case .month:
-			let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
-			lowerDate = calendar.date(from: firstComponents)
-			var nextComponents = DateComponents()
-			nextComponents.month = 1
-			higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
-		case .year:
-			let dateComponents = calendar.dateComponents([.year], from: selectedDate)
-			lowerDate = calendar.date(from: dateComponents)
-			if let lowerDate = lowerDate {
-				higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
-			}
-		}
-	}
-	
-	func navigateBack(){
-		switch analysisrange {
+    // MARK: Instance Methods
+	func navigateBack() {
+		switch analysisRange {
 		case .week:
 			selectedDate = Calendar.current.date(byAdding: .day, value: -7, to: selectedDate) ?? selectedDate
 		case .month:
@@ -83,8 +63,8 @@ class DiagramController {
 		}
 	}
 	
-	func navigateForward(){
-		switch analysisrange {
+	func navigateForward() {
+		switch analysisRange {
 		case .week:
 			selectedDate = Calendar.current.date(byAdding: .day, value: 7, to: selectedDate) ?? selectedDate
 		case .month:
@@ -95,7 +75,7 @@ class DiagramController {
 	}
 	
 	func getRangeText() -> String {
-		switch analysisrange {
+		switch analysisRange {
 		case .year:
 			let dateComponents = Calendar.current.dateComponents([.year], from: selectedDate)
 			return "\(dateComponents.year!)"
@@ -124,5 +104,27 @@ class DiagramController {
 		}
 		return ""
 	}
+    
+    // MARK: Private Instance Methods
+    private func updateBounds(){
+        let calendar = Calendar.current
+        switch analysisRange {
+        case .week:
+            lowerDate = selectedDate.previous(.monday)
+            higherDate = selectedDate.next(.monday)
+        case .month:
+            let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
+            lowerDate = calendar.date(from: firstComponents)
+            var nextComponents = DateComponents()
+            nextComponents.month = 1
+            higherDate = calendar.date(byAdding: nextComponents, to: selectedDate)
+        case .year:
+            let dateComponents = calendar.dateComponents([.year], from: selectedDate)
+            lowerDate = calendar.date(from: dateComponents)
+            if let lowerDate = lowerDate {
+                higherDate = calendar.date(byAdding: .year, value: 1, to: lowerDate)
+            }
+        }
+    }
 	
 }
