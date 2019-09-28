@@ -117,7 +117,7 @@ class FaceInterfaceController: WKInterfaceController {
 		background.setBackgroundColor(face.getColor())
 		faceRenderer.scale = WKInterfaceDevice.current().screenScale
 		faceRenderer.mood = face.mood
-		faceRenderer.offsetY = -self.contentFrame.height/5
+		faceRenderer.offsetY = -self.contentFrame.height/8
 		//make it a rectangle
 		let frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: self.contentFrame.height)
 		faceImage.setImage(faceRenderer.getImage(rect: frame))
