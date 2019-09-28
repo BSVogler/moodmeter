@@ -56,6 +56,7 @@ class HistoryViewController: UIViewController {
 	
 	// MARK: functions
 	@objc func refreshRendering(){
+		diagram.frame = diagramImage.frame
 		rangeDisplay.text = diagramController.getRangeText()
 		diagramImage.image = diagram.getImage(scale: UIScreen.main.scale)
 	}
@@ -64,6 +65,12 @@ class HistoryViewController: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+		diagram.frame = diagramImage.frame
+		refreshRendering()
+
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		//causes a correct size redraw #49
 		diagram.frame = diagramImage.frame
 		refreshRendering()
 	}
