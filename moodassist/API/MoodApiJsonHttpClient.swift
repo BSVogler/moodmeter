@@ -34,10 +34,10 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 				print("Could not parse String (\(item[0])) to Date")
 				continue
 			}
-            
+            let normalizedDate = date.normalized()
             if let mood = Int(item[1]) {
                 // replace mood value if existing
-                if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == date}) {
+                if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == normalizedDate}) {
                     existingMsmtEntry.mood = mood
                 } else {
                     // append
