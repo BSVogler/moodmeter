@@ -57,6 +57,8 @@
 		A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481792337D14E00ADB8EA /* FaceViewController.swift */; };
 		A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817A2337D14F00ADB8EA /* HistoryViewController.swift */; };
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
+		A6A56C42233F872000CD66BB /* FaceRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A56C41233F872000CD66BB /* FaceRenderer.swift */; };
+		A6A56C43233F872000CD66BB /* FaceRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A56C41233F872000CD66BB /* FaceRenderer.swift */; };
 		A6B1BB38233CCA0F00C62E71 /* DiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */; };
 		A6B1BB39233CCA0F00C62E71 /* DiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */; };
 		A6B1BB3E233D2F2600C62E71 /* ReminderInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */; };
@@ -168,6 +170,7 @@
 		A68481842337D27D00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		A6A56C41233F872000CD66BB /* FaceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRenderer.swift; sourceTree = "<group>"; };
 		A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramController.swift; sourceTree = "<group>"; };
 		A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		A6B61C58233A63C3009A9658 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
@@ -345,6 +348,7 @@
 		A6B61C57233A6389009A9658 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A6A56C41233F872000CD66BB /* FaceRenderer.swift */,
 				A6B61C58233A63C3009A9658 /* Diagram.swift */,
 				A68480BB2337C4FC00ADB8EA /* Main.storyboard */,
 				A68480C02337C4FE00ADB8EA /* LaunchScreen.storyboard */,
@@ -592,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A56C42233F872000CD66BB /* FaceRenderer.swift in Sources */,
 				802B5458233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				808A2116233CC54C009915A0 /* Profile.swift in Sources */,
 				A68481452337CC5700ADB8EA /* Model.swift in Sources */,
@@ -644,6 +649,7 @@
 				802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */,
 				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
+				A6A56C43233F872000CD66BB /* FaceRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

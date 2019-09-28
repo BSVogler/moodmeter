@@ -9,11 +9,6 @@
 // MARK: Imports
 import UIKit
 
-// MARK: - DesignableLabel
-@IBDesignable
-class DesignableLabel: UILabel {
-}
-
 // MARK: - FaceViewController
 class FaceViewController: UIViewController {
 
@@ -21,12 +16,13 @@ class FaceViewController: UIViewController {
 	var topLabel: String = ""
 	var modelController: PageViewController?
 	private var face = Measurement()
+	private var faceRenderer = FaceRenderer()
 	
 	// MARK: IBOutlets
 	@IBOutlet private weak var dataLabel: UILabel!
 	@IBOutlet private weak var innerView: UIView!
-	@IBOutlet private weak var moodLabel: UILabel!
-    
+	@IBOutlet private weak var faceImageView: UIImageView!
+	
     // MARK: Overridden/ Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,30 +70,19 @@ class FaceViewController: UIViewController {
 	
 	// MARK: Instance Methods
 	func refreshDisplay(){
-		moodLabel.text = face.getSmiley()
 		self.view.backgroundColor = face.getColor()
 		innerView.backgroundColor = self.view.backgroundColor
 		if !face.isYesterday,
 			face.mood != 0 {
 			UIApplication.shared.applicationIconBadgeNumber = 0;
 		}
+		faceRenderer.scale = UIScreen.main.scale
+		faceRenderer.mood = face.mood
+		faceImageView.image = faceRenderer.getImage(frame: faceImageView.frame)
+		
 	}
 	
 	func setToYesterday(){
 		face.setToYesterday()
 	}
-}
-
-// MARK: - Extensions
-// MARK: UIView: IBInspectable
-extension UIView {
-	@IBInspectable
-	var rotation: Int {
-		get {
-			return 0
-		} set {
-			let radians = ((CGFloat.pi) * CGFloat(newValue) / CGFloat(180.0))
-			self.transform = CGAffineTransform(rotationAngle: radians)
-		}
-	}	
 }
