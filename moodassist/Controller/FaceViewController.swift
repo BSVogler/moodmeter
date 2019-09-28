@@ -31,7 +31,6 @@ class FaceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.dataLabel!.text = topLabel
-        // face.mood = Model.shared.dataset[face.date] ?? 0
         refreshDisplay()
     }
     
