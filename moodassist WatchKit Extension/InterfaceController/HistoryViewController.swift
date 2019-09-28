@@ -63,7 +63,8 @@ class HistoryInterfaceController: WKInterfaceController {
 	
 	@objc func redraw(){
 		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
-		let image = diagram.getImage(frame: self.contentFrame, scale: WKInterfaceDevice.current().screenScale)
+		diagram.frame = self.contentFrame
+		let image = diagram.getImage(scale: WKInterfaceDevice.current().screenScale)
 		self.diagramImage.setImage(image)
 		rangeLabel.setText(diagramController.getRangeText())
 	}

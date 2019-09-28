@@ -56,18 +56,15 @@ class HistoryViewController: UIViewController {
 	
 	// MARK: functions
 	@objc func refreshRendering(){
-		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
-		
-		//dataset to string
-		diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
-		
 		rangeDisplay.text = diagramController.getRangeText()
+		diagramImage.image = diagram.getImage(scale: UIScreen.main.scale)
 	}
 	
 	override func viewDidLoad() {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+		diagram.frame = diagramImage.frame
 		refreshRendering()
 	}
 }

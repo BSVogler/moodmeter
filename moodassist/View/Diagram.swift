@@ -46,8 +46,7 @@ class Diagram {
 	}
 	// MARK: Instance Methods
 	
-	func getImage(frame: CGRect, scale: CGFloat) -> UIImage {
-		self.frame = frame
+	func getImage(scale: CGFloat) -> UIImage {
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
 		axisColor.setStroke()
 		//let context = UIGraphicsGetCurrentContext()

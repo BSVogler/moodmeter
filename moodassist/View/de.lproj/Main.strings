@@ -44,7 +44,7 @@
 "g7i-g5-zda.normalTitle" = "Fertig";
 
 /* Class = "UIButton"; normalTitle = "    Export file"; ObjectID = "gpo-7r-AMj"; */
-"gpo-7r-AMj.normalTitle" = "    Exportiere Datei";
+"gpo-7r-AMj.normalTitle" = "Exportiere Datei";
 
 /* Class = "UILabel"; text = "History"; ObjectID = "hBA-QD-yZx"; */
 "hBA-QD-yZx.text" = "Übersicht";

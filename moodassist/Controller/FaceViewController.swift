@@ -79,7 +79,6 @@ class FaceViewController: UIViewController {
 		faceRenderer.scale = UIScreen.main.scale
 		faceRenderer.mood = face.mood
 		faceImageView.image = faceRenderer.getImage(rect: faceImageView.frame)
-		
 	}
 	
 	func setToYesterday(){
