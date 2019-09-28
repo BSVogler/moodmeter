@@ -14,6 +14,11 @@ import UIKit
 class DesignableLabel: UILabel {
 }
 
+// MARK: - FaceType
+enum FaceType {
+    case yesterday, today
+}
+
 // MARK: - FaceViewController
 class FaceViewController: UIViewController {
 
@@ -21,6 +26,7 @@ class FaceViewController: UIViewController {
 	var topLabel: String = ""
 	var modelController: PageViewController?
 	private var face = Measurement()
+    private var faceType: FaceType = .today
 	
 	// MARK: IBOutlets
 	@IBOutlet private weak var dataLabel: UILabel!
@@ -31,6 +37,7 @@ class FaceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.dataLabel!.text = topLabel
+        setCurrentFace()
         refreshDisplay()
     }
     
@@ -78,8 +85,35 @@ class FaceViewController: UIViewController {
 	}
 	
 	func setToYesterday(){
-		face.day = Date.yesterday ?? Date()
+        faceType = .yesterday
+        setCurrentFace()
 	}
+    
+    // MARK: Private Instance Methods
+    private func setCurrentFace() {
+        switch faceType {
+        case .today:
+            // existing `Measurement` for today
+            if let todaysMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == Date.today }) {
+                self.face = todaysMsmt
+            } else {
+                let newMsmtToday = Measurement()
+                DataHandler.userProfile.dataset.append(newMsmtToday)
+                self.face = newMsmtToday
+            }
+        case .yesterday:
+            // existing `Measurement` for yesterday
+            if let yesterdaysMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == Date.yesterday }) {
+                self.face = yesterdaysMsmt
+            } else {
+                if let yesterday = Date.yesterday {
+                    let newMsmtYesterday = Measurement(day: yesterday, mood: 0)
+                    DataHandler.userProfile.dataset.append(newMsmtYesterday)
+                    self.face = newMsmtYesterday
+                }
+            }
+        }
+    }
 	
 }
 
