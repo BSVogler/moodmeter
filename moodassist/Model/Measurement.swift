@@ -22,10 +22,15 @@ class Measurement: Codable {
     /// Sends update to server when changed (didSet is not being called on initialization)
     var mood: Mood {
         didSet {
+            _ = DataHandler.saveToFiles()
             MoodApiJsonHttpClient.shared.postMeasurement(measurements: [self]) { _ in }
         }
     }
-    var day: Date
+    var day: Date {
+        didSet {
+            self.day = self.day.normalized()
+        }
+    }
     
 	// MARK: Initializers
     init() {
