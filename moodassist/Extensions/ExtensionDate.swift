@@ -42,6 +42,15 @@ extension Date {
         return dateFormatter
     }
     
+    /// returns today's date as a time-"normalized" (12:00) `Date` instance
+    static var today: Date? {
+        let calendar = Calendar.current
+        if let today = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: Date()) {
+            return today.normalized()
+        }
+        return nil
+    }
+    
     /// returns yesterday's date as a time-"normalized" (12:00) `Date` instance
     static var yesterday: Date? {
         let calendar = Calendar.current
