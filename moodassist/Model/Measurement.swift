@@ -23,8 +23,7 @@ class Measurement: Codable {
     var mood: Mood {
         didSet {
             logger.verbose("Changed mood from \(oldValue) to \(mood).")
-            _ = DataHandler.saveToFiles()
-            MoodApiJsonHttpClient.shared.postMeasurement(measurements: [self]) { _ in }
+            moodChanged()
         }
     }
     var day: Date {
@@ -83,5 +82,12 @@ class Measurement: Codable {
     /// returns true, when this instance's date equals yesterday's date
     func isFromYesterday() -> Bool {
         return self.day == Date.yesterday
+    }
+    
+    // MARK: Private Instance Methods
+    private func moodChanged() {
+        NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
+        _ = DataHandler.saveToFiles()
+        MoodApiJsonHttpClient.shared.postMeasurement(measurements: [self]) { _ in }
     }
 }
