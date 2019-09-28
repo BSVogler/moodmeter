@@ -22,6 +22,7 @@ class Measurement: Codable {
     /// Sends update to server when changed (didSet is not being called on initialization)
     var mood: Mood {
         didSet {
+            logger.verbose("Changed mood from \(oldValue) to \(mood).")
             _ = DataHandler.saveToFiles()
             MoodApiJsonHttpClient.shared.postMeasurement(measurements: [self]) { _ in }
         }

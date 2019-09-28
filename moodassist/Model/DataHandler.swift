@@ -33,7 +33,7 @@ enum DataHandler {
             let data = try JSONEncoder().encode(userProfile)
             let jsonFileWrapper = FileWrapper(regularFileWithContents: data)
             try jsonFileWrapper.write(to: LocalStorageConstants.documentDirectoryStorageURL, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
-            print("Saved database.")
+            logger.verbose("Saved dataset (\(userProfile.dataset.count) entries).")
             
             return true
         } catch _ {
