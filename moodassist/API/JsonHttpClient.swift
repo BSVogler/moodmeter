@@ -116,6 +116,13 @@ class JsonHttpClient {
 				return
 			}
 			
+			if let statuscode = response.response?.statusCode,
+				statuscode == 500 {
+				logger.warning("500, server error")
+				done(.failure(ApiError.errorMessage(message: "server error")))
+				return
+			}
+			
 			self.decodeAndPropagate(data: data, responseType: responseType, done: done)
 		}
 	}
