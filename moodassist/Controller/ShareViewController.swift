@@ -145,6 +145,7 @@ class ShareViewController: UIViewController {
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
+		shareLiveDataButton.isHidden = false
 		let attributedString = NSMutableAttributedString(string: NSLocalizedString(termsText.text, comment: "") )
 		let foundRange = attributedString.mutableString.range(of: NSLocalizedString("terms and conditions", comment: ""))
 		guard foundRange.location != NSNotFound else {
