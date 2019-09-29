@@ -469,7 +469,7 @@
                                             <color key="titleColor" red="0.85098039219999999" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ikP-H5-PiD" kind="presentation" id="JKo-4Y-ckr"/>
+                                            <segue destination="ikP-H5-PiD" kind="presentation" identifier="importSegue" id="JKo-4Y-ckr"/>
                                         </connections>
                                     </button>
                                 </subviews>

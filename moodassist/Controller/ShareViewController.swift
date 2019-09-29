@@ -53,7 +53,14 @@ class ShareViewController: UIViewController {
         //disable keyboard
         shareLinkField.inputView = UIView.init(frame: .zero)
     }
-    
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "importSegue"{
+			let vc = segue.destination as! ImportViewController
+			vc.delegate = self
+		}
+	}
+	
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
 		activityIndicator.isHidden = false
@@ -141,6 +148,8 @@ class ShareViewController: UIViewController {
 		exportButton.titleLabel?.text = labelBefore
 	}
 	
+	// MARK: instance properties
+	
 	// MARK: Instance Methods
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
@@ -181,3 +190,11 @@ extension ShareViewController: UIDocumentInteractionControllerDelegate {
         return self
     }
 }
+
+extension ShareViewController: URLupdaterDelegate {
+	func updatedURL() {
+		//update the sharing url
+		shareLinkField.text = Model.shared.sharing.URL?.absoluteString
+	}
+}
+

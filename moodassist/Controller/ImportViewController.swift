@@ -9,13 +9,19 @@
 import Foundation
 import UIKit
 
+protocol URLupdaterDelegate {
+	func updatedURL()
+}
+
 class ImportViewController: UIViewController {
 	var enteredHash: String = ""
+	var delegate: URLupdaterDelegate?
 	
 	@IBOutlet weak var codeField: UITextField!
 	@IBOutlet weak var importButton: UIButton!
 	
 	@IBAction func codeChanged(_ sender: Any) {
+		codeField.text = codeField.text?.uppercased()
 		enteredHash = codeField.text ?? ""
 		if Sharing.hashlength == enteredHash.count {
 			importButton.isEnabled = true
@@ -31,6 +37,7 @@ class ImportViewController: UIViewController {
 	@IBAction func importButtonPressed() {
 		Model.shared.sharing.importHash(enteredHash) { succ, err in
 			if succ {
+				self.delegate?.updatedURL()
 				self.dismiss(animated: true, completion: nil)
 			} else {
 				self.alert(title: NSLocalizedString("Failed", comment: ""), message: err?.localizedDescription ?? "error")
