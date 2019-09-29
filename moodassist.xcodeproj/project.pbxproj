@@ -57,6 +57,7 @@
 		A684817F2337D14F00ADB8EA /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481792337D14E00ADB8EA /* FaceViewController.swift */; };
 		A68481802337D14F00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817A2337D14F00ADB8EA /* HistoryViewController.swift */; };
 		A68481812337D14F00ADB8EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684817B2337D14F00ADB8EA /* ShareViewController.swift */; };
+		A6A004592341293A0086A0AF /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = A6A004582341293A0086A0AF /* sounds */; };
 		A6A56C42233F872000CD66BB /* FaceRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A56C41233F872000CD66BB /* FaceRenderer.swift */; };
 		A6A56C43233F872000CD66BB /* FaceRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A56C41233F872000CD66BB /* FaceRenderer.swift */; };
 		A6B1BB38233CCA0F00C62E71 /* DiagramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */; };
@@ -170,6 +171,7 @@
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A6A00455234100CD0086A0AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		A6A00457234101CA0086A0AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		A6A004582341293A0086A0AF /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		A6A56C41233F872000CD66BB /* FaceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRenderer.swift; sourceTree = "<group>"; };
 		A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramController.swift; sourceTree = "<group>"; };
 		A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		A68480B42337C4FC00ADB8EA /* moodassist */ = {
 			isa = PBXGroup;
 			children = (
+				A6A004582341293A0086A0AF /* sounds */,
 				A68481062337C65200ADB8EA /* AppDelegate.swift */,
 				A68480B72337C4FC00ADB8EA /* SceneDelegate.swift */,
 				A68480C32337C4FE00ADB8EA /* Info.plist */,
@@ -483,6 +486,7 @@
 			files = (
 				A68480C22337C4FE00ADB8EA /* LaunchScreen.storyboard in Resources */,
 				A68480BF2337C4FE00ADB8EA /* Assets.xcassets in Resources */,
+				A6A004592341293A0086A0AF /* sounds in Resources */,
 				A684815C2337CECD00ADB8EA /* Localizable.strings in Resources */,
 				A68481092337C6B300ADB8EA /* Info_old.plist in Resources */,
 				A68480BD2337C4FC00ADB8EA /* Main.storyboard in Resources */,
