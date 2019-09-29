@@ -56,8 +56,8 @@ class FaceRenderer {
 			mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/4))
 		case 4:
 			centerY += quarter/2
-			mouthPath.move(to: CGPoint(x:quarter, y : centerY))
-			mouthPath.addCurve(to: CGPoint(x:3*quarter, y : centerY),
+			mouthPath.move(to: CGPoint(x:quarter-quarter/2, y : centerY))
+			mouthPath.addCurve(to: CGPoint(x:3*quarter+quarter/2, y : centerY),
 			controlPoint1: CGPoint(x:quarter+quarter/2, y : centerY+quarter*3/4),
 			controlPoint2: CGPoint(x:3*quarter-quarter/2, y : centerY+quarter*3/4))
 			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
@@ -66,7 +66,7 @@ class FaceRenderer {
 			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
 			controlPoint1: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8),
 			controlPoint2: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8))
-			mouthPath.addCurve(to: CGPoint(x:quarter, y : centerY),
+			mouthPath.addCurve(to: CGPoint(x:quarter-quarter/2, y : centerY),
 							   controlPoint1: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8),
 							   controlPoint2: CGPoint(x:quarter, y : centerY+quarter/2))
 		case 5:
