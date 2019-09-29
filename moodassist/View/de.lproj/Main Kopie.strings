@@ -5,34 +5,22 @@
 /* Class = "UIButton"; normalTitle = "Reload"; ObjectID = "16K-Sv-Brw"; */
 "16K-Sv-Brw.normalTitle" = "Neu";
 
-/* Class = "UIButton"; normalTitle = "Import"; ObjectID = "5nR-SX-HaB"; */
-"5nR-SX-HaB.normalTitle" = "Import";
-
-/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "XH5-V6-kwB"; */
-"XH5-V6-kwB.normalTitle" = "Einstellungen";
-
-/* Class = "UITextField"; placeholder = "your code"; ObjectID = "I4c-a0-C46"; */
-"I4c-a0-C46.placeholder" = "your code";
-
 /* Class = "UITextView"; text = "Maintain an updated copy to make the data available on other devices\nBy using the share feature you agree to the terms and conditions."; ObjectID = "KpZ-Cd-aPa"; */
 "KpZ-Cd-aPa.text" = "Greife von anderen Geräten auf eine aktualisierende Kopie deiner Daten zu.\nMit dem Nutzung der Teilen-Funktion stimmst du den Datenschutzbestimmungen zu.";
-/* Class = "UIButton"; normalTitle = "Import"; ObjectID = "Kus-CR-v7a"; */
-"Kus-CR-v7a.normalTitle" = "Import";
-
-/* Class = "UILabel"; text = "Share Live Data"; ObjectID = "Xye-w0-hvE"; */
-"Xye-w0-hvE.text" = "Teile Live-Daten";
+/* Class = "UIButton"; normalTitle = "Share live Data"; ObjectID = "OL7-6r-7Co"; */
+"OL7-6r-7Co.normalTitle" = "Teile Live-Daten";
 
 /* Class = "UILabel"; text = "App made with ♥︎ by Benedikt S. Vogler"; ObjectID = "RXR-ZZ-1EI"; */
 "RXR-ZZ-1EI.text" = "App mit ♥︎ gemacht von Benedikt S. Vogler";
 
-/* Class = "UILabel"; text = "Range"; ObjectID = "S6p-jh-1lR"; */
-"S6p-jh-1lR.text" = "Range";
-
 /* Class = "UILabel"; text = "Time"; ObjectID = "TNJ-OY-k8N"; */
 "TNJ-OY-k8N.text" = "Zeit";
 
+/* Class = "UIButton"; normalTitle = "Settings"; ObjectID = "XH5-V6-kwB"; */
+"XH5-V6-kwB.normalTitle" = "Einstellungen";
+
 /* Class = "UILabel"; text = "Share Live Data"; ObjectID = "Xye-w0-hvE"; */
-"Xye-w0-hvE.text" = "Share Live Data";
+"Xye-w0-hvE.text" = "Teile Live-Daten";
 
 /* Class = "UINavigationItem"; title = "Share"; ObjectID = "bSg-jD-Ibq"; */
 "bSg-jD-Ibq.title" = "Teilen";
@@ -55,9 +43,6 @@
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "g7i-g5-zda"; */
 "g7i-g5-zda.normalTitle" = "Fertig";
 
-/* Class = "UILabel"; text = "Import"; ObjectID = "gmb-op-wXU"; */
-"gmb-op-wXU.text" = "Import";
-
 /* Class = "UIButton"; normalTitle = "    Export file"; ObjectID = "gpo-7r-AMj"; */
 "gpo-7r-AMj.normalTitle" = "Exportiere Datei";
 
@@ -67,17 +52,8 @@
 /* Class = "UILabel"; text = "Settings"; ObjectID = "jpO-hg-rsb"; */
 "jpO-hg-rsb.text" = "Einstellungen";
 
-/* Class = "UISegmentedControl"; lc7-dE-ZKA.segmentTitles[0] = "Week"; ObjectID = "lc7-dE-ZKA"; */
-"lc7-dE-ZKA.segmentTitles[0]" = "Woche";
-
-/* Class = "UISegmentedControl"; lc7-dE-ZKA.segmentTitles[1] = "Month"; ObjectID = "lc7-dE-ZKA"; */
-"lc7-dE-ZKA.segmentTitles[1]" = "Monat";
-
-/* Class = "UISegmentedControl"; lc7-dE-ZKA.segmentTitles[2] = "Year"; ObjectID = "lc7-dE-ZKA"; */
-"lc7-dE-ZKA.segmentTitles[2]" = "Jahr";
-
-/* Class = "UILabel"; text = "Importing overwrites your data and uses the new code."; ObjectID = "qJN-mX-XGV"; */
-"qJN-mX-XGV.text" = "Importing overwrites your data and uses the new code.";
+/* Class = "UILabel"; text = ":-|"; ObjectID = "p07-bN-Bxy"; */
+"p07-bN-Bxy.text" = ":-|";
 
 /* Class = "UIButton"; normalTitle = "Share link"; ObjectID = "rqa-QO-POk"; */
 "rqa-QO-POk.normalTitle" = "Teile Link";
@@ -85,11 +61,9 @@
 /* Class = "UILabel"; text = "Only people with that link can see you data. Generating a new link invalidates the old one."; ObjectID = "sGW-8B-86c"; */
 "sGW-8B-86c.text" = "Nur Menschen mit diesem Link können Deine Daten sehen. Wenn ein neuer Link erstellt wird, wird der alte ungültig.";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "t3J-hS-ZIq"; */
-"t3J-hS-ZIq.normalTitle" = "Abbrechen";
-
 /* Class = "UILabel"; text = "Enable reminder"; ObjectID = "tRj-AF-u7F"; */
 "tRj-AF-u7F.text" = "Aktiviere Erinnerung";
 
 /* Class = "UILabel"; text = "Your access link"; ObjectID = "y9c-2e-pzt"; */
 "y9c-2e-pzt.text" = "Dein Zugriffslink";
+

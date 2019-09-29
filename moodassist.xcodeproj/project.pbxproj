@@ -167,9 +167,9 @@
 		A684817A2337D14F00ADB8EA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		A684817B2337D14F00ADB8EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A68481832337D27700ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A68481842337D27D00ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A684818A2337D4B000ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		A6A00455234100CD0086A0AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		A6A00457234101CA0086A0AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A6A56C41233F872000CD66BB /* FaceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRenderer.swift; sourceTree = "<group>"; };
 		A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramController.swift; sourceTree = "<group>"; };
 		A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
@@ -673,7 +673,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A68480BC2337C4FC00ADB8EA /* Base */,
-				A684818A2337D4B000ADB8EA /* de */,
+				A6A00455234100CD0086A0AF /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -691,7 +691,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A68480CC2337C4FE00ADB8EA /* Base */,
-				A68481842337D27D00ADB8EA /* de */,
+				A6A00457234101CA0086A0AF /* de */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
