@@ -176,6 +176,18 @@ class Diagram {
 		strokeColor.setFill()
 		
 		let points = getPoints()
+		//draw average line
+		let averageColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+		averageColor.setStroke()
+		averageColor.setFill()
+		let avgLine = UIBezierPath()
+		avgLine.setLineDash([ 3.0, 2.0 ], count: 2, phase: 0.0)
+		avgLine.lineCapStyle = .round
+		let average = points.reduce(0){$0+$1.y}/CGFloat(points.count)
+		avgLine.move(to: CGPoint(x: 0,y:average))
+		avgLine.addLine(to: CGPoint(x:frame.width,y:average))
+		avgLine.stroke()
+		
 		//draw points and connect them
 		var lastpoint: CGPoint? = nil
 		let path = UIBezierPath()
