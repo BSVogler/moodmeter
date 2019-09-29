@@ -14,12 +14,9 @@ class ShareInterfaceController: WKInterfaceController {
 	@IBOutlet weak var hashLabel: WKInterfaceLabel!
 	
 	@IBAction func generateNewLink() {
-		hashLabel.setText("...wait...")
-		//generate new sharing url
-		Model.shared.sharing.generateAndRegisterHash(){
-			self.hashLabel.setText(Model.shared.sharing.URL?.absoluteString)
-		}
+		generateNewHash()
 	}
+	
 	@IBAction func delete() {
 		let accept = WKAlertAction(title: NSLocalizedString("Yes, delete", comment: ""), style: .destructive) {
 			//wait for confirm from server
@@ -36,10 +33,23 @@ class ShareInterfaceController: WKInterfaceController {
 		if let shareURL = Model.shared.sharing.URLwithoutProtocol{
 			hashLabel.setText(shareURL)
 		} else {
-			hashLabel.setText("...wait...")
-			Model.shared.sharing.generateAndRegisterHash(){
+			generateNewHash()
+		}
+	}
+	
+	func generateNewHash(){
+		hashLabel.setText("...wait...")
+		Model.shared.sharing.generateAndRegisterHash(){ succ, err in
+			if succ {
 				self.hashLabel.setText(Model.shared.sharing.URLwithoutProtocol)
+			} else {
+				if let err = err {
+					self.hashLabel.setText("failed: \(err.localizedDescription)")
+				} else {
+					self.hashLabel.setText("failed")
+				}
 			}
+			
 		}
 	}
 	

@@ -34,6 +34,20 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		}
 	}
 	
+	public func register(hash: String, measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
+		let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
+										  measurements: measurements)
+		post(to: hash,
+			 with: mrequest,
+			 responseType: .csv,
+			 done: {(res: Result<[[String]]>) in
+				if res.isSuccess, let value = res.value {
+					self.parseToDataset(value)
+				}
+				done(res)
+		})
+	}
+	
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
 		if let deviceHash = model.sharing.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",

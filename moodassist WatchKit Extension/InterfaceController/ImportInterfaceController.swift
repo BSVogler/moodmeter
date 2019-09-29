@@ -24,8 +24,12 @@ class ImportInterfaceController: WKInterfaceController {
 		
 	}
 	@IBAction func importButtonPressed() {
-		Model.shared.sharing.importHash(enteredHash) {
-			self.pop()
+		Model.shared.sharing.importHash(enteredHash) { succ, err in
+			if succ {
+				self.pop()
+			} else {
+				self.presentAlert(withTitle: NSLocalizedString("Error", comment: ""), message: "failed", preferredStyle: .alert, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+			}
 		}
 	}
 	

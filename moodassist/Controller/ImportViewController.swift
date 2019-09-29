@@ -29,8 +29,12 @@ class ImportViewController: UIViewController {
 	}
 	
 	@IBAction func importButtonPressed() {
-		Model.shared.sharing.importHash(enteredHash) {
-			self.dismiss(animated: true, completion: nil)
+		Model.shared.sharing.importHash(enteredHash) { succ, err in
+			if succ {
+				self.dismiss(animated: true, completion: nil)
+			} else {
+				self.alert(title: NSLocalizedString("Failed", comment: ""), message: err?.localizedDescription ?? "error")
+			}
 		}
 	}
 }

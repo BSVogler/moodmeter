@@ -53,56 +53,52 @@ class Sharing: Codable {
 	
 	// MARK: Instance Methods
 	/// if there is already a hash, it moves them
-	final func generateAndRegisterHash(done: @escaping () -> Void){
-		let oldHash = userHash
+	final func generateAndRegisterHash(done: @escaping (Bool, Error?) -> Void){
 		//the hash does not have to be secure, just the seed, so use secure seed directly
 		var bytes = [UInt8](repeating: 0, count: Sharing.self.hashlength)
 		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
 		
 		if status == errSecSuccess { // Always test the status.
-			let toURLpath = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
-			if oldHash != nil {
-				moveHash(to: toURLpath){
+			let newHash = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
+			if let old = self.userHash {
+				MoodApiJsonHttpClient.shared.moveHash(old: old, new: newHash) { res in
+					self.userHash = newHash //use new only after request completed
 					_ = Model.shared.saveToFiles()
-					done()
+					done(res.isSuccess, res.error)
 				}
 			} else {
 				//create by just posting
-				userHash = toURLpath
-				MoodApiJsonHttpClient.shared.postMeasurement(measurements: Model.shared.measurements){ res in
+				MoodApiJsonHttpClient.shared.register(hash: newHash, measurements: Model.shared.measurements){ res in
+					self.userHash = newHash
 					_ = Model.shared.saveToFiles()
-					done()
+					done(res.isSuccess, res.error)
 				}
 			}
+		} else {
+			done(false, NSError(domain: "generating failed", code: Int(status), userInfo: nil))
 		}
 	}
 	
 	//I would like to return a more generic Result<>, but I was not able to do this
-	func importHash(_ hash: String, done: @escaping () -> Void) {
+	func importHash(_ hash: String, done: @escaping (Bool, Error?) -> Void) {
 		guard userHash != nil else {
 			//this should not happen
 			generateAndRegisterHash(done: done)
 			return
 		}
 		if Sharing.hashlength == hash.count {
-			moveHash(to: hash, done: done)
+			if let old = self.userHash {
+				MoodApiJsonHttpClient.shared.moveHash(old: old, new: hash) { res in
+					self.userHash = hash //use new only after request completed
+					_ = Model.shared.saveToFiles()
+					done(res.isSuccess, res.error)
+				}
+			}
 		} else {
-			done()
+			done(false, NSError(domain: "Invalid import call. no hash found", code: 13, userInfo: nil))
 		}
 	}
     
-	//I would like to return a more generic Result<>, but I was not able to do this
-	func moveHash(to: String, done: @escaping () -> Void) {
-		if let old = self.userHash {
-			MoodApiJsonHttpClient.shared.moveHash(old: old, new: to) { res in
-				self.userHash = to //use new only after request completed
-				done()
-			}
-		} else {
-			generateAndRegisterHash(done: done)
-		}
-	}
-	
 	func disableSharing(){
 		userHash = nil
 		_ = Model.shared.saveToFiles()
