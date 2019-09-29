@@ -85,25 +85,29 @@ class SettingViewController: UIViewController {
 	// MARK: instance methods
 	func setEnabled(_ enabled: Bool){
 		if enabled {
-			//todo, check if this fails #11
-			Notifications.registerNotificationRights()
-			Notifications.registerNotification()
-			//temporaryugly fix for #11
-			UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-				if(settings.authorizationStatus != .authorized) {
-					//ui updates msut be performed in main thread
-					DispatchQueue.main.async {
-						self.alert(title: "No rights", message: "Please enable notifications for this app in your system settings.")
-						self.setEnabled(false)
+			Notifications.registerNotificationRights(){success, error in
+				DispatchQueue.main.async {
+					if success {
+						Model.shared.reminderEnabled = true
+						_ = Model.shared.saveToFiles()
+						Notifications.registerNotification()
+						self.notificationSwitch.setOn(true, animated: false)
+						self.reminderTimePicker.isHidden = false
+					} else {
+						
+						self.alert(title: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for Moodassist in your system settings.", comment: ""))
 					}
 				}
 			}
+		} else {
+			//turn off
+			if enabled != Model.shared.reminderEnabled {
+				Model.shared.reminderEnabled = false
+				_ = Model.shared.saveToFiles()
+			}
 		}
-		Model.shared.reminderEnabled = enabled
-		notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
-		reminderTimePicker.isHidden = !Model.shared.reminderEnabled
-		timeLabel.isHidden = !Model.shared.reminderEnabled
-		_ = Model.shared.saveToFiles()
+		self.notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
+		self.reminderTimePicker.isHidden = !Model.shared.reminderEnabled
 	}
-
+	
 }

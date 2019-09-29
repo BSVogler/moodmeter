@@ -66,23 +66,24 @@ class ReminderInterfaceController: WKInterfaceController {
 	
 	func setEnabled(_ enabled: Bool){
 		if enabled {
-			Notifications.registerNotificationRights()
-			Notifications.registerNotification()
-			//temporaryugly fix for #11
-			UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-				if(settings.authorizationStatus != .authorized) {
-					//ui updates must be performed in main thread
-					DispatchQueue.main.async {
-						self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for this app in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
-						self.setEnabled(false)
-					}
+			Notifications.registerNotificationRights(){success, error in
+				if success {
+					Model.shared.reminderEnabled = true
+					_ = Model.shared.saveToFiles()
+					Notifications.registerNotification()
+					self.notificationSwitch.setOn(true)
+					self.reminderTimePicker.setHidden(false)
+				} else {
+					self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for Moodassist in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
 				}
 			}
+		} else {
+			//turn off
+			Model.shared.reminderEnabled = false
+			_ = Model.shared.saveToFiles()
 		}
-		Model.shared.reminderEnabled = enabled
 		self.notificationSwitch.setOn(Model.shared.reminderEnabled)
 		self.reminderTimePicker.setHidden(!Model.shared.reminderEnabled)
-		_ = Model.shared.saveToFiles()
 	}
 	
 	// MARK: Deinitializer

@@ -38,11 +38,8 @@ class Notifications {
 		}
 	}
 
-	static func registerNotificationRights() {
+	static func registerNotificationRights(completionHandler: @escaping (Bool, Error?) -> Void) {
 	  UNUserNotificationCenter.current()
-		.requestAuthorization(options: [.alert, .sound, .badge]) {
-		  granted, error in
-		  print("Permission granted: \(granted)")
-	  }
+		.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: completionHandler)
 	}
 }
