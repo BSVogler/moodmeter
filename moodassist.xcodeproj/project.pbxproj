@@ -30,9 +30,7 @@
 		A68481072337C65200ADB8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481062337C65200ADB8EA /* AppDelegate.swift */; };
 		A68481092337C6B300ADB8EA /* Info_old.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68481082337C6B300ADB8EA /* Info_old.plist */; };
 		A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684810B2337C9FA00ADB8EA /* NotificationController.swift */; };
-		A68481162337C9FB00ADB8EA /* body.dae in Resources */ = {isa = PBXBuildFile; fileRef = A684810C2337C9FA00ADB8EA /* body.dae */; };
 		A68481172337C9FB00ADB8EA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */; };
-		A68481182337C9FB00ADB8EA /* body.scn in Resources */ = {isa = PBXBuildFile; fileRef = A684810E2337C9FB00ADB8EA /* body.scn */; };
 		A68481192337C9FB00ADB8EA /* ImportInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481102337C9FB00ADB8EA /* ImportInterfaceController.swift */; };
 		A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */; };
 		A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */; };
@@ -146,9 +144,7 @@
 		A68481062337C65200ADB8EA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A68481082337C6B300ADB8EA /* Info_old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_old.plist; sourceTree = "<group>"; };
 		A684810B2337C9FA00ADB8EA /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		A684810C2337C9FA00ADB8EA /* body.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = body.dae; sourceTree = "<group>"; };
 		A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		A684810E2337C9FB00ADB8EA /* body.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = body.scn; sourceTree = "<group>"; };
 		A68481102337C9FB00ADB8EA /* ImportInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportInterfaceController.swift; sourceTree = "<group>"; };
 		A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInterfaceController.swift; sourceTree = "<group>"; };
 		A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceInterfaceController.swift; sourceTree = "<group>"; };
@@ -281,8 +277,6 @@
 		A68480D92337C4FF00ADB8EA /* moodassist WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				A684810C2337C9FA00ADB8EA /* body.dae */,
-				A684810E2337C9FB00ADB8EA /* body.scn */,
 				A684810D2337C9FA00ADB8EA /* ExtensionDelegate.swift */,
 				A684810F2337C9FB00ADB8EA /* InterfaceController */,
 				A684810B2337C9FA00ADB8EA /* NotificationController.swift */,
@@ -506,8 +500,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68481182337C9FB00ADB8EA /* body.scn in Resources */,
-				A68481162337C9FB00ADB8EA /* body.dae in Resources */,
 				A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

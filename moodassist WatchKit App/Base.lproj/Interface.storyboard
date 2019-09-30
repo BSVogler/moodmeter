@@ -11,7 +11,6 @@
             <objects>
                 <controller fullBounds="YES" fullScreen="YES" id="y63-SF-6rW" customClass="Yesterday" customModule="Moodassist_WatchKit_Extension">
                     <items>
-                        <sceneKitScene width="136" height="192" alignment="left" id="w8w-4h-Igo"/>
                         <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="overlap" radius="0.0" id="fQg-vE-5n1">
                             <items>
                                 <label width="1" height="34" alignment="center" text="Yesterday" textAlignment="center" id="6ab-ak-U6Z">
@@ -43,16 +42,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isYesterday" value="YES"/>
                     </userDefinedRuntimeAttributes>
-                    <variation key="default">
-                        <mask key="items">
-                            <exclude reference="w8w-4h-Igo"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outlet property="background" destination="fQg-vE-5n1" id="9H1-dK-FNR"/>
                         <outlet property="dateLabel" destination="6ab-ak-U6Z" id="UY9-ko-8wZ"/>
                         <outlet property="faceImage" destination="qiz-TE-bCP" id="EhH-1f-PFT"/>
-                        <outlet property="scenekitscene" destination="w8w-4h-Igo" id="NCd-gk-B06"/>
                         <segue destination="ht7-Kj-mwk" kind="relationship" relationship="nextPage" id="UsM-FL-HKc"/>
                     </connections>
                 </controller>
@@ -374,7 +367,6 @@
             <objects>
                 <controller fullBounds="YES" fullScreen="YES" id="XEc-Ya-93C" customClass="FaceInterfaceController" customModule="Moodassist_WatchKit_Extension">
                     <items>
-                        <sceneKitScene width="136" height="192" alignment="left" id="RUW-ZX-zGI"/>
                         <group width="1" height="1" alignment="left" verticalAlignment="center" isAccessibilityElement="YES" layout="overlap" radius="0.0" id="eqo-ng-dzv">
                             <items>
                                 <imageView height="1" alignment="center" verticalAlignment="center" id="cLG-Y6-2Od"/>
@@ -406,16 +398,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isYesterday" value="NO"/>
                     </userDefinedRuntimeAttributes>
-                    <variation key="default">
-                        <mask key="items">
-                            <exclude reference="RUW-ZX-zGI"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outlet property="background" destination="eqo-ng-dzv" id="TJW-b4-GcP"/>
                         <outlet property="dateLabel" destination="gJR-L5-dXi" id="7TN-7U-8lr"/>
                         <outlet property="faceImage" destination="cLG-Y6-2Od" id="Z2g-ru-Xgb"/>
-                        <outlet property="scenekitscene" destination="RUW-ZX-zGI" id="lOd-8Q-kPI"/>
                         <segue destination="y63-SF-6rW" kind="relationship" relationship="nextPage" id="z4V-wh-T54"/>
                     </connections>
                 </controller>
