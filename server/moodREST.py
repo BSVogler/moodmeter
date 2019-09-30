@@ -29,6 +29,25 @@ logger = logging.getLogger('moodREST')
 if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
+
+def move(old, new):
+    old_hash = request_data["old_hash"].lower()
+    action = "move"
+    old_pw = request_data["old_password"].encode('utf-8')
+    access_old = has_access(old_hash, old_pw)
+    if access_old:
+        access_old.close()
+        # move old data to new hash
+        os.rename(userdata_folder + old_hash + ".csv", userdata_folder + new + ".csv")
+        # optional append new measurements
+        if "measurements" in request_data:
+            measurements = request_data["measurements"]
+            add_measurements_to_csv(new, measurements)
+    else:
+        # authentication failed
+        logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
+        return abort(403)
+
 def merge(fp_old_read, old, new):
     """
 
@@ -152,6 +171,25 @@ def readFile(hash, password):
         # else:
         #    return "wrong password"
 
+@application.route('/<string:repohash>/register', methods=['POST'])
+def register(repohash):
+    start = time.time()
+    repohash = repohash.lower()
+    filename = userdata_folder + repohash + ".csv"
+    action = "register"
+    if request.method == 'POST':
+        if not request.json:
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
+            return abort(400)
+        request_data = request.json["data"]
+        if os.access(filename, os.R_OK):
+            return abort(423)
+        else:
+            if "measurements" in request_data:
+                measurements = request_data["measurements"]
+                writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
+    return make_response("ok")
 
 @application.route('/<string:repohash>', methods=['POST', 'GET', 'DELETE'])
 def add_data(repohash):
@@ -196,27 +234,12 @@ def add_data(repohash):
         else:  # save to new hash
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                old_hash = request_data["old_hash"].lower()
-                action = "move"
-                old_pw = request_data["old_password"].encode('utf-8')
-                access_old = has_access(old_hash, old_pw)
-                if access_old:
-                    access_old.close()
-                    # move old data to new hash
-                    os.rename(userdata_folder + old_hash+".csv", userdata_folder + repohash+".csv")
-                    # optional append new measurements
-                    if "measurements" in request_data:
-                        measurements = request_data["measurements"]
-                        add_measurements_to_csv(repohash, measurements)
-                else:
-                    # authentication failed
-                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
-                    return abort(403)
+                #allow this case leads to allowing arbitrary codes
+                return abort(404)
             else:
-                # initial write
-                if "measurements" in request_data:
-                    measurements = request_data["measurements"]
-                    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+                # initial write, use register
+                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action+ "fail")
+                return abort(404)
         # disable log because this may make the request slower.
         #ip = request.remote_addr #only returning proxi address
         logger.info("{:10.4f}".format((time.time()-start)*1000) +"ms "+action)
