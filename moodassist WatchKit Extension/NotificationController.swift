@@ -36,13 +36,18 @@ class NotificationController: WKUserNotificationInterfaceController {
         // Populate your dynamic notification interface as quickly as possible.
     }
 	@IBAction func veryGood() {
+		Model.shared.dataset[Date().toJS()] = 5
 	}
 	@IBAction func good() {
+		Model.shared.dataset[Date().toJS()] = 4
 	}
 	@IBAction func okay() {
+		Model.shared.dataset[Date().toJS()] = 3
 	}
 	@IBAction func meh() {
+		Model.shared.dataset[Date().toJS()] = 2
 	}
 	@IBAction func bad() {
+		Model.shared.dataset[Date().toJS()] = 1
 	}
 }
