@@ -14,7 +14,8 @@
 "Failed. Check your code." ="Fehlgeschlagen. Überprüfe den Code.";
 "...wait..."="...warte...";
 "Disabling the sharing deletes all remotely saved data." = "Deaktivieren löscht alle entfernt gespeicherten Daten.";
-"Yes, delete" ="ja, löschen";
+"Yes, delete" ="Ja, löschen!";
+"Disable?"="Deaktivieren";
 "Accept"="Bestätigen";
-"It is time to give me your mood." = "Es ist Zeit deine Stimmung einzutragen.";
-"My live mood data" = "Meine aktuelle Stimmungsdaten";
+"By using the share feature you agree to the privacy agreement."="Durch die Nutzung der Teilen Funktion aktzeptierst du die Datenschutzerklärung.";
+"Read"="Lesen"

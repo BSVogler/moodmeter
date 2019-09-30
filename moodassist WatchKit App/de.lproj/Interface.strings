@@ -1,12 +1,6 @@
 
-/* Class = "WKInterfaceLabel"; text = "Tuesday"; ObjectID = "343-Co-XPM"; */
-"343-Co-XPM.text" = "Tuesday";
-
 /* Class = "WKInterfaceButton"; title = "Import"; ObjectID = "41Z-e2-l2X"; */
 "41Z-e2-l2X.title" = "Importieren";
-
-/* Class = "WKInterfaceLabel"; text = "Thursday"; ObjectID = "4bz-QH-B6e"; */
-"4bz-QH-B6e.text" = "Thursday";
 
 /* Class = "WKInterfaceLabel"; text = ":"; ObjectID = "4j9-m3-r0x"; */
 "4j9-m3-r0x.text" = ":";
@@ -26,32 +20,14 @@
 /* Class = "WKInterfaceLabel"; text = "How are you feeling?"; ObjectID = "AGy-cV-ovc"; */
 "AGy-cV-ovc.text" = "Wie fühlst du dich?";
 
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "EfS-Ii-yiQ"; */
-"EfS-Ii-yiQ.text" = "--";
-
-/* Class = "WKInterfaceLabel"; text = "Friday"; ObjectID = "F3k-uy-bXS"; */
-"F3k-uy-bXS.text" = "Friday";
-
 /* Class = "WKInterfaceLabel"; text = "Reminder! It is time to tell me your mood."; ObjectID = "IdU-wH-bcW"; */
 "IdU-wH-bcW.text" = "Erinnerung! Es ist Zeit mit deine Stimmung mittzuteilen.";
 
 /* Class = "WKInterfaceButton"; title = "Delete and Disable"; ObjectID = "JIE-57-wMI"; */
 "JIE-57-wMI.title" = "Löschen und Deaktivieren";
 
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "Lq2-Id-ga6"; */
-"Lq2-Id-ga6.text" = "--";
-
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "MUr-QR-m2M"; */
-"MUr-QR-m2M.text" = "--";
-
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "OF7-Dp-Z6Q"; */
-"OF7-Dp-Z6Q.text" = "--";
-
 /* Class = "WKInterfaceButton"; title = "Import"; ObjectID = "ROq-0x-5gi"; */
 "ROq-0x-5gi.title" = "Importieren";
-
-/* Class = "WKInterfaceLabel"; text = "Saturday"; ObjectID = "S1Z-FF-bbL"; */
-"S1Z-FF-bbL.text" = "Saturday";
 
 /* Class = "WKInterfaceButton"; title = "New Link"; ObjectID = "S6S-tw-TA7"; */
 "S6S-tw-TA7.title" = "Neuer Link";
@@ -80,26 +56,14 @@
 /* Class = "WKInterfaceLabel"; text = "..."; ObjectID = "akC-im-BDa"; */
 "akC-im-BDa.text" = "...";
 
-/* Class = "WKInterfaceLabel"; text = "Monday"; ObjectID = "asf-Eg-sXi"; */
-"asf-Eg-sXi.text" = "Monday";
-
 /* Class = "WKInterfaceLabel"; text = "Button"; ObjectID = "bL0-Wk-1d5"; */
 "bL0-Wk-1d5.text" = "Button";
-
-/* Class = "WKInterfaceLabel"; text = "Wednesday"; ObjectID = "cZb-oL-SOh"; */
-"cZb-oL-SOh.text" = "Wednesday";
-
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "dsv-9e-xO0"; */
-"dsv-9e-xO0.text" = "--";
 
 /* Class = "WKInterfaceButton"; title = "M"; ObjectID = "eKH-cD-cn9"; */
 "eKH-cD-cn9.title" = "M";
 
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "eXs-lq-Dqm"; */
-"eXs-lq-Dqm.text" = "--";
-
 /* Class = "WKInterfaceLabel"; text = "Today"; ObjectID = "gJR-L5-dXi"; */
-"gJR-L5-dXi.text" = "Today";
+"gJR-L5-dXi.text" = "Heute";
 
 /* Class = "WKInterfaceButton"; title = "W"; ObjectID = "nMt-3O-QA4"; */
 "nMt-3O-QA4.title" = "W";
@@ -107,17 +71,8 @@
 /* Class = "WKInterfaceSwitch"; title = "Enable Reminder"; ObjectID = "oYb-SR-boS"; */
 "oYb-SR-boS.title" = "Aktiviere Erinnerung";
 
-/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "oqh-XE-N6j"; */
-"oqh-XE-N6j.text" = "--";
-
 /* Class = "WKInterfaceButton"; title = ":-/"; ObjectID = "sKa-cM-83b"; */
 "sKa-cM-83b.title" = ":-/";
 
 /* Class = "WKInterfaceLabel"; text = "Your link"; ObjectID = "sUr-SS-wsd"; */
 "sUr-SS-wsd.text" = "Dein Link";
-
-/* Class = "WKInterfaceLabel"; text = "Friday"; ObjectID = "tvx-hK-1kl"; */
-"tvx-hK-1kl.text" = "Friday";
-
-/* Class = "WKInterfaceLabel"; text = "Sunday"; ObjectID = "zxd-2v-beF"; */
-"zxd-2v-beF.text" = "Sunday";
