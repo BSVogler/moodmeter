@@ -264,7 +264,7 @@ def add_data(repohash):
         if not request.json:
             return abort(400)
         request_data = request.json["data"]
-        fp = has_access(repohash, request_data["old_password"].encode('utf-8'))
+        fp = has_access(repohash, request_data["password"].encode('utf-8'))
         if fp is not None:
             if os.access(filename, os.R_OK):
                 os.remove(filename)
