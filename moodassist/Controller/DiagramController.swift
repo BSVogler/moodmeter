@@ -55,8 +55,8 @@ class DiagramController {
 		let calendar = Calendar.current
 		switch analysisrange {
 		case .week:
-			lowerDate = selectedDate.previous(.monday)
-			higherDate = selectedDate.next(.monday)
+			lowerDate = calendar.date(bySettingHour: 00, minute: 00, second: 00, of: selectedDate.previous(.monday, considerToday: true))
+			higherDate = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: selectedDate.next(.sunday))
 		case .month:
 			let firstComponents = calendar.dateComponents([.year, .month], from: selectedDate)
 			lowerDate = calendar.date(from: firstComponents)
