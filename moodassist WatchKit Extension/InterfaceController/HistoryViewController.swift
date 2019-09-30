@@ -27,6 +27,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
+		diagram.dotSize = 4
 		diagramController.analysisrange = .week
 		redraw()
 	}
@@ -34,6 +35,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
+		diagram.dotSize = 2
 		diagramController.analysisrange = .month
 		redraw()
 	}
@@ -41,6 +43,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		monthButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
+		diagram.dotSize = 3
 		diagramController.analysisrange = .year
 		redraw()
 	}
@@ -63,7 +66,8 @@ class HistoryInterfaceController: WKInterfaceController {
 	
 	@objc func redraw(){
 		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
-		diagram.frame = self.contentFrame
+		//hardcoded height because we cannot read that value
+		diagram.frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: 97)
 		let image = diagram.getImage(scale: WKInterfaceDevice.current().screenScale)
 		self.diagramImage.setImage(image)
 		rangeLabel.setText(diagramController.getRangeText())

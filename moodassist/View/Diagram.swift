@@ -40,6 +40,7 @@ class Diagram {
 	var tickHeight = CGFloat(0)
 	var tickWidth = CGFloat(0)
 	var controller: DiagramController
+	var dotSize: CGFloat = 4
 	
 	init(controller: DiagramController){
 		self.controller = controller
@@ -195,7 +196,7 @@ class Diagram {
 		var lastpoint: CGPoint? = nil
 		let path = UIBezierPath()
 		for point in points {
-			let circle = UIBezierPath.init(arcCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+			let circle = UIBezierPath.init(arcCenter: point, radius: dotSize, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
 			circle.lineWidth = 2;
 			circle.fill()
 			if lastpoint==nil {
@@ -206,6 +207,7 @@ class Diagram {
 			}
 		}
 		path.lineWidth = 2
+		path.lineJoinStyle = .round
 		path.stroke()
 	}
 }
