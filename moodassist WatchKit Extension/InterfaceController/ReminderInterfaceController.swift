@@ -67,14 +67,16 @@ class ReminderInterfaceController: WKInterfaceController {
 	func setEnabled(_ enabled: Bool){
 		if enabled {
 			Notifications.registerNotificationRights(){success, error in
-				if success {
-					Model.shared.reminderEnabled = true
-					_ = Model.shared.saveToFiles()
-					Notifications.registerNotification()
-					self.notificationSwitch.setOn(true)
-					self.reminderTimePicker.setHidden(false)
-				} else {
-					self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for Moodassist in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+				DispatchQueue.main.async {
+					if success {
+						Model.shared.reminderEnabled = true
+						_ = Model.shared.saveToFiles()
+						Notifications.registerNotification()
+						self.notificationSwitch.setOn(true)
+						self.reminderTimePicker.setHidden(false)
+					} else {
+						self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for Moodassist in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+					}
 				}
 			}
 		} else {
