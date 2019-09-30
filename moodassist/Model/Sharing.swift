@@ -67,13 +67,12 @@ class Sharing: Codable {
 	
 	// MARK: Instance Methods
 	/// if there is already a hash, it moves them
-	final func generateAndRegisterHash(done: @escaping (Bool, Error?) -> Void){
+	final func registerHash(done: @escaping (Bool, Error?) -> Void){
 		if let old = self.userHash {
 			MoodApiJsonHttpClient.shared.moveHash(old: old) { res in
 				self.resultRegister(done: done, res: res)
 			}
 		} else {
-			//create by just posting
 			MoodApiJsonHttpClient.shared.register(measurements: Model.shared.measurements) { res in
 				self.resultRegister(done: done, res: res)
 			}
@@ -84,14 +83,15 @@ class Sharing: Codable {
 	func importHash(_ hash: String, done: @escaping (Bool, Error?) -> Void) {
 		guard userHash != nil else {
 			//this should not happen
-			generateAndRegisterHash(done: done)
 			return
 		}
 		if Sharing.hashlength == hash.count {
 			if let old = self.userHash {
 				MoodApiJsonHttpClient.shared.importHash(old: old, new: hash) { res in
-					self.userHash = hash //use new only after request completed
-					_ = Model.shared.saveToFiles()
+					if res.isSuccess {
+						self.userHash = hash //use new only after request completed
+						_ = Model.shared.saveToFiles()
+					}
 					done(res.isSuccess, res.error)
 				}
 			}

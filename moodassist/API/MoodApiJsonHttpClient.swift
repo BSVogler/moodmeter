@@ -59,7 +59,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
 									  old_password: Model.shared.sharing.password ?? "",
 									  old_hash: old)
-		post(to: old,
+		post(to: new,
 			 with: moveRequest,
 			 responseType: .csv,
 			 done: {(res: Result<[[String]]>) in

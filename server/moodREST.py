@@ -236,11 +236,11 @@ def add_data(repohash):
                 resp.headers["Content-Type"] = "text/csv"
                 return resp
             else:  # no access
-                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
-                return abort(Response("Invalid passwort for "+repohash+"."))
+                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " no access to "+repohash)
+                return abort(Response("Invalid passwort for "+repohash+"."), 403)
         else:
-            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action+ "fail")
-            return abort(404)
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " file not found "+repohash)
+            return abort(403)
         # disable log because this may make the request slower.
         #ip = request.remote_addr #only returning proxi address
         logger.info("{:10.4f}".format((time.time()-start)*1000) +"ms "+action)
@@ -272,7 +272,7 @@ def add_data(repohash):
             return "ok"
         else:
             logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete no rights fail")
-            return abort(Response("Invalid passwort for "+repohash+"."))
+            return abort(Response("Invalid passwort for "+repohash+"."), 403)
 
 
 if __name__ == '__main__':
