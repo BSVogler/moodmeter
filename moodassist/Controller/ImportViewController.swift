@@ -40,7 +40,7 @@ class ImportViewController: UIViewController {
 				self.delegate?.updatedURL()
 				self.dismiss(animated: true, completion: nil)
 			} else {
-				self.alert(title: NSLocalizedString("Failed", comment: ""), message: err?.localizedDescription ?? "error")
+				self.alert(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Check your code", comment: "")+"\n"+(err?.localizedDescription ?? ""))
 			}
 		}
 	}
