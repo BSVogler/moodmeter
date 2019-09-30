@@ -28,7 +28,7 @@ class ImportInterfaceController: WKInterfaceController {
 			if succ {
 				self.pop()
 			} else {
-				self.presentAlert(withTitle: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("failed. Check your code.\n", comment: "")+(err?.localizedDescription ?? ""), preferredStyle: .alert, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+				self.presentAlert(withTitle: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Failed. Check your code.", comment: "")+"\n"+(err?.localizedDescription ?? ""), preferredStyle: .alert, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
 			}
 		}
 	}

@@ -1,0 +1,123 @@
+
+/* Class = "WKInterfaceLabel"; text = "Tuesday"; ObjectID = "343-Co-XPM"; */
+"343-Co-XPM.text" = "Tuesday";
+
+/* Class = "WKInterfaceButton"; title = "Import"; ObjectID = "41Z-e2-l2X"; */
+"41Z-e2-l2X.title" = "Import";
+
+/* Class = "WKInterfaceLabel"; text = "Thursday"; ObjectID = "4bz-QH-B6e"; */
+"4bz-QH-B6e.text" = "Thursday";
+
+/* Class = "WKInterfaceLabel"; text = ":"; ObjectID = "4j9-m3-r0x"; */
+"4j9-m3-r0x.text" = ":";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "5Kg-Na-ufZ"; */
+"5Kg-Na-ufZ.text" = "--";
+
+/* Class = "WKInterfaceLabel"; text = "Yesterday"; ObjectID = "6ab-ak-U6Z"; */
+"6ab-ak-U6Z.text" = "Yesterday";
+
+/* Class = "WKInterfaceLabel"; text = "Importing merges the data and uses the new link"; ObjectID = "6en-RV-hVa"; */
+"6en-RV-hVa.text" = "Importing merges the data and uses the new link";
+
+/* Class = "WKInterfaceLabel"; text = "only relevant for watch os 4"; ObjectID = "71U-CQ-QRm"; */
+"71U-CQ-QRm.text" = "only relevant for watch os 4";
+
+/* Class = "WKInterfaceLabel"; text = "How are you feeling?"; ObjectID = "AGy-cV-ovc"; */
+"AGy-cV-ovc.text" = "How are you feeling?";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "EfS-Ii-yiQ"; */
+"EfS-Ii-yiQ.text" = "--";
+
+/* Class = "WKInterfaceLabel"; text = "Friday"; ObjectID = "F3k-uy-bXS"; */
+"F3k-uy-bXS.text" = "Friday";
+
+/* Class = "WKInterfaceLabel"; text = "Reminder! It is time to tell me your mood."; ObjectID = "IdU-wH-bcW"; */
+"IdU-wH-bcW.text" = "Reminder! It is time to tell me your mood.";
+
+/* Class = "WKInterfaceButton"; title = "Delete and Disable"; ObjectID = "JIE-57-wMI"; */
+"JIE-57-wMI.title" = "Delete and Disable";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "Lq2-Id-ga6"; */
+"Lq2-Id-ga6.text" = "--";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "MUr-QR-m2M"; */
+"MUr-QR-m2M.text" = "--";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "OF7-Dp-Z6Q"; */
+"OF7-Dp-Z6Q.text" = "--";
+
+/* Class = "WKInterfaceButton"; title = "Import"; ObjectID = "ROq-0x-5gi"; */
+"ROq-0x-5gi.title" = "Import";
+
+/* Class = "WKInterfaceLabel"; text = "Saturday"; ObjectID = "S1Z-FF-bbL"; */
+"S1Z-FF-bbL.text" = "Saturday";
+
+/* Class = "WKInterfaceButton"; title = "New Link"; ObjectID = "S6S-tw-TA7"; */
+"S6S-tw-TA7.title" = "New Link";
+
+/* Class = "WKInterfaceButton"; title = ":-("; ObjectID = "Sva-r4-aKA"; */
+"Sva-r4-aKA.title" = ":-(";
+
+/* Class = "WKInterfaceButton"; title = ":-|"; ObjectID = "TOs-Z6-9aD"; */
+"TOs-Z6-9aD.title" = ":-|";
+
+/* Class = "WKInterfaceButton"; title = ":-D"; ObjectID = "TpI-gP-BW2"; */
+"TpI-gP-BW2.title" = ":-D";
+
+/* Class = "WKInterfaceButton"; title = "Y"; ObjectID = "Vbp-c2-Y0u"; */
+"Vbp-c2-Y0u.title" = "Y";
+
+/* Class = "WKInterfaceLabel"; text = "1. August - 3 September 2019"; ObjectID = "WAP-kc-GnL"; */
+"WAP-kc-GnL.text" = "1. August - 3 September 2019";
+
+/* Class = "WKInterfaceTextField"; text = "enter code"; ObjectID = "Y3W-4b-hhh"; */
+"Y3W-4b-hhh.text" = "enter code";
+
+/* Class = "WKInterfaceButton"; title = ":-)"; ObjectID = "YtB-rs-Ei5"; */
+"YtB-rs-Ei5.title" = ":-)";
+
+/* Class = "WKInterfaceLabel"; text = "..."; ObjectID = "akC-im-BDa"; */
+"akC-im-BDa.text" = "...";
+
+/* Class = "WKInterfaceLabel"; text = "Monday"; ObjectID = "asf-Eg-sXi"; */
+"asf-Eg-sXi.text" = "Monday";
+
+/* Class = "WKInterfaceLabel"; text = "Button"; ObjectID = "bL0-Wk-1d5"; */
+"bL0-Wk-1d5.text" = "Button";
+
+/* Class = "WKInterfaceLabel"; text = "Wednesday"; ObjectID = "cZb-oL-SOh"; */
+"cZb-oL-SOh.text" = "Wednesday";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "dsv-9e-xO0"; */
+"dsv-9e-xO0.text" = "--";
+
+/* Class = "WKInterfaceButton"; title = "M"; ObjectID = "eKH-cD-cn9"; */
+"eKH-cD-cn9.title" = "M";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "eXs-lq-Dqm"; */
+"eXs-lq-Dqm.text" = "--";
+
+/* Class = "WKInterfaceLabel"; text = "Today"; ObjectID = "gJR-L5-dXi"; */
+"gJR-L5-dXi.text" = "Today";
+
+/* Class = "WKInterfaceButton"; title = "W"; ObjectID = "nMt-3O-QA4"; */
+"nMt-3O-QA4.title" = "W";
+
+/* Class = "WKInterfaceSwitch"; title = "Enable Reminder"; ObjectID = "oYb-SR-boS"; */
+"oYb-SR-boS.title" = "Enable Reminder";
+
+/* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "oqh-XE-N6j"; */
+"oqh-XE-N6j.text" = "--";
+
+/* Class = "WKInterfaceButton"; title = ":-/"; ObjectID = "sKa-cM-83b"; */
+"sKa-cM-83b.title" = ":-/";
+
+/* Class = "WKInterfaceLabel"; text = "Your link"; ObjectID = "sUr-SS-wsd"; */
+"sUr-SS-wsd.text" = "Your link";
+
+/* Class = "WKInterfaceLabel"; text = "Friday"; ObjectID = "tvx-hK-1kl"; */
+"tvx-hK-1kl.text" = "Friday";
+
+/* Class = "WKInterfaceLabel"; text = "Sunday"; ObjectID = "zxd-2v-beF"; */
+"zxd-2v-beF.text" = "Sunday";

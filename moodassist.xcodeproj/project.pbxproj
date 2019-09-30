@@ -15,6 +15,7 @@
 		808A2117233CC54C009915A0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A2115233CC54B009915A0 /* Reminder.swift */; };
 		A64DEC5E233E501D00A9EBA0 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DEC5D233E501D00A9EBA0 /* Notifications.swift */; };
 		A64DEC5F233E501D00A9EBA0 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DEC5D233E501D00A9EBA0 /* Notifications.swift */; };
+		A6609B882342B2C60077D11E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6609B8A2342B2C60077D11E /* Localizable.strings */; };
 		A67113D9233E96B100A53093 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67113D8233E96B100A53093 /* ImportViewController.swift */; };
 		A67812B423392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
 		A67812B523392029008C4044 /* CSVDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67812B323392029008C4044 /* CSVDecoder.swift */; };
@@ -124,6 +125,9 @@
 		808A2114233CC54B009915A0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = moodassist/Model/Profile.swift; sourceTree = SOURCE_ROOT; };
 		808A2115233CC54B009915A0 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = moodassist/Model/Reminder.swift; sourceTree = SOURCE_ROOT; };
 		A64DEC5D233E501D00A9EBA0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A6609B892342B2C60077D11E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A6609B8C2342B4210077D11E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		A6609B8D2342B4350077D11E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A67113D8233E96B100A53093 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		A67812B323392029008C4044 /* CSVDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDecoder.swift; sourceTree = "<group>"; };
 		A6824D5B2342A2ED00FC6ADA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -166,7 +170,6 @@
 		A684817B2337D14F00ADB8EA /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A68481832337D27700ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A68481852337D30400ADB8EA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A6A00457234101CA0086A0AF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		A6A004582341293A0086A0AF /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		A6A56C41233F872000CD66BB /* FaceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceRenderer.swift; sourceTree = "<group>"; };
 		A6B1BB37233CCA0F00C62E71 /* DiagramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagramController.swift; sourceTree = "<group>"; };
@@ -283,6 +286,7 @@
 				A68480E02337C50000ADB8EA /* Assets.xcassets */,
 				A68480E22337C50000ADB8EA /* Info.plist */,
 				A68480E32337C50000ADB8EA /* PushNotificationPayload.apns */,
+				A6609B8A2342B2C60077D11E /* Localizable.strings */,
 			);
 			path = "moodassist WatchKit Extension";
 			sourceTree = "<group>";
@@ -501,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */,
+				A6609B882342B2C60077D11E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +670,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A6609B8A2342B2C60077D11E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6609B892342B2C60077D11E /* de */,
+				A6609B8D2342B4350077D11E /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A68480BB2337C4FC00ADB8EA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -687,7 +701,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A68480CC2337C4FE00ADB8EA /* Base */,
-				A6A00457234101CA0086A0AF /* de */,
+				A6609B8C2342B4210077D11E /* de */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
