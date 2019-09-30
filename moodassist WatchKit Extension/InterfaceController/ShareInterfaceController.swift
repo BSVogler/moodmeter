@@ -39,7 +39,7 @@ class ShareInterfaceController: WKInterfaceController {
 	
 	func generateNewHash(){
 		hashLabel.setText("...wait...")
-		Model.shared.sharing.generateAndRegisterHash(){ succ, err in
+		Model.shared.sharing.registerHash(){ succ, err in
 			if succ {
 				self.hashLabel.setText(Model.shared.sharing.URLwithoutProtocol)
 			} else {

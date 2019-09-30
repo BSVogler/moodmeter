@@ -188,7 +188,7 @@ def register():
                         add_measurements_to_csv(new, measurements)
                 else:
                     # authentication failed
-                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
+                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + "login fail")
                     return abort(403)
             else:
                 if "measurements" in request_data:
