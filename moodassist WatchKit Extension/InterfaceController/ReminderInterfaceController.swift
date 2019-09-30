@@ -57,7 +57,11 @@ class ReminderInterfaceController: WKInterfaceController {
 		hourPicker.setSelectedItemIndex(Model.shared.reminderHour)
 		let minutes = (0...59).map{ value -> WKPickerItem in
 			let item = WKPickerItem()
-			item.title = String(value)
+			if value < 10 {
+				item.title = "0\(value)"
+			} else {
+				item.title = String(value)
+			}
 			return item
 		}
 		minutePicker.setItems(minutes)
