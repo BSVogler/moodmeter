@@ -24,7 +24,13 @@ class Notifications {
 			dateMatching: dateComponents, repeats: true)
 		
 		// Create the request
-		let uuidString = UUID().uuidString
+		#if os(watchOS)
+			//GH Issue #54
+			let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+			let uuidString =  String((0..<16).map{ _ in letters.randomElement()! })
+		#else
+			let uuidString = UUID().uuidString
+		#endif
 		let request = UNNotificationRequest(identifier: uuidString,
 											content: content, trigger: trigger)
 		
