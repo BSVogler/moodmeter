@@ -173,7 +173,7 @@ def register():
         else:
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                old_hash = request_data["old_hash"].lower()
+                old_hash = request_data["old_hash"].upper()
                 action = "move"
                 old_pw = request_data["old_password"].encode('utf-8')
                 access_old = has_access(old_hash, old_pw)
@@ -225,7 +225,7 @@ def add_data(repohash):
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0\
                         and "old_password" in request_data:
                     action = "merge"
-                    fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
+                    fp_old_read = has_access(request_data["old_hash"].upper(), request_data["old_password"].encode('utf-8'), "r")
                     #can read old?
                     if fp_old_read is not None:
                         csvdata = merge(fp_old_read, request_data["old_hash"].upper(), repohash)
