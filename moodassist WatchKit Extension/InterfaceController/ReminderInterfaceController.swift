@@ -75,7 +75,6 @@ class ReminderInterfaceController: WKInterfaceController {
 					if success {
 						Model.shared.reminderEnabled = true
 						_ = Model.shared.saveToFiles()
-						Notifications.registerNotification()
 						self.notificationSwitch.setOn(true)
 						self.reminderTimePicker.setHidden(false)
 					} else {
