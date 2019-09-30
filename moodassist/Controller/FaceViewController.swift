@@ -24,6 +24,7 @@ class FaceViewController: UIViewController {
 	@IBOutlet private weak var dataLabel: UILabel!
 	@IBOutlet private weak var innerView: UIView!
 	@IBOutlet private weak var faceImageView: UIImageView!
+	@IBOutlet weak var tutorialView: UIView!
 	
     // MARK: Overridden/ Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +91,7 @@ class FaceViewController: UIViewController {
 		faceRenderer.scale = UIScreen.main.scale
 		faceRenderer.mood = face.mood
 		faceImageView.image = faceRenderer.getImage(rect: faceImageView.frame)
+		tutorialView.isHidden = face.mood != 0
 	}
 	
 	func setToYesterday(){
