@@ -66,7 +66,7 @@ class ShareViewController: UIViewController {
 		activityIndicator.isHidden = false
 		shareLiveDataButton.isHidden = true
 		activityIndicator.startAnimating()
-		Model.shared.sharing.generateAndRegisterHash() { succ, err in
+		Model.shared.sharing.registerHash() { succ, err in
 			if succ {
 				self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 				self.showSharingActivated()
@@ -94,7 +94,7 @@ class ShareViewController: UIViewController {
 	@IBAction func reloadHash(_ sender: Any) {
 		shareLinkField.text = "..."
 		//generate new sharing url
-		Model.shared.sharing.generateAndRegisterHash() { succ, err in
+		Model.shared.sharing.registerHash() { succ, err in
 			self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 		}
 	}
