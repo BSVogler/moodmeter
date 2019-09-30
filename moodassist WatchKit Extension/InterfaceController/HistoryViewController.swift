@@ -62,6 +62,10 @@ class HistoryInterfaceController: WKInterfaceController {
 		diagram = Diagram(controller: diagramController)
 		super.init()
 		NotificationCenter.default.addObserver(self, selector: #selector(self.redraw), name: Measurement.changedNotification, object: nil)
+		//as this is quite laggy only refresh when we have new data
+		Model.shared.sharing.refresh(){
+			self.redraw()
+		}
 	}
 	
 	@objc func redraw(){
@@ -81,10 +85,6 @@ class HistoryInterfaceController: WKInterfaceController {
 	override func willActivate() {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
-		//as this is quite laggy only refresh when we have new data
-		Model.shared.sharing.refresh(){
-			self.redraw()
-		}
 		redraw()
 	}
 	
