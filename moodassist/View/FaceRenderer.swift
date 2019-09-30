@@ -31,65 +31,67 @@ class FaceRenderer {
 		eyeRight.lineWidth = 2;
 		eyeRight.fill()
 		
-		let mouthPath = UIBezierPath()
-		let quarter = rect.width/4
-		switch mood {
-		case 1:
-			mouthPath.move(to: CGPoint(x:rect.width/4, y : centerY+quarter))
-			mouthPath.addCurve(to: CGPoint(x:rect.width*3/4, y : centerY+quarter),
-							   controlPoint1: CGPoint(x:centerX, y : centerY+quarter/2),
-							   controlPoint2: CGPoint(x:centerX, y : centerY+quarter/2))
-			mouthPath.addCurve(to: CGPoint(x:rect.width/4, y : centerY+quarter),
-							   controlPoint1: CGPoint(x:centerX, y : centerY+quarter*3/4),
-								 controlPoint2: CGPoint(x:centerX, y : centerY+quarter*3/4))
-		case 2:
-			mouthPath.move(to: CGPoint(x:quarter, y : centerY+quarter/2))
-			mouthPath.addLine(to: CGPoint(x:quarter+quarter/4, y : centerY+quarter/2))
-			mouthPath.addLine(to: CGPoint(x:rect.width*3/4, y : centerY+quarter))
-			mouthPath.addLine(to: CGPoint(x:rect.width*3/4-quarter/2, y : centerY+quarter))
-			mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/2))
-		case 3:
-			mouthPath.move(to: CGPoint(x:quarter, y : centerY+quarter/4))
-			mouthPath.addLine(to: CGPoint(x:centerX+quarter, y : centerY+quarter/4))
-			mouthPath.addLine(to: CGPoint(x:centerX+quarter, y : centerY+quarter/3))
-			mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/3))
-			mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/4))
-		case 4:
-			centerY += quarter/2
-			mouthPath.move(to: CGPoint(x:quarter-quarter/2, y : centerY))
-			mouthPath.addCurve(to: CGPoint(x:3*quarter+quarter/2, y : centerY),
-			controlPoint1: CGPoint(x:quarter+quarter/2, y : centerY+quarter*3/4),
-			controlPoint2: CGPoint(x:3*quarter-quarter/2, y : centerY+quarter*3/4))
-			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
-							   controlPoint1: CGPoint(x:3*quarter, y : centerY+quarter/2),
-							   controlPoint2: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8))
-			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
-			controlPoint1: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8),
-			controlPoint2: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8))
-			mouthPath.addCurve(to: CGPoint(x:quarter-quarter/2, y : centerY),
-							   controlPoint1: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8),
-							   controlPoint2: CGPoint(x:quarter, y : centerY+quarter/2))
-		case 5:
-			centerY += quarter/2
-			mouthPath.move(to: CGPoint(x:quarter, y : centerY))
-			mouthPath.addCurve(to: CGPoint(x:3*quarter, y : centerY),
-			controlPoint1: CGPoint(x:quarter+quarter/2, y : centerY),
-			controlPoint2: CGPoint(x:3*quarter-quarter/2, y : centerY))
-			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
-							   controlPoint1: CGPoint(x:3*quarter, y : centerY+quarter/2),
-							   controlPoint2: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8))
-			mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
-			controlPoint1: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8),
-			controlPoint2: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8))
-			mouthPath.addCurve(to: CGPoint(x:quarter, y : centerY),
-							   controlPoint1: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8),
-							   controlPoint2: CGPoint(x:quarter, y : centerY+quarter/2))
+		if mood > 0 {
+			let mouthPath = UIBezierPath()
+			let quarter = rect.width/4
+			switch mood {
+			case 1:
+				mouthPath.move(to: CGPoint(x:rect.width/4, y : centerY+quarter))
+				mouthPath.addCurve(to: CGPoint(x:rect.width*3/4, y : centerY+quarter),
+								   controlPoint1: CGPoint(x:centerX, y : centerY+quarter/2),
+								   controlPoint2: CGPoint(x:centerX, y : centerY+quarter/2))
+				mouthPath.addCurve(to: CGPoint(x:rect.width/4, y : centerY+quarter),
+								   controlPoint1: CGPoint(x:centerX, y : centerY+quarter*3/4),
+									 controlPoint2: CGPoint(x:centerX, y : centerY+quarter*3/4))
+			case 2:
+				mouthPath.move(to: CGPoint(x:quarter, y : centerY+quarter/2))
+				mouthPath.addLine(to: CGPoint(x:quarter+quarter/4, y : centerY+quarter/2))
+				mouthPath.addLine(to: CGPoint(x:rect.width*3/4, y : centerY+quarter))
+				mouthPath.addLine(to: CGPoint(x:rect.width*3/4-quarter/2, y : centerY+quarter))
+				mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/2))
+			case 3:
+				mouthPath.move(to: CGPoint(x:quarter, y : centerY+quarter/4))
+				mouthPath.addLine(to: CGPoint(x:centerX+quarter, y : centerY+quarter/4))
+				mouthPath.addLine(to: CGPoint(x:centerX+quarter, y : centerY+quarter/3))
+				mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/3))
+				mouthPath.addLine(to: CGPoint(x:quarter, y : centerY+quarter/4))
+			case 4:
+				centerY += quarter/2
+				mouthPath.move(to: CGPoint(x:quarter-quarter/2, y : centerY))
+				mouthPath.addCurve(to: CGPoint(x:3*quarter+quarter/2, y : centerY),
+				controlPoint1: CGPoint(x:quarter+quarter/2, y : centerY+quarter*3/4),
+				controlPoint2: CGPoint(x:3*quarter-quarter/2, y : centerY+quarter*3/4))
+				mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
+								   controlPoint1: CGPoint(x:3*quarter, y : centerY+quarter/2),
+								   controlPoint2: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8))
+				mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
+				controlPoint1: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8),
+				controlPoint2: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8))
+				mouthPath.addCurve(to: CGPoint(x:quarter-quarter/2, y : centerY),
+								   controlPoint1: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8),
+								   controlPoint2: CGPoint(x:quarter, y : centerY+quarter/2))
+			case 5:
+				centerY += quarter/2
+				mouthPath.move(to: CGPoint(x:quarter, y : centerY))
+				mouthPath.addCurve(to: CGPoint(x:3*quarter, y : centerY),
+				controlPoint1: CGPoint(x:quarter+quarter/2, y : centerY),
+				controlPoint2: CGPoint(x:3*quarter-quarter/2, y : centerY))
+				mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
+								   controlPoint1: CGPoint(x:3*quarter, y : centerY+quarter/2),
+								   controlPoint2: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8))
+				mouthPath.addCurve(to: CGPoint(x:centerX, y : centerY+quarter*6/8),
+				controlPoint1: CGPoint(x:centerX+quarter/2, y : centerY+quarter*6/8),
+				controlPoint2: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8))
+				mouthPath.addCurve(to: CGPoint(x:quarter, y : centerY),
+								   controlPoint1: CGPoint(x:centerX-quarter/2, y : centerY+quarter*6/8),
+								   controlPoint2: CGPoint(x:quarter, y : centerY+quarter/2))
+				
+			default: break
+			}
 			
-		default: break
+			mouthPath.close()
+			mouthPath.fill()
 		}
-		
-		mouthPath.close()
-		mouthPath.fill()
 		
 		let image = UIGraphicsGetImageFromCurrentImageContext()!
 		UIGraphicsEndImageContext()
