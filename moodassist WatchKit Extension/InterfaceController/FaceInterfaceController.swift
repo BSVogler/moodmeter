@@ -105,6 +105,7 @@ class FaceInterfaceController: WKInterfaceController {
 			interfacescene.scene == nil {
 			interfacescene.scene = FaceScene().scene
 		}
+		face.mood = Model.shared.dataset[face.date.toJS()] ?? 0
 		refreshDisplay()
 	}
 	
