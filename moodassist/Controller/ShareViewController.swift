@@ -92,19 +92,10 @@ class ShareViewController: UIViewController {
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
-		if Model.shared.sharing.userHash != nil {
-			shareLinkField.text = "..."
-			//generate new sharing url
-			Model.shared.sharing.generateAndRegisterHash() { succ, err in
-				self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
-			}
-		} else {
-			//has no hash (only the case if there is a bug somehwere else), so make a new one
-			Model.shared.sharing.generateAndRegisterHash(){ succ, err in
-				if succ {
-					self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
-				}
-			}
+		shareLinkField.text = "..."
+		//generate new sharing url
+		Model.shared.sharing.generateAndRegisterHash() { succ, err in
+			self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
 		}
 	}
 	

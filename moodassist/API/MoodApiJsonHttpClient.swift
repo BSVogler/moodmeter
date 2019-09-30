@@ -34,11 +34,33 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		}
 	}
 	
-	public func register(hash: String, measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
+	public func register(measurements: [Measurement], done: @escaping (Result<RegisterResponse>) -> Void){
 		let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
 										  measurements: measurements)
-		post(to: hash,
+		post(to: "/register/",
 			 with: mrequest,
+			 responseType: .json,
+			 done: done
+		)
+	}
+	
+	public func moveHash(old: String, done: @escaping (Result<RegisterResponse>) -> Void){
+		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
+									  old_password: Model.shared.sharing.password ?? "",
+									  old_hash: old)
+		post(to: "/register/",
+			 with: moveRequest,
+			 responseType: .json,
+			 done: done
+			)
+	}
+	
+	public func importHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
+		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
+									  old_password: Model.shared.sharing.password ?? "",
+									  old_hash: old)
+		post(to: old,
+			 with: moveRequest,
 			 responseType: .csv,
 			 done: {(res: Result<[[String]]>) in
 				if res.isSuccess, let value = res.value {
@@ -75,21 +97,6 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		} else {
 			logger.error("no device Hash")
 		}
-	}
-	
-	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
-		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
-									  old_password: Model.shared.sharing.password ?? "",
-									  old_hash: old)
-		post(to: new,
-			 with: moveRequest,
-			 responseType: .csv,
-			 done: {(res: Result<[[String]]>) in
-				if res.isSuccess, let value = res.value {
-					self.parseToDataset(value)
-				}
-				done(res)
-		})
 	}
 	
 	public func getData(hash: String, done: @escaping (Result<[[String]]>) -> Void){

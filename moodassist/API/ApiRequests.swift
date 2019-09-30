@@ -46,4 +46,7 @@ struct MoveRequest: AuthorizedRequest  {
 	var old_hash: String
 }
 
+struct RegisterResponse: Codable {
+	var hash: String
+}
 

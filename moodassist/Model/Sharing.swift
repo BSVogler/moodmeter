@@ -8,6 +8,7 @@
 
 // MARK: Imports
 import Foundation
+import Alamofire
 
 // MARK: Sharing
 class Sharing: Codable {
@@ -51,31 +52,31 @@ class Sharing: Codable {
 		}
 	}
 	
+	
+	private func resultRegister(done: @escaping (Bool, Error?) -> Void, res: Result<RegisterResponse>) -> Void {
+		if res.isSuccess {
+			if let userHash =  res.value?.hash {
+				self.userHash = userHash
+				_ = Model.shared.saveToFiles()
+			} else {
+				done(false, NSError(domain: "got no hash", code: 1, userInfo: nil))
+			}
+		}
+		done(res.isSuccess, res.error)
+	}
+	
 	// MARK: Instance Methods
 	/// if there is already a hash, it moves them
 	final func generateAndRegisterHash(done: @escaping (Bool, Error?) -> Void){
-		//the hash does not have to be secure, just the seed, so use secure seed directly
-		var bytes = [UInt8](repeating: 0, count: Sharing.self.hashlength)
-		let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
-		
-		if status == errSecSuccess { // Always test the status.
-			let newHash = String(bytes.map{ byte in Sharing.alphabet[Int(byte % UInt8(Sharing.alphabet.count))] })
-			if let old = self.userHash {
-				MoodApiJsonHttpClient.shared.moveHash(old: old, new: newHash) { res in
-					self.userHash = newHash //use new only after request completed
-					_ = Model.shared.saveToFiles()
-					done(res.isSuccess, res.error)
-				}
-			} else {
-				//create by just posting
-				MoodApiJsonHttpClient.shared.register(hash: newHash, measurements: Model.shared.measurements){ res in
-					self.userHash = newHash
-					_ = Model.shared.saveToFiles()
-					done(res.isSuccess, res.error)
-				}
+		if let old = self.userHash {
+			MoodApiJsonHttpClient.shared.moveHash(old: old) { res in
+				self.resultRegister(done: done, res: res)
 			}
 		} else {
-			done(false, NSError(domain: "generating failed", code: Int(status), userInfo: nil))
+			//create by just posting
+			MoodApiJsonHttpClient.shared.register(measurements: Model.shared.measurements) { res in
+				self.resultRegister(done: done, res: res)
+			}
 		}
 	}
 	
@@ -88,7 +89,7 @@ class Sharing: Codable {
 		}
 		if Sharing.hashlength == hash.count {
 			if let old = self.userHash {
-				MoodApiJsonHttpClient.shared.moveHash(old: old, new: hash) { res in
+				MoodApiJsonHttpClient.shared.importHash(old: old, new: hash) { res in
 					self.userHash = hash //use new only after request completed
 					_ = Model.shared.saveToFiles()
 					done(res.isSuccess, res.error)
