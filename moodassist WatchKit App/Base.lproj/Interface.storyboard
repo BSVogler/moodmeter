@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14868" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XEc-Ya-93C">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15400" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XEc-Ya-93C">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14643"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15400"/>
     </dependencies>
     <scenes>
         <!--Yesterday-->
@@ -341,7 +341,7 @@
                                 <action selector="pushReminderSwitch:" destination="nHo-9K-4H5" id="7Rc-uO-yZ0"/>
                             </connections>
                         </switch>
-                        <group width="90" alignment="center" id="JdB-Dg-vO4">
+                        <group width="100" height="0.69999999999999996" alignment="center" layout="overlap" id="JdB-Dg-vO4">
                             <items>
                                 <picker width="0.47999999999999998" height="100" alignment="left" id="ESo-E1-PrA">
                                     <connections>
