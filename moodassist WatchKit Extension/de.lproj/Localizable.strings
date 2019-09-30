@@ -9,9 +9,9 @@
 "Reminder" = "Erinnerung";
 "Delete data" = "Daten löschen";
 "No rights"="Keine Rechte";
-"Please enable notifications for Moodassist in your system settings."="Bitte aktiviere die Benachrichtiungseinstellung für Moodassist in den Systemeinstellungen."
+"Please enable notifications for Moodassist in your system settings."="Bitte aktiviere die Benachrichtiungseinstellung für Moodassist in den Systemeinstellungen.";
 "Live sharing"="Live Teilen";
-"Failed. Check your code." ="Fehlgeschalgen. Überprüfe den Code."
+"Failed. Check your code." ="Fehlgeschlagen. Überprüfe den Code.";
 "...wait..."="...warte...";
 "Disabling the sharing deletes all remotely saved data." = "Deaktivieren löscht alle entfernt gespeicherten Daten.";
 "Yes, delete" ="ja, löschen";
