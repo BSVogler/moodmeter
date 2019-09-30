@@ -30,24 +30,6 @@ if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
 
 
-def move(old, new):
-    old_hash = request_data["old_hash"].lower()
-    action = "move"
-    old_pw = request_data["old_password"].encode('utf-8')
-    access_old = has_access(old_hash, old_pw)
-    if access_old:
-        access_old.close()
-        # move old data to new hash
-        os.rename(userdata_folder + old_hash + ".csv", userdata_folder + new + ".csv")
-        # optional append new measurements
-        if "measurements" in request_data:
-            measurements = request_data["measurements"]
-            add_measurements_to_csv(new, measurements)
-    else:
-        # authentication failed
-        logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
-        return abort(403)
-
 def merge(fp_old_read, old, new):
     """
 
@@ -234,8 +216,23 @@ def add_data(repohash):
         else:  # save to new hash
             # is move request?
             if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                #allow this case leads to allowing arbitrary codes
-                return abort(404)
+                old_hash = request_data["old_hash"].lower()
+                action = "move"
+                old_pw = request_data["old_password"].encode('utf-8')
+                access_old = has_access(old_hash, old_pw)
+                new = repohash
+                if access_old:
+                    access_old.close()
+                    # move old data to new hash
+                    os.rename(userdata_folder + old_hash + ".csv", userdata_folder + new + ".csv")
+                    # optional append new measurements
+                    if "measurements" in request_data:
+                        measurements = request_data["measurements"]
+                        add_measurements_to_csv(new, measurements)
+                else:
+                    # authentication failed
+                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
+                    return abort(403)
             else:
                 # initial write, use register
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action+ "fail")
