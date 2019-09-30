@@ -170,54 +170,6 @@
                                 </button>
                             </items>
                         </group>
-                        <group width="1" alignment="left" id="J6w-80-3ng">
-                            <items>
-                                <label alignment="left" text="Monday" id="asf-Eg-sXi"/>
-                                <label alignment="right" text="--" id="EfS-Ii-yiQ"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="m1O-ch-4cc">
-                            <items>
-                                <label alignment="left" text="Tuesday" id="343-Co-XPM"/>
-                                <label alignment="right" text="--" id="MUr-QR-m2M"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="3NU-1y-4OG">
-                            <items>
-                                <label alignment="left" text="Wednesday" id="cZb-oL-SOh"/>
-                                <label alignment="right" text="--" id="Lq2-Id-ga6"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="wNy-Zr-joR">
-                            <items>
-                                <label alignment="left" text="Thursday" id="4bz-QH-B6e"/>
-                                <label alignment="right" text="--" id="dsv-9e-xO0"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="S0k-47-Qs3">
-                            <items>
-                                <label alignment="left" text="Friday" id="tvx-hK-1kl"/>
-                                <label alignment="right" text="--" id="5Kg-Na-ufZ"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="HYv-Ef-zqO">
-                            <items>
-                                <label alignment="left" text="Saturday" id="S1Z-FF-bbL"/>
-                                <label alignment="right" text="--" id="eXs-lq-Dqm"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="KPP-Dx-nCJ">
-                            <items>
-                                <label alignment="left" text="Friday" id="F3k-uy-bXS"/>
-                                <label alignment="right" text="--" id="OF7-Dp-Z6Q"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="e6a-GX-NrK">
-                            <items>
-                                <label alignment="left" text="Sunday" id="zxd-2v-beF"/>
-                                <label alignment="right" text="--" id="oqh-XE-N6j"/>
-                            </items>
-                        </group>
                     </items>
                     <connections>
                         <outlet property="diagramImage" destination="fvI-Ho-qma" id="Oqt-gD-dpd"/>
