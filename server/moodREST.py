@@ -206,7 +206,7 @@ def add_data(repohash):
     :return:
     """
     start = time.time()
-    repohash = repohash.lower()
+    repohash = repohash.upper()
     filename = userdata_folder + repohash+".csv"
     action = "default"
     if request.method == 'POST':
@@ -228,7 +228,7 @@ def add_data(repohash):
                     fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
                     #can read old?
                     if fp_old_read is not None:
-                        csvdata = merge(fp_old_read, request_data["old_hash"].lower(), repohash)
+                        csvdata = merge(fp_old_read, request_data["old_hash"].upper(), repohash)
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
                 if "measurements" in request_data:
                     csvdata = add_measurements_to_csv(repohash, request_data["measurements"])
