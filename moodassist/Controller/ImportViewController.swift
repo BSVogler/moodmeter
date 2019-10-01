@@ -23,7 +23,7 @@ class ImportViewController: UIViewController {
 	@IBAction func codeChanged(_ sender: Any) {
 		codeField.text = codeField.text?.uppercased()
 		enteredHash = codeField.text ?? ""
-		if Sharing.hashlength == enteredHash.count {
+		if enteredHash.count > 1 {
 			importButton.isEnabled = true
 		} else {
 			importButton.isEnabled = false

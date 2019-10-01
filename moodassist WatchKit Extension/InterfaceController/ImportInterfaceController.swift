@@ -16,7 +16,7 @@ class ImportInterfaceController: WKInterfaceController {
 	
 	@IBAction func codeChanged(_ value: NSString?) {
 		enteredHash = (value ?? "")  as String 
-		if Sharing.hashlength==value?.length {
+		if value?.length ?? 0 > 1 {
 			importButton.setEnabled(true)
 		} else {
 			importButton.setEnabled(false)

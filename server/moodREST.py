@@ -165,8 +165,13 @@ def register():
 
     #generate random digits until we find a free spot
     digits = 5
+    trials = 0
     while digits<10:
-        digits += 1
+        #try two times before using longer sequence
+        if trials == 2:
+            digits += 1
+            trials = 0
+        trials += 1
         repohash = ''.join(random.choice(string.ascii_uppercase.replace("O","") + string.digits) for _ in range(digits))
         filename = userdata_folder + repohash + ".csv"
         if not os.access(filename, os.R_OK):
