@@ -41,7 +41,7 @@ class Sharing: Codable {
 			guard let sharingURL = self.URL else {
 				return nil
 			}
-			return (sharingURL.host ?? "")+"c/"+sharingURL.path
+			return (sharingURL.host ?? "")+sharingURL.path
 		}
 	}
 	
