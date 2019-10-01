@@ -6,17 +6,20 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
+// MARK: Imports
 import WatchKit
 import Foundation
 
 // MARK: - Scene
 class FaceScene: WKInterfaceSCNScene {
 	
+    // MARK: Overridden/ Lifecycle Methods
 	override init() {
 		super.init()
 		load()
 	}
 	
+    // MARK: Instance Methods
 	func load(){
 		let options:Dictionary = [SCNSceneSource.LoadingOption.createNormalsIfAbsent : true]
 		
@@ -32,7 +35,7 @@ class FaceScene: WKInterfaceSCNScene {
 	}
 }
 
-//MARK: - FaceInterfaceController
+// MARK: - FaceInterfaceController
 @IBDesignable
 class FaceInterfaceController: WKInterfaceController {
     
