@@ -49,10 +49,11 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	// MARK: Outlets
-	@IBOutlet weak var dateLabel: WKInterfaceLabel!
-	@IBOutlet weak var scenekitscene: WKInterfaceSCNScene?
-	@IBOutlet weak var moodLabel: WKInterfaceLabel!
-	@IBOutlet weak var background: WKInterfaceGroup!
+	@IBOutlet private weak var dateLabel: WKInterfaceLabel!
+	@IBOutlet private weak var scenekitscene: WKInterfaceSCNScene?
+	@IBOutlet private weak var background: WKInterfaceGroup!
+    @IBOutlet private weak var faceImage: WKInterfaceImage!
+
 	
     // MARK: Overridden/ Lifecycle Methods
     override func awake(withContext context: Any?) {
