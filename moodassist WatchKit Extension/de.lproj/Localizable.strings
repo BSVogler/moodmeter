@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  moodassist
+
+  Created by Benedikt Stefan Vogler on 01.10.19.
+  Copyright © 2019 bsvogler. All rights reserved.
+*/
+
+"Reminder" = "Erinnerung";
+"Delete data" = "Daten löschen";
+"No rights"="Keine Rechte";
+"Please enable notifications for Moodassist in your system settings."="Bitte aktiviere die Benachrichtiungseinstellung für Moodassist in den Systemeinstellungen.";
+"Live sharing"="Live Teilen";
+"Failed. Check your code." ="Fehlgeschlagen. Überprüfe den Code.";
+"...wait..."="...warte...";
+"Disabling the sharing deletes all remotely saved data." = "Deaktivieren löscht alle entfernt gespeicherten Daten.";
+"Yes, delete" ="Ja, löschen!";
+"Disable?"="Deaktivieren";
+"Accept"="Bestätigen";
+"By using the share feature you agree to the privacy agreement. It can be found at "="Durch die Nutzung der Teilen Funktion aktzeptierst du die Datenschutzerklärung. Sie ist zu finden auf ";
+"Read"="Lesen";
+"Privacy agreement"="Datenschutzerklärung";

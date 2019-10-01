@@ -38,6 +38,7 @@ class FaceInterfaceController: WKInterfaceController {
     
     // MARK: Stored Instance Properties
 	let face = Measurement()
+    private var faceRenderer = FaceRenderer()
 	@IBInspectable public var isYesterday: Bool = false {
 		didSet {
 			refreshDisplay()
@@ -53,7 +54,6 @@ class FaceInterfaceController: WKInterfaceController {
     // MARK: Overridden/ Lifecycle Methods
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        // Configure interface objects here.
     }
     
     override func willActivate() {
@@ -77,7 +77,6 @@ class FaceInterfaceController: WKInterfaceController {
 		// mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 4
-			// face.moodChanged() this is not needed anymore, as mood is directly changed in Measurement instance
 		} else if face.mood < MoodConstants.moodToText.count-1 {
 			face.mood += 1
 			// face.moodChanged()
@@ -91,28 +90,30 @@ class FaceInterfaceController: WKInterfaceController {
 		//mood 0 is only internal special case
 		if face.mood == 0 {
 			face.mood = 2
-			// face.moodChanged()
 		} else if face.mood > 1 {
 			face.mood -= 1
-			// face.moodChanged()
 		} else {
 			return
 		}
-		refreshDisplay()
+        refreshDisplay()
 	}
 	
 	@IBAction func tapped(_ sender: Any) {
 		if face.mood == 0 {
 			face.mood = 3
-			// face.moodChanged()
 			refreshDisplay()
 		}
 	}
 
     // MARK: Private Instance Methods
 	private func refreshDisplay(){
-		moodLabel.setText(face.getSmiley())
 		background.setBackgroundColor(face.getColor())
+		faceRenderer.scale = WKInterfaceDevice.current().screenScale
+		faceRenderer.mood = face.mood
+		faceRenderer.offsetY = -self.contentFrame.height/8
+		//make it a rectangle 
+		let frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: self.contentFrame.height)
+		faceImage.setImage(faceRenderer.getImage(rect: frame))
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()

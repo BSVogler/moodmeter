@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  moodassist
+
+  Created by Benedikt Stefan Vogler on 01.10.19.
+  Copyright © 2019 bsvogler. All rights reserved.
+*/
+
+
+"Reminder" = "Reminder";
+"Delete data" = "Delete data";

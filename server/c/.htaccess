@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule (.*) https://api.moodassist.cloud/$1 [R=301,L]
+#RewriteRule ^(.*)$ https://moodassist.cloud/privacy/ [R=301]

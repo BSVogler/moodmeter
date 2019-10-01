@@ -16,9 +16,6 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Stored Type Properties
     public static let shared = MoodApiJsonHttpClient()
 	
-    // MARK: Stored Instance Properties
-    var userProfile = DataHandler.userProfile
-    
     // MARK: Initializers
 	init() {
 		super.init(Hosts.baseURL)
@@ -37,65 +34,79 @@ class MoodApiJsonHttpClient: JsonHttpClient {
             let normalizedDate = date.normalized()
             if let mood = Int(item[1]) {
                 // replace mood value if existing
-                if let existingMsmtEntry = userProfile.dataset.first(where: {$0.day == normalizedDate}) {
+                if let existingMsmtEntry = DataHandler.userProfile.dataset.first(where: {$0.day == normalizedDate}) {
                     existingMsmtEntry.mood = mood
                 } else {
                     // append
-                    userProfile.dataset.append(Measurement(day: date, mood: mood))
+                    DataHandler.userProfile.dataset.append(Measurement(day: date, mood: mood))
                 }
             }
 		}
 	}
 	
-    // Can this take single measurements or only the whole dataset? Update documentation, please.
+	public func register(measurements: [Measurement], done: @escaping (Result<RegisterResponse>) -> Void){
+		let mrequest = MeasurementRequest(password: DataHandler.userProfile.sharingHash.password ?? "",
+										  measurements: measurements)
+		post(to: "/register/",
+			 with: mrequest,
+			 responseType: .json,
+			 done: done
+		)
+	}
+	
+	public func moveHash(old: String, done: @escaping (Result<RegisterResponse>) -> Void){
+		let moveRequest = MoveRequest(password: DataHandler.userProfile.sharingHash.password ?? "",
+									  old_password: DataHandler.userProfile.sharingHash.password ?? "",
+									  old_hash: old)
+		post(to: "/register/",
+			 with: moveRequest,
+			 responseType: .json,
+			 done: done
+			)
+	}
+	
+	public func importHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
+		let moveRequest = MoveRequest(password: DataHandler.userProfile.sharingHash.password ?? "",
+									  old_password: DataHandler.userProfile.sharingHash.password ?? "",
+									  old_hash: old)
+		post(to: new,
+			 with: moveRequest,
+			 responseType: .csv,
+			 done: {(res: Result<[[String]]>) in
+				if res.isSuccess, let value = res.value {
+					self.parseToDataset(value)
+				}
+				done(res)
+		})
+	}
+	
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
-		if let userHash = userProfile.sharingHash.userHash {
-            let mrequest = MeasurementRequest(password: userProfile.sharingHash.password ?? "",
+        if let userHash = DataHandler.userProfile.sharingHash.userHash {
+            let mrequest = MeasurementRequest(password: DataHandler.userProfile.sharingHash.password ?? "",
                                               measurements: measurements)
             post(to: userHash,
 				 with: mrequest,
 				 responseType: .csv,
-				 done: {(res: Result<[[String]]>) in // TODO: move, leave
+				 done: {(res: Result<[[String]]>) in
 					if res.isSuccess, let value = res.value {
 						self.parseToDataset(value)
 					}
 					done(res)
 			})
 		} else {
-			logger.error("No user hash")
+			logger.error("no device Hash")
 		}
 	}
 	
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
-        if let userHash = userProfile.sharingHash.userHash {
-			let delRequest = DeleteRequest(password: userProfile.sharingHash.password ?? "")
+		if let userHash = DataHandler.userProfile.sharingHash.userHash {
+            let del_request = DeleteRequest(password: DataHandler.userProfile.sharingHash.password ?? "")
 			delete(to: userHash,
-				   with: delRequest,
+				   with: del_request,
 				   done: done)
 		} else {
-			logger.error("No user hash")
+			logger.error("no device Hash")
 		}
-	}
-	
-	public func moveHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void) {
-        
-		if userProfile.sharingHash.userHash != nil {
-            let moveRequest = MoveRequest(password: userProfile.sharingHash.password ?? "",
-                                          old_password: userProfile.sharingHash.password ?? "",
-                                          old_hash: old)
-            post(to: new,
-                 with: moveRequest,
-                 responseType: .csv,
-                 done: {(res: Result<[[String]]>) in
-                    if res.isSuccess, let value = res.value {
-                        self.parseToDataset(value)
-                    }
-                    done(res)
-            })
-        } else {
-            
-            logger.error("No user hash")
-        }
 	}
 	
 	public func getData(hash: String, done: @escaping (Result<[[String]]>) -> Void){

@@ -13,9 +13,6 @@ import UserNotifications
 
 // MARK: - ReminderInterfaceController
 class ReminderInterfaceController: WKInterfaceController {
-	
-    // MARK: Private Instance Methods
-    let reminder = DataHandler.userProfile.reminder // just for code convenience
     
     // MARK: IBOutlets
 	@IBOutlet private weak var notificationSwitch: WKInterfaceSwitch!
@@ -58,7 +55,7 @@ class ReminderInterfaceController: WKInterfaceController {
     // MARK: Deinitializers
     deinit {
         _ = DataHandler.saveToFiles()
-        if reminder.isEnabled {
+        if DataHandler.userProfile.reminder.isEnabled {
             Notifications.registerNotification()
         }
     }
@@ -69,13 +66,13 @@ class ReminderInterfaceController: WKInterfaceController {
 	}
 	
 	@IBAction func hourChanged(_ value: Int) {
-        if reminder.isEnabled {
+        if DataHandler.userProfile.reminder.isEnabled {
             DataHandler.userProfile.reminder.hour = value
 		}
 	}
 	
 	@IBAction func minuteChanged(_ value: Int) {
-		if reminder.isEnabled {
+		if DataHandler.userProfile.reminder.isEnabled {
             DataHandler.userProfile.reminder.minute = value
 		}
 	}
@@ -83,23 +80,25 @@ class ReminderInterfaceController: WKInterfaceController {
     // MARK: Instance Methods
 	func setEnabled(_ enabled: Bool){
 		if enabled {
-			Notifications.registerNotificationRights()
-			Notifications.registerNotification()
-			//temporaryugly fix for #11
-			UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-				if(settings.authorizationStatus != .authorized) {
-					//ui updates must be performed in main thread
-					DispatchQueue.main.async {
-						self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for this app in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
-						self.setEnabled(false)
+			Notifications.registerNotificationRights(){success, error in
+				DispatchQueue.main.async {
+					if success {
+                        DataHandler.userProfile.reminder.isEnabled = true
+						_ = DataHandler.saveToFiles()
+						self.notificationSwitch.setOn(true)
+						self.reminderTimePicker.setHidden(false)
+					} else {
+						self.presentAlert(withTitle: NSLocalizedString("No rights", comment: ""), message: NSLocalizedString("Please enable notifications for Moodassist in your system settings.", comment: ""), preferredStyle: .actionSheet, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
 					}
 				}
 			}
+		} else {
+			// turn off
+            DataHandler.userProfile.reminder.isEnabled = false
+			_ = DataHandler.saveToFiles()
 		}
-        DataHandler.userProfile.reminder.isEnabled = enabled
-		self.notificationSwitch.setOn(enabled)
-		self.reminderTimePicker.setHidden(enabled)
-        _ = DataHandler.saveToFiles()
+		self.notificationSwitch.setOn(DataHandler.userProfile.reminder.isEnabled)
+		self.reminderTimePicker.setHidden(!DataHandler.userProfile.reminder.isEnabled)
 	}
 	
 

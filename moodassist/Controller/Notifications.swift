@@ -29,8 +29,8 @@ class Notifications {
 			dateMatching: dateComponents, repeats: true)
 		
 		// Create the request
-		let uuidString = UUID().uuidString
-		let request = UNNotificationRequest(identifier: uuidString,
+		let uuid = UUID().uuidString
+		let request = UNNotificationRequest(identifier: uuid,
 											content: content, trigger: trigger)
 		
 		// Schedule the request with the system.
@@ -43,11 +43,8 @@ class Notifications {
 		}
 	}
 
-	static func registerNotificationRights() {
+	static func registerNotificationRights(completionHandler: @escaping (Bool, Error?) -> Void) {
 	  UNUserNotificationCenter.current()
-		.requestAuthorization(options: [.alert, .sound, .badge]) {
-		  granted, error in
-		  print("Permission granted: \(granted)")
-	  }
+		.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: completionHandler)
 	}
 }

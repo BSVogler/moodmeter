@@ -109,14 +109,30 @@ class JsonHttpClient {
 				return
 			}
 			
-			if let statuscode = response.response?.statusCode,
-				statuscode == 404 {
-				logger.warning("404, not found")
-				done(.failure(ApiError.errorMessage(message: "API not found. 404")))
-				return
-			}
+			if let statuscode = response.response?.statusCode {
+				if statuscode == 404 {
+					logger.warning("404, not found")
+					done(.failure(ApiError.errorMessage(message: "API not found. 404")))
+					return
+				}
+				
+				if let statuscode = response.response?.statusCode,
+					statuscode == 500 {
+					logger.warning("500, server error")
+					done(.failure(ApiError.errorMessage(message: "server error")))
+					return
+				}
 			
-			self.decodeAndPropagate(data: data, responseType: responseType, done: done)
+				if statuscode >= 200,
+				statuscode < 300 {
+					self.decodeAndPropagate(data: data, responseType: responseType, done: done)
+					return
+				} else {
+					done(.failure(ApiError.errorMessage(message: "HTTP \(statuscode)")))
+					return
+				}
+			}
+			done(.failure(ApiError.errorMessage(message: "no HTTP statuscode")))
 		}
 	}
 	

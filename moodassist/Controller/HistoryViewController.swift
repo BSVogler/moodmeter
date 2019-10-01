@@ -6,68 +6,24 @@
 //  Copyright © 2019 bsvogler. All rights reserved.
 //
 
-// MARK: Imports
 import UIKit
 
-// MARK: HistoryViewController
 class HistoryViewController: UIViewController {
 	
-    // MARK: Constants
-    private enum Constants {
-        static let formatterWeek: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd MMM YY"
-            formatter.locale = Calendar.current.locale
-            return formatter
-        }()
-        static let formatterMonth: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM YYYY"
-            formatter.locale = Calendar.current.locale
-            return formatter
-        }()
-    }
-    
-    // MARK: Stored Instance Properties
-    let diagramController = DiagramController()
-    private let diagram: Diagram
-
-
-    // MARK: IBOutlets
 	@IBOutlet weak var diagramImage: UIImageView!
 	@IBOutlet weak var rangeSelector: UISegmentedControl!
 	@IBOutlet weak var rangeDisplay: UILabel!
 	@IBOutlet weak var averageLabel: UILabel!
 	
-    // MARK: Initializers
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.diagram = Diagram(controller: diagramController)
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshRendering), name: Measurement.changedNotification, object: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        self.diagram = Diagram(controller: diagramController)
-        super.init(coder: coder)
-    }
-    
-    // Overridden/ Lifecycle Methods
-    override func viewDidLoad() {
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        refreshRendering()
-    }
-    
 	// MARK: IBActions
 	@IBAction func displayRangeChanged(_ sender: Any) {
 		switch rangeSelector.selectedSegmentIndex {
 		case 0:
-			diagramController.analysisRange = .week
+			diagramController.analysisrange = .week
 		case 1:
-			diagramController.analysisRange = .month
+			diagramController.analysisrange = .month
 		default:
-			diagramController.analysisRange = .year
+			diagramController.analysisrange = .year
 		}
 		refreshRendering()
 	}
@@ -81,15 +37,41 @@ class HistoryViewController: UIViewController {
 		diagramController.navigateBack()
 		refreshRendering()
 	}
-
 	
-    // MARK: Instance Methods
+	// MARK: stored properties
+	let diagramController = DiagramController()
+	private let diagram : Diagram
+	
+	// MARK: initializers
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		self.diagram = Diagram(controller: diagramController)
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.refreshRendering), name: Measurement.changedNotification, object: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		self.diagram = Diagram(controller: diagramController)
+		super.init(coder: coder)
+	}
+	
+	// MARK: functions
 	@objc func refreshRendering(){
-		//let sortedDates = Model.shared.dataset.keys.sorted(by: {$0.compare($1) == .orderedDescending})
-        
-        //dataset to string
-        diagramImage.image = diagram.getImage(frame: diagramImage.frame, scale: UIScreen.main.scale)
-        
-        rangeDisplay.text = diagramController.getRangeText()
+		diagram.frame = diagramImage.frame
+		rangeDisplay.text = diagramController.getRangeText()
+		diagramImage.image = diagram.getImage(scale: UIScreen.main.scale)
+	}
+	
+	override func viewDidLoad() {
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		diagram.frame = diagramImage.frame
+		refreshRendering()
+
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		//causes a correct size redraw #49
+		diagram.frame = diagramImage.frame
+		refreshRendering()
 	}
 }

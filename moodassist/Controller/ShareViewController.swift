@@ -58,17 +58,32 @@ class ShareViewController: UIViewController {
         //disable keyboard
         shareLinkField.inputView = UIView.init(frame: .zero)
     }
-    
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "importSegue"{
+			let vc = segue.destination as! ImportViewController
+			vc.delegate = self
+		}
+	}
+	
 	// MARK: IBActions
 	@IBAction func shareLiveButton(_ sender: Any) {
 		activityIndicator.isHidden = false
 		shareLiveDataButton.isHidden = true
 		activityIndicator.startAnimating()
+<<<<<<< HEAD:moodassist/Controller/ShareViewController.swift
 		sharingHash.generateAndRegisterHash() {
             self.shareLinkField.text = self.sharingHash.url?.absoluteString
+=======
+		Model.shared.sharing.registerHash() { succ, err in
+			if succ {
+				self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
+				self.showSharingActivated()
+			} else {
+				self.showSharingDeactivated()
+			}
+>>>>>>> 3df75cb5e548a9661df72433774f8a082764c6ba:moodassist/Controller/ShareViewController.swift
 			self.activityIndicator.stopAnimating()
-			self.showSharingActivated()
-			self.shareLiveDataButton.isHidden = false
 		}
 	}
 	
@@ -76,16 +91,22 @@ class ShareViewController: UIViewController {
 		confirm(title: NSLocalizedString("Disable?", comment: ""),
 				message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: "")
 		) { action in
-			
+			self.activityIndicator.startAnimating()
 			MoodApiJsonHttpClient.shared.delete { res in
 				print (res.debugDescription)
+<<<<<<< HEAD:moodassist/Controller/ShareViewController.swift
                 self.sharingHash.disableSharing()
+=======
+				Model.shared.sharing.disableSharing()
+				self.activityIndicator.stopAnimating()
+>>>>>>> 3df75cb5e548a9661df72433774f8a082764c6ba:moodassist/Controller/ShareViewController.swift
 				self.showSharingDeactivated()
 			}
 		}
 	}
 	
 	@IBAction func reloadHash(_ sender: Any) {
+<<<<<<< HEAD:moodassist/Controller/ShareViewController.swift
 		if sharingHash.userHash != nil {
 			shareLinkField.text = "..."
 			// generate new sharing url
@@ -98,6 +119,12 @@ class ShareViewController: UIViewController {
 			sharingHash.generateAndRegisterHash(){
                 self.shareLinkField.text = self.sharingHash.url?.absoluteString
 			}
+=======
+		shareLinkField.text = "..."
+		//generate new sharing url
+		Model.shared.sharing.registerHash() { succ, err in
+			self.shareLinkField.text = Model.shared.sharing.URL?.absoluteString
+>>>>>>> 3df75cb5e548a9661df72433774f8a082764c6ba:moodassist/Controller/ShareViewController.swift
 		}
 	}
 	
@@ -141,17 +168,20 @@ class ShareViewController: UIViewController {
 		exportButton.titleLabel?.text = labelBefore
 	}
 	
+	// MARK: instance properties
+	
 	// MARK: Instance Methods
 	func showSharingDeactivated() {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
+		shareLiveDataButton.isHidden = false
 		let attributedString = NSMutableAttributedString(string: NSLocalizedString(termsText.text, comment: "") )
 		let foundRange = attributedString.mutableString.range(of: NSLocalizedString("terms and conditions", comment: ""))
 		guard foundRange.location != NSNotFound else {
 			print("String or Localization error")
 			return
 		}
-		let url = URL(string:"https://benediktsvogler.com/terms")!
+		let url = URL(string:NSLocalizedString("https://moodassist.cloud/privacy", comment: ""))!
 		attributedString.addAttribute(.link, value: url, range: foundRange)
 		termsText.attributedText = attributedString
 	}
@@ -180,3 +210,11 @@ extension ShareViewController: UIDocumentInteractionControllerDelegate {
         return self
     }
 }
+
+extension ShareViewController: URLupdaterDelegate {
+	func updatedURL() {
+		//update the sharing url
+		shareLinkField.text = Model.shared.sharing.URL?.absoluteString
+	}
+}
+

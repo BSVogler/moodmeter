@@ -8,6 +8,9 @@
 /* Class = "WKInterfaceLabel"; text = "Thursday"; ObjectID = "4bz-QH-B6e"; */
 "4bz-QH-B6e.text" = "Thursday";
 
+/* Class = "WKInterfaceLabel"; text = ":"; ObjectID = "4j9-m3-r0x"; */
+"4j9-m3-r0x.text" = ":";
+
 /* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "5Kg-Na-ufZ"; */
 "5Kg-Na-ufZ.text" = "--";
 
@@ -17,8 +20,8 @@
 /* Class = "WKInterfaceLabel"; text = "Importing merges the data and uses the new link"; ObjectID = "6en-RV-hVa"; */
 "6en-RV-hVa.text" = "Importing merges the data and uses the new link";
 
-/* Class = "WKInterfaceLabel"; text = "Exhibit A"; ObjectID = "71U-CQ-QRm"; */
-"71U-CQ-QRm.text" = "Exhibit A";
+/* Class = "WKInterfaceLabel"; text = "only relevant for watch os 4"; ObjectID = "71U-CQ-QRm"; */
+"71U-CQ-QRm.text" = "only relevant for watch os 4";
 
 /* Class = "WKInterfaceLabel"; text = "How are you feeling?"; ObjectID = "AGy-cV-ovc"; */
 "AGy-cV-ovc.text" = "How are you feeling?";
@@ -65,11 +68,11 @@
 /* Class = "WKInterfaceButton"; title = "Y"; ObjectID = "Vbp-c2-Y0u"; */
 "Vbp-c2-Y0u.title" = "Y";
 
+/* Class = "WKInterfaceLabel"; text = "1. August - 3 September 2019"; ObjectID = "WAP-kc-GnL"; */
+"WAP-kc-GnL.text" = "1. August - 3 September 2019";
+
 /* Class = "WKInterfaceTextField"; text = "enter code"; ObjectID = "Y3W-4b-hhh"; */
 "Y3W-4b-hhh.text" = "enter code";
-
-/* Class = "WKInterfaceLabel"; text = ":-|"; ObjectID = "YPx-k5-wmb"; */
-"YPx-k5-wmb.text" = ":-|";
 
 /* Class = "WKInterfaceButton"; title = ":-)"; ObjectID = "YtB-rs-Ei5"; */
 "YtB-rs-Ei5.title" = ":-)";
@@ -80,8 +83,8 @@
 /* Class = "WKInterfaceLabel"; text = "Monday"; ObjectID = "asf-Eg-sXi"; */
 "asf-Eg-sXi.text" = "Monday";
 
-/* Class = "WKInterfaceLabel"; text = "Button description"; ObjectID = "bL0-Wk-1d5"; */
-"bL0-Wk-1d5.text" = "Button description";
+/* Class = "WKInterfaceLabel"; text = "Button"; ObjectID = "bL0-Wk-1d5"; */
+"bL0-Wk-1d5.text" = "Button";
 
 /* Class = "WKInterfaceLabel"; text = "Wednesday"; ObjectID = "cZb-oL-SOh"; */
 "cZb-oL-SOh.text" = "Wednesday";
@@ -101,11 +104,11 @@
 /* Class = "WKInterfaceButton"; title = "W"; ObjectID = "nMt-3O-QA4"; */
 "nMt-3O-QA4.title" = "W";
 
+/* Class = "WKInterfaceSwitch"; title = "Enable Reminder"; ObjectID = "oYb-SR-boS"; */
+"oYb-SR-boS.title" = "Enable Reminder";
+
 /* Class = "WKInterfaceLabel"; text = "--"; ObjectID = "oqh-XE-N6j"; */
 "oqh-XE-N6j.text" = "--";
-
-/* Class = "WKInterfaceLabel"; text = ":-|"; ObjectID = "sI4-hA-GhW"; */
-"sI4-hA-GhW.text" = ":-|";
 
 /* Class = "WKInterfaceButton"; title = ":-/"; ObjectID = "sKa-cM-83b"; */
 "sKa-cM-83b.title" = ":-/";

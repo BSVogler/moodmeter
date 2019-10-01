@@ -1,6 +1,7 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
 import binascii
+import string
 from datetime import datetime
 from flask import Flask, request, abort, make_response, Response
 import os
@@ -9,6 +10,7 @@ import shutil
 import csv
 import logging
 import time
+import random
 #from flask.logging import default_handler
 
 
@@ -28,6 +30,7 @@ logger = logging.getLogger('moodREST')
 
 if not os.path.isdir(userdata_folder):
     os.makedirs(userdata_folder)
+
 
 def merge(fp_old_read, old, new):
     """
@@ -152,6 +155,60 @@ def readFile(hash, password):
         # else:
         #    return "wrong password"
 
+@application.route('/register/', methods=['POST'])
+def register():
+    start = time.time()
+    action = "register"
+    if not request.json:
+        logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
+        return abort(400)
+
+    #generate random digits until we find a free spot
+    digits = 5
+    trials = 0
+    while digits<10:
+        #try two times before using longer sequence
+        if trials == 2:
+            digits += 1
+            trials = 0
+        trials += 1
+        repohash = ''.join(random.choice(string.ascii_uppercase.replace("O","") + string.digits) for _ in range(digits))
+        filename = userdata_folder + repohash + ".csv"
+        if not os.access(filename, os.R_OK):
+            break
+
+    request_data = request.json["data"]
+
+    if request.method == 'POST':
+        if os.access(filename, os.R_OK):
+            return abort(423)
+        else:
+            # is move request?
+            if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
+                old_hash = request_data["old_hash"].upper()
+                action = "move"
+                old_pw = request_data["old_password"].encode('utf-8')
+                access_old = has_access(old_hash, old_pw)
+                new = repohash
+                if access_old:
+                    access_old.close()
+                    # move old data to new hash
+                    os.rename(userdata_folder + old_hash + ".csv", userdata_folder + new + ".csv")
+                    # optional append new measurements
+                    if "measurements" in request_data:
+                        measurements = request_data["measurements"]
+                        add_measurements_to_csv(new, measurements)
+                else:
+                    # authentication failed
+                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + "login fail")
+                    return abort(403)
+            else:
+                if "measurements" in request_data:
+                    measurements = request_data["measurements"]
+                    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
+    response = {"data":{"hash": repohash},"status":"ok"}
+    return make_response(response)
 
 @application.route('/<string:repohash>', methods=['POST', 'GET', 'DELETE'])
 def add_data(repohash):
@@ -161,7 +218,7 @@ def add_data(repohash):
     :return:
     """
     start = time.time()
-    repohash = repohash.lower()
+    repohash = repohash.upper()
     filename = userdata_folder + repohash+".csv"
     action = "default"
     if request.method == 'POST':
@@ -180,10 +237,10 @@ def add_data(repohash):
                 if "old_hash" in request_data and len(request_data["old_hash"]) > 0\
                         and "old_password" in request_data:
                     action = "merge"
-                    fp_old_read = has_access(request_data["old_hash"].lower(), request_data["old_password"].encode('utf-8'), "r")
+                    fp_old_read = has_access(request_data["old_hash"].upper(), request_data["old_password"].encode('utf-8'), "r")
                     #can read old?
                     if fp_old_read is not None:
-                        csvdata = merge(fp_old_read, request_data["old_hash"].lower(), repohash)
+                        csvdata = merge(fp_old_read, request_data["old_hash"].upper(), repohash)
                 logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action)
                 if "measurements" in request_data:
                     csvdata = add_measurements_to_csv(repohash, request_data["measurements"])
@@ -191,32 +248,11 @@ def add_data(repohash):
                 resp.headers["Content-Type"] = "text/csv"
                 return resp
             else:  # no access
-                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
-                return abort(Response("Invalid passwort for "+repohash+"."))
-        else:  # save to new hash
-            # is move request?
-            if "old_hash" in request_data and len(request_data["old_hash"]) > 0:
-                old_hash = request_data["old_hash"].lower()
-                action = "move"
-                old_pw = request_data["old_password"].encode('utf-8')
-                access_old = has_access(old_hash, old_pw)
-                if access_old:
-                    access_old.close()
-                    # move old data to new hash
-                    os.rename(userdata_folder + old_hash+".csv", userdata_folder + repohash+".csv")
-                    # optional append new measurements
-                    if "measurements" in request_data:
-                        measurements = request_data["measurements"]
-                        add_measurements_to_csv(repohash, measurements)
-                else:
-                    # authentication failed
-                    logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
-                    return abort(403)
-            else:
-                # initial write
-                if "measurements" in request_data:
-                    measurements = request_data["measurements"]
-                    writeFile(repohash, (request_data["password"].encode('utf-8')), measurements)
+                logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " no access to "+repohash)
+                return abort(Response("Invalid passwort for "+repohash+"."), 403)
+        else:
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " file not found "+repohash)
+            return abort(403)
         # disable log because this may make the request slower.
         #ip = request.remote_addr #only returning proxi address
         logger.info("{:10.4f}".format((time.time()-start)*1000) +"ms "+action)
@@ -247,8 +283,8 @@ def add_data(repohash):
             logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete")
             return "ok"
         else:
-            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete fail")
-            return abort(Response("Invalid passwort for "+repohash+"."))
+            logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms delete no rights fail")
+            return abort(Response("Invalid passwort for "+repohash+"."), 403)
 
 
 if __name__ == '__main__':

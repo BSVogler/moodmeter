@@ -35,8 +35,12 @@ class ImportInterfaceController: WKInterfaceController {
 	}
     
 	@IBAction func importButtonPressed() {
-        DataHandler.userProfile.sharingHash.importHash(enteredHash) {
-			self.pop()
+		DataHandler.userProfile.sharingHash.importHash(enteredHash) { succ, err in
+			if succ {
+				self.pop()
+			} else {
+				self.presentAlert(withTitle: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("Failed. Check your code.", comment: "")+"\n"+(err?.localizedDescription ?? ""), preferredStyle: .alert, actions: [ WKAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) {}])
+			}
 		}
 	}
 	

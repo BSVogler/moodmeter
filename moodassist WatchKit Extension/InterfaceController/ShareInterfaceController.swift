@@ -21,31 +21,22 @@ class ShareInterfaceController: WKInterfaceController {
 	
     // MARK: Overridden/ Lifecycle Methods
     override func awake(withContext context: Any?) {
-		if let _ = sharingHash.userHash,
-            let shareURL = sharingHash.urlWithoutProtocol {
+        if let shareURL = DataHandler.userProfile.sharingHash.urlWithoutProtocol {
             hashLabel.setText(shareURL)
         } else {
-            hashLabel.setText("...wait...")
-            sharingHash.generateAndRegisterHash() {
-                self.hashLabel.setText(self.sharingHash.urlWithoutProtocol)
-            }
+            generateNewHash()
         }
     }
     
     override func didAppear() {
-        self.hashLabel.setText(sharingHash.urlWithoutProtocol)
+        self.hashLabel.setText(DataHandler.userProfile.sharingHash.urlWithoutProtocol)
     }
     
     // MARK: IBActions
 	@IBAction func generateNewLink() {
-		hashLabel.setText("...wait...")
-        
-		// generate new sharing url
-        sharingHash.generateAndRegisterHash() {
-            self.hashLabel.setText(self.sharingHash.url?.absoluteString)
-		}
+		generateNewHash()
 	}
-    
+	
 	@IBAction func delete() {
 		let accept = WKAlertAction(title: NSLocalizedString("Yes, delete", comment: ""), style: .destructive) {
 			//wait for confirm from server
@@ -55,7 +46,22 @@ class ShareInterfaceController: WKInterfaceController {
 				self.pop()
 			}
 		}
-        
 		presentAlert(withTitle: NSLocalizedString("Disable?", comment: ""), message: NSLocalizedString("Disabling the sharing deletes all remotely saved data.", comment: ""), preferredStyle: .actionSheet, actions: [ accept])
+	}
+	
+	func generateNewHash(){
+		hashLabel.setText("...wait...")
+		DataHandler.userProfile.sharingHash.registerHash() { succ, err in
+			if succ {
+                self.hashLabel.setText(DataHandler.userProfile.sharingHash.urlWithoutProtocol)
+			} else {
+				if let err = err {
+					self.hashLabel.setText("failed: \(err.localizedDescription)")
+				} else {
+					self.hashLabel.setText("failed")
+				}
+			}
+			
+		}
 	}
 }

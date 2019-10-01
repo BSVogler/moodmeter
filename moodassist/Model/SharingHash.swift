@@ -8,6 +8,7 @@
 
 // MARK: Imports
 import Foundation
+import Alamofire
 
 // MARK: - SharingHash
 class SharingHash: Codable {
@@ -45,50 +46,48 @@ class SharingHash: Codable {
     }
     
     // MARK: Instance Methods
-    /// if there is already a hash, it moves them
-    final func generateAndRegisterHash(done: @escaping () -> Void) {
-
-        // the hash does not have to be secure, just the seed, so use secure seed directly
-        var bytes = [UInt8](repeating: 0, count: SharingConstants.hashLength)
-        let status = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
-        
-        if status == errSecSuccess { // always test the status
-            let toURL = String(bytes.map{ byte in Constants.alphabet[Int(byte % UInt8(Constants.alphabet.count))] })
-            if userHash != nil {
-                moveHash(to: toURL) {
-                    _ = DataHandler.saveToFiles()
-                    done()
-                }
+    private func resultRegister(done: @escaping (Bool, Error?) -> Void, res: Result<RegisterResponse>) -> Void {
+        if res.isSuccess {
+            if let userHash =  res.value?.hash {
+                self.userHash = userHash
+                _ = DataHandler.saveToFiles()
             } else {
-                // create by just posting
-                userHash = toURL
-                MoodApiJsonHttpClient.shared.postMeasurement(measurements: DataHandler.userProfile.dataset) { _ in
-                    _ = DataHandler.saveToFiles()
-                    done()
-                }
+                done(false, NSError(domain: "got no hash", code: 1, userInfo: nil))
             }
         }
+        done(res.isSuccess, res.error)
     }
     
-    /// I would like to return a more generic Result<>, but I was not able to do this
-    func importHash(_ hash: String, done: @escaping () -> Void) {
-        guard userHash != nil else {
-            // this should not happen
-            generateAndRegisterHash(done: done)
-            return
-        }
-        moveHash(to: hash, done: done)
-    }
-    
-    /// I would like to return a more generic Result<>, but I was not able to do this
-    func moveHash(to: String, done: @escaping () -> Void) {
+    /// if there is already a hash, it moves them
+    final func registerHash(done: @escaping (Bool, Error?) -> Void){
         if let old = self.userHash {
-            MoodApiJsonHttpClient.shared.moveHash(old: old, new: to) { res in
-                self.userHash = to //use new only after request completed
-                done()
+            MoodApiJsonHttpClient.shared.moveHash(old: old) { res in
+                self.resultRegister(done: done, res: res)
             }
         } else {
-            generateAndRegisterHash(done: done)
+            MoodApiJsonHttpClient.shared.register(measurements: DataHandler.userProfile.dataset) { res in
+                self.resultRegister(done: done, res: res)
+            }
+        }
+    }
+    
+    func importHash(_ hash: String, done: @escaping (Bool, Error?) -> Void) {
+        guard userHash != nil else {
+            //this should not happen
+            return
+        }
+        if hash.count > 1 {
+            if let old = self.userHash {
+                MoodApiJsonHttpClient.shared.importHash(old: old, new: hash) { res in
+                    if res.isSuccess {
+                        self.userHash = hash //use new only after request completed
+                        _ = DataHandler.saveToFiles()
+                    }
+                    done(res.isSuccess, res.error)
+                }
+            }
+        } else {
+            done(false, NSError(domain: "Invalid import call. no hash found", code: 13, userInfo: nil))
         }
     }
     
@@ -97,9 +96,11 @@ class SharingHash: Codable {
         _ = DataHandler.saveToFiles()
     }
     
-    func refresh(){
+    func refresh(done: @escaping ()-> Void ){
         if let userHash = userHash {
-            MoodApiJsonHttpClient.shared.getData(hash: userHash){ _ in }
+            MoodApiJsonHttpClient.shared.getData(hash: userHash){ res in
+                done()
+            }
         }
     }
 }

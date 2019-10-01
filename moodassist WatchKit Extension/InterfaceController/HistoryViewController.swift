@@ -52,6 +52,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		diagramController.analysisRange = .week
+		diagram.dotSize = 4
 		redraw()
 	}
     
@@ -60,6 +61,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		diagramController.analysisRange = .month
+		diagram.dotSize = 2
 		redraw()
 	}
     
@@ -68,6 +70,7 @@ class HistoryInterfaceController: WKInterfaceController {
 		yearButton.setBackgroundColor(#colorLiteral(red: 0.9479486346, green: 0.6841028333, blue: 0, alpha: 1))
 		weekButton.setBackgroundColor(#colorLiteral(red: 0.2162876725, green: 0.1914932728, blue: 0, alpha: 1))
 		diagramController.analysisRange = .year
+		diagram.dotSize = 3
 		redraw()
 	}
 	
@@ -84,7 +87,9 @@ class HistoryInterfaceController: WKInterfaceController {
 	// MARK: Instance Methods
 	@objc func redraw(){
 		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
-		let image = diagram.getImage(frame: self.contentFrame, scale: WKInterfaceDevice.current().screenScale)
+		//hardcoded height because we cannot read that value
+		diagram.frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: 97)
+		let image = diagram.getImage(scale: WKInterfaceDevice.current().screenScale)
 		self.diagramImage.setImage(image)
 		rangeLabel.setText(diagramController.getRangeText())
 	}
