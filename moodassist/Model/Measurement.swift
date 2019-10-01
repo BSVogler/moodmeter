@@ -34,13 +34,12 @@ class Measurement: Codable {
     
 	// MARK: Initializers
     init() {
-        if let today = Date.today {
-            self.day = today
-            if let exisitingMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == today }) {
-                self.mood = exisitingMsmt.mood
-            } else {
-                self.mood = 0
-            }
+        let today = Date.today
+        self.day = today
+        if let exisitingMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == today }) {
+            self.mood = exisitingMsmt.mood
+        } else {
+            self.mood = 0
         }
     }
     

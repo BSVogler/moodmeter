@@ -60,12 +60,11 @@ class NotificationController: WKUserNotificationInterfaceController {
 	}
     
     private func setTodaysMood(to mood: Mood) {
-        if let today = Date.today {
-            if let exisitingMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == today }) {
-                exisitingMsmt.mood = mood
-            } else {
-                DataHandler.userProfile.dataset.append(Measurement(day: today, mood: mood))
-            }
+        let today = Date.today
+        if let exisitingMsmt = DataHandler.userProfile.dataset.first(where: { $0.day == today }) {
+            exisitingMsmt.mood = mood
+        } else {
+            DataHandler.userProfile.dataset.append(Measurement(day: today, mood: mood))
         }
     }
 }
