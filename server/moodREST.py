@@ -158,13 +158,20 @@ def readFile(hash, password):
 @application.route('/register/', methods=['POST'])
 def register():
     start = time.time()
-    digits=10
-    repohash = ''.join(random.choice(string.ascii_uppercase.replace("O","") + string.digits) for _ in range(digits))
-    filename = userdata_folder + repohash + ".csv"
     action = "register"
     if not request.json:
         logger.info("{:10.4f}".format((time.time() - start) * 1000) + "ms " + action + " fail")
         return abort(400)
+
+    #generate random digits until we find a free spot
+    digits = 5
+    while digits<10:
+        digits += 1
+        repohash = ''.join(random.choice(string.ascii_uppercase.replace("O","") + string.digits) for _ in range(digits))
+        filename = userdata_folder + repohash + ".csv"
+        if not os.access(filename, os.R_OK):
+            break
+
     request_data = request.json["data"]
 
     if request.method == 'POST':
