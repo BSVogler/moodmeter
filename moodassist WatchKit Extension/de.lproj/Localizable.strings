@@ -17,5 +17,6 @@
 "Yes, delete" ="Ja, löschen!";
 "Disable?"="Deaktivieren";
 "Accept"="Bestätigen";
-"By using the share feature you agree to the privacy agreement."="Durch die Nutzung der Teilen Funktion aktzeptierst du die Datenschutzerklärung.";
+"By using the share feature you agree to the privacy agreement. It can be found at "="Durch die Nutzung der Teilen Funktion aktzeptierst du die Datenschutzerklärung. Sie ist zu finden auf ";
 "Read"="Lesen";
+"Privacy agreement"="Datenschutzerklärung";
