@@ -20,7 +20,7 @@ class Sharing: Codable {
 	static let alphabet: [Character] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
 	
 	//MARK: Stored Instance Properties
-    let baseURL = NSURL(string: "https://moodassist.cloud")! as URL
+    let baseURL = NSURL(string: "https://api.moodassist.cloud")! as URL
 	private(set) var userHash: String? {
 		get {
 			return self._userHash
@@ -38,7 +38,7 @@ class Sharing: Codable {
 			guard let deviceHash = self.userHash else {
 				return nil
 			}
-			return baseURL.appendingPathComponent(deviceHash)
+			return baseURL.appendingPathComponent("c/").appendingPathComponent(deviceHash)
 		}
 	}
 	
@@ -48,7 +48,7 @@ class Sharing: Codable {
 			guard let sharingURL = self.URL else {
 				return nil
 			}
-			return (sharingURL.host ?? "")+sharingURL.path
+			return (sharingURL.host ?? "")+"c/"+sharingURL.path
 		}
 	}
 	
