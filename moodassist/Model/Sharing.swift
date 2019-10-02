@@ -13,7 +13,7 @@ import Alamofire
 // MARK: Sharing
 class Sharing: Codable {
 	//MARK: Stored Instance Properties
-    let baseURL = NSURL(string: "https://api.moodassist.cloud")! as URL
+    let apiURL = NSURL(string: "https://api.moodassist.cloud")! as URL
 	private(set) var userHash: String? {
 		get {
 			return self._userHash
@@ -31,7 +31,7 @@ class Sharing: Codable {
 			guard let deviceHash = self.userHash else {
 				return nil
 			}
-			return baseURL.appendingPathComponent("c/").appendingPathComponent(deviceHash)
+			return NSURL(string: "https://moodassist.cloud")!.appendingPathComponent("c/")?.appendingPathComponent(deviceHash)
 		}
 	}
 	
