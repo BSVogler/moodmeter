@@ -69,6 +69,21 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		})
 	}
 	
+	/// post the data without parsing the result
+	public func postMeasurementWithoutConfirm(measurements: [Measurement]){
+		if let deviceHash = model.sharing.userHash {
+			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
+											  measurements: measurements)
+			request(using: .post, to: deviceHash, with: mrequest, responseType: .csv){(res: Result<[[String]]>) in}
+			//let conf = URLSessionConfiguration()
+			//let session = URLSession.init(configuration: conf)
+			//let task = session.dataTask(with: url)
+			//task.resume()
+		} else {
+			logger.error("no device Hash")
+		}
+	}
+	
 	public func postMeasurement(measurements: [Measurement], done: @escaping (Result<[[String]]>) -> Void){
 		if let deviceHash = model.sharing.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",

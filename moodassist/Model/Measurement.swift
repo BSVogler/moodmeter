@@ -75,9 +75,10 @@ class Measurement: Codable {
 	func moodChanged(){
 		Model.shared.dataset[date.toJS()] = mood
 		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
-		_ = Model.shared.saveToFiles()
-		//send time of measurement
-		MoodApiJsonHttpClient.shared.postMeasurement(measurements: [Measurement(day: date, mood: mood)]){res in
+		//async to stop the lag
+		DispatchQueue.main.async {
+			_ = Model.shared.saveToFiles()
+			MoodApiJsonHttpClient.shared.postMeasurementWithoutConfirm(measurements: [Measurement(day: self.date, mood: self.mood)])
 		}
 	}
 	
