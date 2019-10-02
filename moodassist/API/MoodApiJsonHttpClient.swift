@@ -22,7 +22,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Initializers
 	init(model: Model) {
 		self.model = model
-		super.init(model.sharing.baseURL)
+		super.init(model.sharing.apiURL)
 		super.jsonDecoder.dateDecodingStrategy = .formatted(Measurement.dateFormatter)
 		super.jsonEncoder.dateEncodingStrategy = .formatted(Measurement.dateFormatter)
 	}
@@ -37,10 +37,11 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	public func register(measurements: [Measurement], done: @escaping (Result<RegisterResponse>) -> Void){
 		let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
 										  measurements: measurements)
-		post(to: "/register/",
-			 with: mrequest,
-			 responseType: .json,
-			 done: done
+		request(using: .post,
+				to:  "/register/",
+				with: mrequest,
+				responseType: .json,
+				done: done
 		)
 	}
 	
@@ -48,25 +49,23 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
 									  old_password: Model.shared.sharing.password ?? "",
 									  old_hash: old)
-		post(to: "/register/",
-			 with: moveRequest,
-			 responseType: .json,
-			 done: done
-			)
+		request(using: .post,
+				to: "/register/",
+				with: moveRequest,
+				responseType: .json,
+				done: done
+		)
 	}
 	
 	public func importHash(old: String, new: String, done: @escaping (Result<[[String]]>) -> Void){
 		let moveRequest = MoveRequest(password: Model.shared.sharing.password ?? "",
 									  old_password: Model.shared.sharing.password ?? "",
 									  old_hash: old)
-		post(to: new,
-			 with: moveRequest,
-			 responseType: .csv,
-			 done: {(res: Result<[[String]]>) in
-				if res.isSuccess, let value = res.value {
-					self.parseToDataset(value)
-				}
-				done(res)
+		request(using: .post, to: new, with: moveRequest, responseType: .csv, done: {(res: Result<[[String]]>) in
+			if res.isSuccess, let value = res.value {
+				self.parseToDataset(value)
+			}
+			done(res)
 		})
 	}
 	
@@ -74,14 +73,15 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		if let deviceHash = model.sharing.userHash {
 			let mrequest = MeasurementRequest(password: Model.shared.sharing.password ?? "",
 											  measurements: measurements)
-			post(to: deviceHash,
-				 with: mrequest,
-				 responseType: .csv,
-				 done: {(res: Result<[[String]]>) in
-					if res.isSuccess, let value = res.value {
-						self.parseToDataset(value)
-					}
-					done(res)
+			request(using: .post,
+					to: deviceHash,
+					with: mrequest,
+					responseType: .csv,
+					done: {(res: Result<[[String]]>) in
+						if res.isSuccess, let value = res.value {
+							self.parseToDataset(value)
+						}
+						done(res)
 			})
 		} else {
 			logger.error("no device Hash")
@@ -91,20 +91,24 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	public func delete(done: @escaping (Result<DeleteRequest>) -> Void){
 		if let deviceHash = model.sharing.userHash {
 			let del_request = DeleteRequest(password: Model.shared.sharing.password ?? "")
-			delete(to: deviceHash,
-				   with: del_request,
-				   done: done)
+			request(using: .delete,
+					to:  deviceHash,
+					with: del_request,
+					done: done)
 		} else {
 			logger.error("no device Hash")
 		}
 	}
 	
 	public func getData(hash: String, done: @escaping (Result<[[String]]>) -> Void){
-		get(to: hash, done: {(res: Result<[[String]]>) in
-				if res.isSuccess, let value = res.value {
-					self.parseToDataset(value)
-				}
-				done(res)
+		request(using: .get,
+				to:  hash,
+				with: nil as String?,
+				done: {(res: Result<[[String]]>) in
+					if res.isSuccess, let value = res.value {
+						self.parseToDataset(value)
+					}
+					done(res)
 		})
 	}
 }

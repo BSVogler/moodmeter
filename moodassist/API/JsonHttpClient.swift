@@ -33,44 +33,8 @@ class JsonHttpClient {
 		self.baseUrl = baseUrl
 	}
 	
-	// MARK: Instance Methods
-	func post<TData: Encodable, TResponse: Decodable>(
-		to endpoint: String,
-		with data: TData,
-		responseType: ResponseType = .json,
-		done: @escaping (Result<TResponse>) -> Void
-	) {
-		request(using: .post, to: endpoint, with: data, responseType: responseType, done: done)
-	}
-	
-	func put<TData: Encodable, TResponse: Decodable>(
-		to endpoint: String,
-		with data: TData,
-		responseType: ResponseType = .csv,
-		done: @escaping (Result<TResponse>) -> Void
-	) {
-		request(using: .put, to: endpoint, with: data, responseType: responseType, done: done)
-	}
-	
-	func delete<TData: Encodable, TResponse: Decodable>(
-		to endpoint: String,
-		with data: TData,
-		responseType: ResponseType = .json,
-		done: @escaping (Result<TResponse>) -> Void
-	) {
-		request(using: .delete, to: endpoint, with: data, responseType: responseType, done: done)
-	}
-	
-	func get<TResponse: Decodable>(
-		to endpoint: String,
-		responseType: ResponseType = .csv,
-		done: @escaping (Result<TResponse>) -> Void
-	) {
-		request(using: .get, to: endpoint, with: nil as String?, responseType: responseType, done: done)
-	}
-	
 	// MARK: Private Instance Methods
-	fileprivate func request<TData: Encodable, TResponse: Decodable>(
+	func request<TData: Encodable, TResponse: Decodable>(
 		using method: HTTPMethod,
 		to endpoint: String,
 		with body: TData?,
