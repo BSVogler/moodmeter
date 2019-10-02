@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>favicon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="favicon">
+            <rect id="Rectangle-path" fill="#FFEB57" fill-rule="nonzero" x="0" y="0" width="1024" height="1024"></rect>
+            <g id="Arbeitsfl_che_6:-Ebene-1" transform="translate(132.000000, 116.000000)">
+                <g id="Graphic_25" transform="translate(359.000000, 164.000000)">
+                    <circle id="Oval" fill="#333333" fill-rule="nonzero" cx="35" cy="35.35622" r="35.0000559"></circle>
+                    <circle id="Oval" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" cx="35" cy="35.35622" r="35.0000559"></circle>
+                </g>
+                <g id="Graphic_26" transform="translate(359.000000, 563.000000)">
+                    <circle id="Oval" fill="#333333" fill-rule="nonzero" cx="35" cy="35.3562" r="35.0000559"></circle>
+                    <circle id="Oval" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" cx="35" cy="35.3562" r="35.0000559"></circle>
+                </g>
+                <g id="Graphic_42" transform="translate(159.000000, 361.000000)">
+                    <circle id="Oval" fill="#333333" fill-rule="nonzero" cx="35.35622" cy="35" r="35.0000559"></circle>
+                    <circle id="Oval" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" cx="35.35622" cy="35" r="35.0000559"></circle>
+                </g>
+                <g id="Graphic_41" transform="translate(562.000000, 361.000000)">
+                    <circle id="Oval" fill="#333333" fill-rule="nonzero" cx="35.3562" cy="35" r="35.0000559"></circle>
+                    <circle id="Oval" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" cx="35.3562" cy="35" r="35.0000559"></circle>
+                </g>
+                <g id="Graphic_48" transform="translate(1.000000, 412.000000)" fill-rule="nonzero" fill="#333333">
+                    <path d="M16.81366,0 C11.51856,18.3198 7.44601,36.8701 4.70669,55.5403 C-25.32614,260.2266 116.25833,401.8111 320.9446,371.7782 C338.83017,369.154 356.6057,365.3063 374.17395,360.3324 C209.2603,312.2807 63.19514,165.2248 16.81367,0 L16.81366,0 Z" id="Shape"></path>
+                </g>
+                <g id="Graphic_54" transform="translate(409.000000, 4.000000)" fill-rule="nonzero" fill="#333333">
+                    <path d="M360.7236,375 C366.0685,356.71903 370.1794,338.208 372.9445,319.5773 C403.26,115.32455 260.343,-25.96006 53.7303,4.00916 C35.6764,6.6278 17.7336,10.46736 0,15.43077 C166.4657,63.3807 313.9056,210.12512 360.7236,375 Z" id="Shape"></path>
+                </g>
+                <g id="Graphic_59" transform="translate(411.000000, 409.000000)" fill-rule="nonzero" fill="#333333">
+                    <path d="M0,361.5195 C18.281,366.8645 36.792,370.9753 55.4227,373.7404 C259.67545,404.0559 400.9601,261.1389 370.9908,54.52624 C368.3722,36.4723 364.5326,18.5295 359.5692,0.7959 C311.6193,167.2616 164.8749,314.7015 0,361.5195 Z" id="Shape"></path>
+                </g>
+                <g id="Graphic_60" fill-rule="nonzero" fill="#333333">
+                    <path d="M375.689,16.2764 C357.40805,10.93146 338.897,6.82058 320.2663,4.05549 C116.01357,-26.26 -25.27104,116.657 4.69818,323.2697 C7.31682,341.3236 11.15638,359.26643 16.11979,377 C64.06971,210.53427 210.81414,63.0944 375.689,16.27641 L375.689,16.2764 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
