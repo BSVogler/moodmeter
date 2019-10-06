@@ -80,7 +80,7 @@
 "rqa-QO-POk.normalTitle" = "Teile Link";
 
 /* Class = "UILabel"; text = "Only people with that link can see you data. Generating a new link invalidates the old one."; ObjectID = "sGW-8B-86c"; */
-"sGW-8B-86c.text" = "Nur Menschen mit diesem Link können Deine Daten sehen. Wenn ein neuer Link erstellt wird, wird der Alte ungültig.";
+"sGW-8B-86c.text" = "Nur Menschen mit diesem Link können Deine Daten sehen. Wenn ein neuer Link erstellt wird, wird der alte ungültig.";
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "t3J-hS-ZIq"; */
 "t3J-hS-ZIq.normalTitle" = "Abbrechen";
