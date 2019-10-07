@@ -147,16 +147,15 @@ class Diagram {
 				}.sorted{$0.x > $1.x}
 			}
 		case .year:
+			var dateComponents = Calendar.current.dateComponents([.year, .month], from: controller.selectedDate)
+			let measurements = Model.shared.measurements;
 			for month in 1...12 {
-				var dateComponents = Calendar.current.dateComponents([.year, .month], from: controller.selectedDate)
 				dateComponents.month = month
-				let lowerDateMonth = Calendar.current.date(from:dateComponents)
-				if let lowerDateMonth = lowerDateMonth,
-				   let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
-					let datesinMonth = Model.shared.dataset.filter{let date = Date.fromJS($0.key) ?? Date()
-						return date > lowerDateMonth && date < higherDateMonth }
+				if let lowerDateMonth = Calendar.current.date(from:dateComponents),
+					let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
+					let datesinMonth = measurements.filter {$0.date > lowerDateMonth && $0.date < higherDateMonth }//transform the js dates to date objects
 					if datesinMonth.count > 0 {
-						let avgmood = datesinMonth.reduce(0) { $0 + $1.value } / datesinMonth.count
+						let avgmood = datesinMonth.reduce(0) { $0 + $1.mood } / datesinMonth.count
 						let x: CGFloat = offsetleft+CGFloat(month)*tickWidth+CGFloat(0.5)*tickWidth
 						let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(avgmood)
 						points.append(CGPoint(x: x, y: y))
