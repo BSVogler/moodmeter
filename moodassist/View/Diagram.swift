@@ -189,6 +189,11 @@ class Diagram {
 		avgLine.addLine(to: CGPoint(x:frame.width,y:average))
 		avgLine.stroke()
 		
+		let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 12)!,
+		NSAttributedString.Key.foregroundColor: averageColor]
+		"⌀".draw(with: CGRect(x: frame.width*0.92, y: average, width: tickWidth, height: offsettbottom),
+				   options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+		
 		//draw points and connect them
 		var lastpoint: CGPoint? = nil
 		let path = UIBezierPath()
