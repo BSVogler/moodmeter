@@ -21,6 +21,7 @@ class HistoryInterfaceController: WKInterfaceController {
 	//MARK: Stored Properties
 	let diagramController = DiagramController()
 	let diagram: Diagram
+	var visible: Bool = false
 	
 	//MARK: IBActions
 	@IBAction func weekButtonTap() {
@@ -69,12 +70,14 @@ class HistoryInterfaceController: WKInterfaceController {
 	}
 	
 	@objc func redraw(){
-		//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
-		//hardcoded height because we cannot read that value
-		diagram.frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: 97)
-		let image = diagram.getImage(scale: WKInterfaceDevice.current().screenScale)
-		self.diagramImage.setImage(image)
-		rangeLabel.setText(diagramController.getRangeText())
+		if visible {
+			//let image = chart.draw(frame, scale: WKInterfaceDevice.current().screenScale)
+			//hardcoded height because we cannot read that value
+			diagram.frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: 97)
+			let image = diagram.getImage(scale: WKInterfaceDevice.current().screenScale)
+			self.diagramImage.setImage(image)
+			rangeLabel.setText(diagramController.getRangeText())
+		}
 	}
 	
 	//MARK: overrides
@@ -85,12 +88,14 @@ class HistoryInterfaceController: WKInterfaceController {
 	override func willActivate() {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()
+		visible=true
 		redraw()
 	}
 	
 	override func didDeactivate() {
 		// This method is called when watch view controller is no longer visible
 		super.didDeactivate()
+		visible=false
 	}
 	
 }

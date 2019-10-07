@@ -37,7 +37,7 @@
 		A684811A2337C9FB00ADB8EA /* ShareInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */; };
 		A684811B2337C9FB00ADB8EA /* FaceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */; };
 		A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */; };
-		A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481142337C9FB00ADB8EA /* HistoryViewController.swift */; };
+		A684811D2337C9FB00ADB8EA /* HistoryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481142337C9FB00ADB8EA /* HistoryInterfaceController.swift */; };
 		A68481432337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
 		A68481442337CC5700ADB8EA /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481412337CC5700ADB8EA /* Measurement.swift */; };
 		A68481452337CC5700ADB8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68481422337CC5700ADB8EA /* Model.swift */; };
@@ -156,7 +156,7 @@
 		A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInterfaceController.swift; sourceTree = "<group>"; };
 		A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceInterfaceController.swift; sourceTree = "<group>"; };
 		A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
-		A68481142337C9FB00ADB8EA /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		A68481142337C9FB00ADB8EA /* HistoryInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryInterfaceController.swift; sourceTree = "<group>"; };
 		A68481412337CC5700ADB8EA /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Measurement.swift; path = moodassist/Model/Measurement.swift; sourceTree = SOURCE_ROOT; };
 		A68481422337CC5700ADB8EA /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = moodassist/Model/Model.swift; sourceTree = SOURCE_ROOT; };
 		A68481472337CC5E00ADB8EA /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 				A68481112337C9FB00ADB8EA /* ShareInterfaceController.swift */,
 				A68481122337C9FB00ADB8EA /* FaceInterfaceController.swift */,
 				A68481132337C9FB00ADB8EA /* MenuInterfaceController.swift */,
-				A68481142337C9FB00ADB8EA /* HistoryViewController.swift */,
+				A68481142337C9FB00ADB8EA /* HistoryInterfaceController.swift */,
 				A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */,
 			);
 			path = InterfaceController;
@@ -652,7 +652,7 @@
 				A684811C2337C9FB00ADB8EA /* MenuInterfaceController.swift in Sources */,
 				A6B1BB39233CCA0F00C62E71 /* DiagramController.swift in Sources */,
 				802B5459233CC2F300ADC7B9 /* Mood.swift in Sources */,
-				A684811D2337C9FB00ADB8EA /* HistoryViewController.swift in Sources */,
+				A684811D2337C9FB00ADB8EA /* HistoryInterfaceController.swift in Sources */,
 				A68481152337C9FB00ADB8EA /* NotificationController.swift in Sources */,
 				A6A56C43233F872000CD66BB /* FaceRenderer.swift in Sources */,
 			);
