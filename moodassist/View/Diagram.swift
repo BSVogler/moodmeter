@@ -50,9 +50,6 @@ class Diagram {
 	func getImage(scale: CGFloat) -> UIImage {
 		UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
 		axisColor.setStroke()
-		//let context = UIGraphicsGetCurrentContext()
-		//context?.setFillColor(CGColor.init(srgbRed: 1, green: 0, blue: 1, alpha: 1))
-		//context?.fill(frame)
 		drawBackground()
 		drawAxis()
 		drawPath()
