@@ -34,24 +34,14 @@ class Model: Codable {
 	var reminderHour = 22
 	var reminderMinute = 00
 	/// for getting the measurements as a read only array use `measurements`
-	var dataset = [String: Mood]() {
-		didSet{
-			NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
-		}
-	}
+	var measurements: [Measurement] = []
 	let sharing: Sharing
-	
-	// MARK: Computed Properties
-	var measurements: [Measurement] {
-		get {
-			return dataset.map{Measurement(day: $0.key, mood: $0.value)}
-		}
-	}
 	
     // MARK: Initializers
 	init(){
 		//init sharing shere and not in constructor list, so it is loaded by hidden generated constructor
 		sharing = Sharing()
+		
 	}
     
     // MARK: Type Methods
@@ -59,7 +49,7 @@ class Model: Codable {
         do {
             let jsonData = try Data(contentsOf: localDBStorageURL)
             let model = try JSONDecoder().decode(Model.self, from: jsonData)
-            print("Decoded \(model.dataset.count) entries.")
+            print("Decoded \(model.measurements.count) entries.")
             return model
         } catch {
             print("Could not load all data: \(error)")
@@ -68,6 +58,20 @@ class Model: Codable {
     }
 	
 	// MARK: Instance Methods
+	func addMeasurment(measurement: Measurement){
+		if let existing = measurements.first(where: { $0.day==measurement.day}) {
+			existing.mood = measurement.mood
+		} else {
+			measurements.append(measurement)
+		}
+		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
+	}
+	
+	func getMeasurement(at day: Date) -> Measurement? {
+		let normalizedDay = day.normalized()
+		return measurements.first { $0.day==normalizedDay}
+	}
+	
 	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(self)
@@ -83,7 +87,7 @@ class Model: Codable {
 	}
 	
 	func exportCSV() -> String {
-		return "Date; Mood\n"+dataset.map {return "\($0.key);\($0.value)"}.joined(separator: "\n")
+		return "Date; Mood\n"+measurements.map {return "\($0.day);\($0.mood)"}.joined(separator: "\n")
 	}
 	
 	func eraseData() -> Bool {
@@ -94,7 +98,7 @@ class Model: Codable {
 			print("Could not delete all data.")
 			return false
 		}
-		dataset.removeAll()
+		measurements.removeAll()
 		_ = saveToFiles()
 		return true
 	}

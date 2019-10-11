@@ -123,9 +123,9 @@ class Diagram {
 			//get measurements for this week
 			if let lowerDate = controller.lowerDate,
 				let higherDate = controller.higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+				let measurements = Model.shared.measurements.filter{$0.day > lowerDate && $0.day < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
-					let intervalSinceFirst = measurement.date.timeIntervalSince(lowerDate)
+					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
 					let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
 					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
@@ -137,9 +137,9 @@ class Diagram {
 			//dateComponents.month = Calendar.current.component(Calendar.Component.month, from: selectedDate)
 			if let lowerDate = controller.lowerDate,
 				let higherDate = controller.higherDate {
-				let measurements = Model.shared.measurements.filter{$0.date > lowerDate && $0.date < higherDate}
+				let measurements = Model.shared.measurements.filter{$0.day > lowerDate && $0.day < higherDate}
 				points = measurements.enumerated().map { (i, measurement) -> CGPoint in
-					let intervalSinceFirst = measurement.date.timeIntervalSince(lowerDate)
+					let intervalSinceFirst = measurement.day.timeIntervalSince(lowerDate)
 					let daysSinceMonth = floor(intervalSinceFirst / (3600*24))
 					let x: CGFloat = offsetleft+CGFloat(daysSinceMonth)*tickWidth+CGFloat(0.5)*tickWidth
 					let y: CGFloat = frame.height+tickHeight/2-offsettbottom-CGFloat(tickHeight)*CGFloat(measurement.mood)
@@ -153,7 +153,7 @@ class Diagram {
 				dateComponents.month = month
 				if let lowerDateMonth = Calendar.current.date(from:dateComponents),
 					let higherDateMonth = Calendar.current.date(byAdding: .month, value: 1, to: lowerDateMonth) {
-					let datesinMonth = measurements.filter {$0.date > lowerDateMonth && $0.date < higherDateMonth }//transform the js dates to date objects
+					let datesinMonth = measurements.filter {$0.day > lowerDateMonth && $0.day < higherDateMonth }//transform the js dates to date objects
 					if datesinMonth.count > 0 {
 						let avgmood = datesinMonth.reduce(0) { $0 + $1.mood } / datesinMonth.count
 						let x: CGFloat = offsetleft+CGFloat(month)*tickWidth+CGFloat(0.5)*tickWidth

@@ -42,6 +42,15 @@ extension Date {
         calendar.locale = Locale(identifier: "en_US_POSIX")
         return calendar.weekdaySymbols
     }
+	
+	static func today() -> Date  {
+		return Date().normalized()
+	}
+	
+	static func yesterday() -> Date {
+		let calendar = Calendar.current
+		return calendar.date(byAdding: .day, value: -1, to: Date())!.normalized()
+	}
     
     // MARK: Instance Methods
     func toJS() -> String {
@@ -89,5 +98,12 @@ extension Date {
         
         return date!
     }
+	
+	
+	func normalized() -> Date{
+		let calendar = Calendar.current
+		return calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+	}
+	
 }
 

@@ -28,62 +28,41 @@ class Measurement: Codable {
     
     // MARK: Stored Instance Properties
     var mood: Mood = 0
-    private var day: Date = Date()//without hours and minutes
-    
-    var isYesterday = false {
-        didSet {
-            if isYesterday {
-                date = yesterday ?? date
-            } else {
-                date = Date()
-            }
-        }
-    }
-    
-	// MARK: Computed Properties
-	var date: Date {
-		set {
-			let calendar = Calendar.current
-			day = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: newValue)!
+	var day: Date = Date(){
+		didSet{
+			day = day.normalized()
 		}
-		get {day}
+	}//without hours and minutes
+    
+	//Mark: computed property
+	var isYesterday: Bool {
+		return day == Date.yesterday()
 	}
-	var yesterday: Date? {
-		let calendar = Calendar.current
-		return calendar.date(byAdding: .day, value: -1, to: Date())
-	}
-	
+    
 	// MARK: Initializers
 	init() {
-		date = Date()
-		if let moodOnDate = Model.shared.dataset[date.toJS()] {
+		if let moodOnDate = Model.shared.getMeasurement(at: Date())?.mood {
 			mood = moodOnDate
 		}
 	}
 	
 	init(day: Date, mood: Mood){
-		self.date = day
+		self.day = day
 		self.mood = mood
 	}
 	
 	init(day: String, mood: Mood){
-		self.date = Date.fromJS(day) ?? Date()
+		self.day = Date.fromJS(day) ?? Date()
 		self.mood = mood
 	}
 	
 	// MARK: Instance Methods
 	func moodChanged(){
-		Model.shared.dataset[date.toJS()] = mood
 		//async because this is not so time critical
 		DispatchQueue.main.async {
 			_ = Model.shared.saveToFiles()
-			MoodApiJsonHttpClient.shared.postMeasurementWithoutConfirm(measurements: [Measurement(day: self.date, mood: self.mood)])
+			MoodApiJsonHttpClient.shared.postMeasurementWithoutConfirm(measurements: [self])
 		}
-	}
-	
-	func setToYesterday(){
-		isYesterday = true
-		date = yesterday ?? date
 	}
 	
 	func getSmiley() -> String {

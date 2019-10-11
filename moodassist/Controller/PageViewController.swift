@@ -86,25 +86,20 @@ class PageViewController: NSObject {
 extension PageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var index = self.indexOfViewController(viewController)
+        let index = self.indexOfViewController(viewController)
         if (index == 0) || (index == NSNotFound) {
             return nil
         }
         
-        index -= 1
-        return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+        return self.viewControllerAtIndex(index-1, storyboard: viewController.storyboard!)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var index = self.indexOfViewController(viewController)
-        if index == NSNotFound {
+        let index = self.indexOfViewController(viewController)
+        if index == NSNotFound || index+1 == self.pageTitles.count {
             return nil
         }
         
-        index += 1
-        if index == self.pageTitles.count {
-            return nil
-        }
-        return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
+        return self.viewControllerAtIndex(index+1, storyboard: viewController.storyboard!)
     }
 }

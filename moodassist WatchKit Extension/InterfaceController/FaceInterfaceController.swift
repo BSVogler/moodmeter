@@ -48,7 +48,6 @@ class FaceInterfaceController: WKInterfaceController {
 	
 	@IBInspectable public var isYesterday: Bool = false {
 		didSet {
-			self.face.isYesterday = isYesterday
 			refreshDisplay()
 		}
 	}
@@ -105,7 +104,7 @@ class FaceInterfaceController: WKInterfaceController {
 			interfacescene.scene == nil {
 			interfacescene.scene = FaceScene().scene
 		}
-		face.mood = Model.shared.dataset[face.date.toJS()] ?? 0
+		face.mood = Model.shared.getMeasurement(at: face.day)?.mood ?? 0
 		refreshDisplay()
 	}
 	

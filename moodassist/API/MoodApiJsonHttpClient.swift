@@ -28,9 +28,17 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 	}
 	
     // MARK: Instance Methods
+	///parses csv data with format date;mood (item[0];item[1])
 	public func parseToDataset(_ input: [[String]]){
 		for item in input {
-			model.dataset[item[0]] = Int(item[1])
+			if let date = Date.fromJS(item[0]),
+				let mood = Int(item[1]) {
+				if let measurement = model.getMeasurement(at: date) {
+					measurement.mood = mood  // if measurement exists, replace mood
+				} else {  // else add new measurement instance
+					model.addMeasurment(measurement: Measurement(day: date, mood: mood))
+				}
+			}
 		}
 	}
 	

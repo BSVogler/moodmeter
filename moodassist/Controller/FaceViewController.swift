@@ -8,7 +8,7 @@
 
 // MARK: Imports
 import UIKit
-	import AVFoundation
+import AVFoundation
 
 // MARK: - FaceViewController
 class FaceViewController: UIViewController {
@@ -16,7 +16,7 @@ class FaceViewController: UIViewController {
 	// MARK: Stored Instance Properties
 	var topLabel: String = ""
 	var modelController: PageViewController?
-	private var face = Measurement()
+	private var measure: Measurement
 	private var faceRenderer = FaceRenderer()
 	private var audioPlayer:AVAudioPlayer!
 	
@@ -26,29 +26,47 @@ class FaceViewController: UIViewController {
 	@IBOutlet private weak var faceImageView: UIImageView!
 	@IBOutlet weak var tutorialView: UIView!
 	
+	// MARK: Initializers
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		if let existingMeasurement = Model.shared.getMeasurement(at: Date.today()) {
+			measure = existingMeasurement
+		} else {
+			measure = Measurement(day: Date.today(), mood: 0)
+		}
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+	}
+	
+	required init?(coder: NSCoder) {
+		if let existingMeasurement = Model.shared.getMeasurement(at: Date.today()) {
+			measure = existingMeasurement
+		} else {
+			measure = Measurement(day: Date.today(), mood: 0)
+		}
+		super.init(coder: coder)
+	}
+	
     // MARK: Overridden/ Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.dataLabel!.text = topLabel
-		Model.shared.sharing.refresh(){
-			self.face.mood = Model.shared.dataset[self.face.date.toJS()] ?? 0
+		Model.shared.sharing.refresh() {
 			self.refreshDisplay()
 		}
-        face.mood = Model.shared.dataset[face.date.toJS()] ?? 0
         refreshDisplay()
     }
     
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
 		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 4
+		if measure.mood == 0 {
+			measure.mood = 4
 			playSound()
-			face.moodChanged()
-		} else if face.mood < Measurement.moodToText.count-1 {
-			face.mood += 1
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
+		} else if measure.mood < Measurement.moodToText.count-1 {
+			measure.mood += 1
 			playSound()
-			face.moodChanged()
+			measure.moodChanged()
 		} else {
 			return
 		}
@@ -57,14 +75,15 @@ class FaceViewController: UIViewController {
 	
 	@IBAction func swipeDown(_ sender: Any) {
 		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 2
+		if measure.mood == 0 {
+			measure.mood = 2
 			playSound()
-			face.moodChanged()
-		} else if face.mood > 1 {
-			face.mood -= 1
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
+		} else if measure.mood > 1 {
+			measure.mood -= 1
 			playSound()
-			face.moodChanged()
+			measure.moodChanged()
 		} else {
 			return
 		}
@@ -72,34 +91,40 @@ class FaceViewController: UIViewController {
 	}
 	
 	@IBAction func tapped(_ sender: Any) {
-		if face.mood == 0 {
-			face.mood = 3
+		if measure.mood == 0 {
+			measure.mood = 3
 			playSound()
-			face.moodChanged()
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
 			refreshDisplay()
 		}
 	}
 	
 	// MARK: Instance Methods
 	func refreshDisplay(){
-		self.view.backgroundColor = face.getColor()
+		self.view.backgroundColor = measure.getColor()
 		innerView.backgroundColor = self.view.backgroundColor
-		if !face.isYesterday,
-			face.mood != 0 {
+		if !measure.isYesterday,
+			measure.mood != 0 {
 			UIApplication.shared.applicationIconBadgeNumber = 0;
 		}
 		faceRenderer.scale = UIScreen.main.scale
-		faceRenderer.mood = face.mood
+		faceRenderer.mood = measure.mood
 		faceImageView.image = faceRenderer.getImage(rect: faceImageView.frame)
-		tutorialView.isHidden = face.mood != 0
+		tutorialView.isHidden = measure.mood != 0
 	}
 	
 	func setToYesterday(){
-		face.setToYesterday()
+		let date = Date.yesterday()
+		if  let existingMeasurement = Model.shared.getMeasurement(at: date) {
+			measure = existingMeasurement
+		} else {
+			measure = Measurement(day: date, mood: 0)
+		}
 	}
 	
 	func playSound(){
-		if let audioFilePath = Bundle.main.path(forResource: "sounds/"+String(face.mood), ofType: "m4a") {
+		if let audioFilePath = Bundle.main.path(forResource: "sounds/"+String(measure.mood), ofType: "m4a") {
 			do {
 				audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioFilePath), fileTypeHint: AVFileType.m4a.rawValue)
 				guard let audioPlayer = audioPlayer else { return }
@@ -109,6 +134,4 @@ class FaceViewController: UIViewController {
 			}
 		}
 	}
-		
-
 }
