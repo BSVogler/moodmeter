@@ -29,7 +29,7 @@ class Measurement: Codable {
     
     // MARK: Stored Instance Properties
     var mood: Mood = 0
-	var day: Date = Date(){
+	var day: Date = Date.today(){
 		didSet{
 			day = day.normalized()
 		}
@@ -53,7 +53,7 @@ class Measurement: Codable {
 	}
 	
 	init(day: String, mood: Mood){
-		self.day = Date.fromJS(day) ?? Date()
+		self.day = Date.fromJS(day) ?? Date.today()
 		self.mood = mood
 	}
 	
