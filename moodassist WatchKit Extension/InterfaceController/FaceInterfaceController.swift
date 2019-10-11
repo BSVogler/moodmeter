@@ -43,24 +43,19 @@ class FaceInterfaceController: WKInterfaceController {
 	@IBOutlet weak var faceImage: WKInterfaceImage!
 	
 	// MARK: Stored Properties
-	let face = Measurement()
+	var measure = Measurement()
 	private var faceRenderer = FaceRenderer()
-	
-	@IBInspectable public var isYesterday: Bool = false {
-		didSet {
-			refreshDisplay()
-		}
-	}
 	
 	// MARK: IBActions
 	@IBAction func swipeUp(_ sender: Any) {
 		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 4
-			face.moodChanged()
-		} else if face.mood < Measurement.moodToText.count-1 {
-			face.mood += 1
-			face.moodChanged()
+		if measure.mood == 0 {
+			measure.mood = 4
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
+		} else if measure.mood < Measurement.moodToText.count-1 {
+			measure.mood += 1
+			measure.moodChanged()
 		} else {
 			return
 		}
@@ -69,12 +64,13 @@ class FaceInterfaceController: WKInterfaceController {
 	
 	@IBAction func swipeDown(_ sender: Any) {
 		//mood 0 is only internal special case
-		if face.mood == 0 {
-			face.mood = 2
-			face.moodChanged()
-		} else if face.mood > 1 {
-			face.mood -= 1
-			face.moodChanged()
+		if measure.mood == 0 {
+			measure.mood = 2
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
+		} else if measure.mood > 1 {
+			measure.mood -= 1
+			measure.moodChanged()
 		} else {
 			return
 		}
@@ -82,9 +78,10 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	@IBAction func tapped(_ sender: Any) {
-		if face.mood == 0 {
-			face.mood = 3
-			face.moodChanged()
+		if measure.mood == 0 {
+			measure.mood = 3
+			Model.shared.addMeasurment(measurement: measure)
+			measure.moodChanged()
 			refreshDisplay()
 		}
 	}
@@ -117,7 +114,9 @@ class FaceInterfaceController: WKInterfaceController {
 			interfacescene.scene == nil {
 			interfacescene.scene = FaceScene().scene
 		}
-		face.mood = Model.shared.getMeasurement(at: face.day)?.mood ?? 0
+		if let existingMeasurement = Model.shared.getMeasurement(at: measure.day) {
+			measure = existingMeasurement
+		}
 		refreshDisplay()
 	}
 	
@@ -127,9 +126,9 @@ class FaceInterfaceController: WKInterfaceController {
 	}
 	
 	func refreshDisplay(){
-		background.setBackgroundColor(face.getColor())
+		background.setBackgroundColor(measure.getColor())
 		faceRenderer.scale = WKInterfaceDevice.current().screenScale
-		faceRenderer.mood = face.mood
+		faceRenderer.mood = measure.mood
 		faceRenderer.offsetY = -self.contentFrame.height/8
 		//make it a rectangle
 		let frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: self.contentFrame.height)
@@ -144,7 +143,12 @@ class FaceInterfaceController: WKInterfaceController {
 //workaround for IB not setting values for @IBInspectable
 class Yesterday: FaceInterfaceController {
 	override func willActivate(){
+		let date = Date.yesterday()
+		if  let existingMeasurement = Model.shared.getMeasurement(at: date) {
+			measure = existingMeasurement
+		} else {
+			measure = Measurement(day: date, mood: 0)
+		}
 		super.willActivate()
-		isYesterday = true
 	}
 }
