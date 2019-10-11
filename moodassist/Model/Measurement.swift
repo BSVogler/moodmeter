@@ -42,9 +42,6 @@ class Measurement: Codable {
     
 	// MARK: Initializers
 	init() {
-		if let moodOnDate = Model.shared.getMeasurement(at: Date())?.mood {
-			mood = moodOnDate
-		}
 	}
 	
 	init(day: Date, mood: Mood){
