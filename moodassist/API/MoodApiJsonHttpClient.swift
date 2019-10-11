@@ -33,11 +33,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 		for item in input {
 			if let date = Date.fromJS(item[0]),
 				let mood = Int(item[1]) {
-				if let measurement = model.getMeasurement(at: date) {
-					measurement.mood = mood  // if measurement exists, replace mood
-				} else {  // else add new measurement instance
-					model.addMeasurment(measurement: Measurement(day: date, mood: mood))
-				}
+				model.addMeasurment(measurement: Measurement(day: date, mood: mood))
 			}
 		}
 	}
