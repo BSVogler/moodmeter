@@ -96,6 +96,19 @@ class FaceInterfaceController: WKInterfaceController {
 		// Configure interface objects here.
 	}
 	
+	override init() {
+		super.init()
+		NotificationCenter.default.addObserver(self, selector: #selector(self.erased), name: Measurement.erasedNotification, object: nil)
+	}
+	
+	@objc func erased(){
+		if  let existingMeasurement = Model.shared.getMeasurement(at: measure.day) {
+			measure = existingMeasurement
+		} else {
+			measure = Measurement(day: measure.day, mood: 0)
+		}
+	}
+	
 	override func willActivate() {
 		// This method is called when watch view controller is about to be visible to user
 		super.willActivate()

@@ -100,6 +100,7 @@ class Model: Codable {
 		}
 		measurements.removeAll()
 		_ = saveToFiles()
+		NotificationCenter.default.post(name: Measurement.erasedNotification, object: nil)
 		return true
 	}
 }
