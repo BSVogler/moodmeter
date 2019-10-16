@@ -79,22 +79,26 @@ class Model: Codable {
 	
 	///sorted insert of an array
 	func addMeasurment(measurement new: [Measurement]) {
-		var newI = 0
-		var i = 0
-		while newI < new.count {
-			let newMeasure = new[newI]
-			let currentMeasure = measurements[i]
-			if currentMeasure.day == newMeasure.day {
-				currentMeasure.mood = newMeasure.mood
-				newI += 1
-			} else if newMeasure.day < currentMeasure.day {
-				measurements.insert(newMeasure, at: i)
-				newI += 1
-			}
-			if i+1 < measurements.count{
-				i += 1
-			} else {
-				measurements.append(newMeasure)
+		if measurements.isEmpty {
+			measurements.append(contentsOf: new)
+		} else {
+			var newI = 0
+			var i = 0
+			while newI < new.count {
+				let newMeasure = new[newI]
+				let currentMeasure = measurements[i]
+				if currentMeasure.day == newMeasure.day {
+					currentMeasure.mood = newMeasure.mood
+					newI += 1
+				} else if newMeasure.day < currentMeasure.day {
+					measurements.insert(newMeasure, at: i)
+					newI += 1
+				}
+				if i+1 < measurements.count{
+					i += 1
+				} else {
+					measurements.append(newMeasure)
+				}
 			}
 		}
 		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
