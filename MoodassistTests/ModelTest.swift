@@ -66,10 +66,22 @@ class ModelTest: XCTestCase {
 		XCTAssert(model.measurements[3] === new)
 	}
 	
-    func testPerformanceExample() {
+    func testPerformance() {
         // This is an example of a performance test case.
+		var newItems: [Moodassist.Measurement] = []
+		let calendar = Calendar.current
+		for i in 0..<1000 {
+			newItems.append(Measurement(day: calendar.date(byAdding: .day, value: -2*i, to: Date())!.normalized(), mood: 0))
+		}
+		model.addMeasurment(measurement: newItems)
+		XCTAssertEqual(model.measurements.count, 1000)
+		newItems.removeAll()
+		for i in 0..<1000 {
+			newItems.append(Measurement(day: calendar.date(byAdding: .day, value: -1*i, to: Date())!.normalized(), mood: 0))
+		}
+		XCTAssertEqual(newItems.count, 1000)
         self.measure {
-            // Put the code you want to measure the time of here.
+			model.addMeasurment(measurement: newItems)
         }
     }
 
