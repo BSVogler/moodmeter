@@ -14,6 +14,7 @@ class ModelTest: XCTestCase {
 	
     override func setUp() {
 		model = Model.shared
+		_ = model.eraseData()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -40,6 +41,31 @@ class ModelTest: XCTestCase {
 		XCTAssert(model.measurements[1] === new)
     }
 
+	func testMultiple() {
+		let old = Measurement(day: Date.yesterday(), mood: 0)
+		let new = Measurement()
+		model.addMeasurment(measurement: [old, new])
+		XCTAssertEqual(model.measurements.count, 2)
+		
+		//insert before
+		let calendar = Calendar.current
+		let veryveryold = Measurement(day: calendar.date(byAdding: .day, value: -7, to: Date())!.normalized(), mood: 0)
+		let veryold = Measurement(day: calendar.date(byAdding: .day, value: -3, to: Date())!.normalized(), mood: 0)
+		model.addMeasurment(measurement: [veryveryold, veryold])
+		XCTAssert(model.measurements[0] === veryveryold)
+		XCTAssert(model.measurements[1] === veryold)
+		XCTAssert(model.measurements[2] === old)
+		XCTAssert(model.measurements[3] === new)
+		_ = model.eraseData()
+		//insert in between
+		model.addMeasurment(measurement: [veryveryold, old])
+		model.addMeasurment(measurement: [veryold, new])
+		XCTAssert(model.measurements[0] === veryveryold)
+		XCTAssert(model.measurements[1] === veryold)
+		XCTAssert(model.measurements[2] === old)
+		XCTAssert(model.measurements[3] === new)
+	}
+	
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
