@@ -30,12 +30,15 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Instance Methods
 	///parses csv data with format date;mood (item[0];item[1])
 	public func parseToDataset(_ input: [[String]]){
+		var newItems: [Measurement] = []
 		for item in input {
 			if let date = Date.fromJS(item[0]),
 				let mood = Int(item[1]) {
-				model.addMeasurment(measurement: Measurement(day: date, mood: mood))
+				newItems.append(Measurement(day: date, mood: mood))
 			}
 		}
+		newItems = newItems.sorted { $0.day < $1.day }
+		model.addMeasurment(measurement: newItems)
 	}
 	
 	public func register(measurements: [Measurement], done: @escaping (Result<RegisterResponse>) -> Void){
