@@ -98,6 +98,7 @@ class Model: Codable {
 					i += 1
 				} else {
 					measurements.append(newMeasure)
+					newI += 1
 				}
 			}
 		}
