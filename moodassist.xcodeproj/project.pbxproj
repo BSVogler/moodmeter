@@ -67,6 +67,8 @@
 		A6B61C5A233A63C4009A9658 /* Diagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B61C58233A63C3009A9658 /* Diagram.swift */; };
 		A6D0FEEE23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
 		A6D0FEEF23396A2000DA20F3 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D0FEED23396A2000DA20F3 /* Sharing.swift */; };
+		A6FE62BF2357A329003E506D /* MoodassistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE62BE2357A329003E506D /* MoodassistTests.swift */; };
+		A6FE62C72357A416003E506D /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE62C62357A416003E506D /* ModelTest.swift */; };
 		D47F6EF026ABC5D84C6C57C7 /* Pods_Moodassist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BDA90C7B1526F4CEAF849E /* Pods_Moodassist.framework */; };
 		D9F144E1DAE8537ACE262AA4 /* Pods_Moodassist_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327EFB9CC17DEFF349A022B0 /* Pods_Moodassist_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A68480D42337C4FF00ADB8EA;
 			remoteInfo = "moodassist WatchKit Extension";
+		};
+		A6FE62C12357A329003E506D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A68480AA2337C4FC00ADB8EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A68480B12337C4FC00ADB8EA;
+			remoteInfo = Moodassist;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -178,6 +187,10 @@
 		A6B1BB3D233D2F2600C62E71 /* ReminderInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterfaceController.swift; sourceTree = "<group>"; };
 		A6B61C58233A63C3009A9658 /* Diagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagram.swift; sourceTree = "<group>"; };
 		A6D0FEED23396A2000DA20F3 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = moodassist/Model/Sharing.swift; sourceTree = SOURCE_ROOT; };
+		A6FE62BC2357A329003E506D /* MoodassistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoodassistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6FE62BE2357A329003E506D /* MoodassistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodassistTests.swift; sourceTree = "<group>"; };
+		A6FE62C02357A329003E506D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6FE62C62357A416003E506D /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		B80DD53A4E0040BE9A96C429 /* Pods-moodassist WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodassist WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-moodassist WatchKit Extension/Pods-moodassist WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		B820F206C6ED898C96A9426E /* Pods-Moodassist WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodassist WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Moodassist WatchKit Extension/Pods-Moodassist WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		D74317B505933DD5EB2466B7 /* Pods-Moodassist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moodassist.release.xcconfig"; path = "Target Support Files/Pods-Moodassist/Pods-Moodassist.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +210,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F144E1DAE8537ACE262AA4 /* Pods_Moodassist_WatchKit_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6FE62B92357A329003E506D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +253,7 @@
 				A68480B42337C4FC00ADB8EA /* moodassist */,
 				A68480CA2337C4FE00ADB8EA /* moodassist WatchKit App */,
 				A68480D92337C4FF00ADB8EA /* moodassist WatchKit Extension */,
+				A6FE62BD2357A329003E506D /* MoodassistTests */,
 				A68480B32337C4FC00ADB8EA /* Products */,
 				CD9E8E6C696D79A59050575C /* Pods */,
 				26E7D5B98D4F4F72C598685C /* Frameworks */,
@@ -245,6 +266,7 @@
 				A68480B22337C4FC00ADB8EA /* Moodassist.app */,
 				A68480C62337C4FE00ADB8EA /* Moodassist.app */,
 				A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */,
+				A6FE62BC2357A329003E506D /* MoodassistTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +382,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A6FE62BD2357A329003E506D /* MoodassistTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6FE62BE2357A329003E506D /* MoodassistTests.swift */,
+				A6FE62C02357A329003E506D /* Info.plist */,
+				A6FE62C62357A416003E506D /* ModelTest.swift */,
+			);
+			path = MoodassistTests;
+			sourceTree = "<group>";
+		};
 		CD9E8E6C696D79A59050575C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,13 +468,31 @@
 			productReference = A68480D52337C4FF00ADB8EA /* Moodassist WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		A6FE62BB2357A329003E506D /* MoodassistTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6FE62C52357A329003E506D /* Build configuration list for PBXNativeTarget "MoodassistTests" */;
+			buildPhases = (
+				A6FE62B82357A329003E506D /* Sources */,
+				A6FE62B92357A329003E506D /* Frameworks */,
+				A6FE62BA2357A329003E506D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6FE62C22357A329003E506D /* PBXTargetDependency */,
+			);
+			name = MoodassistTests;
+			productName = MoodassistTests;
+			productReference = A6FE62BC2357A329003E506D /* MoodassistTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A68480AA2337C4FC00ADB8EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = bsvogler;
 				TargetAttributes = {
@@ -456,6 +506,10 @@
 					A68480D42337C4FF00ADB8EA = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
+					};
+					A6FE62BB2357A329003E506D = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = A68480B12337C4FC00ADB8EA;
 					};
 				};
 			};
@@ -476,6 +530,7 @@
 				A68480B12337C4FC00ADB8EA /* Moodassist */,
 				A68480C52337C4FE00ADB8EA /* Moodassist WatchKit App */,
 				A68480D42337C4FF00ADB8EA /* Moodassist WatchKit Extension */,
+				A6FE62BB2357A329003E506D /* MoodassistTests */,
 			);
 		};
 /* End PBXProject section */
@@ -510,6 +565,13 @@
 			files = (
 				A68480E12337C50000ADB8EA /* Assets.xcassets in Resources */,
 				A6609B882342B2C60077D11E /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6FE62BA2357A329003E506D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +720,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A6FE62B82357A329003E506D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6FE62BF2357A329003E506D /* MoodassistTests.swift in Sources */,
+				A6FE62C72357A416003E506D /* ModelTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -670,6 +741,11 @@
 			isa = PBXTargetDependency;
 			target = A68480D42337C4FF00ADB8EA /* Moodassist WatchKit Extension */;
 			targetProxy = A68480D72337C4FF00ADB8EA /* PBXContainerItemProxy */;
+		};
+		A6FE62C22357A329003E506D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A68480B12337C4FC00ADB8EA /* Moodassist */;
+			targetProxy = A6FE62C12357A329003E506D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -988,6 +1064,48 @@
 			};
 			name = Release;
 		};
+		A6FE62C32357A329003E506D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = MoodassistTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.MoodassistTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moodassist.app/Moodassist";
+			};
+			name = Debug;
+		};
+		A6FE62C42357A329003E506D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DQDR268Z4;
+				INFOPLIST_FILE = MoodassistTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benediktsvogler.MoodassistTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moodassist.app/Moodassist";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1023,6 +1141,15 @@
 			buildConfigurations = (
 				A68480EF2337C50000ADB8EA /* Debug */,
 				A68480F02337C50000ADB8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6FE62C52357A329003E506D /* Build configuration list for PBXNativeTarget "MoodassistTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6FE62C32357A329003E506D /* Debug */,
+				A6FE62C42357A329003E506D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
