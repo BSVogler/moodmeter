@@ -33,7 +33,6 @@ class Model: Codable {
 	var reminderEnabled: Bool = false
 	var reminderHour = 22
 	var reminderMinute = 00
-	/// for getting the measurements as a read only array use `measurements`
 	var measurements: [Measurement] = []
 	let sharing: Sharing
 	
@@ -58,14 +57,49 @@ class Model: Codable {
     }
 	
 	// MARK: Instance Methods
-	func addMeasurment(measurement: Measurement){
-		if let existing = measurements.first(where: { $0.day==measurement.day}) {
-			existing.mood = measurement.mood
+	///sorted insert
+	func addMeasurment(measurement new: Measurement) {
+		if measurements.isEmpty {
+			measurements.append(new)
 		} else {
-			measurements.append(measurement)
+			for measure in measurements.enumerated() {
+				if measure.element.day == new.day {
+					measure.element.mood = new.mood
+					return;
+				} else if new.day < measure.element.day {
+					//add before
+					measurements.insert(new, at: measure.offset)
+					return;
+				}
+			}
+			measurements.append(new)
 		}
 		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
 	}
+	
+	///sorted insert of an array
+	func addMeasurment(measurement new: [Measurement]) {
+		var newI = 0
+		var i = 0
+		while newI < new.count {
+			let newMeasure = new[newI]
+			let currentMeasure = measurements[i]
+			if currentMeasure.day == newMeasure.day {
+				currentMeasure.mood = newMeasure.mood
+				newI += 1
+			} else if newMeasure.day < currentMeasure.day {
+				measurements.insert(newMeasure, at: i)
+				newI += 1
+			}
+			if i+1 < measurements.count{
+				i += 1
+			} else {
+				measurements.append(newMeasure)
+			}
+		}
+		NotificationCenter.default.post(name: Measurement.changedNotification, object: nil)
+	}
+	
 	
 	func getMeasurement(at day: Date) -> Measurement? {
 		let normalizedDay = day.normalized()
