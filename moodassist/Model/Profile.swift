@@ -15,5 +15,4 @@ struct Profile: Codable {
     // MARK: Stored Instance Properties
     var hash: String?
     var reminder = Reminder()
-    var dataset: [Measurement]
 }
