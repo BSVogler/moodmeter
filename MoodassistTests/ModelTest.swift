@@ -56,10 +56,13 @@ class ModelTest: XCTestCase {
 		XCTAssert(model.measurements[1] === veryold)
 		XCTAssert(model.measurements[2] === old)
 		XCTAssert(model.measurements[3] === new)
+		XCTAssertEqual(model.measurements.count, 4)
 		_ = model.eraseData()
+		XCTAssertEqual(model.measurements.count, 0)
 		//insert in between
 		model.addMeasurment(measurement: [veryveryold, old])
 		model.addMeasurment(measurement: [veryold, new])
+		XCTAssertEqual(model.measurements.count, 4)
 		XCTAssert(model.measurements[0] === veryveryold)
 		XCTAssert(model.measurements[1] === veryold)
 		XCTAssert(model.measurements[2] === old)
