@@ -61,20 +61,24 @@ class RootViewController: UIViewController {
 // MARK: - Extensions
 // MARK: UIPageViewControllerDelegate
 extension RootViewController: UIPageViewControllerDelegate {
-    
-    func configurePageControl() {
-        self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
-        self.pageControl.numberOfPages = modelController.pageTitles.count
-        self.pageControl.currentPage = 1
-        self.pageControl.tintColor = UIColor.black
-        self.pageControl.pageIndicatorTintColor = UIColor.white
-        self.pageControl.currentPageIndicatorTintColor = UIColor.black
-        self.pageViewController?.view.addSubview(pageControl)
-    }
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        // the current page is the number of the highlighted dot
-        self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
-    }
+	
+	func configurePageControl() {
+		self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
+		self.pageControl.numberOfPages = modelController.pageTitles.count
+		self.pageControl.currentPage = 1
+		self.pageControl.tintColor = UIColor.black
+		self.pageControl.pageIndicatorTintColor = UIColor.white
+		self.pageControl.currentPageIndicatorTintColor = UIColor.black
+		self.pageControl.isUserInteractionEnabled = false
+		self.pageViewController?.view.addSubview(pageControl)
+	}
+	
+	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+		// the current page is the number of the highlighted dot
+		self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
+	}
+	
+	
 }
 
 // MARK: alert(), confirm()
