@@ -41,7 +41,7 @@ class ModelTest: XCTestCase {
 		XCTAssert(model.measurements[1] === new)
     }
 
-	func testMultiple() {
+	func testAddingMultiple() {
 		let old = Measurement(day: Date.yesterday(), mood: 0)
 		let new = Measurement()
 		model.addMeasurment(measurement: [old, new])
