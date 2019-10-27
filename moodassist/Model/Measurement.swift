@@ -57,6 +57,7 @@ class Measurement: Codable, Comparable {
 	}
 	
 	// MARK: Instance Methods
+	/// call this function to trigger saving and posting of the change
 	func moodChanged(){
 		//async because this is not so time critical
 		DispatchQueue.main.async {
