@@ -11,7 +11,7 @@ import Foundation
 import UIKit.UIColor
 
 // MARK: - Measurement
-class Measurement: Codable {
+class Measurement: Codable, Comparable {
     
     // MARK: Stored Type Properties
 	static var moodToText: [String] = ["?", ":-(", ":-/", ":-|", ":-)", ":-D"]
@@ -83,5 +83,13 @@ class Measurement: Codable {
 			return UIColor(hue: hue, saturation: saturation, brightness: brightness*0.7, alpha: alpha)
 		}
 		return Measurement.moodToColor[mood]
+	}
+	
+	static func < (lhs: Measurement, rhs: Measurement) -> Bool {
+		return lhs.day < rhs.day
+	}
+	
+	static func == (lhs: Measurement, rhs: Measurement) -> Bool {
+		return lhs.day == rhs.day
 	}
 }
