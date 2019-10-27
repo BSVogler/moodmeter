@@ -106,6 +106,7 @@ class Model: Codable {
 	}
 	
 	
+	///get the optional measurements from the dataset
 	func getMeasurement(at day: Date) -> Measurement? {
 		let normalizedDay = day.normalized()
 		return measurements.first { $0.day==normalizedDay}
