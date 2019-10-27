@@ -38,7 +38,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
 			}
 		}
 		newItems = newItems.sorted { $0.day < $1.day }
-		model.addMeasurment(measurement: newItems)
+		model.addMeasurment(newItems)
 	}
 	
 	public func register(measurements: [Measurement], done: @escaping (Result<RegisterResponse>) -> Void){

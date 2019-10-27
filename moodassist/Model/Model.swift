@@ -58,7 +58,7 @@ class Model: Codable {
 	
 	// MARK: Instance Methods
 	///sorted insert
-	func addMeasurment(measurement new: Measurement) {
+	func addMeasurment(_ new: Measurement) {
 		if measurements.isEmpty {
 			measurements.append(new)
 		} else {
@@ -78,7 +78,7 @@ class Model: Codable {
 	}
 	
 	///sorted insert of an array
-	func addMeasurment(measurement new: [Measurement]) {
+	func addMeasurment(_ new: [Measurement]) {
 		if measurements.isEmpty {
 			measurements.append(contentsOf: new)
 		} else {

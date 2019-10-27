@@ -61,7 +61,7 @@ class FaceViewController: UIViewController {
 		if measure.mood == 0 {
 			measure.mood = 4
 			playSound()
-			Model.shared.addMeasurment(measurement: measure)
+			Model.shared.addMeasurment(measure)
 			measure.moodChanged()
 		} else if measure.mood < Measurement.moodToText.count-1 {
 			measure.mood += 1
@@ -78,7 +78,7 @@ class FaceViewController: UIViewController {
 		if measure.mood == 0 {
 			measure.mood = 2
 			playSound()
-			Model.shared.addMeasurment(measurement: measure)
+			Model.shared.addMeasurment(measure)
 			measure.moodChanged()
 		} else if measure.mood > 1 {
 			measure.mood -= 1
@@ -94,7 +94,7 @@ class FaceViewController: UIViewController {
 		if measure.mood == 0 {
 			measure.mood = 3
 			playSound()
-			Model.shared.addMeasurment(measurement: measure)
+			Model.shared.addMeasurment(measure)
 			measure.moodChanged()
 			refreshDisplay()
 		}

@@ -26,17 +26,17 @@ class ModelTest: XCTestCase {
 		let old = Measurement(day: Date.yesterday(), mood: 0)
 		let new = Measurement()
 		//insert after
-		model.addMeasurment(measurement: old)
+		model.addMeasurment(old)
 		XCTAssertEqual(model.measurements.count, 1)
-		model.addMeasurment(measurement: new)
+		model.addMeasurment(new)
 		XCTAssertEqual(model.measurements.count, 2)
 		XCTAssert(model.measurements[0] === old)
 		XCTAssert(model.measurements[1] === new)
 		_ = model.eraseData()
 		//insert before
 		XCTAssertEqual(model.measurements.count, 0)
-		model.addMeasurment(measurement: new)
-		model.addMeasurment(measurement: old)
+		model.addMeasurment(new)
+		model.addMeasurment(old)
 		XCTAssert(model.measurements[0] === old)
 		XCTAssert(model.measurements[1] === new)
     }
@@ -44,14 +44,14 @@ class ModelTest: XCTestCase {
 	func testAddingMultiple() {
 		let old = Measurement(day: Date.yesterday(), mood: 0)
 		let new = Measurement()
-		model.addMeasurment(measurement: [old, new])
+		model.addMeasurment([old, new])
 		XCTAssertEqual(model.measurements.count, 2)
 		
 		//insert before
 		let calendar = Calendar.current
 		let veryveryold = Measurement(day: calendar.date(byAdding: .day, value: -7, to: Date())!.normalized(), mood: 0)
 		let veryold = Measurement(day: calendar.date(byAdding: .day, value: -3, to: Date())!.normalized(), mood: 0)
-		model.addMeasurment(measurement: [veryveryold, veryold])
+		model.addMeasurment([veryveryold, veryold])
 		XCTAssert(model.measurements[0] === veryveryold)
 		XCTAssert(model.measurements[1] === veryold)
 		XCTAssert(model.measurements[2] === old)
@@ -60,8 +60,8 @@ class ModelTest: XCTestCase {
 		_ = model.eraseData()
 		XCTAssertEqual(model.measurements.count, 0)
 		//insert in between
-		model.addMeasurment(measurement: [veryveryold, old])
-		model.addMeasurment(measurement: [veryold, new])
+		model.addMeasurment([veryveryold, old])
+		model.addMeasurment([veryold, new])
 		XCTAssertEqual(model.measurements.count, 4)
 		XCTAssert(model.measurements[0] === veryveryold)
 		XCTAssert(model.measurements[1] === veryold)
@@ -76,7 +76,7 @@ class ModelTest: XCTestCase {
 		for i in 0..<1000 {
 			newItems.append(Measurement(day: calendar.date(byAdding: .day, value: -2*i, to: Date())!.normalized(), mood: 0))
 		}
-		model.addMeasurment(measurement: newItems)
+		model.addMeasurment(newItems)
 		XCTAssertEqual(model.measurements.count, 1000)
 		newItems.removeAll()
 		for i in 0..<1000 {
@@ -84,7 +84,7 @@ class ModelTest: XCTestCase {
 		}
 		XCTAssertEqual(newItems.count, 1000)
         self.measure {
-			model.addMeasurment(measurement: newItems)
+			model.addMeasurment(newItems)
         }
     }
 
