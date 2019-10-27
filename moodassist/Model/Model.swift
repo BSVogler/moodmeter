@@ -112,6 +112,24 @@ class Model: Codable {
 		return measurements.first { $0.day==normalizedDay}
 	}
 	
+	/// mood setter subscript for any entry (date)
+    subscript(_ date: Date) -> Mood? {
+        get {
+			return getMeasurement(at: date)?.mood
+        }
+        set {
+			guard let newMood = newValue else {
+                assert(false, "Mood on \(date) cannot be nil.")
+            }
+			//check if already existing
+			if let existingMsmt = getMeasurement(at: date) {
+				existingMsmt.mood = newMood
+            } else {
+				addMeasurment(Measurement(day: date, mood: newMood))
+            }
+        }
+    }
+	
 	func saveToFiles() -> Bool {
 		do {
 			let data = try JSONEncoder().encode(self)

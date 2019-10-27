@@ -75,6 +75,14 @@ class ModelTest: XCTestCase {
 		model.addMeasurment(old)
 		XCTAssertNotNil(model.getMeasurement(at: Date.yesterday()))
 	}
+	
+	func testSubscript(){
+		XCTAssertNil(model[Date.yesterday()])
+		let old = Measurement(day: Date.yesterday(), mood: 3)
+		model[old.day] = old.mood
+		XCTAssert(model[Date.yesterday()] == 3)
+	}
+	
     func testPerformance() {
         // This is an example of a performance test case.
 		var newItems: [Moodassist.Measurement] = []
