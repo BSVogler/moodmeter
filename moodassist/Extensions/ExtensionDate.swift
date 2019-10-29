@@ -34,7 +34,7 @@ extension Date {
     
     // MARK: Type Methods
     static func fromJS(_ from: String) -> Date? {
-        return Measurement.dateFormatter.date(from: from)
+        return Measurement.jsDateFormatter.date(from: from)
     }
     
     static func getWeekDaysInEnglish() -> [String] {
@@ -54,7 +54,7 @@ extension Date {
     
     // MARK: Instance Methods
     func toJS() -> String {
-        return Measurement.dateFormatter.string(from: self)
+        return Measurement.jsDateFormatter.string(from: self)
     }
     
     func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
