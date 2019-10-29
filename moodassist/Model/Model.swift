@@ -145,7 +145,10 @@ class Model: Codable {
 	}
 	
 	func exportCSV() -> String {
-		return "Date; Mood\n"+measurements.map {return "\($0.day);\($0.mood)"}.joined(separator: "\n")
+		let formatter = DateFormatter()
+		formatter.dateFormat = "YYYY-MM-DD"
+		formatter.locale = Calendar.current.locale
+		return "Date (YYYY-MM-DD); Mood\n"+measurements.map {return formatter.string(from: $0.day)+";\($0.mood)"}.joined(separator: "\n")
 	}
 	
 	func eraseData() -> Bool {
