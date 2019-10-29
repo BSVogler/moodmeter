@@ -147,7 +147,8 @@ class ShareViewController: UIViewController {
 		sharedView.isHidden = true
 		activateSharing.isHidden = false
 		shareLiveDataButton.isHidden = false
-		let attributedString = NSMutableAttributedString(string: NSLocalizedString(termsText.text, comment: "") )
+		let text = NSLocalizedString(termsText.text, comment: "")
+		let attributedString = NSMutableAttributedString(string:text  )
 		let foundRange = attributedString.mutableString.range(of: NSLocalizedString("terms and conditions", comment: ""))
 		guard foundRange.location != NSNotFound else {
 			print("String or Localization error")
@@ -155,6 +156,9 @@ class ShareViewController: UIViewController {
 		}
 		let url = URL(string:NSLocalizedString("https://moodassist.cloud/privacy", comment: ""))!
 		attributedString.addAttribute(.link, value: url, range: foundRange)
+		let paragraph = NSMutableParagraphStyle()
+		paragraph.alignment = .center
+		attributedString.addAttributes([.paragraphStyle: paragraph], range: NSRange(location: 0, length: text.count))
 		termsText.attributedText = attributedString
 	}
 	
