@@ -78,7 +78,8 @@ class StoreObserver: NSObject {
 	}
 	
 	func displayBuy(){
-		StoreManager.shared.startProductRequest(with: ["premium_product_id"])
+		//the string is the product id registered at apple in app store connect
+		StoreManager.shared.startProductRequest(with: ["premium"])
 	}
 	
 	func buyPremium() {
