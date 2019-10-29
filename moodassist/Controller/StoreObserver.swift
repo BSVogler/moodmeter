@@ -54,6 +54,17 @@ class StoreObserver: NSObject {
 		let payment = SKMutablePayment(product: product)
 		SKPaymentQueue.default().add(payment)
 	}
+	
+	func displayBuy(){
+		//the string is the product id registered at apple in app store connect
+		StoreManager.shared.startProductRequest(with: ["premium"])
+	}
+	
+	func buyPremium() {
+		if let premium = StoreManager.shared.premiumProduct {
+			buy(premium)
+		}
+	}
 
 	// MARK: - Restore All Restorable Purchases
 
@@ -77,14 +88,45 @@ class StoreObserver: NSObject {
 		SKPaymentQueue.default().restoreCompletedTransactions()
 	}
 	
-	func displayBuy(){
-		//the string is the product id registered at apple in app store connect
-		StoreManager.shared.startProductRequest(with: ["premium"])
-	}
-	
-	func buyPremium() {
-		if let premium = StoreManager.shared.premiumProduct {
-			buy(premium)
+	private let productionStoreURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+	private let sandboxStoreURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+
+	private func verifyIfPurchasedBeforeFreemium(_ storeURL: URL, _ receipt: Data) {
+		do {
+			let requestContents = ["receipt-data": receipt.base64EncodedString()]
+			let requestData = try JSONSerialization.data(withJSONObject: requestContents, options: [])
+
+			var storeRequest = URLRequest(url: storeURL)
+			storeRequest.httpMethod = "POST"
+			storeRequest.httpBody = requestData
+
+			URLSession.shared.dataTask(with: storeRequest) { (data, response, error) in
+				DispatchQueue.main.async {
+					if data != nil {
+						do {
+							let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any?]
+
+							if let statusCode = jsonResponse["status"] as? Int {
+								if statusCode == 21007 {
+									print("Switching to test against sandbox")
+									self.verifyIfPurchasedBeforeFreemium(self.sandboxStoreURL, receipt)
+								}
+							}
+
+							if let receiptResponse = jsonResponse["receipt"] as? [String: Any?], let originalVersion = receiptResponse["original_application_version"] as? String {
+								if originalVersion == "1.0.1" {
+									// Update to full paid version of app
+									//UserDefaults.standard.set(true, forKey: upgradeKeys.isUpgraded)
+								}
+							}
+						} catch {
+							print("Error: " + error.localizedDescription)
+						}
+					}
+				}
+				}.resume()
+		} catch {
+			print("Error: " + error.localizedDescription)
 		}
 	}
 
@@ -131,48 +173,6 @@ class StoreObserver: NSObject {
 		SKPaymentQueue.default().finishTransaction(transaction)
 	}
 	
-	// MARK: check if was paid before
-	private let productionStoreURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
-	private let sandboxStoreURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
-
-	private func verifyIfPurchasedBeforeFreemium(_ storeURL: URL, _ receipt: Data) {
-		do {
-			let requestContents:Dictionary = ["receipt-data": receipt.base64EncodedString()]
-			let requestData = try JSONSerialization.data(withJSONObject: requestContents, options: [])
-
-			var storeRequest = URLRequest(url: storeURL)
-			storeRequest.httpMethod = "POST"
-			storeRequest.httpBody = requestData
-
-			URLSession.shared.dataTask(with: storeRequest) { (data, response, error) in
-				DispatchQueue.main.async {
-					if data != nil {
-						do {
-							let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any?]
-
-							if let statusCode = jsonResponse["status"] as? Int {
-								if statusCode == 21007 {
-									print("Switching to test against sandbox")
-									self.verifyIfPurchasedBeforeFreemium(self.sandboxStoreURL, receipt)
-								}
-							}
-
-							if let receiptResponse = jsonResponse["receipt"] as? [String: Any?], let originalVersion = receiptResponse["original_application_version"] as? String {
-								if originalVersion == "1.0.1" {
-									// Update to full paid version of app
-									//UserDefaults.standard.set(true, forKey: upgradeKeys.isUpgraded)
-								}
-							}
-						} catch {
-							print("Error: " + error.localizedDescription)
-						}
-					}
-				}
-				}.resume()
-		} catch {
-			print("Error: " + error.localizedDescription)
-		}
-	}
 }
 
 // MARK: - SKPaymentTransactionObserver

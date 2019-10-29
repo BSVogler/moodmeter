@@ -35,6 +35,7 @@ class Model: Codable {
 	var reminderMinute = 00
 	var measurements: [Measurement] = []
 	let sharing: Sharing
+	var premium = false
 	
     // MARK: Initializers
 	init(){

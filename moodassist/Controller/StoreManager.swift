@@ -87,7 +87,13 @@ class StoreManager: NSObject {
 		let title = self.title(matchingIdentifier: transaction.payment.productIdentifier)
 		return title ?? transaction.payment.productIdentifier
 	}
+	
+	func activatePremium(product: SKProduct) {
+		self.premiumProduct = product
+		Model.shared.premium = true
+	}
 }
+
 
 // MARK: - SKProductsRequestDelegate
 
@@ -105,9 +111,11 @@ extension StoreManager: SKProductsRequestDelegate {
 			availableProducts = response.products
 			storeResponse.append(Section(type: .availableProducts, elements: availableProducts))
 			let premiumSection = storeResponse.first{$0.type == .availableProducts}
-			premiumProduct = response.products.first
+			
 			print(premiumSection ?? "no product Section found in response")
-			print(premiumProduct ?? "no product found in response")
+			if let premiumProduct = response.products.first {
+				activatePremium(product: premiumProduct)
+			}
 		}
 
 		// invalidProductIdentifiers contains all product identifiers not recognized by the App Store.
@@ -123,6 +131,7 @@ extension StoreManager: SKProductsRequestDelegate {
 		}
 	}
 }
+
 
 // MARK: - SKRequestDelegate
 

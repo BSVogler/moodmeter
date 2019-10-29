@@ -38,6 +38,9 @@ class SettingViewController: UIViewController {
 			}
 		}
 		
+		StoreManager.shared.delegate = self
+		StoreObserver.shared.delegate = self
+		
         self.setEnabled(Model.shared.reminderEnabled)
         
         var dateComponents = DateComponents()
@@ -113,5 +116,28 @@ class SettingViewController: UIViewController {
 		self.notificationSwitch.setOn(Model.shared.reminderEnabled, animated: false)
 		self.reminderTimePicker.isHidden = !Model.shared.reminderEnabled
 	}
-	
+}
+
+// MARK: - StoreManagerDelegate
+
+/// Extends ParentViewController to conform to StoreManagerDelegate.
+extension SettingViewController: StoreManagerDelegate {
+	func storeManagerDidReceiveResponse(_ response: [Section]) {
+	}
+
+	func storeManagerDidReceiveMessage(_ message: String) {
+		alert(title: Messages.productRequestStatus, message: message)
+	}
+}
+
+// MARK: - StoreObserverDelegate
+
+/// Extends ParentViewController to conform to StoreObserverDelegate.
+extension SettingViewController: StoreObserverDelegate {
+	func storeObserverDidReceiveMessage(_ message: String) {
+		alert(title: Messages.purchaseStatus, message: message)
+	}
+
+	func storeObserverRestoreDidSucceed() {
+	}
 }
