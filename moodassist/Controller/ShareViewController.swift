@@ -114,28 +114,29 @@ class ShareViewController: UIViewController {
 	@IBAction func exportFileButton(_ sender: Any) {
 		let labelBefore = exportButton.titleLabel?.text
 		exportButton.titleLabel?.text = NSLocalizedString("Exporting…", comment: "")//never visible, but this triggers some fade-out animation
+		//the file will be written to a temporary file, in order to allow the preview
 		let tmpDirURL = FileManager.default.temporaryDirectory
 		let filename = Date().toJS()+".csv"
-		let url = tmpDirURL.appendingPathComponent(filename)
-		URLSession.shared.dataTask(with: url) { data, response, error in
-			do {
-				try Model.shared.exportCSV().write(to: url, atomically: true, encoding: .utf8)
-			} catch {
-				self.alert(title: "Failed", message: "Export not working: +\(error)")
-			}
-			guard FileManager().fileExists(atPath: url.relativePath) else{
-				self.alert(title: "Failed", message: "File not saved at +\(url)")
-				return
-			}
-			DispatchQueue.main.async {
-				let documentController = UIDocumentInteractionController(url: url)
-				documentController.delegate = self
-				documentController.uti = "public.comma-separated-values-text"
-				documentController.name = filename
-				documentController.presentPreview(animated: true) //this works
-				//documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true) //this does not work
-			}
-		}.resume()
+		let tmpUrl = tmpDirURL.appendingPathComponent(filename)
+		//URLSession.shared.dataTask(with: url) { data, response, error in
+		do {
+			try Model.shared.exportCSV().write(to: tmpUrl, atomically: false, encoding: .utf8)
+		} catch {
+			self.alert(title: "Failed", message: "Export not working: +\(error)")
+		}
+		guard FileManager().fileExists(atPath: tmpUrl.relativePath) else{
+			self.alert(title: "Failed", message: "File not saved at +\(tmpUrl)")
+			return
+		}
+		DispatchQueue.main.async {
+			let documentController = UIDocumentInteractionController(url: tmpUrl)
+			documentController.delegate = self
+			documentController.uti = "public.comma-separated-values-text"
+			documentController.name = filename
+			documentController.presentPreview(animated: true) //this works
+			//documentController.presentOptionsMenu(from: (sender as AnyObject).frame, in:self.view, animated:true) //this does not work
+		}
+		//}.resume()
 		exportButton.titleLabel?.text = labelBefore
 	}
 	
