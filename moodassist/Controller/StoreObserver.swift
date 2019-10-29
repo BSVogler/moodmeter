@@ -59,6 +59,18 @@ class StoreObserver: NSObject {
 
 	/// Restores all previously completed purchases.
 	func restore() {
+		//check the included receipt to obtain the purchased date
+		if let receiptURL = Bundle.main.appStoreReceiptURL {
+			do {
+				let data = try Data(contentsOf: receiptURL)
+				self.verifyIfPurchasedBeforeFreemium(sandboxStoreURL, data)
+			} catch {
+				print(error.localizedDescription)
+				return
+			}
+		}
+		
+		//this code was copied from the example code
 		if !restored.isEmpty {
 			restored.removeAll()
 		}
@@ -117,6 +129,49 @@ class StoreObserver: NSObject {
 		// Finishes the restored transaction.
 		SKPaymentQueue.default().finishTransaction(transaction)
 	}
+	
+	// MARK: check if was paid before
+	private let productionStoreURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+	private let sandboxStoreURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")!
+
+	private func verifyIfPurchasedBeforeFreemium(_ storeURL: URL, _ receipt: Data) {
+		do {
+			let requestContents:Dictionary = ["receipt-data": receipt.base64EncodedString()]
+			let requestData = try JSONSerialization.data(withJSONObject: requestContents, options: [])
+
+			var storeRequest = URLRequest(url: storeURL)
+			storeRequest.httpMethod = "POST"
+			storeRequest.httpBody = requestData
+
+			URLSession.shared.dataTask(with: storeRequest) { (data, response, error) in
+				DispatchQueue.main.async {
+					if data != nil {
+						do {
+							let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any?]
+
+							if let statusCode = jsonResponse["status"] as? Int {
+								if statusCode == 21007 {
+									print("Switching to test against sandbox")
+									self.verifyIfPurchasedBeforeFreemium(self.sandboxStoreURL, receipt)
+								}
+							}
+
+							if let receiptResponse = jsonResponse["receipt"] as? [String: Any?], let originalVersion = receiptResponse["original_application_version"] as? String {
+								if originalVersion == "1.0.1" {
+									// Update to full paid version of app
+									//UserDefaults.standard.set(true, forKey: upgradeKeys.isUpgraded)
+								}
+							}
+						} catch {
+							print("Error: " + error.localizedDescription)
+						}
+					}
+				}
+				}.resume()
+		} catch {
+			print("Error: " + error.localizedDescription)
+		}
+	}
 }
 
 // MARK: - SKPaymentTransactionObserver
@@ -167,5 +222,6 @@ extension StoreObserver: SKPaymentTransactionObserver {
 			}
 		}
 	}
+	
 }
 
