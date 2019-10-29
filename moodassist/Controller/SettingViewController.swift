@@ -61,6 +61,10 @@ class SettingViewController: UIViewController {
 		self.dismiss(animated: true, completion: nil)
 	}
 	
+	@IBAction func restoreButton(_ sender: Any) {
+		StoreObserver.shared.restore()
+	}
+	
 	@IBAction func eraseButton(_ sender: Any) {
 		confirm(title: NSLocalizedString("Delete?",comment: ""), message: NSLocalizedString("Delete all locally saved data?",comment: "")) { action in
 			if Model.shared.eraseData() {

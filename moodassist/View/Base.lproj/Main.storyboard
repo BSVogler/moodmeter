@@ -219,7 +219,7 @@
                                 </connections>
                             </datePicker>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qhz-Qe-h9T">
-                                <rect key="frame" x="40" y="715" width="334" height="2"/>
+                                <rect key="frame" x="20" y="715" width="374" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App made with ♥︎ by Benedikt S. Vogler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXR-ZZ-1EI">
                                 <rect key="frame" x="87" y="727" width="240" height="16"/>
@@ -247,28 +247,37 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Km8-O7-xoI">
-                                <rect key="frame" x="40" y="667" width="334" height="2"/>
+                                <rect key="frame" x="20" y="667" width="374" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTc-YY-zPF">
+                                <rect key="frame" x="20" y="629" width="374" height="30"/>
+                                <state key="normal" title="Restore Purchase"/>
+                                <connections>
+                                    <action selector="restoreButton:" destination="Slk-0i-r66" eventType="touchUpInside" id="SEU-Tg-1Eo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="RXR-ZZ-1EI" firstAttribute="top" secondItem="qhz-Qe-h9T" secondAttribute="bottom" constant="10" id="1jk-55-96Y"/>
                             <constraint firstItem="jpO-hg-rsb" firstAttribute="top" secondItem="zcB-4h-KuZ" secondAttribute="top" id="1rh-eQ-cSG"/>
                             <constraint firstItem="zcB-4h-KuZ" firstAttribute="trailing" secondItem="NbP-GZ-uR4" secondAttribute="trailing" constant="11" id="4gV-FV-JJi"/>
-                            <constraint firstItem="Km8-O7-xoI" firstAttribute="leading" secondItem="0fC-rL-NzY" secondAttribute="leadingMargin" constant="20" id="BgK-uX-GA1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Km8-O7-xoI" secondAttribute="trailing" constant="20" id="DBx-hE-Aun"/>
-                            <constraint firstItem="qhz-Qe-h9T" firstAttribute="leading" secondItem="0fC-rL-NzY" secondAttribute="leadingMargin" constant="20" id="DEc-wj-ZHv"/>
+                            <constraint firstItem="Km8-O7-xoI" firstAttribute="leading" secondItem="0fC-rL-NzY" secondAttribute="leadingMargin" id="BgK-uX-GA1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Km8-O7-xoI" secondAttribute="trailing" id="DBx-hE-Aun"/>
+                            <constraint firstItem="qhz-Qe-h9T" firstAttribute="leading" secondItem="0fC-rL-NzY" secondAttribute="leadingMargin" id="DEc-wj-ZHv"/>
                             <constraint firstItem="zcB-4h-KuZ" firstAttribute="trailing" secondItem="0W4-Yu-5H1" secondAttribute="trailing" constant="20" id="DiN-6M-ehu"/>
                             <constraint firstItem="faj-vv-t6L" firstAttribute="top" secondItem="RXR-ZZ-1EI" secondAttribute="bottom" constant="6" id="FTL-Dj-vds"/>
                             <constraint firstItem="RXR-ZZ-1EI" firstAttribute="centerX" secondItem="0fC-rL-NzY" secondAttribute="centerX" id="JRS-XT-i9O"/>
                             <constraint firstItem="h0v-ZP-80u" firstAttribute="centerX" secondItem="0fC-rL-NzY" secondAttribute="centerX" id="K0m-21-MdU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qhz-Qe-h9T" secondAttribute="trailing" constant="20" id="OvD-l7-pLn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qhz-Qe-h9T" secondAttribute="trailing" id="OvD-l7-pLn"/>
                             <constraint firstItem="zcB-4h-KuZ" firstAttribute="trailing" secondItem="tRj-AF-u7F" secondAttribute="trailing" constant="20" id="Rkb-T9-ILC"/>
                             <constraint firstItem="0W4-Yu-5H1" firstAttribute="leading" secondItem="zcB-4h-KuZ" secondAttribute="leading" constant="20" id="THC-LR-Bfr"/>
                             <constraint firstItem="faj-vv-t6L" firstAttribute="centerX" secondItem="0fC-rL-NzY" secondAttribute="centerX" id="TmB-Ff-W4x"/>
+                            <constraint firstItem="fTc-YY-zPF" firstAttribute="leading" secondItem="zcB-4h-KuZ" secondAttribute="leading" constant="20" id="VEg-Jr-luX"/>
                             <constraint firstItem="zcB-4h-KuZ" firstAttribute="bottom" secondItem="dW3-9Y-1gy" secondAttribute="bottom" constant="14" id="Z9a-0M-EkN"/>
                             <constraint firstItem="qhz-Qe-h9T" firstAttribute="top" secondItem="0W4-Yu-5H1" secondAttribute="bottom" constant="8" symbolic="YES" id="cug-iR-z5L"/>
                             <constraint firstItem="0W4-Yu-5H1" firstAttribute="top" secondItem="Km8-O7-xoI" secondAttribute="bottom" constant="8" id="d3x-AD-Ewb"/>
+                            <constraint firstItem="Km8-O7-xoI" firstAttribute="top" secondItem="fTc-YY-zPF" secondAttribute="bottom" constant="8" id="dQ2-wI-n3c"/>
                             <constraint firstItem="h0v-ZP-80u" firstAttribute="top" secondItem="tRj-AF-u7F" secondAttribute="bottom" constant="15" id="dxr-nw-uEd"/>
                             <constraint firstItem="TNJ-OY-k8N" firstAttribute="leading" secondItem="zcB-4h-KuZ" secondAttribute="leading" constant="20" id="ef2-gB-YfA"/>
                             <constraint firstItem="g7i-g5-zda" firstAttribute="top" secondItem="zcB-4h-KuZ" secondAttribute="top" constant="20" id="ehV-Oq-dPz"/>
@@ -279,6 +288,7 @@
                             <constraint firstItem="TNJ-OY-k8N" firstAttribute="top" secondItem="tRj-AF-u7F" secondAttribute="bottom" constant="67" id="na5-iX-SPM"/>
                             <constraint firstItem="dW3-9Y-1gy" firstAttribute="top" secondItem="RXR-ZZ-1EI" secondAttribute="bottom" constant="35" id="o3y-d9-zgj"/>
                             <constraint firstItem="zcB-4h-KuZ" firstAttribute="trailing" secondItem="jpO-hg-rsb" secondAttribute="trailing" constant="16" id="oyP-Ir-CNR"/>
+                            <constraint firstItem="zcB-4h-KuZ" firstAttribute="trailing" secondItem="fTc-YY-zPF" secondAttribute="trailing" constant="20" id="tgs-PC-7YE"/>
                             <constraint firstItem="tRj-AF-u7F" firstAttribute="leading" secondItem="zcB-4h-KuZ" secondAttribute="leading" constant="20" id="urZ-eW-Ba3"/>
                             <constraint firstItem="g7i-g5-zda" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zcB-4h-KuZ" secondAttribute="leading" symbolic="YES" id="vMn-Xp-YhY"/>
                             <constraint firstItem="NbP-GZ-uR4" firstAttribute="top" secondItem="h0v-ZP-80u" secondAttribute="bottom" constant="15" id="yaN-tt-Vue"/>
@@ -296,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFT-z8-DF7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2386.71875" y="-924.02343749999989"/>
+            <point key="canvasLocation" x="2385.507246376812" y="-924.10714285714278"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="iRY-DP-jOA">
