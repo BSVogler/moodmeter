@@ -25,6 +25,7 @@ class StoreManager: NSObject {
 	static let shared = StoreManager()
 
 	// MARK: - Properties
+	var premiumProduct: SKProduct?
 
 	/// Keeps track of all valid products. These products are available for sale in the App Store.
 	fileprivate var availableProducts = [SKProduct]()
@@ -39,7 +40,7 @@ class StoreManager: NSObject {
 	fileprivate var storeResponse = [Section]()
 
 	weak var delegate: StoreManagerDelegate?
-
+	
 	// MARK: - Initializer
 
 	private override init() {}
@@ -103,6 +104,10 @@ extension StoreManager: SKProductsRequestDelegate {
 		if !response.products.isEmpty {
 			availableProducts = response.products
 			storeResponse.append(Section(type: .availableProducts, elements: availableProducts))
+			let premiumSection = storeResponse.first{$0.type == .availableProducts}
+			premiumProduct = response.products.first
+			print(premiumSection ?? "no product Section found in response")
+			print(premiumProduct ?? "no product found in response")
 		}
 
 		// invalidProductIdentifiers contains all product identifiers not recognized by the App Store.
@@ -112,8 +117,6 @@ extension StoreManager: SKProductsRequestDelegate {
 		}
 		
 		if !storeResponse.isEmpty {
-			let premiumSection = storeResponse.first{$0.type == .availableProducts}
-			print(premiumSection ?? "no product found in response")
 			DispatchQueue.main.async {
 				self.delegate?.storeManagerDidReceiveResponse(self.storeResponse)
 			}

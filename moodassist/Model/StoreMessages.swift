@@ -88,4 +88,10 @@ struct Section {
 	var type: SectionType
 	/// List of products/purchases.
 	var elements = [Any]()
+	/// - returns: A Section object matching the specified name in the data array.
+	static func parse(_ data: [Section], for type: SectionType) -> Section? {
+		let section = (data.filter({ (item: Section) in item.type == type }))
+		return (!section.isEmpty) ? section.first : nil
+	}
 }
+

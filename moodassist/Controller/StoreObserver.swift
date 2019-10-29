@@ -65,8 +65,14 @@ class StoreObserver: NSObject {
 		SKPaymentQueue.default().restoreCompletedTransactions()
 	}
 	
+	func displayBuy(){
+		StoreManager.shared.startProductRequest(with: ["premium_product_id"])
+	}
+	
 	func buyPremium() {
-		buy(SKProduct())
+		if let premium = StoreManager.shared.premiumProduct {
+			buy(premium)
+		}
 	}
 
 	// MARK: - Handle Payment Transactions
