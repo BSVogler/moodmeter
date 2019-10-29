@@ -46,11 +46,11 @@ class RootViewController: UIViewController {
 		self.view.addSubview(self.pageViewController!.view)
 		
 		// Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
-		var pageViewRect = self.view.bounds
-		if UIDevice.current.userInterfaceIdiom == .pad {
-			pageViewRect = pageViewRect.insetBy(dx: 40.0, dy: 40.0)
-		}
-		self.pageViewController!.view.frame = pageViewRect
+//		var pageViewRect = self.view.bounds
+//		if UIDevice.current.userInterfaceIdiom == .pad {
+//			pageViewRect = pageViewRect.insetBy(dx: 0.0, dy: 0.0)
+//		}
+//		self.pageViewController!.view.frame = pageViewRect
 		
 		self.pageViewController!.didMove(toParent: self)
 		
@@ -61,20 +61,24 @@ class RootViewController: UIViewController {
 // MARK: - Extensions
 // MARK: UIPageViewControllerDelegate
 extension RootViewController: UIPageViewControllerDelegate {
-    
-    func configurePageControl() {
-        self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
-        self.pageControl.numberOfPages = modelController.pageTitles.count
-        self.pageControl.currentPage = 1
-        self.pageControl.tintColor = UIColor.black
-        self.pageControl.pageIndicatorTintColor = UIColor.white
-        self.pageControl.currentPageIndicatorTintColor = UIColor.black
-        self.pageViewController?.view.addSubview(pageControl)
-    }
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        // the current page is the number of the highlighted dot
-        self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
-    }
+	
+	func configurePageControl() {
+		self.pageControl.frame = CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50)
+		self.pageControl.numberOfPages = modelController.pageTitles.count
+		self.pageControl.currentPage = 1
+		self.pageControl.tintColor = UIColor.black
+		self.pageControl.pageIndicatorTintColor = UIColor.white
+		self.pageControl.currentPageIndicatorTintColor = UIColor.black
+		self.pageControl.isUserInteractionEnabled = false
+		self.pageViewController?.view.addSubview(pageControl)
+	}
+	
+	func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+		// the current page is the number of the highlighted dot
+		self.pageControl.currentPage = modelController.indexOfViewController(self.pageViewController!.viewControllers![0])
+	}
+	
+	
 }
 
 // MARK: alert(), confirm()
