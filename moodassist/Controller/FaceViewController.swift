@@ -19,6 +19,7 @@ class FaceViewController: UIViewController {
 	private var measure: Measurement
 	private var faceRenderer = FaceRenderer()
 	private var audioPlayer:AVAudioPlayer!
+	private var moodbefore = 0
 	
 	// MARK: IBOutlets
 	@IBOutlet private weak var dataLabel: UILabel!
@@ -59,11 +60,13 @@ class FaceViewController: UIViewController {
 	@IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
 		//mood 0 is only internal special case
 		if measure.mood == 0 {
+			moodbefore = measure.mood
 			measure.mood = 4
 			playSound()
 			Model.shared.addMeasurment(measure)
 			measure.moodChanged()
 		} else if measure.mood < Measurement.moodToText.count-1 {
+			moodbefore = measure.mood
 			measure.mood += 1
 			playSound()
 			measure.moodChanged()
@@ -76,11 +79,13 @@ class FaceViewController: UIViewController {
 	@IBAction func swipeDown(_ sender: Any) {
 		//mood 0 is only internal special case
 		if measure.mood == 0 {
+			moodbefore = measure.mood
 			measure.mood = 2
 			playSound()
 			Model.shared.addMeasurment(measure)
 			measure.moodChanged()
 		} else if measure.mood > 1 {
+			moodbefore = measure.mood
 			measure.mood -= 1
 			playSound()
 			measure.moodChanged()
@@ -109,8 +114,17 @@ class FaceViewController: UIViewController {
 			UIApplication.shared.applicationIconBadgeNumber = 0;
 		}
 		faceRenderer.scale = UIScreen.main.scale
-		faceRenderer.mood = measure.mood
-		faceImageView.image = faceRenderer.getImage(rect: faceImageView.frame)
+		//first set the static image
+		if measure.mood > 0 && moodbefore == 0 {
+			moodbefore = measure.mood
+		}
+		let animation = faceRenderer.getAnimation(rect: faceImageView.frame,from: moodbefore, to: measure.mood)
+		faceImageView.image = animation.last
+		//animate
+		faceImageView.animationImages = animation
+		faceImageView.animationDuration = 0.20;
+		faceImageView.animationRepeatCount = 1;
+		faceImageView.startAnimating()
 		tutorialView.isHidden = measure.mood != 0
 	}
 	
