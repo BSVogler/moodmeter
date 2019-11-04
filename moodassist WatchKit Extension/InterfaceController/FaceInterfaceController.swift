@@ -132,6 +132,8 @@ class FaceInterfaceController: WKInterfaceController {
 		//make it a rectangle
 		let frame = CGRect(x: self.contentFrame.minX, y: self.contentFrame.minY, width: self.contentFrame.width, height: self.contentFrame.height)
 		faceImage.setImage(faceRenderer.getImage(rect: frame, mood: measure.mood))
+		//to animate in a loop (#65)
+		//UIImage.animatedImage(faceRenderer.getAnimation(rect: <#T##CGRect#>, from: <#T##Int#>, to: <#T##Int#>))
 //		let filter = scenekitscene.scene?.rootNode.childNodes.filter({ $0.name == "head" }).first
 //		let material = SCNMaterial.()
 //		material.diffuse.contents = NSColor()
