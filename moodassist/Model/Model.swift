@@ -119,7 +119,8 @@ class Model: Codable {
         }
         set {
 			guard let newMood = newValue else {
-                assert(false, "Mood on \(date) cannot be nil.")
+				assert(false, "Mood on \(date) cannot be nil.")
+				return
             }
 			//check if already existing
 			if let existingMsmt = getMeasurement(at: date) {
