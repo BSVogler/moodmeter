@@ -22,6 +22,14 @@ class ModelTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+	func testErasing(){
+		XCTAssertEqual(model.measurements.count, 0)
+		model.addMeasurment(Measurement())
+		XCTAssertEqual(model.measurements.count, 1)
+		_ = model.eraseData()
+		XCTAssertEqual(model.measurements.count, 0)
+	}
+	
     func testAddingSingle() {
 		let old = Measurement(day: Date.yesterday(), mood: 0)
 		let new = Measurement()

@@ -152,12 +152,15 @@ class Model: Codable {
 	}
 	
 	func eraseData() -> Bool {
-		do {
-			let fm = FileManager()
-			try fm.removeItem(at: Model.localDBStorageURL)
-		} catch _ {
-			print("Could not delete all data.")
-			return false
+		//remove file
+		let fm = FileManager()
+		if fm.fileExists(atPath: Model.localDBStorageURL.absoluteString) {
+			do {
+				try fm.removeItem(at: Model.localDBStorageURL)
+			} catch _ {
+				print("Could not delete all stored data.")
+				return false
+			}
 		}
 		measurements.removeAll()
 		_ = saveToFiles()
