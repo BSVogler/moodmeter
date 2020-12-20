@@ -10,10 +10,10 @@
 import Foundation
 import Alamofire
 
+let apiURL = Foundation.URL(string: "https://api.moodassist.cloud")
 // MARK: Sharing
 class Sharing: Codable {
-	//MARK: Stored Instance Properties
-	let apiURL = Foundation.URL(string: "https://api.moodassist.cloud")
+    //MARK: Stored Instance Properties
 	private(set) var userHash: String? {
 		get {
 			return self._userHash

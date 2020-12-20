@@ -22,7 +22,7 @@ class MoodApiJsonHttpClient: JsonHttpClient {
     // MARK: Initializers
 	init(model: Model) {
 		self.model = model
-		super.init(model.sharing.apiURL)
+		super.init(apiURL!)
 		super.jsonDecoder.dateDecodingStrategy = .formatted(Measurement.jsDateFormatter)
 		super.jsonEncoder.dateEncodingStrategy = .formatted(Measurement.jsDateFormatter)
 	}
