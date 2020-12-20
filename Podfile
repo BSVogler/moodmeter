@@ -1,9 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 
-# platform :ios
-
-pod 'Alamofire'
-pod 'SwiftyBeaver', '~> 1.7'
+pod 'Alamofire', '~> 4.0'
+pod 'SwiftyBeaver'
 
 target 'Moodassist' do
 
